@@ -2,6 +2,8 @@ package kr.spring.storereview.controller;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -34,15 +36,17 @@ public class StoreReviewController {
 	}
 	
 	@RequestMapping("/store/insertReview.do")
-	public String submit(@Valid StoreReviewVO storeReviewVO,BindingResult result,HttpServletRequest request)throws Exception {
+	public String submit(@Valid StoreReviewVO storeReviewVO,BindingResult result,HttpSession session)throws Exception {
 		
 		if(result.hasErrors()) {
 			return "productDetail";
 		}
 		
+		storeReviewVO.setM_num((Integer)session.getAttribute("m_num"));
+
 		storeReviewService.insert(storeReviewVO);		
 		return "redirect:/store/productDetail.do";
-	}	
+	}
 }
 
 

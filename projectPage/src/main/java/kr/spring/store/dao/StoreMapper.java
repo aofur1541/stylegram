@@ -14,4 +14,5 @@ public interface StoreMapper {
 	public List<StoreVO> selectProductList();
 	@Select("SELECT * FROM prostore WHERE s_num=#{s_num}")
 	public StoreVO selectProduct(Integer num);
+	public StoreVO selectProductDetail(Integer num);
 }
