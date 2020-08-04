@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style type="text/css">
+  .all_wrap{margin: 0 auto;}        
+  .all_wrap div{margin: 3px;}
+  .all_wrap img{width: 100%; border-radius: 10px;}
+  .wrap-item { width: 330px; }
+</style>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <script>
@@ -12,7 +18,6 @@ $(document).ready(function() {
           fitwidth: true
       });
     });
-   
 });
 </script>
 <div id="body">
@@ -28,7 +33,8 @@ $(document).ready(function() {
 	<c:if test="${count > 0}">
 	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 200 }'>
 	<c:forEach var="mainList" items="${mainList}">
-		<div class="card-sheet wrap-item">
+		<div class="wrap-item">
+		<div class="card-sheet">
 			<div id="card-img">
 			<c:if test="${empty mainList.mb_photo}">
 				<a href="${pageContext.request.contextPath}/mainBoard/detail.do?mb_num=${mainList.mb_num}">
@@ -79,6 +85,7 @@ $(document).ready(function() {
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 	</c:forEach>
 	</div>
