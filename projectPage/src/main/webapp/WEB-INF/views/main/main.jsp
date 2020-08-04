@@ -34,7 +34,7 @@ $(document).ready(function() {
 	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 200 }'>
 	<c:forEach var="mainList" items="${mainList}">
 		<div class="wrap-item">
-		<div class="card-sheet">
+		<div class="card-sheet"> 
 			<div id="card-img">
 			<c:if test="${empty mainList.mb_photo}">
 				<a href="${pageContext.request.contextPath}/mainBoard/detail.do?mb_num=${mainList.mb_num}">
