@@ -19,7 +19,7 @@ $(document).ready(function() {
       });
     });
 });
-</script>
+</script> 
 <div id="body">
 	<!-- 로그인 되었을 시 글쓰기 버튼 화면따라다님 -->
 	<c:if test="${!empty m_id}">
