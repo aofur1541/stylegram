@@ -20,6 +20,7 @@ import kr.spring.mainboard.service.MainBoardService;
 import kr.spring.mainboardlikes.domain.MainBoardLikeVO;
 import kr.spring.mainboardlikes.service.MainBoardLikeService;
 
+//메인화면 
 @Controller
 public class MainBoardController {
 	private Logger log = Logger.getLogger(this.getClass());
