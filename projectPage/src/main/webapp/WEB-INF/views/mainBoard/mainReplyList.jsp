@@ -36,7 +36,13 @@
 	</script>
 		<tr>
 			<td>
-				${row.m_id }(<fmt:formatDate value="${row.mr_regdate }" pattern="yyyy-MM-dd"/>)
+				<c:if test="${empty m_nickname}">
+					${m_id}
+				</c:if>
+				<c:if test="${!empty m_nickname}">
+					${m_nickname}
+				</c:if>				
+				(<fmt:formatDate value="${row.mr_regdate }" pattern="yyyy-MM-dd"/>)
 				<c:if test="${row.m_num == m_num }">
 				<button id="updateComment_btn" class="updateComment_btn${row.mr_num }" name="updateComment_btn">수정</button>
 				<button id="deleteComment_btn" class="deleteComment_btn${row.mr_num }" name="deleteComment_btn">삭제</button>
