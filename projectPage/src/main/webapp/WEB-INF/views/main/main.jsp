@@ -101,7 +101,7 @@ $(document).ready(function() {
 						<img src="${pageContext.request.contextPath}/resources/images/shoes.png">
 					</c:if>
 					<c:if test="${empty mainList.mb_topinfo && empty mainList.mb_pantsinfo && empty mainList.mb_capinfo && empty mainList.mb_shoesinfo}">
-						정   보   없   음
+						분   류   없   음
 					</c:if>
 					</div>
 				</div>

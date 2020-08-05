@@ -105,7 +105,7 @@ $(document).ready(function() {
 						<img src="${pageContext.request.contextPath}/resources/images/shoes.png">
 					</c:if>
 					<c:if test="${flea.fb_topcheck eq 0 && flea.fb_bottomcheck eq 0 && flea.fb_hatcheck eq 0 && flea.fb_shoescheck eq 0}">
-						정   보   없   음
+						분   류   없   음
 					</c:if>
 					</div>
 				</div>
