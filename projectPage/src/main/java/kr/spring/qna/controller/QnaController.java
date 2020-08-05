@@ -26,6 +26,8 @@ import kr.spring.util.PagingUtil;
 @Controller
 public class QnaController {
 	private Logger log = Logger.getLogger(this.getClass());
+	int rowCount = 10;//한화면에 보여줄 게시물 수
+	int pageCount = 10;//한화면에 보여줄 페이지 수
 
 	@Resource
 	private QnaService qnaService;
@@ -38,9 +40,13 @@ public class QnaController {
 	
 	//목록
 	@RequestMapping("/qna/listQna.do")
-	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
-								@RequestParam(value="keyfield",defaultValue="") String keyfield,
-								@RequestParam(value="keyword",defaultValue="") String keyword) {
+	public ModelAndView process(
+		@RequestParam(value="pageNum",defaultValue="1") 
+		int currentPage,
+		@RequestParam(value="keyfield",defaultValue="") 
+		String keyfield,
+		@RequestParam(value="keyword",defaultValue="") 
+		String keyword) {
 		
 		Map<String,Object> map = new HashMap<String, Object>();
 		
@@ -53,10 +59,9 @@ public class QnaController {
 		}
 		
 		//페이징처리 
-		int rowCount = 50;//한화면에 보여줄 게시물 수
-		int pageCount = 10;//한화면에 보여줄 페이지 수
 		
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"qna/listna.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"listQna.do");
+		
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		
