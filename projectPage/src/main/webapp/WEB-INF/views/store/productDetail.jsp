@@ -101,7 +101,7 @@
 </style>
 <div id="body">
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
-	<div class="card-board">z
+	<div class="card-board">
 		<div class="card-sheet">
 			<div class="card-img">
 				<c:if test="${fn:endsWith(detail.filename,'.jpg') || 

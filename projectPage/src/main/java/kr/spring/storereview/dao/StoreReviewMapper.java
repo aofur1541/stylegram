@@ -3,6 +3,7 @@ package kr.spring.storereview.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 
 import kr.spring.storereview.domain.StoreReviewVO;
 
@@ -11,4 +12,6 @@ public interface StoreReviewMapper {
 	public void insert (StoreReviewVO review);
 	public int selectReviewCount();
 	public List<StoreReviewVO> selectReviewList();
+	@Select("SELECT MAX(SUM(sr_star)/COUNT(*)) from prostorereview GROUP BY s_num")
+	public int selectTopStarRate();
 }

@@ -30,4 +30,9 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 		return storeReviewMapper.selectReviewList();
 	}
 
+	@Override
+	public int selectTopStarRate() {
+		return storeReviewMapper.selectTopStarRate();
+	}
+
 }

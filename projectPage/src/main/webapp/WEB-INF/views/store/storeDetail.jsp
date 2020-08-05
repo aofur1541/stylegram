@@ -8,7 +8,7 @@
 	</c:if>
 	<c:if test="${count > 0}">
 		<c:forEach var="store" items="${list}">
-			<c:if test="${store.mdpick == 1}">
+			<c:if test="${store.mdpick > 0}">
 			<div class="card-board">
 				<div class="card-sheet-top">
 					<div><b>실시간 인기 TOP | </b>가장 HOT한 상품!</div>
@@ -33,6 +33,8 @@
 					</div>
 				</div>
 			</div>
+			</c:if>
+			<c:if test="${store.mdpick == 1}">
 			<div class="card-board">
 				<div class="card-sheet-top">
 					<div><b>MD추천 | </b>오늘의 추천 상품!</div>

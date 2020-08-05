@@ -54,7 +54,7 @@ public class StoreController {
 			return "insertStore";
 		}
 		storeService.insert(storeVO);		
-			return "redirect:/main/main.do";
+		return "redirect:/main/main.do";
 	}
 	
 	//------------------이미지 처리--------------------------//
@@ -128,13 +128,17 @@ public class StoreController {
 	//------------------이미지 처리--------------------------//
 	
 	@RequestMapping("/store/storeDetail.do")
-	public ModelAndView process() {
+	public ModelAndView process(StoreReviewVO storeReviewVO) {
 		
 		int count = storeService.selectProductCount();
 		
 		List<StoreVO> list = null;
 		
 		list = storeService.selectProductList();
+		
+		if(log.isDebugEnabled()) {
+			log.debug("스토어메인 넘어가는 데이터 : " + list);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("storeDetail");
