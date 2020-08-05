@@ -13,6 +13,10 @@
        <put-attribute name="title" value="스토어 메인"/> 
        <put-attribute name="body" value="/WEB-INF/views/store/storeDetail.jsp"/>
     </definition>
+    <definition name="storeBasket" extends="main">
+       <put-attribute name="title" value="스토어 메인"/> 
+       <put-attribute name="body" value="/WEB-INF/views/store/storeBasket.jsp"/>
+    </definition>
     <definition name="productDetail" extends="main">
        <put-attribute name="title" value="상품 상세"/> 
        <put-attribute name="body" value="/WEB-INF/views/store/productDetail.jsp"/>

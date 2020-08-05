@@ -242,7 +242,7 @@
 				location.href="${pageContext.request.contextPath}/basket/basket.do?s_num=${detail.s_num}";
 				var check = confirm("장바구니에 담겼습니다! \n장바구니로 이동하시겠습니까?")
 				if(check == true){
-					location.href='${pageContext.request.contextPath }/store/storeBasket.do';
+					location.href='${pageContext.request.contextPath }/basket/storeBasket.do';
 				}else if(check == false){
 					
 				}
