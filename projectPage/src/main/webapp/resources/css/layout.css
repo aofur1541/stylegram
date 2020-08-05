@@ -141,21 +141,21 @@ div#main_menu{
 	background:white;
 }
 div#main_body{
-	width:70%;
+	width:65%;
 	margin: 0 auto;
 	text-align:center;
 	padding:5px 5px 30px 5px;
 }
 div#main_body div#body{
 	position: absolute;
-	margin-top:180px;
+	margin-top:100px;
 	width:68%;
 	background-color: rgb(247, 248, 249);
 }
 div#body div#write_btn{
 	position: fixed;
-	margin-top: 700px;
-	margin-left: -50px;
+	margin-top: 600px;
+	margin-left: -80px;
 }
 div#body div#write_btn img{
 	width: 50px;
@@ -167,26 +167,22 @@ div#body div.card-sheet{
 	margin-left: 2.5%;
 	margin-right: 2.5%;
 	background: white;
-	width:350px;
-	height:10%;
+	width:250px;
 	float:left;
 	border: 2px solid;
 	border-color:rgb(242, 242, 242);
 	border-radius:15px;
 }
 div#body div.card-sheet div#card-img{
-	width: 350px;
-	height: 350px;
+	width: 100%;
 }
 div#body div.card-sheet div#card-img img{
 	width: 100%;
-	height: 100%;
 	border-radius:15px 15px 0px 0px;
 }
 div#body div.card-sheet div#card-body div#card-profile{
 	width: 20%;
 	float: left;
-	height: 50%;
 }
 div#body div.card-sheet div#card-body div#card-profile img{
 	position:relative;
@@ -197,7 +193,6 @@ div#body div.card-sheet div#card-body div#card-profile img{
 }
 div#body div.card-sheet div#card-body div#card-content div.card-title{
 	width: 75%;
-	height: 40%;
 	float: left;
 	overflow:hidden;
 	white-space:nowrap;
@@ -213,12 +208,11 @@ div#body div.card-sheet div#card-body div#card-content div.card-content{
 div#body div.card-sheet div#card-body div#card-content div.card-category{
 	margin-top:10px;
 	width: 100%;
-	height: 50%;
 	float: left;
 }
 div#body div.card-sheet div#card-body div#card-content div.card-category img{
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	padding-left: 15px;
 }
 div#body p.mb_content{
@@ -616,4 +610,23 @@ div#main_body div#body div#flea_content_wrapper div#content div#category div#ca1
 	line-height:40px;
 	margin-top:5px;
 	margin-left:30px;
+}
+.all_wrap{
+	margin: 0 auto;
+}        
+.all_wrap div{
+	margin-bottom: 3px;
+}
+.all_wrap img{
+	width: 100%;
+	border-radius: 10px;
+}
+.wrap-item {
+	width: 293px;
+}
+div#body div.searchForm{
+	height: 100px;
+}
+div#body div.searchForm form{
+	background-color: rgb(247, 248, 249);
 }

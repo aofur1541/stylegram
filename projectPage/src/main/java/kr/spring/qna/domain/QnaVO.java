@@ -20,9 +20,9 @@ public class QnaVO {
 	//PROQNAINFO
 	private int qn_num;
 	private int qb_topinfo;
-	private	int qb_bottominfo;
-	private	int qb_hatinfo;
-	private	int qb_shoseinfo;
+	private	int qb_pantsinfo;
+	private	int qb_capinfo;
+	private	int qb_shoesinfo;
 	//PROQNAREPLE
 	private int qr_num;
 	private	int m_num;
@@ -32,6 +32,8 @@ public class QnaVO {
 	//PROMEMBER
 	private String m_id;
 	private String m_nickname;
+	//PROMEMBER_DETAIL
+	private byte[] m_image;
 	
 	public void setUpload(MultipartFile upload) throws IOException {
 		this.upload = upload;
@@ -102,23 +104,23 @@ public class QnaVO {
 	public void setQb_topinfo(int qb_topinfo) {
 		this.qb_topinfo = qb_topinfo;
 	}
-	public int getQb_bottominfo() {
-		return qb_bottominfo;
+	public int getQb_pantsinfo() {
+		return qb_pantsinfo;
 	}
-	public void setQb_bottominfo(int qb_bottominfo) {
-		this.qb_bottominfo = qb_bottominfo;
+	public void setQb_pantsinfo(int qb_pantsinfo) {
+		this.qb_pantsinfo = qb_pantsinfo;
 	}
-	public int getQb_hatinfo() {
-		return qb_hatinfo;
+	public int getQb_capinfo() {
+		return qb_capinfo;
 	}
-	public void setQb_hatinfo(int qb_hatinfo) {
-		this.qb_hatinfo = qb_hatinfo;
+	public void setQb_capinfo(int qb_capinfo) {
+		this.qb_capinfo = qb_capinfo;
 	}
-	public int getQb_shoseinfo() {
-		return qb_shoseinfo;
+	public int getQb_shoesinfo() {
+		return qb_shoesinfo;
 	}
-	public void setQb_shoseinfo(int qb_shoseinfo) {
-		this.qb_shoseinfo = qb_shoseinfo;
+	public void setQb_shoesinfo(int qb_shoesinfo) {
+		this.qb_shoesinfo = qb_shoesinfo;
 	}
 	public int getQr_num() {
 		return qr_num;
@@ -162,7 +164,13 @@ public class QnaVO {
 	public void setM_nickname(String m_nickname) {
 		this.m_nickname = m_nickname;
 	}
-	@Override
+	public byte[] getM_image() {
+		return m_image;
+	}
+	public void setM_image(byte[] m_image) {
+		this.m_image = m_image;
+	}
+/*	@Override
 	public String toString() {
 		return "QnaVO [qb_num=" + qb_num + ", qb_title=" + qb_title + ", qb_usernum=" + qb_usernum + ", upload="
 				+ upload + ", qb_filename=" + qb_filename + ", qb_content=" + qb_content + ", qb_regdate=" + qb_regdate
@@ -170,6 +178,6 @@ public class QnaVO {
 				+ ", qb_bottominfo=" + qb_bottominfo + ", qb_hatinfo=" + qb_hatinfo + ", qb_shoseinfo=" + qb_shoseinfo
 				+ ", qr_num=" + qr_num + ", m_num=" + m_num + ", qr_id=" + qr_id + ", qr_content=" + qr_content
 				+ ", qr_regdate=" + qr_regdate + "]";
-	}
+	}*/
 }	
 	

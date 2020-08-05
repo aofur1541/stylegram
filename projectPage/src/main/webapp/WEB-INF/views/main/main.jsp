@@ -1,17 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style type="text/css">
-  .all_wrap{margin: 0 auto;}        
-  .all_wrap div{margin: 3px;}
-  .all_wrap img{width: 100%; border-radius: 10px;}
-  .wrap-item { width: 330px; }
-</style>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <script>
 $(document).ready(function() {
-
     var $grid = $('.all_wrap').imagesLoaded( function() {
       $grid.masonry({
           itemSelector: '.wrap-item',
@@ -21,23 +14,25 @@ $(document).ready(function() {
 });
 </script> 
 <div id="body">
-	<form action="main.do" method="get">
-		<div id="filter" class="filter">
-			<select name="filter" onchange="this.form.submit()">
-				<option value="">전체</option>
-				<option value="top" <c:if test="${filter eq 'top'}">selected</c:if>>상의</option>
-				<option value="pants" <c:if test="${filter eq 'pants'}">selected</c:if>>하의</option>
-				<option value="cap" <c:if test="${filter eq 'cap'}">selected</c:if>>모자</option>
-				<option value="shoes" <c:if test="${filter eq 'shoes'}">selected</c:if>>신발</option>
-			</select>
-			<select name="keyfield">
-				<option value="title">제목</option>
-				<option value="content">내용</option>
-				<option value="id">아이디</option>
-			</select>		
-			<input type="search" size="16" name="keyword" id="keyword">
-		</div>
-	</form>	
+	<div class="searchForm">
+		<form action="main.do" method="get">
+			<div id="filter" class="filter">
+				<select name="filter" onchange="this.form.submit()">
+					<option value="">전체</option>
+					<option value="top" <c:if test="${filter eq 'top'}">selected</c:if>>상의</option>
+					<option value="pants" <c:if test="${filter eq 'pants'}">selected</c:if>>하의</option>
+					<option value="cap" <c:if test="${filter eq 'cap'}">selected</c:if>>모자</option>
+					<option value="shoes" <c:if test="${filter eq 'shoes'}">selected</c:if>>신발</option>
+				</select>
+				<select name="keyfield">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="id">아이디</option>
+				</select>		
+				<input type="search" size="16" name="keyword" id="keyword">
+			</div>
+		</form>	
+	</div>
 	<!-- 로그인 되었을 시 글쓰기 버튼 화면따라다님 -->
 	<c:if test="${!empty m_id}">
 	<div id="write_btn">
@@ -48,7 +43,7 @@ $(document).ready(function() {
 	</c:if>
 	<div id="card">
 	<c:if test="${count > 0}">
-	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 200 }'>
+	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 300 }'>
 	<c:forEach var="mainList" items="${mainList}">
 		<div class="wrap-item">
 		<div class="card-sheet"> 
@@ -76,6 +71,12 @@ $(document).ready(function() {
 					<img src="${pageContext.request.contextPath}/member/imageViewProfile.do?m_num=${mainList.m_num}">
 					</a>
 				</c:if>
+				<c:if test="${empty mainList.m_nickname}">
+				${mainList.m_id}
+				</c:if>
+				<c:if test="${!empty mainList.m_nickname}">
+				${mainList.m_nickname}
+				</c:if>
 				</div>
 				<div id="card-content">
 					<div class="card-title">
@@ -98,6 +99,9 @@ $(document).ready(function() {
 					</c:if>
 					<c:if test="${!empty mainList.mb_shoesinfo}">
 						<img src="${pageContext.request.contextPath}/resources/images/shoes.png">
+					</c:if>
+					<c:if test="${empty mainList.mb_topinfo && empty mainList.mb_pantsinfo && empty mainList.mb_capinfo && empty mainList.mb_shoesinfo}">
+						정   보   없   음
 					</c:if>
 					</div>
 				</div>

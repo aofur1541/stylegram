@@ -92,7 +92,6 @@ public class QnaController {
 		Integer user_num = (Integer)session.getAttribute("m_num");
 		qnaVO.setQb_usernum(user_num); 
 		
-		
 		qnaService.writeQna(qnaVO);
 		//구현 후 수정
 		return "redirect:listQna.do";
