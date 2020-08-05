@@ -28,7 +28,7 @@
 					alert("삭제성공");
 					location.href='${pageContext.request.contextPath }/mainBoard/deleteComment.do?mr_num=${row.mr_num }';
 				}else if(checking == false){
-				
+				 
 				}
 				
 			});

@@ -38,7 +38,7 @@ $(document).ready(function(){
             success: function(result){ //자료를 보내는것이 성공했을때 출력되는 메시지
                 //result : responseText 응답텍스트(html)
                 $("#listComment").html(result);
-            }
+            } 
         });
   	}
 

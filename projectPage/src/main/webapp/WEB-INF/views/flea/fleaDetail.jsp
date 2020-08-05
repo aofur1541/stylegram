@@ -89,7 +89,7 @@
 	<div id="viewPhoto" class="align-center">
 	<c:if test="${!empty flea.fb_photo}">
 		<img src="imageView.do?fb_num=${flea.fb_num}">
-	</c:if>
+	</c:if> 
 	</div>
 	<p>
 		${flea.fb_content}

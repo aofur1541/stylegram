@@ -35,7 +35,7 @@
 					});
 				</script>
 				<tr>
-					<td>
+					<td> 
 						<c:if test="${empty m_nickname}">
 							${row.m_id}
 						</c:if>
