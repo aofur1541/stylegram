@@ -18,7 +18,7 @@ public interface FleaMapper {
 	public void insert(FleaVO flea);
 	@Insert("INSERT INTO profleainfo (fb_num,fb_topcheck,fb_bottomcheck,fb_hatcheck,fb_shoescheck) VALUES (#{fb_num},#{fb_topchecknum},#{fb_bottomchecknum},#{fb_hatchecknum},#{fb_shoeschecknum})")
 	public void insertinfo(FleaVO flea);
-	@Select("SELECT * FROM profleaboard b JOIN profleainfo i USING (fb_num) WHERE fb_num=#{fb_num}")
+	@Select("SELECT * FROM profleaboard b JOIN profleainfo i USING (fb_num) JOIN promember m ON b.fb_usernum = m.m_num WHERE fb_num=#{fb_num}")
 	public FleaVO selectFlea(Integer fb_num);
 	public void update(FleaVO flea);
 	@Delete("DELETE FROM profleaboard WHERE fb_num=#{fb_num}")

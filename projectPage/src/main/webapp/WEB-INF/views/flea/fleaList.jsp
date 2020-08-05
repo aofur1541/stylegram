@@ -13,18 +13,6 @@ $(document).ready(function() {
     });
 });
 </script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(window).scroll(function(){
-			var scrollHeight = $(window).scrollTop() + $(window).height();
-			var documentHeight = $(document).height();
-			
-			if(scrollHeight == documentHeight){
-				
-			}
-		});
-	});
-</script>
 <div id="body">
 	<div class="searchForm">
 		<form action="fleaList.do" method="get">

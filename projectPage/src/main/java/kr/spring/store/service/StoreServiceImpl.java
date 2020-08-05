@@ -40,4 +40,10 @@ public class StoreServiceImpl implements StoreService{
 	public StoreVO selectProductDetail(Integer num) {
 		return storeMapper.selectProductDetail(num);
 	}
+
+	@Override
+	public void updateStarAvg(StoreVO store) {
+		storeMapper.updateStarAvg(store);
+	}
+
 }

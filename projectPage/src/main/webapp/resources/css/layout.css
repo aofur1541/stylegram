@@ -283,6 +283,13 @@ div#body h2{
 	text-align: left;
 	font-size: x-large;
 }
+div#body ul.writeinfo{
+	text-align: left;
+	color:rgba(130,130,130, 1.0);
+}
+div#body ul li{
+	display:inline;
+}
 div#body h3{
 	text-align: left;
 }
@@ -536,12 +543,11 @@ div#body div.detailpage input.countbtn{
 div#body div#likes {
 	width: 80px;
 	height:10%;
-	float: right;
+	margin: 0 auto;
 }
 div#body div#likes img{
 	width:30px;
 	height:30px;
-	float:right;
 }
 div#body div#likes b{
 	float:left;
@@ -645,52 +651,56 @@ div#body div.searchForm{
 div#body div.searchForm form{
 	background-color: rgb(247, 248, 249);
 }
-div#body table#listComment{
+div#body table#listComment, table#replyList{
 	width: 100%;
 	border: none;
 }
-div#body table#listComment td{
+div#body table#listComment, table#replyList td{
 	border: none;
 }
 div#body form#writeCommentForm{
-	background-color:rgb(247, 248, 249);   
+	background-color:rgb(247, 248, 249);
 	display:flex;
 }
-div#body form#writeCommentForm table{
+div#body form#writeReplyForm{
+	background-color:rgb(247, 248, 249);
+	display:flex;
+}
+div#body form#writeCommentForm table, form#writeReplyForm table{
 	border:none;
 	width: 100%;
 }
-div#body form#writeCommentForm div.commentname{
+div#body form#writeCommentForm div.commentname , form#writeReplyForm div.commentname{
 	margin: 0 auto;
 	width: 15%;
 	float: left;
     font-size: 15px;
     padding-top: 2.5%;
 }
-div#body form#writeCommentForm div.commentcontent{
+div#body form#writeCommentForm div.commentcontent , form#writeReplyForm div.commentcontent{
 	margin: 0 auto;
 	width: 70%;
 	float: left;
 }
-div#body form#writeCommentForm div.commentcontent input{
+div#body form#writeCommentForm div.commentcontent input, form#writeReplyForm div.commentcontent input{
 	width: 100%;
 }
-div#body form#writeCommentForm div.commentsubmit{
+div#body form#writeCommentForm div.commentsubmit, form#writeReplyForm div.commentsubmit{
 	margin: 0 auto;
 	width: 10%;
 	float: left;
 	padding-top: 2.5%;
 }
-div#body form#writeCommentForm div.commentcontent input:focus{
+div#body form#writeCommentForm div.commentcontent input:focus, form#writeReplyForm div.commentcontent input:focus{
 	background-color: skyblue;
 	border: 3px solid #000;
 }
-div#body form#writeCommentForm div.commentsubmit button{
+div#body form#writeCommentForm div.commentsubmit button, form#writeReplyForm div.commentsubmit button{
 	border-radius:4px;
 	background-color: white;
 	cursor: pointer;
 }
-div#body form#writeCommentForm div.commentsubmit button:hover{
+div#body form#writeCommentForm div.commentsubmit button:hover, form#writeReplyForm div.commentsubmit button:hover{
 	background-color: rgba(130, 130, 130, 0.8);
 	border: none;
 	color: white;
@@ -699,4 +709,24 @@ div#body div.comment{
 	font-size: 20px;
 	font-weight: bold;
 	text-align: left;
+}
+div#body table tr#updateCom form{
+	background-color:rgb(247, 248, 249);
+	display:flex;
+}
+div#body table tr#updateCom form input[type=submit]{
+	background-color:white;
+	color:black;
+	border: 1px solid;
+	border-radius: 4px;
+	width: 100px;
+	height: 25px;
+	padding: 0;
+	margin-left: 8px;
+	margin-top: 25px;
+}
+div#body table tr#updateCom form input[type=submit]:hover{
+	background-color: rgba(130, 130, 130, 0.8);
+	border: none;
+	color: white;
 }
