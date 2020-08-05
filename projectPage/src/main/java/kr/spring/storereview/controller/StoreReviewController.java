@@ -36,16 +36,16 @@ public class StoreReviewController {
 	}
 	
 	@RequestMapping("/store/insertReview.do")
-	public String submit(@Valid StoreReviewVO storeReviewVO,BindingResult result,HttpSession session)throws Exception {
+	public String submit(@Valid StoreReviewVO storeReviewVO,StoreVO storeVO,BindingResult result,HttpSession session)throws Exception {
 		
 		if(result.hasErrors()) {
 			return "productDetail";
 		}
-		
-		storeReviewVO.setM_num((Integer)session.getAttribute("m_num"));
 
+		storeReviewVO.setM_num((Integer)session.getAttribute("m_num"));
+		
 		storeReviewService.insert(storeReviewVO);		
-		return "redirect:/store/productDetail.do";
+		return "redirect:/store/storeDetail.do";
 	}
 }
 

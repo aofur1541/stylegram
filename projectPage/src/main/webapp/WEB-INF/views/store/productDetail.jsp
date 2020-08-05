@@ -8,8 +8,6 @@
 <script type="text/javascript">
 	var locked = 0;
 	function show(star){
-		if(locked==1) return;
-		
 		var i;
 		var image;
 		var el;
@@ -34,8 +32,6 @@
 	}
 	
 	function noshow(star){
-		if(locked==1) return;
-		
 		var i;
 		var image;
 		var el;
@@ -105,7 +101,7 @@
 </style>
 <div id="body">
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
-	<div class="card-board">
+	<div class="card-board">z
 		<div class="card-sheet">
 			<div class="card-img">
 				<c:if test="${fn:endsWith(detail.filename,'.jpg') || 
@@ -180,32 +176,32 @@
 	</div>	
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
-	<%-- <div class="card-board">
+	<div class="card-board">
 		<div class="card-sheet">
 			<div class="card-img">
-				<c:if test="${review.sr_star==1}">
+				<c:if test="${review.sr_star/1==1}">
 					<div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:800px;height:300px;"></div>
 					<div>나쁜 상품이에요</div>
 				</c:if>
-				<c:if test="${review.sr_star==2}">
+				<c:if test="${review.sr_star/1==2}">
 					<div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:800px;height:300px;"></div>
 					<div>별로인 상품이에요</div>
 				</c:if>	
-				<c:if test="${review.sr_star==3}">
+				<c:if test="${review.sr_star/1==3}">
 					<div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:800px;height:300px;"></div>
 					<div>보통 상품이에요</div>
 				</c:if>	
-				<c:if test="${review.sr_star==4}">
+				<c:if test="${review.sr_star/1==4}">
 					<div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:800px;height:300px;"></div>
 					<div>만족스러운 상품이에요!</div>
 				</c:if>	
-				<c:if test="${review.sr_star==5}">
+				<c:if test="${review.sr_star/1==5}">
 					<div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:800px;height:300px;"></div>
 					<div>최고의 상품이에요!</div>
 				</c:if>	
 			</div>
 		</div>
-	</div> --%>
+	</div>
 	<div class="card-board">
 		<div class="card-content">
 			<form:form action="insertReview.do" name="reviewform" commandName="storeReviewVO">
@@ -226,7 +222,7 @@
 					<span id="startext">평가하기</span>
 					</div>
 					<form:hidden path="sr_star"/>
-					<form:hidden path="s_num"/>
+					<form:hidden path="s_num" value="${detail.s_num}"/>
 					<form:textarea path="sr_content" cols="65" rows="7"/>
 					<input type="submit" value="등록하기">
 				</c:if>
