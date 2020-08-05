@@ -11,7 +11,7 @@
 			<c:if test="${store.staravg == 4}">
 			<div class="card-board">
 				<div class="card-sheet-top">
-					<div><b>실시간 인기 TOP | </b>가장 HOT한 상품!</div>
+					<div><b>실시간 인기 TOP | </b>가장 HOT한 상품!!</div>
 					<div class="card-img">
 						<c:if
 							test="${fn:endsWith(store.filename,'.jpg') || 
