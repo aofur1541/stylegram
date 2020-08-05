@@ -35,12 +35,12 @@
 					});
 				</script>
 				<tr>
-					<td>
+					<td> 
 						<c:if test="${empty m_nickname}">
-							${m_id}
+							${row.m_id}
 						</c:if>
 						<c:if test="${!empty m_nickname}">
-							${m_nickname}
+							${row.m_nickname}
 						</c:if>
 						(<fmt:formatDate value="${row.fr_regdate}" pattern="yyyy-MM-dd"/>)
 						<c:if test="${row.m_num == m_num}">
