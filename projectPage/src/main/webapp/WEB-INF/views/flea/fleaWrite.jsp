@@ -13,21 +13,11 @@
 				<form:input path="fb_title"/>
 				<form:errors path="fb_title" cssClass="error-color"/>
 			</li>
-			<li id="category">
-				<label for="fb_topcheck">상의</label>
-				<form:checkbox path="fb_topcheck" value="checked"/>
-			</li>
-			<li id="category">
-				<label for="fb_bottomcheck">하의</label>
-				<form:checkbox path="fb_bottomcheck" value="checked"/>
-			</li>
-			<li id="category">
-				<label for="fb_hatcheck">모자</label>
-				<form:checkbox path="fb_hatcheck" value="checked"/>
-			</li>
-			<li id="category">
-				<label for="fb_shoescheck">신발</label>
-				<form:checkbox path="fb_shoescheck" value="checked"/>
+			<li class="category">
+				<form:checkbox path="fb_topcheck" value="checked"/><b>상의</b>
+				<form:checkbox path="fb_bottomcheck" value="checked"/><b>하의</b>
+				<form:checkbox path="fb_hatcheck" value="checked"/><b>모자</b>
+				<form:checkbox path="fb_shoescheck" value="checked"/><b>신발</b>
 			</li>
 			<li>
 				<label for="fb_price">가격</label>
