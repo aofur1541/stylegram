@@ -25,6 +25,7 @@
 	<context:component-scan base-package="kr.spring.notice.controller" />
 	<context:component-scan base-package="kr.spring.qna.controller" />
 	<context:component-scan base-package="kr.spring.storereview.controller" />
+	<context:component-scan base-package="kr.spring.storebasket.controller" />
 	<context:component-scan base-package="kr.spring.store.controller" />
 	
 	<!-- 메시지 처리 --> 

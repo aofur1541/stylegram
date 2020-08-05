@@ -170,6 +170,13 @@ create table prostorereview (
 
 create sequence prostorereview_seq;
 
+create table prostorebasket(
+    m_num number not null,
+    s_num number not null,
+    constraint prostorebasket_fk1 foreign key (m_num) references promember (m_num),
+    constraint prostorebasket_fk2 foreign key (s_num) references prostore (s_num)
+);
+
 -- 댓글 테이블
 CREATE TABLE PROCOMMENT 
 (
