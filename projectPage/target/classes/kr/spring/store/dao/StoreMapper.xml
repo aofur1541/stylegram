@@ -5,7 +5,7 @@
 		SELECT COUNT(*) FROM prostore
 	</select>
 	<select id="selectProductList" resultType="StoreVO">
-		SELECT * FROM prostore s JOIN (SELECT SUM(sr_star)/COUNT(*) avg, s_num from prostorereview GROUP BY s_num) a ON s.s_num = a.s_num ORDER BY avg DESC
+		SELECT * FROM prostore<!--  s JOIN (SELECT SUM(sr_star)/COUNT(*) avg, s_num from prostorereview GROUP BY s_num) a ON s.s_num = a.s_num ORDER BY avg DESC -->
 	</select>
 	<select id="selectProductDetail" resultType="StoreVO" parameterType="integer">
 		SELECT * FROM prostore s LEFT OUTER JOIN prostorereview r ON s.s_num=r.s_num WHERE s.s_num=#{s_num}

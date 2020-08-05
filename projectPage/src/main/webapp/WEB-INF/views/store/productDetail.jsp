@@ -119,6 +119,11 @@
 		<div class="card-sheet">
 			<div class="card-content">
 				<div id="text-box"><h2>${detail.s_title}</h2></div>
+				<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:50px;"></div></c:if>	 
+				<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:50px;"></div></c:if>	 
+				<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:50px;"></div></c:if>	 
+				<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:50px;"></div></c:if>	 
+				<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:50px;"></div></c:if>
 				<div id="text-box">
 					<c:if test="${detail.s_discount == ''}">
 						<h4>&#8361;${detail.s_price}</h4>
@@ -176,6 +181,15 @@
 	</div>	
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
+	<div class="card-board">
+		<div class="card-img">
+			<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:200px;"></div></c:if>	 
+			<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:200px;"></div></c:if>	 
+			<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:200px;"></div></c:if>	 
+			<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:200px;"></div></c:if>	 
+			<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:200px;"></div></c:if>	 
+		</div>
+	</div>
 	<div class="card-board">
 		<div class="card-content">
 			<form:form action="insertReview.do" name="reviewform" commandName="storeReviewVO">

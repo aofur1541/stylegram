@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.store.domain.StoreVO;
+import kr.spring.store.service.StoreService;
 import kr.spring.storereview.domain.StoreReviewVO;
 import kr.spring.storereview.service.StoreReviewService;
 
@@ -28,6 +29,8 @@ public class StoreReviewController {
 	
 	@Resource
 	private StoreReviewService storeReviewService;
+	@Resource
+	private StoreService storeService;
 	
 	//자바빈 초기화
 	@ModelAttribute
@@ -44,7 +47,9 @@ public class StoreReviewController {
 
 		storeReviewVO.setM_num((Integer)session.getAttribute("m_num"));
 		
-		storeReviewService.insert(storeReviewVO);		
+		storeReviewService.insert(storeReviewVO);
+		storeService.updateStarAvg(storeVO);
+		
 		return "redirect:/store/storeDetail.do";
 	}
 }

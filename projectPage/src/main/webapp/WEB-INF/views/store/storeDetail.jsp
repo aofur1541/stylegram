@@ -9,7 +9,7 @@
 	</c:if>
 	<c:if test="${count > 0}">
 		<c:forEach var="store" items="${list}">
-			<c:if test="${store.staravg == 4}">
+			<c:if test="${store.staravg >= 4}">
 			<div class="card-board">
 				<div class="card-sheet-top">
 					<div><b>실시간 인기 TOP | </b>가장 HOT한 상품!!</div>
@@ -56,6 +56,11 @@
 								<a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}"><img src="imageView.do?s_num=${store.s_num}" style="width:300px;"></a>
 							</div>
 						</c:if>
+						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:300px;"></div></c:if>
 					</div>
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}.</a></div>
@@ -82,7 +87,13 @@
 									<img src="imageView.do?s_num=${normal.s_num}" style="width:300px;height:400px;">
 								</a>
 							</div>
-						</c:if>	
+						</c:if>
+							<c:if test="${normal.staravg==0}"><div>별점이 등록되지 않았습니다.</div></c:if>
+							<c:if test="${normal.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:300px;"></div></c:if>	
+							<c:if test="${normal.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:300px;"></div></c:if>	
+							<c:if test="${normal.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:300px;"></div></c:if>	
+							<c:if test="${normal.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:300px;"></div></c:if>	
+							<c:if test="${normal.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:300px;"></div></c:if>
 					</div>
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${normal.s_num}"><b>${normal.s_title}</b></a></div>
