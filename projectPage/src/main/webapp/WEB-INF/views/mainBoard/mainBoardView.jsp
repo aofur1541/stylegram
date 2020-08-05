@@ -7,6 +7,7 @@
 $(document).ready(function(){
 	listComment("1");
 	
+	//댓글쓰기
     $("#writeCommentForm").submit(function(){
         var mr_content=$("#mr_content").val(); //댓글 내용
         var mb_num="${mainBoard.mb_num}"; //게시물 번호

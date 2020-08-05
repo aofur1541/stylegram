@@ -15,25 +15,25 @@
 	<c:if test="${commentCount != 0}">
 	<!-- 댓글 목록 -->
 	<table style="width:100%">
-		<c:forEach var="row" items="${c_list}">
-	<script type="text/javascript">
-	$(function(){
-		$(".updateCom${row.mr_num}").hide();
-		$(".updateComment_btn${row.mr_num}").on("click",function(){
-			$(".updateCom${row.mr_num}").toggle("fast");
+	<c:forEach var="row" items="${c_list}">
+		<script type="text/javascript">
+		$(function(){
+			$(".updateCom${row.mr_num}").hide();
+			$(".updateComment_btn${row.mr_num}").on("click",function(){
+				$(".updateCom${row.mr_num}").toggle("fast");
+			});
+			$(".deleteComment_btn${row.mr_num }").click(function(){
+				var checking = confirm("댓글을 삭제합니다");
+				if(checking == true){
+					alert("삭제성공");
+					location.href='${pageContext.request.contextPath }/mainBoard/deleteComment.do?mr_num=${row.mr_num }';
+				}else if(checking == false){
+				
+				}
+				
+			});
 		});
-		$(".deleteComment_btn${row.mr_num }").click(function(){
-			var checking = confirm("댓글을 삭제합니다");
-			if(checking == true){
-				alert("삭제성공");
-				location.href='${pageContext.request.contextPath }/mainBoard/deleteComment.do?mr_num=${row.mr_num }';
-			}else if(checking == false){
-			
-			}
-			
-		});
-	});
-	</script>
+		</script>
 		<tr>
 			<td>
 				<c:if test="${empty m_nickname}">
