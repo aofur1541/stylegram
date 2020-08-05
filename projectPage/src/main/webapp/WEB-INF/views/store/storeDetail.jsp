@@ -56,6 +56,11 @@
 								<a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}"><img src="imageView.do?s_num=${store.s_num}" style="width:300px;"></a>
 							</div>
 						</c:if>
+						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:300px;"></div></c:if>
 					</div>
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}.</a></div>
