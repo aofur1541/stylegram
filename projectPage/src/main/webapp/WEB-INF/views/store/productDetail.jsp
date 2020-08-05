@@ -227,8 +227,29 @@
 			<tr>
 				<td height="100" colspan="2">${sr_content}</td>
 			</tr>
-		</c:forEach>
-	</table> --%>
+
+<%-- 		</c:forEach> --%>
+
+	<!-- 장바구니 -->
+	<div id="basket" class="basket">
+		<a id="basket-icon">
+			<img src="${pageContext.request.contextPath}/resources/images/shoppingBag.png" width="30px">장바구니
+		</a>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#basket-icon").click(function(){
+				location.href="${pageContext.request.contextPath}/basket/basket.do?s_num=${detail.s_num}";
+				var check = confirm("장바구니에 담겼습니다! \n장바구니로 이동하시겠습니까?")
+				if(check == true){
+					location.href='${pageContext.request.contextPath }/store/storeBasket.do';
+				}else if(check == false){
+					
+				}
+			});
+		});
+	</script>
+
 </div>
 			
 			
