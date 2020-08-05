@@ -144,8 +144,8 @@
 			</li>
 			<li>
 				<label for="s_ship">배송비 여부</label>
-				<input type="radio" name="s_ship" id="shipcost" value="1"/>배송비 있음
-				<input type="radio" name="s_ship" id="shipcost" checked value="0"/>무료배송
+				<input type="radio" name="s_ship" id="s_ship" value="1"/>배송비 있음
+				<input type="radio" name="s_ship" id="s_ship" checked value="0"/>무료배송
 				<form:errors path="mdpick"/>
 			</li>
 			<li>

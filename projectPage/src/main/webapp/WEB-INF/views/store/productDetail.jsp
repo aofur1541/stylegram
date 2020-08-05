@@ -217,7 +217,7 @@
 							<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
 							<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
 						</span>
-						<span id="startext">평가하기</span>
+						<span id="startext">별점주기</span>
 					</div>
 					<form:textarea path="sr_content" cols="65" rows="3"/>
 					<input type="submit" value="등록하기">
