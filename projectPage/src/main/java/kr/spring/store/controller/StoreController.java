@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.store.domain.StoreVO;
 import kr.spring.store.service.StoreService;
+import kr.spring.storereview.domain.StoreReviewVO;
 import kr.spring.storereview.service.StoreReviewService;
 import kr.spring.util.PagingUtil;
 
@@ -33,30 +34,38 @@ public class StoreController {
 	@Resource
 	private StoreService storeService;
 	
+	@Resource
+	private StoreReviewService storeReviewService;
+	
+	
 	@ModelAttribute
 	private StoreVO initCommand() {
 		return new StoreVO();
 	}
 	
 	@RequestMapping(value="/store/insertProduct.do",method=RequestMethod.GET)
-		public String form() {
-			return "insertStore";
-		}
+	public String form() {
+		return "insertStore";
+	}
 		
 	@RequestMapping(value="/store/insertProduct.do",method=RequestMethod.POST)
-		public String submit(@Valid StoreVO storeVO,BindingResult result,MultipartHttpServletRequest request)throws Exception {
-			if(result.hasErrors()) {
-				return "insertStore";
-			}
-			storeService.insert(storeVO);
-				return "redirect:/main/main.do";
+	public String submit(@Valid StoreVO storeVO,BindingResult result,MultipartHttpServletRequest request)throws Exception {
+		if(result.hasErrors()) {
+			return "insertStore";
 		}
+		storeService.insert(storeVO);		
+		return "redirect:/main/main.do";
+	}
 	
-	//이미지 처리
+	//------------------이미지 처리--------------------------//
 	@RequestMapping("/store/imageView.do")
 	public ModelAndView viewImage(@RequestParam("s_num") int s_num) {
 		
 		StoreVO store = storeService.selectProduct(s_num);
+		
+		if(log.isDebugEnabled()) {
+			log.debug(store);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
@@ -66,14 +75,70 @@ public class StoreController {
 		return mav;
 	}
 	
+	@RequestMapping("/store/imageView2.do")
+	public ModelAndView viewImage2(@RequestParam("s_num") int s_num) {
+		
+		StoreVO store = storeService.selectProduct(s_num);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("상품상세설명 이미지 1 : " + store);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",store.getDs_photo());
+		mav.addObject("filename",store.getDfilename());
+		
+		return mav;
+	}
+	
+	@RequestMapping("/store/imageView3.do")
+	public ModelAndView viewImage3(@RequestParam("s_num") int s_num) {
+		
+		StoreVO store = storeService.selectProduct(s_num);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("상품상세설명 이미지 2 : " + store);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",store.getDs_photo2());
+		mav.addObject("filename",store.getDfilename2());
+		
+		return mav;
+	}
+	
+	@RequestMapping("/store/imageView4.do")
+	public ModelAndView viewImage4(@RequestParam("s_num") int s_num) {
+		
+		StoreVO store = storeService.selectProduct(s_num);
+		
+		if(log.isDebugEnabled()) {
+			log.debug("상품상세설명 이미지 3 : " + store);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("imageView");
+		mav.addObject("imageFile",store.getDs_photo3());
+		mav.addObject("filename",store.getDfilename3());
+		
+		return mav;
+	}
+	//------------------이미지 처리--------------------------//
+	
 	@RequestMapping("/store/storeDetail.do")
-	public ModelAndView process() {
+	public ModelAndView process(StoreReviewVO storeReviewVO) {
 		
 		int count = storeService.selectProductCount();
 		
 		List<StoreVO> list = null;
 		
 		list = storeService.selectProductList();
+		
+		if(log.isDebugEnabled()) {
+			log.debug("스토어메인 넘어가는 데이터 : " + list);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("storeDetail");
@@ -84,15 +149,21 @@ public class StoreController {
 	}
 	
 	@RequestMapping("/store/productDetail.do")
-	public ModelAndView pdProcess(@RequestParam("s_num") int s_num) {
+	public ModelAndView pdProcess(@RequestParam("s_num") int s_num,HttpSession session,HttpServletRequest request,StoreReviewVO storeReviewVO) {
 		
 		StoreVO detail = storeService.selectProduct(s_num);
+		StoreReviewVO review = new StoreReviewVO();
 		
 		if(log.isDebugEnabled()) {
 			log.debug(detail);
 		}
 		
-		return new ModelAndView("productDetail","detail",detail);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("productDetail");
+		mav.addObject("detail", detail);
+		mav.addObject("review",review);
+		
+		return mav;
 	}
 	
 }

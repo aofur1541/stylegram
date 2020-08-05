@@ -151,21 +151,21 @@
 				<div class="imgs"></div><!-- 다중 이미지 표시를 위한 div태그 -->
 			</li>
 			<li>
-				<label for="dupload">다중업로드</label>
+				<label for="dupload">상품배너</label>
 				<input type="file" name="dupload" id="dupload">
 			</li>
 			<li>
 				<div class="imgs2"></div><!-- 다중 이미지 표시를 위한 div태그 -->
 			</li>
 			<li>
-				<label for="dupload2">다중업로드</label>
+				<label for="dupload2">상품설명</label>
 				<input type="file" name="dupload2" id="dupload2">
 			</li>
 			<li>
 				<div class="imgs3"></div><!-- 다중 이미지 표시를 위한 div태그 -->
 			</li>
 			<li>
-				<label for="dupload3">다중업로드</label>
+				<label for="dupload3">상품제원</label>
 				<input type="file" name="dupload3" id="dupload3">
 			</li>
 			<li>

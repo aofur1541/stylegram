@@ -11,7 +11,7 @@
 		<hr size="1" width="100%">
 		<div class="part">
 			<h3>스토어 관리</h3>
-			<input type="button" value="상품등록" <%-- onclick="location.href='${pageContext.request.contextPath}/member/managePage.do'" --%>>
+			<input type="button" value="상품등록" onclick="location.href='${pageContext.request.contextPath}/store/insertProduct.do'">
 			<input type="button" value="상품수정" <%-- onclick="location.href='${pageContext.request.contextPath}/member/managePage.do'" --%>>
 		</div>
 	</div>

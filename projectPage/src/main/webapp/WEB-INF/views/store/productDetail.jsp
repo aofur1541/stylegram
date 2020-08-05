@@ -7,9 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript">
 	var locked = 0;
-	
 	function show(star){
-	
 		var i;
 		var image;
 		var el;
@@ -34,7 +32,6 @@
 	}
 	
 	function noshow(star){
-		
 		var i;
 		var image;
 		var el;
@@ -54,73 +51,158 @@
 	function mark(star){
 		lock(star);
 		alert("별점 "+star+"점을 선택하셨습니다.");
-		document.reviewform.star.value=star;
+		document.reviewform.sr_star.value=star;
 	}
 	
 </script>
+<style type="text/css">
+	.button {
+	    width:200px;
+	    background-color:82d9d0;
+	    border-width:2px;
+		border-color:82d9d0;
+	    color:#fff;
+	    padding: 8px 0;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 15px;
+	    margin: 4px;
+	    cursor: pointer;
+	   	border-radius:10px;
+	}
+	.button2 {
+	    width:200px;
+	    background-color:white;
+	    color:82d9d0;
+	    border-width:2px;
+		border-color:82d9d0;
+	    padding: 8px 0;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 15px;
+	    margin: 4px;
+	    cursor: pointer;
+	   	border-radius:10px;
+	}
+	.button:hover {
+    	background-color:white;
+		color:82d9d0;
+		border-width:2px;
+		border-color:82d9d0;
+	}
+	.button2:hover {
+    	background-color:82d9d0;
+		color:white;
+		border-width:2px;
+		border-color:white;
+	}
+</style>
 <div id="body">
+<!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
 	<div class="card-board">
 		<div class="card-sheet">
 			<div class="card-img">
-				<c:if test="${fn:endsWith(normal.filename,'.jpg') || 
-	        				  fn:endsWith(normal.filename,'.JPG') ||
-	        				  fn:endsWith(normal.filename,'.gif') ||
-	        			      fn:endsWith(normal.filename,'.GIF') ||
-	        				  fn:endsWith(normal.filename,'.png') ||
-	          				  fn:endsWith(normal.filename,'.PNG')}">
+				<c:if test="${fn:endsWith(detail.filename,'.jpg') || 
+	        				  fn:endsWith(detail.filename,'.JPG') ||
+	        				  fn:endsWith(detail.filename,'.gif') ||
+	        			      fn:endsWith(detail.filename,'.GIF') ||
+	        				  fn:endsWith(detail.filename,'.png') ||
+	          				  fn:endsWith(detail.filename,'.PNG')}">
 					<div><img src="imageView.do?s_num=${detail.s_num}" style="width:300px;height:400px;"></div>
 				</c:if>	
 			</div>
-		<div class="card-content">
-			<div id="text-box"><b>${detail.s_title}</b></div>
+		</div>
+	</div>
+	<div class="card-board">
+		<div class="card-sheet">
+			<div class="card-content">
+				<div id="text-box"><h2>${detail.s_title}</h2></div>
 				<div id="text-box">
 					<c:if test="${detail.s_discount == ''}">
-						${detail.s_price}
+						<h4>&#8361;${detail.s_price}</h4>
 					</c:if>
 					<c:if test="${detail.s_discount > 0}">
-						[${detail.s_discount}%]${detail.s_price}
+						<h4 style="color:red;">[${detail.s_discount}%]&#8361;${detail.s_price}</h4>
 					</c:if>
 				</div>
 			</div>
+			<div class="btn-group"> 
+				<input type="button" class="button" value="구매하기"><br>
+				<input type="button" class="button2"  value="장바구니">
+			</div>
 		</div>
 	</div>
-		<form:form action="insertReview.do" name="reviewform" commandName="storeReviewVO">
-		<table width="700">
-		<tr>
-			<td width="100" rowspan="2">${m_id}</td>
-			<td width="500" height="50" colspan="2">
-				<div id="rating" align="center">
-					<span>
-					<!-- onmouseover : 마우스오버 상태에서 show()메서드를 매개변수1로 실행 -->
-					<!-- onclick : 클릭 시 mark() 실행 -->
-						<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
-					</span>
-					<br><span id="startext">평가하기</span>
+	<div class="card-board">
+		<div class="card-sheet">
+			<div class="card-img">
+				<c:if test="${fn:endsWith(detail.dfilename,'.jpg') || 
+	        				  fn:endsWith(detail.dfilename,'.JPG') ||
+	        				  fn:endsWith(detail.dfilename,'.gif') ||
+	        			      fn:endsWith(detail.dfilename,'.GIF') ||
+	        				  fn:endsWith(detail.dfilename,'.png') ||
+	          				  fn:endsWith(detail.dfilename,'.PNG')}">
+					<div><img src="imageView2.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
+				</c:if>	 
+			</div>
+			<div class="card-img">
+				<c:if test="${fn:endsWith(detail.dfilename2,'.jpg') || 
+	        				  fn:endsWith(detail.dfilename2,'.JPG') ||
+	        				  fn:endsWith(detail.dfilename2,'.gif') ||
+	        			      fn:endsWith(detail.dfilename2,'.GIF') ||
+	        				  fn:endsWith(detail.dfilename2,'.png') ||
+	          				  fn:endsWith(detail.dfilename2,'.PNG')}">
+					<div><img src="imageView3.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
+				</c:if>	 
+			</div>
+			<div class="card-img">
+				<c:if test="${fn:endsWith(detail.dfilename3,'.jpg') || 
+	        				  fn:endsWith(detail.dfilename3,'.JPG') ||
+	        				  fn:endsWith(detail.dfilename3,'.gif') ||
+	        			      fn:endsWith(detail.dfilename3,'.GIF') ||
+	        				  fn:endsWith(detail.dfilename3,'.png') ||
+	          				  fn:endsWith(detail.dfilename3,'.PNG')}">
+					<div><img src="imageView4.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
+				</c:if>	 
+			</div>
+			<div class="card-content">
+				<div id="text-box"><h2>${detail.s_title}</h2></div>
+				<div id="text-box">
+					<h4>[${detail.s_content}]</h4>
 				</div>
-				<input type="hidden" name="star">
-			</td>
-			<td width="100" rowspan="2"><input type="submit" name="submit" value="submit"></td>
-			<input type="hidden" name="product" value="${detail.s_num}">
-		</tr>
-		<tr>
-			<c:if test="${m_id==null}">
-				<td width="500" height="100" colspan="2">
-					<textarea name="content" cols="65" rows="7" readonly="readonly">로그인 후 이용 가능한 서비스입니다.</textarea>
-				</td>
-			</c:if>
-			<c:if test="${m_id!=null}">
-				<td width="500" height="100" colspan="2"><textarea name="content" cols="65" rows="7"></textarea></td>
-			</c:if>
-		</tr>
-		</table>
-	</form:form>
-	<c:if test="${count != 0}">
-		<table width="700">
-<%-- 		<c:forEach var="review" items="${detail}"> --%>
+			</div>
+		</div>
+	</div>	
+<!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
+<!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
+	<div class="card-board">
+		<div class="card-content">
+			<form:form action="insertReview.do" name="reviewform" commandName="storeReviewVO">
+				<form:hidden path="sr_star"/>
+				<form:hidden path="s_num" value="${detail.s_num}"/>
+				<c:if test="${m_id==null}">
+					<textarea name="content" cols="65" rows="3" readonly="readonly">로그인 후 이용 가능한 서비스입니다.</textarea>
+				</c:if>
+				<c:if test="${m_id!=null}">
+					<div id="rating" align="center">
+						<span>
+							<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
+						</span>
+						<span id="startext">평가하기</span>
+					</div>
+					<form:textarea path="sr_content" cols="65" rows="3"/>
+					<input type="submit" value="등록하기">
+				</c:if>
+			</form:form>
+		</div>
+	</div>	
+<%-- <table style="width:700;">
+		<c:forEach var="review" items="${detail}">
 			<tr>
 				<td rowspan="3" width="100">${m_id}</td>
 				<td width="550" height="20">
@@ -145,9 +227,9 @@
 			<tr>
 				<td height="100" colspan="2">${sr_content}</td>
 			</tr>
+
 <%-- 		</c:forEach> --%>
-		</table>
-	</c:if>
+
 	<!-- 장바구니 -->
 	<div id="basket" class="basket">
 		<a id="basket-icon">
@@ -167,12 +249,13 @@
 			});
 		});
 	</script>
+
 </div>
-
-
-
-
-
+			
+			
+			
+			
+			
 
 
 
