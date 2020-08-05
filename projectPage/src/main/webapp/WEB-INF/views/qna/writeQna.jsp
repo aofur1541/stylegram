@@ -19,11 +19,11 @@
 				<form:textarea path="qb_content"/>
 			</li>
 			<li class="category">
-				<label for="tag"></label><br>
-				<input type="checkbox" value="상의"><b>상의</b>
-				<input type="checkbox" value="하의"><b>하의</b>
-				<input type="checkbox" value="모자"><b>모자</b>
-				<input type="checkbox" value="신발"><b>신발</b>
+				<label for="tag">태그선택</label><br>
+				<form:checkbox path="qb_topinfo" value="1"/><b>상의</b>
+				<form:checkbox path="qb_pantsinfo" value="1"/><b>하의</b>
+				<form:checkbox path="qb_capinfo" value="1"/><b>모자</b>
+				<form:checkbox path="qb_shoesinfo" value="1"/><b>신발</b>
 			</li>
 		</ul>
 		<div>

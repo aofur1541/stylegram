@@ -7,7 +7,7 @@
 	<insert id="writeQna" parameterType="qnaVO">
 		INSERT INTO proqnaboard
 		(qb_num,qb_title,qb_usernum,qb_photo,qb_filename,qb_content,qb_regdate)
-		VALUES(proqna_seq.nextval,#{qb_title},#{qb_usernum},#{qb_photo},#{qb_filename},#{qb_content},SYSDATE)
+		VALUES(#{qb_num},#{qb_title},#{qb_usernum},#{qb_photo},#{qb_filename},#{qb_content},SYSDATE)
 	</insert>
 	<!-- 글상세 -->
 	<select id="selectQna" resultType="qnaVO">
@@ -44,7 +44,7 @@
 	<!-- 글목록 -->
 	<select id="listQna" parameterType="map" resultType="qnaVO">
 	SELECT * FROM (SELECT a.*, rownum rnum FROM
-	(SELECT * FROM proqnaboard b JOIN promember m ON b.qb_usernum=m.m_num
+	(SELECT * FROM proqnaboard b JOIN proqnainfo i ON b.qb_num = i.qb_num JOIN promember m ON b.qb_usernum=m.m_num JOIN promember_detail d ON m.m_num = d.m_num
 	<where>
 		<if test="keyword != '' and keyfield == 'qb_title'">
 			b.qb_title LIKE '%' || #{keyword} || '%'

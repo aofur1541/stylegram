@@ -31,6 +31,10 @@ public class FleaVO {
 	private int fb_hatchecknum;
 	private int fb_shoeschecknum;
 	
+	private String m_id;
+	private String m_nickname;
+	private byte[] m_image;
+	
 	public int getFb_topchecknum() {
 		return fb_topchecknum;
 	}
@@ -143,7 +147,24 @@ public class FleaVO {
 	public void setFb_modifydate(Date fb_modifydate) {
 		this.fb_modifydate = fb_modifydate;
 	}
-	
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+	public String getM_nickname() {
+		return m_nickname;
+	}
+	public void setM_nickname(String m_nickname) {
+		this.m_nickname = m_nickname;
+	}
+	public byte[] getM_image() {
+		return m_image;
+	}
+	public void setM_image(byte[] m_image) {
+		this.m_image = m_image;
+	}
 	@Override
 	public String toString() {
 		return "FleaVO [fb_num=" + fb_num + ", fb_title=" + fb_title + ", fb_usernum=" + fb_usernum + ", upload="

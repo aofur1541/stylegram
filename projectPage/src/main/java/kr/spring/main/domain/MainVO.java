@@ -3,6 +3,8 @@ package kr.spring.main.domain;
 public class MainVO {
 	//mainBoard
 	private int mb_num;
+	private String m_id;
+	private String m_nickname;
 	private String mb_title;
 	private String mb_content;
 	private byte[] mb_photo;
@@ -76,5 +78,17 @@ public class MainVO {
 	}
 	public void setMb_photo(byte[] mb_photo) {
 		this.mb_photo = mb_photo;
+	}
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+	public String getM_nickname() {
+		return m_nickname;
+	}
+	public void setM_nickname(String m_nickname) {
+		this.m_nickname = m_nickname;
 	}
 }

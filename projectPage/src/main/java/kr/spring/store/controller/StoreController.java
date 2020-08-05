@@ -48,7 +48,7 @@ public class StoreController {
 			if(result.hasErrors()) {
 				return "insertStore";
 			}
-			storeService.insert(storeVO);		
+			storeService.insert(storeVO);
 				return "redirect:/main/main.do";
 		}
 	

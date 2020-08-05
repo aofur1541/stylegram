@@ -76,6 +76,6 @@
 	                  class="kr.spring.view.DownloadView"/>
 	<!-- BLOB타입 이미지 표시 -->
 	<beans:bean id="imageView"
-	                 class="kr.spring.view.ImageView"/>                  
+	                 class="kr.spring.view.ImageView"/>
 	
 </beans:beans>
