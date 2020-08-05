@@ -18,6 +18,7 @@ public class MainBoardVO {
 	private Date mb_modifydate;
 	
 	public String m_id;
+	private String m_nickname;
 	
 	private String mb_topinfo;
 	private String mb_pantsinfo;
@@ -132,6 +133,14 @@ public class MainBoardVO {
 
 	public void setMb_shoesinfo(String mb_shoesinfo) {
 		this.mb_shoesinfo = mb_shoesinfo;
+	}
+	
+	public String getM_nickname() {
+		return m_nickname;
+	}
+
+	public void setM_nickname(String m_nickname) {
+		this.m_nickname = m_nickname;
 	}
 
 	@Override

@@ -43,7 +43,7 @@
 					${row.m_nickname}
 				</c:if>				
 				(<fmt:formatDate value="${row.mr_regdate }" pattern="yyyy-MM-dd"/>)
-				<c:if test="${row.m_num == m_num }">
+				<c:if test="${row.m_num == m_num || m_auth == 4}">
 				<button id="updateComment_btn" class="updateComment_btn${row.mr_num }" name="updateComment_btn">수정</button>
 				<button id="deleteComment_btn" class="deleteComment_btn${row.mr_num }" name="deleteComment_btn">삭제</button>
 				</c:if>
@@ -53,12 +53,12 @@
 			</td>
 			
 		</tr>
-		<tr name="updateCom" id="updateCom" class="updateCom${row.mr_num }">
+		<tr id="updateCom" class="updateCom${row.mr_num }">
 			<td>
 				<form action="updateComment.do" name="updateComForm" id="updateComForm">
 					<input type="hidden" name="mr_num" value="${row.mr_num }">
 					<input type="text" name="updateText" id="updateText" value="${row.mr_content }">
-					<input type="submit" value="전송">
+					<input type="submit" value="수정">
 				</form>
 			</td>
 		</tr>
