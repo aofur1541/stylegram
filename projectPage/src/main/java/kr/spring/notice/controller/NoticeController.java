@@ -23,6 +23,7 @@ import kr.spring.notice.domain.NoticeVO;
 import kr.spring.notice.service.NoticeService;
 import kr.spring.util.PagingUtil;
 
+//엄나엄니ㅏㅓㅇ리ㅏㅁㄴ러ㅣㅏㄴㅁㄹ
 @Controller
 public class NoticeController {
 	private Logger log = Logger.getLogger(this.getClass());
