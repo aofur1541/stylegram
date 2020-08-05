@@ -143,7 +143,7 @@
 	        			      fn:endsWith(detail.dfilename,'.GIF') ||
 	        				  fn:endsWith(detail.dfilename,'.png') ||
 	          				  fn:endsWith(detail.dfilename,'.PNG')}">
-					<div><img src="imageView2.do?s_num=${detail.s_num}" style="width:800px;height:300px;"></div>
+					<div><img src="imageView2.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
 				</c:if>	 
 			</div>
 			<div class="card-img">
@@ -153,7 +153,7 @@
 	        			      fn:endsWith(detail.dfilename2,'.GIF') ||
 	        				  fn:endsWith(detail.dfilename2,'.png') ||
 	          				  fn:endsWith(detail.dfilename2,'.PNG')}">
-					<div><img src="imageView3.do?s_num=${detail.s_num}" style="width:800px;height:300px;"></div>
+					<div><img src="imageView3.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
 				</c:if>	 
 			</div>
 			<div class="card-img">
@@ -163,7 +163,7 @@
 	        			      fn:endsWith(detail.dfilename3,'.GIF') ||
 	        				  fn:endsWith(detail.dfilename3,'.png') ||
 	          				  fn:endsWith(detail.dfilename3,'.PNG')}">
-					<div><img src="imageView4.do?s_num=${detail.s_num}" style="width:800px;height:300px;"></div>
+					<div><img src="imageView4.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
 				</c:if>	 
 			</div>
 			<div class="card-content">
@@ -177,88 +177,58 @@
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
 	<div class="card-board">
-		<div class="card-sheet">
-			<div class="card-img">
-				<c:if test="${review.sr_star/1==1}">
-					<div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:800px;height:300px;"></div>
-					<div>나쁜 상품이에요</div>
-				</c:if>
-				<c:if test="${review.sr_star/1==2}">
-					<div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:800px;height:300px;"></div>
-					<div>별로인 상품이에요</div>
-				</c:if>	
-				<c:if test="${review.sr_star/1==3}">
-					<div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:800px;height:300px;"></div>
-					<div>보통 상품이에요</div>
-				</c:if>	
-				<c:if test="${review.sr_star/1==4}">
-					<div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:800px;height:300px;"></div>
-					<div>만족스러운 상품이에요!</div>
-				</c:if>	
-				<c:if test="${review.sr_star/1==5}">
-					<div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:800px;height:300px;"></div>
-					<div>최고의 상품이에요!</div>
-				</c:if>	
-			</div>
-		</div>
-	</div>
-	<div class="card-board">
 		<div class="card-content">
 			<form:form action="insertReview.do" name="reviewform" commandName="storeReviewVO">
+				<form:hidden path="sr_star"/>
+				<form:hidden path="s_num" value="${detail.s_num}"/>
 				<c:if test="${m_id==null}">
-					<textarea name="content" cols="65" rows="7" readonly="readonly">로그인 후 이용 가능한 서비스입니다.</textarea>
+					<textarea name="content" cols="65" rows="3" readonly="readonly">로그인 후 이용 가능한 서비스입니다.</textarea>
 				</c:if>
 				<c:if test="${m_id!=null}">
 					<div id="rating" align="center">
-					<span>
-						<!-- onmouseover : 마우스오버 상태에서 show()메서드를 매개변수1로 실행 -->
-						<!-- onclick : 클릭 시 mark() 실행 -->
-						<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
-					</span><br>
-					<span id="startext">평가하기</span>
+						<span>
+							<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
+						</span>
+						<span id="startext">평가하기</span>
 					</div>
-					<form:hidden path="sr_star"/>
-					<form:hidden path="s_num" value="${detail.s_num}"/>
-					<form:textarea path="sr_content" cols="65" rows="7"/>
+					<form:textarea path="sr_content" cols="65" rows="3"/>
 					<input type="submit" value="등록하기">
 				</c:if>
 			</form:form>
 		</div>
-	<%-- 						<table style="width:700;">
-							<c:forEach var="review" items="${detail}">
-								<tr>
-									<td rowspan="3" width="100">${m_id}</td>
-									<td width="550" height="20">
-										<font size="5" border="border">${m_id}</font>
-										<font size="1">${sr_regdate}</font>					
-									</td>
-									<td width="50">
-										<c:if test="${m_id == admin}">
-											<a href="삭제폼">삭제</a>
-										</c:if>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2" width="600">${sr_star}
-										<c:if test="${review.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star1.png"></c:if>
-										<c:if test="${review.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star2.png"></c:if>
-										<c:if test="${review.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star3.png"></c:if>
-										<c:if test="${review.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star4.png"></c:if>
-										<c:if test="${review.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star5.png"></c:if>
-									</td>
-								</tr>
-								<tr>
-									<td height="100" colspan="2">${sr_content}</td>
-								</tr>
-					</c:forEach>
-					</table>
-					</div> --%>	
-			
-</div>
+	</div>	
+<%-- <table style="width:700;">
+		<c:forEach var="review" items="${detail}">
+			<tr>
+				<td rowspan="3" width="100">${m_id}</td>
+				<td width="550" height="20">
+					<font size="5" border="border">${m_id}</font>
+					<font size="1">${sr_regdate}</font>					
+				</td>
+				<td width="50">
+					<c:if test="${m_id == admin}">
+						<a href="삭제폼">삭제</a>
+					</c:if>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" width="600">${sr_star}
+					<c:if test="${review.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star1.png"></c:if>
+					<c:if test="${review.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star2.png"></c:if>
+					<c:if test="${review.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star3.png"></c:if>
+					<c:if test="${review.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star4.png"></c:if>
+					<c:if test="${review.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star5.png"></c:if>
+				</td>
+			</tr>
+			<tr>
+				<td height="100" colspan="2">${sr_content}</td>
+			</tr>
+		</c:forEach>
+	</table> --%>
 </div>
 			
 			

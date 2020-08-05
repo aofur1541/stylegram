@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div id="body">
-	<c:if test="${count == 0}">	
+	<c:if test="${count == 0}">
 		<div>등록된 게시물이 없습니다</div>
 	</c:if>
 	<c:if test="${count > 0}">
 		<c:forEach var="store" items="${list}">
-			<c:if test="${store.mdpick == 0}">
+			<c:if test="${store.staravg == 4}">
 			<div class="card-board">
 				<div class="card-sheet-top">
 					<div><b>실시간 인기 TOP | </b>가장 HOT한 상품!</div>
@@ -26,6 +26,13 @@
 								</a>
 							</div>
 						</c:if>	
+					</div>
+					<div class="card-img">
+						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/images/resources/images/star1.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/images/resources/images/star2.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/images/resources/images/star3.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==4}"><div><img src="${pageContext.request.contextPath}/images/resources/images/star4.png" style="width:300px;"></div></c:if>	
+						<c:if test="${store.staravg==5}"><div><img src="${pageContext.request.contextPath}/images/resources/images/star5.png" style="width:300px;"></div></c:if>	
 					</div>
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}</a></div>
@@ -52,7 +59,7 @@
 						</c:if>	
 					</div>
 					<div class="card-content">
-						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}</a></div>
+						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}.</a></div>
 						<div id="text-box">[${store.s_discount}%]${store.s_price}</div>
 					</div>
 				</div>

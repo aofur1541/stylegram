@@ -12,6 +12,5 @@ public interface StoreReviewMapper {
 	public void insert (StoreReviewVO review);
 	public int selectReviewCount();
 	public List<StoreReviewVO> selectReviewList();
-	@Select("SELECT MAX(SUM(sr_star)/COUNT(*)) from prostorereview GROUP BY s_num")
-	public int selectTopStarRate();
+	public List<StoreReviewVO> selectStarAvarage();
 }
