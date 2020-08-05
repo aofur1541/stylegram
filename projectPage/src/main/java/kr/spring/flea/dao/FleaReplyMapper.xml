@@ -6,6 +6,6 @@
 			FROM (SELECT a.*, rownum
 				FROM (SELECT * 
 					FROM profleaReply r JOIN promember m USING (m_num) WHERE fb_num=#{fb_num})a)
-				ORDER BY fr_num DESC
+				ORDER BY fr_num
 	</select>
 </mapper>

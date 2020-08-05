@@ -36,7 +36,6 @@ public class FleaReplyController {
 	}
 	
 	@RequestMapping("/flea/replyList.do")
-	@ResponseBody
 	public ModelAndView replyList(@RequestParam("fb_num") int fb_num, ModelAndView mav, @RequestParam(defaultValue="1") int curPage, HttpSession session) throws Exception {
 		//페이징 처리
 		int count = fleaReplyService.replyCount(fb_num);
@@ -56,6 +55,31 @@ public class FleaReplyController {
 		mav.addObject("replyCount", count);
 		
 		return mav;
+	}
+	
+	@RequestMapping("/flea/replyListJson.do")
+	@ResponseBody
+	public List<FleaReplyVO> listJson(@RequestParam("fb_num") int fb_num, @RequestParam(defaultValue="1") int curPage) throws Exception{
+		int count = fleaReplyService.replyCount(fb_num);
+		ReplyPager replyPager = new ReplyPager(count, curPage);
+		int start = replyPager.getPageBegin();//페이징 시작번호
+		int end = replyPager.getPageEnd();
+		
+		if(log.isDebugEnabled()) {
+			log.debug("list 돌기 전에 : "+ fb_num + start + end);
+		}
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("fb_num", fb_num);
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<FleaReplyVO> list = fleaReplyService.replyList(map);
+		if(log.isDebugEnabled()) {
+			log.debug("list : " + list);
+		}
+		
+		return list;
 	}
 	
 	@RequestMapping("/flea/insertReply.do")
