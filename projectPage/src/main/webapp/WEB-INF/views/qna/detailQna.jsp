@@ -33,6 +33,7 @@ window.onload=function(){
 		<div>
 			<img src="imageView.do?qb_num=${qna.qb_num}">
 		</div>
+		</c:if>
 		<li>사진 : ${qna.qb_filename}</li><!-- 구현 후 텍스트 삭제 -->
 		<li>글번호 : ${qna.qb_num}</li><!-- 구현 후 텍스트 삭제 -->
 		<li>작성자 : ${qna.m_id}</li><!-- 구현 후 텍스트 삭제 --> 
@@ -60,6 +61,5 @@ window.onload=function(){
 	${fn.endWish(proqnaboard.qb_photo,'.BMP')||
 	${fn.endWish(proqnaboard.qb_photo,'.gif')||
 	${fn.endWish(proqnaboard.qb_photo,'.GIF')} "> --%>
-	</c:if>
 	</ul>
 </div>

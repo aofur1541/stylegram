@@ -7,6 +7,7 @@
 $(document).ready(function(){
 	listComment("1");
 	
+	//댓글쓰기
     $("#writeCommentForm").submit(function(){
         var mr_content=$("#mr_content").val(); //댓글 내용
         var mb_num="${mainBoard.mb_num}"; //게시물 번호
@@ -123,8 +124,10 @@ window.onload=function(){
 		</c:if>
 	</p>
 	<hr size="1" width="100%">
+	<div class="comment">
+		댓글
+	</div>
 	<!-- 댓글 -->
-	<p>댓글리스트</p>
 	<table id="listComment" border="1">
 	
 	</table>
@@ -133,29 +136,21 @@ window.onload=function(){
 	<form id="writeCommentForm">
 	<input type="hidden" name="mb_num" value="${mainBoard.mb_num}">
 	<input type="hidden" name="m_num" value="${m_num}">
-		<table border="1">
-			<tr>
-				<!-- 댓글작성 -->
-				<td width="150px">
-					<c:if test="${empty m_nickname}">
-						<div>${m_id}</div>
-					</c:if>
-					<c:if test="${!empty m_nickname}">
-						<div>${m_nickname}</div>
-					</c:if>
-				</td>
-				<td width="550px">
-					<div>
-						<input type="text" name="mr_content" id="mr_content">					
-					</div>
-				</td>
-				<td width="100px">
-					<div>
-						<button type="submit" name="btnComment" id="btnComment">댓글등록</button>
-					</div>
-				</td>
-			</tr>
-		</table>
+	<!-- 댓글작성 -->
+		<div class="commentname">
+			<c:if test="${empty m_nickname}">
+				<div>${m_id}</div>
+			</c:if>
+			<c:if test="${!empty m_nickname}">
+				<div>${m_nickname}</div>
+			</c:if>
+		</div>
+		<div class="commentcontent">
+			<input type="text" name="mr_content" id="mr_content">					
+		</div>
+		<div class="commentsubmit">
+			<button type="submit" name="btnComment" id="btnComment">댓글등록</button>
+		</div>
 	</form>		
 	</c:if>
 </div>

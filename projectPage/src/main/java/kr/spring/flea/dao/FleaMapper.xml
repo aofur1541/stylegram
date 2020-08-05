@@ -22,7 +22,7 @@
 	<select id="selectList" parameterType="map" resultType="fleaVO">
 		SELECT rownum, a.* 
 			FROM (SELECT * 
-				FROM profleaboard b JOIN profleainfo i USING (fb_num) ORDER BY fb_num desc)a 
+				FROM profleaboard b JOIN profleainfo i USING (fb_num) JOIN promember m ON m.m_num = b.fb_usernum JOIN promember_detail d ON m.m_num = d.m_num ORDER BY fb_num desc)a 
 				<where>
 					<if test="filter == 'top'">
 						fb_topcheck=1 AND rownum BETWEEN 1 AND 5

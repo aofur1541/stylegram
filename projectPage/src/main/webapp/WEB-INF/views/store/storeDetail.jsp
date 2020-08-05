@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!-- 2222 -->
 <div id="body">
 	<c:if test="${count == 0}">
 		<div>등록된 게시물이 없습니다</div>

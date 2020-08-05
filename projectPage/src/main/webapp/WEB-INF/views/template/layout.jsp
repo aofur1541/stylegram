@@ -73,19 +73,9 @@
 		display:inline-block;
 	}
 }
-@media(max-width:1580px){
-	div#body{
-		padding-left:10%;
-	}
-}
 @media(max-width:1120px){
 	div#body div.detailpage table .hidemenu{
 		display:none;
-	}
-}
-@media(max-width:1000px){
-	div#body{
-		padding-left:15%;
 	}
 }
 @media(max-width:760px){

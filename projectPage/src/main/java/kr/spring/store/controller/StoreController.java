@@ -154,8 +154,6 @@ public class StoreController {
 		StoreVO detail = storeService.selectProduct(s_num);
 		StoreReviewVO review = new StoreReviewVO();
 		
-		List<StoreReviewVO>list = storeReviewService.selectStarAvarage();
-		
 		if(log.isDebugEnabled()) {
 			log.debug(detail);
 		}
@@ -164,7 +162,6 @@ public class StoreController {
 		mav.setViewName("productDetail");
 		mav.addObject("detail", detail);
 		mav.addObject("review",review);
-		mav.addObject("list", list);
 		
 		return mav;
 	}

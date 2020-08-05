@@ -27,23 +27,35 @@
 	</delete>
 	
 	<select id="selectRowCount" parameterType="map" resultType="integer">
-		SELECT COUNT(*) FROM promainboard b JOIN promember m ON b.m_num=m.m_num
+		SELECT COUNT(*) FROM promainboard b JOIN promember m ON b.m_num=m.m_num JOIN promaininfo i ON b.mb_num = i.mb_num
 		<where>
-			<if test="keyword != '' and keyfield == 'mb_title'">
+			<if test="keyword != '' and keyfield == 'title'">
 				b.mb_title LIKE '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'm_id'">
+			<if test="keyword != '' and keyfield == 'id'">
 				m.m_id LIKE '%' || #{keyword} || '%'
 			</if>
-			<if test="keyword != '' and keyfield == 'mb_content'">
+			<if test="keyword != '' and keyfield == 'content'">
 				b.mb_content LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="filter == 'top'">
+				mb_topinfo IS NOT NULL
+			</if>
+			<if test="filter == 'pants'">
+				mb_pantsinfo IS NOT NULL
+			</if>
+			<if test="filter == 'cap'">
+				mb_capinfo IS NOT NULL
+			</if>
+			<if test="filter == 'shoes'">
+				mb_shoesinfo IS NOT NULL
 			</if>
 		</where>
 	</select>
 	
 	<select id="selectList" parameterType="map" resultType="mainBoardVO">
 		SELECT * FROM (SELECT a.*, rownum rnum FROM
-		(SELECT * FROM promainboard b JOIN promember m ON b.m_num=m.m_num JOIN promaininfo i b.mb_num = i.mb_num
+		(SELECT * FROM promainboard b JOIN promember m ON b.m_num=m.m_num JOIN promaininfo i ON b.mb_num = i.mb_num
 		<where>
 			<if test="keyword != '' and keyfield == 'mb_title'">
 				b.mb_title LIKE '%' || #{keyword} || '%'
@@ -53,6 +65,18 @@
 			</if>
 			<if test="keyword != '' and keyfield == 'mb_content'">
 				b.mb_content LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="filter == 'top'">
+				mb_topinfo IS NOT NULL
+			</if>
+			<if test="filter == 'pants'">
+				mb_pantsinfo IS NOT NULL
+			</if>
+			<if test="filter == 'cap'">
+				mb_capinfo IS NOT NULL
+			</if>
+			<if test="filter == 'shoes'">
+				mb_shoesinfo IS NOT NULL
 			</if>
 		</where>
 		ORDER BY b.mb_num DESC) a

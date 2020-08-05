@@ -43,13 +43,15 @@ public class MainController {
 	@RequestMapping("/main/main.do")
 	public ModelAndView process(@RequestParam(value="pageNum",defaultValue="1") int currentPage,
 								@RequestParam(value="keyfield",defaultValue="") String keyfield,
-								@RequestParam(value="keyword",defaultValue="") String keyword) {
+								@RequestParam(value="keyword",defaultValue="") String keyword,
+								@RequestParam(value="filter",defaultValue="") String filter) {
 		
 		//검색 기능 구현 (아직 태그 검색 미구현)
 		Map<String,Object> map = new HashMap<String, Object>();
 		
 		map.put("keyfield",keyfield);
 		map.put("keyword",keyword);
+		map.put("filter",filter);
 		
 		int count = mainBoardService.selectRowCount(map);
 		if(log.isDebugEnabled()) {
@@ -74,6 +76,7 @@ public class MainController {
 		mav.addObject("count",count);
 		mav.addObject("mainList", mainList);
 		mav.addObject("pagingHtml",page.getPagingHtml());
+		mav.addObject("filter",filter);
 		
 		return mav; 
 	}
