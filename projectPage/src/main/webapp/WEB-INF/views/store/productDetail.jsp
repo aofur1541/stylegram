@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript">
 	var locked = 0;
@@ -119,6 +120,13 @@
 		<div class="card-sheet">
 			<div class="card-content">
 				<div id="text-box"><h2>${detail.s_title}</h2></div>
+				<div id="text-box">
+					<c:if test="${detail.s_ship==0}">무료배송</c:if>
+					<c:if test="${detail.s_ship==1}">배송비 : <fmt:formatNumber value="${detail.s_shipcost}" type="currency" currencySymbol="\\"/></c:if>
+				</div>
+				<div id="text-box">
+					<div>배송예정일 : ${detail.shipdate}</div>
+				</div>
 				<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:50px;"></div></c:if>	 
 				<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:50px;"></div></c:if>	 
 				<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:50px;"></div></c:if>	 
@@ -129,7 +137,9 @@
 						<h4>&#8361;${detail.s_price}</h4>
 					</c:if>
 					<c:if test="${detail.s_discount > 0}">
-						<h4 style="color:red;">[${detail.s_discount}%]&#8361;${detail.s_price}</h4>
+						<h4 style="color:red;">
+							[${detail.s_discount}%]<fmt:formatNumber value="${detail.s_price-(detail.s_price*(detail.s_discount/100))}" type="currency" currencySymbol="\\"/>
+						</h4>
 					</c:if>
 				</div>
 			</div>
@@ -214,35 +224,40 @@
 				</c:if>
 			</form:form>
 		</div>
-	</div>	
-<%-- <table style="width:700;">
-		<c:forEach var="review" items="${detail}">
-			<tr>
-				<td rowspan="3" width="100">${m_id}</td>
-				<td width="550" height="20">
-					<font size="5" border="border">${m_id}</font>
-					<font size="1">${sr_regdate}</font>					
-				</td>
-				<td width="50">
-					<c:if test="${m_id == admin}">
-						<a href="삭제폼">삭제</a>
-					</c:if>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" width="600">${sr_star}
-					<c:if test="${review.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star1.png"></c:if>
-					<c:if test="${review.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star2.png"></c:if>
-					<c:if test="${review.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star3.png"></c:if>
-					<c:if test="${review.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star4.png"></c:if>
-					<c:if test="${review.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star5.png"></c:if>
-				</td>
-			</tr>
-			<tr>
-				<td height="100" colspan="2">${sr_content}</td>
-			</tr>
+	</div>
+<%-- 	<div class="card-board">
+		<div class="card-content">
+			<table style="width:700;">
+				<c:forEach var="review" items="${detail}">
+					<tr>
+						<td rowspan="3" width="100">${m_id}</td>
+						<td width="550" height="20">
+							<font size="5" style="border:border;">${m_id}</font>
+							<font size="1">${sr_regdate}</font>					
+						</td>
+						<td width="50">
+							<c:if test="${m_id == admin}">
+								<a href="삭제폼">삭제</a>
+							</c:if>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" width="600">${sr_star}
+							<c:if test="${review.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star1.png"></c:if>
+							<c:if test="${review.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star2.png"></c:if>
+							<c:if test="${review.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star3.png"></c:if>
+							<c:if test="${review.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star4.png"></c:if>
+							<c:if test="${review.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star5.png"></c:if>
+						</td>
+					</tr>
+					<tr>
+						<td height="100" colspan="2">${sr_content}</td>
+					</tr>
+				</c:forEach>
+			</table>	
+		</div>
+	</div> --%>
 
-<%-- 		</c:forEach> --%>
 
 	<!-- 장바구니 -->
 	<div id="basket" class="basket">

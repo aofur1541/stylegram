@@ -7,7 +7,4 @@
 	<select id="selectReviewList" resultType="StoreReviewVO">
 		SELECT * FROM prostorereview WHERE s_num=#{s_num} ORDER BY sr_regdate DESC
 	</select>
-	<select id="selectStarAvarage" resultType="StoreReviewVO">
-		SELECT s_num, TRUNC((SUM(sr_star)/COUNT(*))) starAvg from prostorereview GROUP BY s_num
-	</select>
 </mapper>
