@@ -30,7 +30,7 @@
 	<form id="search_form" action="list.do" method="get">
 		<ul class="search">
 			<li>
-				<select name="keyfield">
+				<select name="keyfield" class="keyfield">
 					<option value="nb_title">제목</option>
 					<option value="nb_content">내용</option>
 					<option value="m_id">관리자 아이디</option>
@@ -40,7 +40,7 @@
 				<input type="search" size="16" name="keyword" id="keyword">
 			</li>
 			<li>
-				<input type="submit" value="찾기">
+				<input type="submit" class="searchbtn" value="찾기">
 				<input type="button" value="등록" onclick="location.href='write.do'">
 			</li>
 		</ul>
