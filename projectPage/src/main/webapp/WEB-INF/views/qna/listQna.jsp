@@ -4,7 +4,7 @@
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
-<script>
+<!-- <script>
 
 $(document).ready(function() {
 
@@ -17,7 +17,7 @@ $(document).ready(function() {
    
 });
 
-</script>
+</script> -->
 
 <style type="text/css">
    
@@ -28,7 +28,8 @@ $(document).ready(function() {
 
     .grid__item,
     .grid__col-sizer {
-      width: 32%;
+     width: 11%;
+     
     }
 
     .grid__gutter-sizer { width: 2%; }
@@ -39,29 +40,20 @@ $(document).ready(function() {
     }
 
     .grid__item {
-      margin-bottom: 20px;
+      margin: 0 auto;
       float: left;
+      width: 300px;
+      
     }
 
     .grid__item img {
-      display: block;
-      max-width: 100%;
+      width: 100%;
+	  border-radius: 15px;
     }
 
 
-    .page-load-status {
-      display: none; /* hidden by default */
-      padding-top: 20px;
-      border-top: 1px solid #DDD;
-      text-align: center;
-      color: #777;
-    }
 
-    /* loader ellips in separate pen CSS */
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <script>
 $(document).ready(function() {
     //-------------------------------------//
@@ -92,15 +84,14 @@ $(document).ready(function() {
     //-------------------------------------//
     // hack CodePen to load pens as pages
 
-    var nextPenSlugs = [
-      '/listQna.do?keyfield=&keyword=&pageNum=2',
-      '/listQna.do?keyfield=&keyword=&pageNum=3',
-      '/listQna.do?keyfield=&keyword=&pageNum=4',
-      '/listQna.do?keyfield=&keyword=&pageNum=5',
-      '/listQna.do?keyfield=&keyword=&pageNum=6',
-      '/listQna.do?keyfield=&keyword=&pageNum=7',
-     
-    ];
+    var count = ${count};
+    var pageNums = Math.ceil(count/10);
+    var nextPenSlugs = [];
+    	
+    /* alert(pageNums); */	
+     for(var i=2;i<pageNums;i++){
+  	   nextPenSlugs.push('listQna.do?keyfield=&keyword=&pageNum='+i);
+     }	
 
     function getPenPath() {
       var slug = nextPenSlugs[ this.loadCount ];
@@ -137,13 +128,17 @@ $(document).ready(function() {
 	<div id="card">
 	<c:if test="${count > 0}">
 	
-	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 300 }'>
+	
 	<div class="grid">
+	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 200 }'>
+	
+	
 	<div class="grid__col-sizer"></div>
+  
   
 	<c:forEach var="qna" items="${listQna}">
 	<div class="grid__item">
-		<div class="wrap-item">
+		<!-- <div class="wrap-item"> -->
 		<div class="entry-content">
 		<div class="card-sheet">
 			<div id="card-img">
@@ -205,23 +200,15 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
+			
 		</div>
 		</div>
-		</div>
+	<!-- 	</div> -->
+	<div class="grid__gutter-sizer"></div>
 	</c:forEach>
-	</div>
-	<%-- <div>${pagingHtml}</div> --%>
+	</div>	
 	</div>
 	</c:if>
 	</div>
 </div>
-<div class="page-load-status">
-  <div class="loader-ellips infinite-scroll-request">
-    <span class="loader-ellips__dot"></span>
-    <span class="loader-ellips__dot"></span>
-    <span class="loader-ellips__dot"></span>
-    <span class="loader-ellips__dot"></span>
-  </div>
-  <p class="infinite-scroll-last">End of content</p>
-  <p class="infinite-scroll-error">No more pages to load</p>
-</div>
+

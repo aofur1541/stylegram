@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.qna.domain.QnaVO;
@@ -26,6 +27,7 @@ import kr.spring.util.PagingUtil;
 @Controller
 public class QnaController {
 	private Logger log = Logger.getLogger(this.getClass());
+	
 	int rowCount = 10;//한화면에 보여줄 게시물 수
 	int pageCount = 10;//한화면에 보여줄 페이지 수
 
@@ -79,6 +81,7 @@ public class QnaController {
 		
 		return mav; 
 	}
+	
 	
 	//글쓰기 호출
 	@RequestMapping(value="/qna/writeQna.do", method=RequestMethod.GET)
