@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 2222 -->
 <div id="body">
 	<c:if test="${count == 0}">
@@ -9,7 +10,7 @@
 	</c:if>
 	<c:if test="${count > 0}">
 		<c:forEach var="store" items="${list}">
-			<c:if test="${store.staravg >= 4}">
+			<c:if test="${store.staravg == 5}">
 			<div class="card-board">
 				<div class="card-sheet-top">
 					<div><b>실시간 인기 TOP | </b>가장 HOT한 상품!!</div>
@@ -35,7 +36,16 @@
 						<c:if test="${store.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:300px;"></div></c:if>
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}</a></div>
-						<div id="text-box">[${store.s_discount}%]${store.s_price}</div>
+						<div id="text-box">
+							<c:if test="${normal.s_discount == ''}">
+								<h4 style="color:green;"><fmt:formatNumber value="${store.s_price}" type="currency" currencySymbol="\\"/></h4>
+							</c:if>
+							<c:if test="${store.s_discount > 0}">
+								<h4 style="color:red;">
+									[${store.s_discount}%]<fmt:formatNumber value="${store.s_price-(store.s_price*(store.s_discount/100))}" type="currency" currencySymbol="\\"/>
+								</h4>
+							</c:if>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -64,7 +74,16 @@
 					</div>
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}.</a></div>
-						<div id="text-box">[${store.s_discount}%]${store.s_price}</div>
+						<div id="text-box">
+							<c:if test="${normal.s_discount == ''}">
+								<h4 style="color:green;"><fmt:formatNumber value="${store.s_price}" type="currency" currencySymbol="\\"/></h4>
+							</c:if>
+							<c:if test="${store.s_discount > 0}">
+								<h4 style="color:red;">
+									[${store.s_discount}%]<fmt:formatNumber value="${store.s_price-(store.s_price*(store.s_discount/100))}" type="currency" currencySymbol="\\"/>
+								</h4>
+							</c:if>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -99,10 +118,12 @@
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${normal.s_num}"><b>${normal.s_title}</b></a></div>
 						<div id="text-box">
 							<c:if test="${normal.s_discount == ''}">
-								${normal.s_price}
+								<h4 style="color:green;"><fmt:formatNumber value="${normal.s_price}" type="currency" currencySymbol="\\"/></h4>
 							</c:if>
 							<c:if test="${normal.s_discount > 0}">
-								[${normal.s_discount}%]${normal.s_price}
+								<h4 style="color:red;">
+									[${normal.s_discount}%]<fmt:formatNumber value="${normal.s_price-(normal.s_price*(normal.s_discount/100))}" type="currency" currencySymbol="\\"/>
+								</h4>
 							</c:if>
 						</div>
 					</div>

@@ -55,7 +55,7 @@ public class StoreReviewController {
 		return "redirect:/store/storeDetail.do";
 	}
 	
-	@RequestMapping("/store/storeReview.do")
+	@RequestMapping("/store/productReview.do")
 	public ModelAndView process(StoreReviewVO storeReviewVO) {
 		
 		int count = storeReviewService.selectReviewCount();

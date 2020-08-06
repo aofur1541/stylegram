@@ -169,7 +169,7 @@ public class StoreVO {
 	}
 	public void setShipdate(Date shipdate) {
 		this.shipdate = shipdate;
-	}
+	}	
 	public int getS_ship() {
 		return s_ship;
 	}
@@ -182,7 +182,7 @@ public class StoreVO {
 	public void setS_shipcost(int s_shipcost) {
 		this.s_shipcost = s_shipcost;
 	}
-		
+	
 	@Override
 	public String toString() {
 		return "StoreVO [s_num=" + s_num + ", s_title=" + s_title + ", s_usernum=" + s_usernum + ", upload=" + upload
