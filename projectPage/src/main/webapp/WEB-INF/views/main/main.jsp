@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
-<script>
+<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+<!-- <script>
 $(document).ready(function() {
     var $grid = $('.all_wrap').imagesLoaded( function() {
       $grid.masonry({
@@ -12,7 +13,100 @@ $(document).ready(function() {
       });
     });
 });
-</script> 
+
+<style type="text/css">
+   
+    /* reveal grid after images loaded */
+    .grid.are-images-unloaded {
+      opacity: 0;
+    }
+
+    .grid__item,
+    .grid__col-sizer {
+     width: 11%;
+     
+    }
+
+    .grid__gutter-sizer { width: 2%; }
+
+    /* hide by default */
+    .grid.are-images-unloaded .image-grid__item {
+      opacity: 0;
+    }
+
+    .grid__item {
+      margin: 0 auto;
+      float: left;
+      width: 300px;
+      
+    }
+
+    .grid__item img {
+      width: 100%;
+	  border-radius: 15px;
+    }
+
+
+
+</style>
+<script>
+$(document).ready(function() {
+    //-------------------------------------//
+    // init Masonry
+
+    var $grid = $('.grid').masonry({
+      itemSelector: 'none', // select none at first
+      columnWidth: '.grid__col-sizer',
+      gutter: '.grid__gutter-sizer',
+      percentPosition: true,
+      stagger: 30,
+      // nicer reveal transition
+      visibleStyle: { transform: 'translateY(0)', opacity: 1 },
+      hiddenStyle: { transform: 'translateY(100px)', opacity: 0 },
+    });
+
+    // get Masonry instance
+    var msnry = $grid.data('masonry');
+
+    // initial items reveal
+    $grid.imagesLoaded( function() {
+      $grid.removeClass('are-images-unloaded');
+      $grid.masonry( 'option', { itemSelector: '.grid__item' });
+      var $items = $grid.find('.grid__item');
+      $grid.masonry( 'appended', $items );
+    });
+
+    //-------------------------------------//
+    // hack CodePen to load pens as pages
+
+    var count = ${count};
+    var pageNums = Math.ceil(count/10);
+    var nextPenSlugs = [];
+    	
+    /* alert(pageNums); */	
+     for(var i=2;i<pageNums;i++){
+  	   nextPenSlugs.push('main.do?keyfield=&keyword=&pageNum='+i);
+     }	
+
+    function getPenPath() {
+      var slug = nextPenSlugs[ this.loadCount ];
+      if ( slug ) {
+        return './' + slug;
+      }
+    }
+
+    //-------------------------------------//
+    // init Infinte Scroll
+
+    $grid.infiniteScroll({
+      path: getPenPath,
+      append: '.grid__item',
+      outlayer: msnry,
+      status: '.page-load-status',
+    });   
+});
+
+</script>
 <div id="body">
 	<div class="searchForm">
 		<form action="main.do" method="get">
@@ -43,8 +137,13 @@ $(document).ready(function() {
 	</c:if>
 	<div id="card">
 	<c:if test="${count > 0}">
+	<div class="grid">
+	
+	<div class="grid__col-sizer"></div>
 	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 300 }'>
+	<div class="grid__col-sizer"></div>
 	<c:forEach var="mainList" items="${mainList}">
+	<div class="grid__item">
 		<div class="wrap-item">
 		<div class="card-sheet"> 
 			<div id="card-img">
@@ -108,8 +207,13 @@ $(document).ready(function() {
 			</div>
 		</div>
 		</div>
+		
+		<div class="grid__gutter-sizer"></div>
+		
 	</c:forEach>
 	</div>
+	</div>
+	<div class="align-center">${pagingHtml}</div>
 	</c:if>
 	</div>
 </div>

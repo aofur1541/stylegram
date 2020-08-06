@@ -62,7 +62,7 @@ public class MainController {
 		int rowCount = 6;//한화면에 보여줄 게시물 수
 		int pageCount = 10;//한화면에 보여줄 페이지 수
 		
-		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"main/main.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"main.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		
