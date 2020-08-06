@@ -180,7 +180,7 @@ $(document).ready(function() {
 					<c:if test="${!empty mainList.mb_pantsinfo}">
 						<img src="${pageContext.request.contextPath}/resources/images/pants2.png">
 					</c:if>
-					<c:if test="${!empty mainList.mb_capinfo}">
+					<c:if test="${!empty mainList.mb_capinfo}"> 
 						<img src="${pageContext.request.contextPath}/resources/images/cap.png">
 					</c:if>
 					<c:if test="${!empty mainList.mb_shoesinfo}">
