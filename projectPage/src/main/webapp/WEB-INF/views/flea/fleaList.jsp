@@ -14,16 +14,36 @@ $(document).ready(function() {
 });
 </script>
 <div id="body">
+	<c:if test="${empty m_id}">
+	<h3>로그인 후 이용 바랍니다.</h3>
+	<div class="nologin">
+	<a href="${pageContext.request.contextPath}/member/register.do" id="nav_menu">회원가입</a>	
+	<a href="${pageContext.request.contextPath}/member/login.do" id="nav_menu">로그인</a>
+	</div>
+	</c:if>
+	<c:if test="${m_auth == 2}">
+	<h3>본인인증 후 이용 바랍니다.</h3>
+	<div class="noauth">
+	<a href="${pageContext.request.contextPath}/member/auth.do" id="nav_menu">본인인증</a>
+	</div>
+	</c:if>
+	<c:if test="${m_auth == 3}">
 	<div class="searchForm">
 		<form action="fleaList.do" method="get">
 			<div id="filter">
-				<select name="filter" onchange="this.form.submit()">
+				<select name="filter" class="filter" onchange="this.form.submit()">
 					<option value="">전체</option>
 					<option value="top" <c:if test="${filter eq 'top'}">selected</c:if>>상의</option>
 					<option value="bottom" <c:if test="${filter eq 'bottom'}">selected</c:if>>하의</option>
 					<option value="hat" <c:if test="${filter eq 'hat'}">selected</c:if>>모자</option>
 					<option value="shoes" <c:if test="${filter eq 'shoes'}">selected</c:if>>신발</option>
 				</select>
+				<select name="keyfield" class="keyfield">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="id">아이디</option>
+				</select>		
+				<input type="search" size="16" name="keyword" id="keyword">
 			</div>
 		</form>
 	</div>
@@ -102,4 +122,5 @@ $(document).ready(function() {
 		</div>
 	</c:forEach>
 	</div>
+	</c:if>
 </div>

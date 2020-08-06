@@ -17,14 +17,14 @@ $(document).ready(function() {
 	<div class="searchForm">
 		<form action="main.do" method="get">
 			<div id="filter" class="filter">
-				<select name="filter" onchange="this.form.submit()">
+				<select name="filter" class="filter" onchange="this.form.submit()">
 					<option value="">전체</option>
 					<option value="top" <c:if test="${filter eq 'top'}">selected</c:if>>상의</option>
 					<option value="pants" <c:if test="${filter eq 'pants'}">selected</c:if>>하의</option>
 					<option value="cap" <c:if test="${filter eq 'cap'}">selected</c:if>>모자</option>
 					<option value="shoes" <c:if test="${filter eq 'shoes'}">selected</c:if>>신발</option>
 				</select>
-				<select name="keyfield">
+				<select name="keyfield" class="keyfield">
 					<option value="title">제목</option>
 					<option value="content">내용</option>
 					<option value="id">아이디</option>
