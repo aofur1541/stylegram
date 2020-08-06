@@ -143,6 +143,22 @@
 				<form:errors path="s_discount"/>
 			</li>
 			<li>
+				<label for="s_ship">배송비 여부</label>
+				<input type="radio" name="s_ship" id="s_ship" value="1"/>배송비 있음
+				<input type="radio" name="s_ship" id="s_ship" checked value="0"/>무료배송
+				<form:errors path="mdpick"/>
+			</li>
+			<li>
+				<label for="s_shipcost">배송비</label>
+				<form:input path="s_shipcost"/>
+				<form:errors path="s_shipcost"/>
+			</li>
+			<li>
+				<label for="shipdate">배송 예정일</label>
+				<input type="date" name="shipdate" id="shipdate">
+				<form:errors path="shipdate"/>
+			</li>
+			<li>
 				<label for="s_content">상품 상세</label>
 				<form:textarea path="s_content"/>
 				<form:errors path="s_content"/>
@@ -151,21 +167,21 @@
 				<div class="imgs"></div><!-- 다중 이미지 표시를 위한 div태그 -->
 			</li>
 			<li>
-				<label for="dupload">다중업로드</label>
+				<label for="dupload">상품배너</label>
 				<input type="file" name="dupload" id="dupload">
 			</li>
 			<li>
 				<div class="imgs2"></div><!-- 다중 이미지 표시를 위한 div태그 -->
 			</li>
 			<li>
-				<label for="dupload2">다중업로드</label>
+				<label for="dupload2">상품설명</label>
 				<input type="file" name="dupload2" id="dupload2">
 			</li>
 			<li>
 				<div class="imgs3"></div><!-- 다중 이미지 표시를 위한 div태그 -->
 			</li>
 			<li>
-				<label for="dupload3">다중업로드</label>
+				<label for="dupload3">상품제원</label>
 				<input type="file" name="dupload3" id="dupload3">
 			</li>
 			<li>

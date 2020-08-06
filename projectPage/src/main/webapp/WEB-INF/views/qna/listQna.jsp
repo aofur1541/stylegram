@@ -196,6 +196,9 @@ $(document).ready(function() {
 					<c:if test="${qna.qb_shoesinfo eq 1}">
 						<img src="${pageContext.request.contextPath}/resources/images/shoes.png">
 					</c:if>
+					<c:if test="${qna.qb_topinfo eq 0 && qna.qb_pantsinfo eq 0 && qna.qb_capinfo eq 0 && qna.qb_shoesinfo eq 0}">
+						분   류   없   음
+					</c:if>
 					</div>
 				</div>
 			</div>

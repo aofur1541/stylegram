@@ -10,4 +10,6 @@ public interface StoreService {
 	public int selectProductCount();
 	public List<StoreVO> selectProductList();//mb_num으로 진행
 	public StoreVO selectProduct(Integer num);
+	public StoreVO selectProductDetail(Integer num);
+	public void updateStarAvg (StoreVO store);
 }

@@ -38,7 +38,7 @@ $(document).ready(function(){
             success: function(result){ //자료를 보내는것이 성공했을때 출력되는 메시지
                 //result : responseText 응답텍스트(html)
                 $("#listComment").html(result);
-            }
+            } 
         });
   	}
 
@@ -72,6 +72,17 @@ window.onload=function(){
 </script>
 
 <div id="body">
+	<h2>${mainBoard.mb_title}</h2>
+	<ul class="writeinfo">
+		<c:if test="${empty mainBoard.m_nickname}">
+		<li>작성자 : ${mainBoard.m_id} </li>
+		</c:if>
+		<c:if test="${!empty mainBoard.m_nickname}">
+		<li>작성자 : ${mainBoard.m_nickname} </li>
+		</c:if>
+		<li>작성일 : ${mainBoard.mb_regdate} </li>
+		<li>수정일 : ${mainBoard.mb_modifydate}</li>
+	</ul>
 	<div class="align-right">
 		<c:if test="${mnumVO.m_num == m_num || m_auth == 4}">
 		<input type="button" value="수정" id="update_btn" onclick="location.href='update.do?mb_num=${mainBoard.mb_num}'">
@@ -80,7 +91,15 @@ window.onload=function(){
 		<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath }/main/main.do'">
 	</div>
 	<hr size="1" width="100%">
-	<div id="likes" class="align-right">
+	<div id="viewPhoto" class="align-center">
+	<c:if test="${!empty mainBoard.mb_photo}">
+		<img src="imageView.do?mb_num=${mainBoard.mb_num}">
+	</c:if>
+	</div>
+	<p class="mb_content">
+		${mainBoard.mb_content}
+	</p>
+	<div id="likes">
 	<b>( ${likeCount} )</b>
 	<c:if test="${!empty m_id}">
 	<c:if test="${likeCheck == 0}">
@@ -95,20 +114,6 @@ window.onload=function(){
 	</c:if>
 	</c:if>
 	</div>
-	<div id="viewPhoto" class="align-center">
-	<c:if test="${!empty mainBoard.mb_photo}">
-		<img src="imageView.do?mb_num=${mainBoard.mb_num}">
-	</c:if>
-	</div>
-	<hr size="1" width="100%">
-	<h2>${mainBoard.mb_title}</h2>
-	<ul>
-		<li>작성자: ${mainBoard.m_id} </li>
-		<li>작성일 : ${mainBoard.mb_regdate} </li>
-	</ul>
-	<p class="mb_content">
-		${mainBoard.mb_content}
-	</p>
 	<p id="categoryinfo">
 		<c:if test="${!empty mainBoard.mb_topinfo}">
 		<a href="${mainBoard.mb_topinfo}" target="_blank"><b>상의사러가기</b></a>
@@ -124,8 +129,10 @@ window.onload=function(){
 		</c:if>
 	</p>
 	<hr size="1" width="100%">
+	<div class="comment">
+		댓글
+	</div>
 	<!-- 댓글 -->
-	<p>댓글리스트</p>
 	<table id="listComment" border="1">
 	
 	</table>
@@ -134,29 +141,21 @@ window.onload=function(){
 	<form id="writeCommentForm">
 	<input type="hidden" name="mb_num" value="${mainBoard.mb_num}">
 	<input type="hidden" name="m_num" value="${m_num}">
-		<table border="1">
-			<tr>
-				<!-- 댓글작성 -->
-				<td width="150px">
-					<c:if test="${empty m_nickname}">
-						<div>${m_id}</div>
-					</c:if>
-					<c:if test="${!empty m_nickname}">
-						<div>${m_nickname}</div>
-					</c:if>
-				</td>
-				<td width="550px">
-					<div>
-						<input type="text" name="mr_content" id="mr_content">					
-					</div>
-				</td>
-				<td width="100px">
-					<div>
-						<button type="submit" name="btnComment" id="btnComment">댓글등록</button>
-					</div>
-				</td>
-			</tr>
-		</table>
+	<!-- 댓글작성 -->
+		<div class="commentname">
+			<c:if test="${empty m_nickname}">
+				<div>${m_id}</div>
+			</c:if>
+			<c:if test="${!empty m_nickname}">
+				<div>${m_nickname}</div>
+			</c:if>
+		</div>
+		<div class="commentcontent">
+			<input type="text" name="mr_content" id="mr_content">					
+		</div>
+		<div class="commentsubmit">
+			<button type="submit" name="btnComment" id="btnComment">댓글등록</button>
+		</div>
 	</form>		
 	</c:if>
 </div>

@@ -4,9 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div id="body">
 	<h2>${notice.nb_title}</h2>
-	<ul>
-		<li>글 번호 : ${notice.nb_num}</li>
-		<li>최근 수정일 : ${notice.nb_regdate}</li>
+	<ul class="noticeinfo">
+		<li>등록일 : ${notice.nb_regdate}</li>
 	</ul>
 	<c:if test="${fn:endsWith(notice.nb_filename1,'.jpg') || 
 	              fn:endsWith(notice.nb_filename1,'.JPG') ||
@@ -16,7 +15,7 @@
 	              fn:endsWith(notice.nb_filename1,'.PNG')}">
 		<div class="align-center">
 			<img src="imageView.do?nb_num=${notice.nb_num}&file_num=1" style="max-width:500px">
-		</div>
+		</div> 
 	</c:if>
 	<c:if test="${fn:endsWith(notice.nb_filename2,'.jpg') || 
 	              fn:endsWith(notice.nb_filename2,'.JPG') ||
@@ -28,7 +27,7 @@
 			<img src="imageView.do?nb_num=${notice.nb_num}&file_num=2" style="max-width:500px">
 		</div>
 	</c:if>
-	<p>
+	<p class="noticecontent">
 		${notice.nb_content}
 	</p>
 	<hr size="1" width="100%">

@@ -1,7 +1,11 @@
 package kr.spring.storereview.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -15,6 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.store.domain.StoreVO;
+import kr.spring.store.service.StoreService;
 import kr.spring.storereview.domain.StoreReviewVO;
 import kr.spring.storereview.service.StoreReviewService;
 
@@ -26,6 +31,8 @@ public class StoreReviewController {
 	
 	@Resource
 	private StoreReviewService storeReviewService;
+	@Resource
+	private StoreService storeService;
 	
 	//자바빈 초기화
 	@ModelAttribute
@@ -34,15 +41,41 @@ public class StoreReviewController {
 	}
 	
 	@RequestMapping("/store/insertReview.do")
-	public String submit(@Valid StoreReviewVO storeReviewVO,BindingResult result,HttpServletRequest request)throws Exception {
+	public String submit(@Valid StoreReviewVO storeReviewVO,StoreVO storeVO,BindingResult result,HttpSession session)throws Exception {
 		
 		if(result.hasErrors()) {
 			return "productDetail";
 		}
+
+		storeReviewVO.setM_num((Integer)session.getAttribute("m_num"));
 		
-		storeReviewService.insert(storeReviewVO);		
-		return "redirect:/store/productDetail.do";
-	}	
+		storeReviewService.insert(storeReviewVO);
+		storeService.updateStarAvg(storeVO);
+		
+		return "redirect:/store/storeDetail.do";
+	}
+	
+	@RequestMapping("/store/productReview.do")
+	public ModelAndView process(StoreReviewVO storeReviewVO) {
+		
+		int count = storeReviewService.selectReviewCount();
+		
+		List<StoreReviewVO> list = null;
+		
+		list = storeReviewService.selectReviewList();
+		
+		if(log.isDebugEnabled()) {
+			log.debug("리뷰데이터 : " + list);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("storeReview");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+
+		return mav;
+	}
+	
 }
 
 

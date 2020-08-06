@@ -17,9 +17,9 @@ public class StoreVO {
 	private MultipartFile dupload2;	//업로드를 위한 MultipartFile 변수(상품상세이미지)
 	private MultipartFile dupload3;	//업로드를 위한 MultipartFile 변수(상품상세이미지)
 	private byte[] s_photo;         //사진파일
-	private byte[] ds_photo;         //사진파일(상품상세이미지)
-	private byte[] ds_photo2;         //사진파일(상품상세이미지)
-	private byte[] ds_photo3;         //사진파일(상품상세이미지)
+	private byte[] ds_photo;        //사진파일(상품상세이미지)
+	private byte[] ds_photo2;       //사진파일(상품상세이미지)
+	private byte[] ds_photo3;       //사진파일(상품상세이미지)
 	private String filename;		//파일명
 	private String dfilename;		//파일명(상품상세이미지)
 	private String dfilename2;		//파일명(상품상세이미지)
@@ -29,7 +29,10 @@ public class StoreVO {
 	private String s_content;		//상품상세정보
 	private Date s_regdate;			//상품등록일
 	private int mdpick;				//MD추천 여부
-	
+	private int staravg;			//별점 평균값
+	private int s_ship;				//배송비 유무 여부
+	private int s_shipcost;			//배송비
+	private Date shipdate;			//배송예정일
 	
 	public void setUpload(MultipartFile upload)throws IOException {
 		this.upload = upload;
@@ -155,13 +158,40 @@ public class StoreVO {
 	public void setMdpick(int mdpick) {
 		this.mdpick = mdpick;
 	}
+	public int getStaravg() {
+		return staravg;
+	}
+	public void setStaravg(int staravg) {
+		this.staravg = staravg;
+	}
+	public Date getShipdate() {
+		return shipdate;
+	}
+	public void setShipdate(Date shipdate) {
+		this.shipdate = shipdate;
+	}	
+	public int getS_ship() {
+		return s_ship;
+	}
+	public void setS_ship(int s_ship) {
+		this.s_ship = s_ship;
+	}
+	public int getS_shipcost() {
+		return s_shipcost;
+	}
+	public void setS_shipcost(int s_shipcost) {
+		this.s_shipcost = s_shipcost;
+	}
 	
 	@Override
 	public String toString() {
 		return "StoreVO [s_num=" + s_num + ", s_title=" + s_title + ", s_usernum=" + s_usernum + ", upload=" + upload
-				+ ", dupload=" + dupload + ", filename=" + filename + ", dfilename=" + dfilename + ", dfilename2="
-				+ dfilename2 + ", dfilename3=" + dfilename3 + ", s_price=" + s_price + ", s_discount=" + s_discount
-				+ ", s_content=" + s_content + ", s_regdate=" + s_regdate + ", mdpick=" + mdpick + "]";
+				+ ", dupload=" + dupload + ", dupload2=" + dupload2 + ", dupload3=" + dupload3 + ", filename="
+				+ filename + ", dfilename=" + dfilename + ", dfilename2=" + dfilename2 + ", dfilename3=" + dfilename3
+				+ ", s_price=" + s_price + ", s_discount=" + s_discount + ", s_content=" + s_content + ", s_regdate="
+				+ s_regdate + ", mdpick=" + mdpick + ", staravg=" + staravg + ", s_ship=" + s_ship + ", s_shipcost="
+				+ s_shipcost + ", shipdate=" + shipdate + "]";
 	}
+
 
 }

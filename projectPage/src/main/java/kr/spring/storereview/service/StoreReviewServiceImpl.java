@@ -29,5 +29,4 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 	public List<StoreReviewVO> selectReviewList() {
 		return storeReviewMapper.selectReviewList();
 	}
-
 }
