@@ -64,7 +64,7 @@
 	    }
 		
 	});
-</script>
+</script> 
 <div id="body">
 	<h2>${flea.fb_title}</h2>
 	<ul class="writeinfo">

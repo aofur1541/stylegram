@@ -12,7 +12,7 @@
 	<div class="result-disply">등록 게시물 x</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table>
+	<table class="noticeboard"> 
 		<tr>
 			<th>글 번호</th>
 			<th width="300" align="center">제목</th>
@@ -38,10 +38,6 @@
 			</li>
 			<li>
 				<input type="search" size="16" name="keyword" id="keyword">
-			</li>
-			<li>
-				<input type="submit" class="searchbtn" value="찾기">
-				<input type="button" value="등록" onclick="location.href='write.do'">
 			</li>
 		</ul>
 	</form>
