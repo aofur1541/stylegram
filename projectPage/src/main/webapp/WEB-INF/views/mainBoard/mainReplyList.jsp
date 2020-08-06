@@ -36,10 +36,10 @@
 		</script>
 		<tr>
 			<td>
-				<c:if test="${empty m_nickname}">
+				<c:if test="${empty row.m_nickname}">
 					${row.m_id}
 				</c:if>
-				<c:if test="${!empty m_nickname}">
+				<c:if test="${!empty row.m_nickname}">
 					${row.m_nickname}
 				</c:if>				
 				(<fmt:formatDate value="${row.mr_regdate }" pattern="yyyy-MM-dd"/>)

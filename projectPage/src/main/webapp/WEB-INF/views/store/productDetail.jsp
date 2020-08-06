@@ -54,6 +54,21 @@
 		alert("별점 "+star+"점을 선택하셨습니다.");
 		document.reviewform.sr_star.value=star;
 	}
+$(document).ready(function(){
+	
+	listReview("1");
+	
+	function listReview(num){
+		$.ajax({
+			type: "get",
+			url: "listReview.do?s_num=${detail.s_num}&curPage="+num,
+			success: function(result){
+				$("#listReview").html(result);
+			}
+		});
+		
+	}
+});
 	
 </script>
 <style type="text/css">
@@ -190,6 +205,10 @@
 		</div>
 	</div>	
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
+	<!-- 리뷰 불러오기 -->
+	<div class="card-board" id="listReview">
+		
+	</div>	
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
 	<div class="card-board">
 		<div class="card-img">
@@ -225,41 +244,6 @@
 			</form:form>
 		</div>
 	</div>
-	<div class="card-board">
-		<div class="card-content">
-			<form:form action="productReview.do" commandName="storeReviewVO">
-				<table style="width:700;">
-					<c:forEach var="review" items="${detail}">
-						<tr>
-							<td rowspan="3" width="100">${m_id}</td>
-							<td width="550" height="20">
-								<font size="5" style="border:border;">${m_id}</font>
-								<font size="1">${sr_regdate}</font>					
-							</td>
-							<td width="50">
-								<c:if test="${m_id == admin}">
-									<a href="삭제폼">삭제</a>
-								</c:if>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="2" width="600">${sr_star}
-								<c:if test="${review.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star1.png"></c:if>
-								<c:if test="${review.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star2.png"></c:if>
-								<c:if test="${review.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star3.png"></c:if>
-								<c:if test="${review.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star4.png"></c:if>
-								<c:if test="${review.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star5.png"></c:if>
-							</td>
-						</tr>
-						<tr>
-							<td height="100" colspan="2">${sr_content}</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</form:form>
-		</div>
-	</div>
-
 
 	<!-- 장바구니 -->
 	<div id="basket" class="basket">
@@ -284,51 +268,3 @@
 </div>
 			
 			
-			
-			
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

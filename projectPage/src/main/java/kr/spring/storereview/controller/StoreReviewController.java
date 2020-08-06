@@ -1,6 +1,8 @@
 package kr.spring.storereview.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +24,7 @@ import kr.spring.store.domain.StoreVO;
 import kr.spring.store.service.StoreService;
 import kr.spring.storereview.domain.StoreReviewVO;
 import kr.spring.storereview.service.StoreReviewService;
+import kr.spring.util.ReplyPager;
 
 @Controller
 public class StoreReviewController {
@@ -55,25 +58,59 @@ public class StoreReviewController {
 		return "redirect:/store/storeDetail.do";
 	}
 	
-	@RequestMapping("/store/productReview.do")
-	public ModelAndView process(StoreReviewVO storeReviewVO) {
+	@RequestMapping("/store/listReview.do")
+	public ModelAndView process(@RequestParam("s_num") int s_num, StoreReviewVO storeReviewVO,@RequestParam(defaultValue="1") int curPage) {
 		
-		int count = storeReviewService.selectReviewCount();
+		int count = storeReviewService.selectReviewCount(s_num);
+		ReplyPager replyPager = new ReplyPager(count, curPage);
+		int start = replyPager.getPageBegin();
+		int end = replyPager.getPageEnd();
 		
-		List<StoreReviewVO> list = null;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("s_num", s_num);
+		map.put("start", start);
+		map.put("end", end);
 		
-		list = storeReviewService.selectReviewList();
+		List<StoreReviewVO> list = storeReviewService.selectReviewList(map);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("리뷰데이터 : " + list);
 		}
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("storeReview");
+		mav.setViewName("productReview");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
 
 		return mav;
+	}
+	
+	@RequestMapping("/store/updateReview.do")
+	public String update(@RequestParam("sr_num") int sr_num,HttpServletRequest request) {
+		
+		StoreReviewVO reviewVO = storeReviewService.selectReview(sr_num);
+		if(log.isDebugEnabled()) {
+			log.debug("수정 전의 데이터 : "+reviewVO);
+		}
+		reviewVO.setSr_content(request.getParameter("updateText"));
+		
+		storeReviewService.updateReview(reviewVO);
+		
+		int s_num = reviewVO.getS_num();
+		
+		return "redirect:/store/productDetail.do?s_num="+s_num;
+	}
+	
+	@RequestMapping("/store/deleteReview.do")
+	public String delete(@RequestParam("sr_num")int sr_num) {
+		
+		StoreReviewVO reviewVO = storeReviewService.selectReview(sr_num);
+		
+		int s_num = reviewVO.getS_num();
+		
+		storeReviewService.deleteReview(sr_num);
+		
+		return "redirect:/store/productDetail.do?s_num="+s_num;
 	}
 	
 }
