@@ -26,7 +26,7 @@
 			<c:if test="${count == 0}">
 			<table>
 				<tr>
-					<td>댓글 없음</td>
+					<td>리뷰 없음</td> 
 				</tr>
 			</table>
 			</c:if>
