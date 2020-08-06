@@ -4,23 +4,7 @@
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
-<!-- <script>
- 
-$(document).ready(function() {
-
-    var $grid = $('.all_wrap').imagesLoaded( function() {
-      $grid.masonry({
-          itemSelector: '.wrap-item',
-          fitwidth: true
-      });
-    });
-   
-});
-
-</script> -->
-
 <style type="text/css">
-   
     /* reveal grid after images loaded */
     .grid.are-images-unloaded {
       opacity: 0;
@@ -28,11 +12,11 @@ $(document).ready(function() {
 
     .grid__item,
     .grid__col-sizer {
-     width: 11%;
+     width: 15px;
      
     }
 
-    .grid__gutter-sizer { width: 2%; }
+    .grid__gutter-sizer { width: 1%; }
 
     /* hide by default */
     .grid.are-images-unloaded .image-grid__item {
@@ -50,9 +34,6 @@ $(document).ready(function() {
       width: 100%;
 	  border-radius: 15px;
     }
-
-
-
 </style>
 <script>
 $(document).ready(function() {
@@ -89,7 +70,7 @@ $(document).ready(function() {
     var nextPenSlugs = [];
     	
     /* alert(pageNums); */	
-     for(var i=2;i<pageNums;i++){
+     for(var i=2;i<=pageNums;i++){
   	   nextPenSlugs.push('listQna.do?keyfield=&keyword=&pageNum='+i);
      }	
 
@@ -110,12 +91,7 @@ $(document).ready(function() {
       status: '.page-load-status',
     });   
 });
-
 </script>
-
-
-
-
 <div id="body">
 	<!-- 로그인 되었을 시 글쓰기 버튼 화면따라다님 -->
 	<c:if test="${!empty m_id}">
@@ -214,4 +190,3 @@ $(document).ready(function() {
 	</c:if>
 	</div>
 </div>
-
