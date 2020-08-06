@@ -330,6 +330,7 @@ div#body div#detail_list{
 }
 div#body div#detail_list ul li{
 	font-size:20px;
+	display:block;
 }
 div#body div.viewmenu{
 	width: 100%;
@@ -828,4 +829,94 @@ div#body.store div.card-sheet{
 }
 div#body.store div.all_wrap{
 	margin-top: 420px;
+}
+div#body input.buy {
+    width:200px;
+    background-color:82d9d0;
+    border-width:2px;
+	border-color:82d9d0;
+    color:#fff;
+    padding: 8px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+   	border-radius:10px;
+}
+div#body input.basket {
+    width:200px;
+    background-color:white;
+    color:82d9d0;
+    border-width:2px;
+	border-color:82d9d0;
+    padding: 8px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+   	border-radius:10px;
+}
+div#body input.buy:hover {
+   	background-color:white;
+	color:82d9d0;
+	border-width:2px;
+	border-color:82d9d0;
+}
+div#body input.basket:hover {
+   	background-color:82d9d0;
+	color:white;
+	border-width:2px;
+	border-color:white;
+}
+div#body div.productdetail{
+	width: 70%;
+	float: left;
+}
+div#body div.productdetail div.mainimage img{
+	width: 75%;
+	height: 500px;
+	border-radius: 10px;
+}
+div#body div.buyform{
+	width: 28%;
+	float: right;
+}
+div#body div.buyform div.buyformback{
+	background-color: white;
+	border-radius: 10px;
+	border: 1px solid #82d9d0;
+	height: 300px;
+}
+div#body div.buyform div.buyformback div#text-box{
+	font-size: 18px;
+	margin-top: 30px;
+}
+div#body div.productcontent{
+	width: 100%;
+}
+div#body div.productcontent div.contentimg{
+	width: 100%;
+	height: 700px;
+	margin-top: 5px;
+	margin-bottom: 30px;
+	float:left;
+}
+div#body div.productcontent div.contentimg img{
+	margin-top: 25px;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+}
+div#body div.productcontent div.contenttext{
+	width: 50%;
+}
+div#body div.productcontent div.contenttext div#text-box{
+	font-size: 25px;
+}
+div#body div.buyform img.starimg{
+	
 }

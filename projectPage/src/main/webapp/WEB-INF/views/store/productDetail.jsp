@@ -5,7 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript">
 	var locked = 0;
 	function show(star){
@@ -71,70 +70,24 @@ $(document).ready(function(){
 });
 	
 </script>
-<style type="text/css">
-	.button {
-	    width:200px;
-	    background-color:82d9d0;
-	    border-width:2px;
-		border-color:82d9d0;
-	    color:#fff;
-	    padding: 8px 0;
-	    text-align: center;
-	    text-decoration: none;
-	    display: inline-block;
-	    font-size: 15px;
-	    margin: 4px;
-	    cursor: pointer;
-	   	border-radius:10px;
-	}
-	.button2 {
-	    width:200px;
-	    background-color:white;
-	    color:82d9d0;
-	    border-width:2px;
-		border-color:82d9d0;
-	    padding: 8px 0;
-	    text-align: center;
-	    text-decoration: none;
-	    display: inline-block;
-	    font-size: 15px;
-	    margin: 4px;
-	    cursor: pointer;
-	   	border-radius:10px;
-	}
-	.button:hover {
-    	background-color:white;
-		color:82d9d0;
-		border-width:2px;
-		border-color:82d9d0;
-	}
-	.button2:hover {
-    	background-color:82d9d0;
-		color:white;
-		border-width:2px;
-		border-color:white;
-	}
-</style>
 <div id="body">
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
-	<div class="card-board">
-		<div class="card-sheet">
-			<div class="card-img">
-				<c:if test="${fn:endsWith(detail.filename,'.jpg') || 
-	        				  fn:endsWith(detail.filename,'.JPG') ||
-	        				  fn:endsWith(detail.filename,'.gif') ||
-	        			      fn:endsWith(detail.filename,'.GIF') ||
-	        				  fn:endsWith(detail.filename,'.png') ||
-	          				  fn:endsWith(detail.filename,'.PNG')}">
-					<div><img src="imageView.do?s_num=${detail.s_num}" style="width:300px;height:400px;"></div>
-				</c:if>	
-			</div>
+	<div id="text-box"><h2>${detail.s_title}</h2></div>
+	<div class="productdetail">
+		<div class="mainimage">
+			<c:if test="${fn:endsWith(detail.filename,'.jpg') || 
+        				  fn:endsWith(detail.filename,'.JPG') ||
+        				  fn:endsWith(detail.filename,'.gif') ||
+        			      fn:endsWith(detail.filename,'.GIF') ||
+        				  fn:endsWith(detail.filename,'.png') ||
+          				  fn:endsWith(detail.filename,'.PNG')}">
+				<div><img src="imageView.do?s_num=${detail.s_num}"></div>
+			</c:if>	
 		</div>
 	</div>
-	<div class="card-board">
-		<div class="card-sheet">
-			<div class="card-content">
-				<div id="text-box"><h2>${detail.s_title}</h2></div>
+	<div class="buyform">
+		<div class="buyformback">
+			<div>
 				<div id="text-box">
 					<c:if test="${detail.s_ship==0}">무료배송</c:if>
 					<c:if test="${detail.s_ship==1}">배송비 : <fmt:formatNumber value="${detail.s_shipcost}" type="currency" currencySymbol="\\"/></c:if>
@@ -142,11 +95,11 @@ $(document).ready(function(){
 				<div id="text-box">
 					<div>배송예정일 : ${detail.shipdate}</div>
 				</div>
-				<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:50px;"></div></c:if>	 
-				<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:50px;"></div></c:if>	 
-				<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:50px;"></div></c:if>	 
-				<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:50px;"></div></c:if>	 
-				<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:50px;"></div></c:if>
+				<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	 
+				<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	 
+				<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></div></c:if>	 
+				<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" class="starimg"></div></c:if>	 
+				<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></div></c:if>
 				<div id="text-box">
 					<c:if test="${detail.s_discount == ''}">
 						<h4 style="color:green;"><fmt:formatNumber value="${detail.s_price}" type="currency" currencySymbol="\\"/></h4>
@@ -159,48 +112,45 @@ $(document).ready(function(){
 				</div>
 			</div>
 			<div class="btn-group"> 
-				<input type="button" class="button" value="구매하기"><br>
-				<input type="button" class="button2"  value="장바구니" id="basketBtn">
+				<input type="button" class="buy" value="구매하기"><br>
+				<input type="button" class="basket"  value="장바구니" id="basketBtn">
 			</div>
 		</div>
 	</div>
-	<div class="card-board">
-		<div class="card-sheet">
-			<div class="card-img">
-				<c:if test="${fn:endsWith(detail.dfilename,'.jpg') || 
-	        				  fn:endsWith(detail.dfilename,'.JPG') ||
-	        				  fn:endsWith(detail.dfilename,'.gif') ||
-	        			      fn:endsWith(detail.dfilename,'.GIF') ||
-	        				  fn:endsWith(detail.dfilename,'.png') ||
-	          				  fn:endsWith(detail.dfilename,'.PNG')}">
-					<div><img src="imageView2.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
-				</c:if>	 
-			</div>
-			<div class="card-img">
-				<c:if test="${fn:endsWith(detail.dfilename2,'.jpg') || 
-	        				  fn:endsWith(detail.dfilename2,'.JPG') ||
-	        				  fn:endsWith(detail.dfilename2,'.gif') ||
-	        			      fn:endsWith(detail.dfilename2,'.GIF') ||
-	        				  fn:endsWith(detail.dfilename2,'.png') ||
-	          				  fn:endsWith(detail.dfilename2,'.PNG')}">
-					<div><img src="imageView3.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
-				</c:if>	 
-			</div>
-			<div class="card-img">
-				<c:if test="${fn:endsWith(detail.dfilename3,'.jpg') || 
-	        				  fn:endsWith(detail.dfilename3,'.JPG') ||
-	        				  fn:endsWith(detail.dfilename3,'.gif') ||
-	        			      fn:endsWith(detail.dfilename3,'.GIF') ||
-	        				  fn:endsWith(detail.dfilename3,'.png') ||
-	          				  fn:endsWith(detail.dfilename3,'.PNG')}">
-					<div><img src="imageView4.do?s_num=${detail.s_num}" style="width:100%;height:200px;"></div>
-				</c:if>	 
-			</div>
-			<div class="card-content">
-				<div id="text-box"><h2>${detail.s_title}</h2></div>
-				<div id="text-box">
-					<h4>[${detail.s_content}]</h4>
-				</div>
+	<div class="productcontent">
+		<div class="contentimg">
+			<c:if test="${fn:endsWith(detail.dfilename,'.jpg') || 
+        				  fn:endsWith(detail.dfilename,'.JPG') ||
+        				  fn:endsWith(detail.dfilename,'.gif') ||
+        			      fn:endsWith(detail.dfilename,'.GIF') ||
+        				  fn:endsWith(detail.dfilename,'.png') ||
+          				  fn:endsWith(detail.dfilename,'.PNG')}">
+				<img src="imageView2.do?s_num=${detail.s_num}">
+			</c:if>	 
+		</div>
+		<div class="contentimg">
+			<c:if test="${fn:endsWith(detail.dfilename2,'.jpg') || 
+        				  fn:endsWith(detail.dfilename2,'.JPG') ||
+        				  fn:endsWith(detail.dfilename2,'.gif') ||
+        			      fn:endsWith(detail.dfilename2,'.GIF') ||
+        				  fn:endsWith(detail.dfilename2,'.png') ||
+          				  fn:endsWith(detail.dfilename2,'.PNG')}">
+				<img src="imageView3.do?s_num=${detail.s_num}">
+			</c:if>	
+		</div>
+		<div class="contentimg">
+			<c:if test="${fn:endsWith(detail.dfilename3,'.jpg') || 
+        				  fn:endsWith(detail.dfilename3,'.JPG') ||
+        				  fn:endsWith(detail.dfilename3,'.gif') ||
+        			      fn:endsWith(detail.dfilename3,'.GIF') ||
+        				  fn:endsWith(detail.dfilename3,'.png') ||
+          				  fn:endsWith(detail.dfilename3,'.PNG')}">
+				<img src="imageView4.do?s_num=${detail.s_num}">
+			</c:if>	 
+		</div>
+		<div class="contenttext">
+			<div id="text-box">
+				[${detail.s_content}]
 			</div>
 		</div>
 	</div>	
@@ -212,11 +162,11 @@ $(document).ready(function(){
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
 	<div class="card-board">
 		<div class="card-img">
-			<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:200px;"></div></c:if>	 
-			<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:200px;"></div></c:if>	 
-			<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:200px;"></div></c:if>	 
-			<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:200px;"></div></c:if>	 
-			<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:200px;"></div></c:if>	 
+			<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	 
+			<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	 
+			<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></div></c:if>	 
+			<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" class="starimg"></div></c:if>	 
+			<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></div></c:if>	 
 		</div>
 	</div>
 	<div class="card-board">
