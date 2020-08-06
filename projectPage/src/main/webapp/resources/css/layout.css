@@ -775,3 +775,23 @@ div.noauth a{
 	padding: 5px;
 	border-radius: 5px;
 }
+div#body table.noticeboard{
+	width: 100%;
+	margin: 0 auto;
+}
+div#body table.noticeboard td{
+	text-align: center;
+}
+div#body table.noticeboard td a:hover{
+	color:rgba(130, 130, 130, 0.8);
+}
+div#body form#search_form{
+	background-color: rgb(247, 248, 249);
+}
+div#body ul.noticeinfo{
+	text-align: right;
+	color:rgba(130,130,130, 1.0);
+}
+div#body p.noticecontent{
+	word-break:break-all;
+}
