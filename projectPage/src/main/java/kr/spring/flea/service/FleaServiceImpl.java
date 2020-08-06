@@ -26,10 +26,10 @@ public class FleaServiceImpl implements FleaService {
 		return fleaMapper.selectList(map);
 	}
 	
-//	@Override
-//	public int selectRowCount(Map<String, Object> map) {
-//		return fleaMapper.selectRowCount(map);
-//	}
+	@Override
+	public int selectRowCount(Map<String, Object> map) {
+		return fleaMapper.selectRowCount(map);
+	}
 
 	@Override
 	public void insert(FleaVO flea) {
