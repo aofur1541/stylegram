@@ -18,7 +18,7 @@
 	}
 </script>
 
-<body>
+<body> 
 	<button id="review-open">리뷰 보기</button>
  	<div id="review-body">
 		<div class="card-content">

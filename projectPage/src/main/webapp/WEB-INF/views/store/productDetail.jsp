@@ -160,7 +160,7 @@ $(document).ready(function(){
 		
 	</div>	
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
-	<div class="card-board">
+	<div class="card-board"> 
 		<div class="card-img">
 			<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	 
 			<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	 
