@@ -5,7 +5,7 @@
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
 <!-- <script>
-
+ 
 $(document).ready(function() {
 
     var $grid = $('.all_wrap').imagesLoaded( function() {
