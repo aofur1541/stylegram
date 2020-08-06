@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#review-body").hide();
@@ -21,7 +20,7 @@
 
 <body>
 	<button id="review-open">리뷰 보기</button>
- 	<div class="card-board" id="review-body">
+ 	<div id="review-body">
 		<div class="card-content">
 			<c:if test="${count == 0}">
 			<table>
@@ -55,12 +54,12 @@
 				</script>
 				<!-- 리뷰 리스트 -->
 				<tr>
-					<td>
+					<td class="writeinfo">
 						<c:if test="${empty row.m_nickname }">
-							${row.m_id }
+							<b>${row.m_id }</b>
 						</c:if>
 						<c:if test="${!empty row.m_nickname }">
-							${row.m_nickname }
+							<b>${row.m_nickname }</b>
 						</c:if>
 						(<fmt:formatDate value="${row.sr_regdate }" pattern="yyyy-MM-dd"/>)<br>
 						<c:if test="${row.m_num == m_num || m_auth == 4 }">
@@ -69,11 +68,11 @@
 						</c:if>
 					</td>
 					<td>
-						<c:if test="${row.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star1.png"></c:if>
-						<c:if test="${row.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star2.png"></c:if>
-						<c:if test="${row.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star3.png"></c:if>
-						<c:if test="${row.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star4.png"></c:if>
-						<c:if test="${row.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star5.png"></c:if>					
+						<c:if test="${row.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></c:if>
+						<c:if test="${row.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></c:if>
+						<c:if test="${row.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></c:if>
+						<c:if test="${row.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star4.png" class="starimg"></c:if>
+						<c:if test="${row.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></c:if>					
 					</td>
 				</tr>
 				<tr>
