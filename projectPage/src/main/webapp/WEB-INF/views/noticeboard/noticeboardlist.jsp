@@ -12,7 +12,7 @@
 	<div class="result-disply">등록 게시물 x</div>
 	</c:if>
 	<c:if test="${count > 0}">
-	<table class="noticeboard">
+	<table class="noticeboard"> 
 		<tr>
 			<th>글 번호</th>
 			<th width="300" align="center">제목</th>

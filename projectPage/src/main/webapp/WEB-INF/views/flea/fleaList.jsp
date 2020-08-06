@@ -27,7 +27,7 @@ $(document).ready(function() {
 	<a href="${pageContext.request.contextPath}/member/auth.do" id="nav_menu">본인인증</a>
 	</div>
 	</c:if>
-	<c:if test="${m_auth >= 3}">
+	<c:if test="${m_auth >= 3}"> 
 	<div class="searchForm">
 		<form action="fleaList.do" method="get">
 			<div id="filter">

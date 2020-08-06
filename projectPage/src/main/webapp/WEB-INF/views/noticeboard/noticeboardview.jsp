@@ -15,7 +15,7 @@
 	              fn:endsWith(notice.nb_filename1,'.PNG')}">
 		<div class="align-center">
 			<img src="imageView.do?nb_num=${notice.nb_num}&file_num=1" style="max-width:500px">
-		</div>
+		</div> 
 	</c:if>
 	<c:if test="${fn:endsWith(notice.nb_filename2,'.jpg') || 
 	              fn:endsWith(notice.nb_filename2,'.JPG') ||
