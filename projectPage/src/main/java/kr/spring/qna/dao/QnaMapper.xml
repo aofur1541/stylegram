@@ -55,21 +55,6 @@
 		<if test="keyword != '' and ketfield == 'qb_content'">
 			b.qb_content LIKE '%' || #{keyword} || '%'
 		</if>
-		<if test="filter != '' and keyword != ''">
-				and
-			</if>
-			<if test="filter == 'top'">
-				qb_topinfo=1
-			</if>
-			<if test="filter == 'bottom'">
-				qb_pantsinfo=1
-			</if>
-			<if test="filter == 'hat'">
-				qb_capinfo=1
-			</if>
-			<if test="filter == 'shoes'">
-				qb_shoesinfo=1
-			</if>			
 	</where>
 	ORDER BY b.qb_num DESC) a
 	)<![CDATA[ WHERE rnum >= #{start} AND rnum <=#{end}]]>
@@ -79,7 +64,6 @@
 	<delete id="deleteQna" parameterType="integer">
 		DELETE FROM proqnaboard WHERE qb_num = #{qb_num}
 	</delete>
-	
 	
 </mapper>
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.spring.store.dao.StoreMapper">
+	<select id="selectProductCount" resultType="integer">
+		SELECT COUNT(*) FROM prostore
+	</select>
+	<select id="selectProductList" resultType="StoreVO">
+		SELECT * FROM prostore<!--  s JOIN (SELECT SUM(sr_star)/COUNT(*) avg, s_num from prostorereview GROUP BY s_num) a ON s.s_num = a.s_num ORDER BY avg DESC -->
+	</select>
+	<select id="selectProductDetail" resultType="StoreVO" parameterType="integer">
+		SELECT * FROM prostore s LEFT OUTER JOIN prostorereview r ON s.s_num=r.s_num WHERE s.s_num=#{s_num}
+	</select>
+</mapper>
