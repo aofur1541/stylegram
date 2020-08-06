@@ -9,6 +9,9 @@ public class StoreReviewVO {
 	private Date sr_regdate;		//리뷰 등록일
 	private int s_num;				//상품번호
 	private int sr_star;			//별점
+	
+	private String m_id;
+	private String m_nickname;
 
 	public int getSr_star() {
 		return sr_star;
@@ -47,6 +50,18 @@ public class StoreReviewVO {
 		this.sr_regdate = sr_regdate;
 	}
 	
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+	public String getM_nickname() {
+		return m_nickname;
+	}
+	public void setM_nickname(String m_nickname) {
+		this.m_nickname = m_nickname;
+	}
 	@Override
 	public String toString() {
 		return "StoreReviewVO [sr_num=" + sr_num + ", s_num=" + s_num + ", m_num=" + m_num + ", sr_content="

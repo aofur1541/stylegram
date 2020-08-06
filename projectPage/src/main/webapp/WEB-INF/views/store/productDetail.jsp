@@ -54,6 +54,21 @@
 		alert("별점 "+star+"점을 선택하셨습니다.");
 		document.reviewform.sr_star.value=star;
 	}
+$(document).ready(function(){
+	
+	listReview("1");
+	
+	function listReview(num){
+		$.ajax({
+			type: "get",
+			url: "listReview.do?s_num=${detail.s_num}&curPage="+num,
+			success: function(result){
+				$("#listReview").html(result);
+			}
+		});
+		
+	}
+});
 	
 </script>
 <style type="text/css">
@@ -190,6 +205,10 @@
 		</div>
 	</div>	
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
+	<!-- 리뷰 불러오기 -->
+	<div class="card-board" id="listReview">
+		
+	</div>	
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
 	<div class="card-board">
 		<div class="card-img">
@@ -225,6 +244,10 @@
 			</form:form>
 		</div>
 	</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 	<!-- 장바구니 -->
 	<div id="basket" class="basket">
 		<a id="basket-icon">
@@ -247,51 +270,3 @@
 </div>
 			
 			
-			
-			
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
