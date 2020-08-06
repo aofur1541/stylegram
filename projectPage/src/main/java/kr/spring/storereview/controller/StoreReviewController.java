@@ -1,5 +1,7 @@
 package kr.spring.storereview.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -52,6 +54,28 @@ public class StoreReviewController {
 		
 		return "redirect:/store/storeDetail.do";
 	}
+	
+	@RequestMapping("/store/productReview.do")
+	public ModelAndView process(StoreReviewVO storeReviewVO) {
+		
+		int count = storeReviewService.selectReviewCount();
+		
+		List<StoreReviewVO> list = null;
+		
+		list = storeReviewService.selectReviewList();
+		
+		if(log.isDebugEnabled()) {
+			log.debug("리뷰데이터 : " + list);
+		}
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("storeReview");
+		mav.addObject("count", count);
+		mav.addObject("list", list);
+
+		return mav;
+	}
+	
 }
 
 

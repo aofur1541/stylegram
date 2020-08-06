@@ -30,7 +30,9 @@ public class StoreVO {
 	private Date s_regdate;			//상품등록일
 	private int mdpick;				//MD추천 여부
 	private int staravg;			//별점 평균값
-	
+	private int s_ship;				//배송비 유무 여부
+	private int s_shipcost;			//배송비
+	private Date shipdate;			//배송예정일
 	
 	public void setUpload(MultipartFile upload)throws IOException {
 		this.upload = upload;
@@ -162,6 +164,24 @@ public class StoreVO {
 	public void setStaravg(int staravg) {
 		this.staravg = staravg;
 	}
+	public Date getShipdate() {
+		return shipdate;
+	}
+	public void setShipdate(Date shipdate) {
+		this.shipdate = shipdate;
+	}	
+	public int getS_ship() {
+		return s_ship;
+	}
+	public void setS_ship(int s_ship) {
+		this.s_ship = s_ship;
+	}
+	public int getS_shipcost() {
+		return s_shipcost;
+	}
+	public void setS_shipcost(int s_shipcost) {
+		this.s_shipcost = s_shipcost;
+	}
 	
 	@Override
 	public String toString() {
@@ -169,7 +189,9 @@ public class StoreVO {
 				+ ", dupload=" + dupload + ", dupload2=" + dupload2 + ", dupload3=" + dupload3 + ", filename="
 				+ filename + ", dfilename=" + dfilename + ", dfilename2=" + dfilename2 + ", dfilename3=" + dfilename3
 				+ ", s_price=" + s_price + ", s_discount=" + s_discount + ", s_content=" + s_content + ", s_regdate="
-				+ s_regdate + ", mdpick=" + mdpick + ", staravg=" + staravg + "]";
+				+ s_regdate + ", mdpick=" + mdpick + ", staravg=" + staravg + ", s_ship=" + s_ship + ", s_shipcost="
+				+ s_shipcost + ", shipdate=" + shipdate + "]";
 	}
+
 
 }

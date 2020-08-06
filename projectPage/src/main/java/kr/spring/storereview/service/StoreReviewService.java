@@ -8,5 +8,4 @@ public interface StoreReviewService {
 	public void insert (StoreReviewVO review);
 	public int selectReviewCount();
 	public List<StoreReviewVO> selectReviewList();
-	public List<StoreReviewVO> selectStarAvarage();
 }

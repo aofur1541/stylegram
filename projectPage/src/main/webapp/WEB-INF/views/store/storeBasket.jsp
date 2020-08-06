@@ -96,13 +96,12 @@
 </script>
 </head>
 <div id="body">
-<!-- 구매 물건 : 가방(20만원),코트(10만원),청바지(5만원),식사권(15만원),신발(10만원) -->
+
 	<h2>상품 구매</h2>
 	<form action="order.jsp" method="post">
 		<table border="1">
 			<caption>장바구니</caption>
 			<tr>
-				<td>사진</td>
 				<td>상품정보</td>
 				<td>상품금액</td>
 				<td>배송비</td>
@@ -110,17 +109,18 @@
 			<c:forEach var="basket" items="${basket }">
 				<tr>
 					<td>
-					<img src="imageView.do?s_num=${basket.s_num}" width="30px">
+					<span><a href="#"><img src="imageView.do?s_num=${basket.s_num}" height="100px"></a></span>	
+					<span>${basket.s_title }</span>
+					<span>${basket.s_content }</span>
 					</td>
-					<td>
-					${basket.s_title }<br>
-					${basket.s_content }
-					</td>
-					<td>${basket.s_price} </td>
+					<td>${basket.s_price}원 </td>
 					<td>3000원</td>
 				</tr>
 			</c:forEach>
 		</table>
+		
+		
+		<!----------------------------------- 예전 --------------------------------------- -->
 		<table>
 			<tr>
 				<td><img src="../images/bag.jpg"></td>

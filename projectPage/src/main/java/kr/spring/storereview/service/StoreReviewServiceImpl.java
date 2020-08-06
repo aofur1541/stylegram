@@ -29,9 +29,4 @@ public class StoreReviewServiceImpl implements StoreReviewService {
 	public List<StoreReviewVO> selectReviewList() {
 		return storeReviewMapper.selectReviewList();
 	}
-
-	@Override
-	public List<StoreReviewVO> selectStarAvarage() {
-		return storeReviewMapper.selectStarAvarage();
-	}
 }
