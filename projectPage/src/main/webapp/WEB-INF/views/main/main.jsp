@@ -4,15 +4,98 @@
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+<<<<<<< HEAD
 <!-- <script>
+=======
+<style type="text/css">
+    /* reveal grid after images loaded */
+    .grid.are-images-unloaded {
+      opacity: 0;
+    }
+
+    .grid__item,
+    .grid__col-sizer {
+     width: 15px;
+     
+    }
+
+    .grid__gutter-sizer { width: 1%; }
+
+    /* hide by default */
+    .grid.are-images-unloaded .image-grid__item {
+      opacity: 0;
+    }
+
+    .grid__item {
+      margin: 0 auto;
+      float: left;
+      width: 300px;
+      
+    }
+
+    .grid__item img {
+      width: 100%;
+	  border-radius: 15px;
+    }
+</style>
+<script>
+>>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 $(document).ready(function() {
-    var $grid = $('.all_wrap').imagesLoaded( function() {
-      $grid.masonry({
-          itemSelector: '.wrap-item',
-          fitwidth: true
-      });
+    //-------------------------------------//
+    // init Masonry
+
+    var $grid = $('.grid').masonry({
+      itemSelector: 'none', // select none at first
+      columnWidth: '.grid__col-sizer',
+      gutter: '.grid__gutter-sizer',
+      percentPosition: true,
+      stagger: 30,
+      // nicer reveal transition
+      visibleStyle: { transform: 'translateY(0)', opacity: 1 },
+      hiddenStyle: { transform: 'translateY(100px)', opacity: 0 },
     });
+
+    // get Masonry instance
+    var msnry = $grid.data('masonry');
+
+    // initial items reveal
+    $grid.imagesLoaded( function() {
+      $grid.removeClass('are-images-unloaded');
+      $grid.masonry( 'option', { itemSelector: '.grid__item' });
+      var $items = $grid.find('.grid__item');
+      $grid.masonry( 'appended', $items );
+    });
+
+    //-------------------------------------//
+    // hack CodePen to load pens as pages
+
+    var count = ${count};
+    var pageNums = Math.ceil(count/10);
+    var nextPenSlugs = [];
+    	
+    /* alert(pageNums); */	
+     for(var i=2;i<=pageNums;i++){
+  	   nextPenSlugs.push('main.do?keyfield=&keyword=&pageNum='+i);
+     }	
+
+    function getPenPath() {
+      var slug = nextPenSlugs[ this.loadCount ];
+      if ( slug ) {
+        return './' + slug;
+      }
+    }
+
+    //-------------------------------------//
+    // init Infinte Scroll
+
+    $grid.infiniteScroll({
+      path: getPenPath,
+      append: '.grid__item',
+      outlayer: msnry,
+      status: '.page-load-status',
+    });   
 });
+<<<<<<< HEAD
 
 <style type="text/css">
    
@@ -106,8 +189,11 @@ $(document).ready(function() {
     });   
 });
 
+=======
+>>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 </script>
 <div id="body">
+
 	<div class="searchForm">
 		<form action="main.do" method="get">
 			<div id="filter" class="filter">
@@ -137,14 +223,28 @@ $(document).ready(function() {
 	</c:if>
 	<div id="card">
 	<c:if test="${count > 0}">
+<<<<<<< HEAD
 	<div class="grid">
 	
 	<div class="grid__col-sizer"></div>
 	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 300 }'>
 	<div class="grid__col-sizer"></div>
+=======
+	
+	<div class="grid">
+	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 200 }'>
+	
+	<div class="grid__col-sizer"></div>
+	
+>>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 	<c:forEach var="mainList" items="${mainList}">
+<<<<<<< HEAD
 	<div class="grid__item">
 		<div class="wrap-item">
+=======
+		<div class="grid__item">
+		<div class="entry-content">
+>>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 		<div class="card-sheet"> 
 			<div id="card-img">
 			<c:if test="${empty mainList.mb_photo}">
@@ -205,15 +305,23 @@ $(document).ready(function() {
 					</div>
 				</div>
 			</div>
+			</div>
 		</div>
 		</div>
+<<<<<<< HEAD
 		
 		<div class="grid__gutter-sizer"></div>
 		
+=======
+	<div class="grid__gutter-sizer"></div>
+>>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 	</c:forEach>
 	</div>
 	</div>
+<<<<<<< HEAD
 	<div class="align-center">${pagingHtml}</div>
+=======
+>>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 	</c:if>
 	</div>
 </div>

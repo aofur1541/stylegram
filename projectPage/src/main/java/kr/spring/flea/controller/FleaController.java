@@ -20,11 +20,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.flea.domain.FleaVO;
 import kr.spring.flea.service.FleaService;
+import kr.spring.util.PagingUtil;
 
 
 @Controller
 public class FleaController {
 
+	int rowCount = 10;//한화면에 보여줄 게시물 수
+	int pageCount = 10;//한화면에 보여줄 페이지 수
+	
 	private Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource
@@ -54,12 +58,20 @@ public class FleaController {
 			log.debug("<<listParamInfo>> : " + count + keyfield + keyword);
 		}
 		
+		//페이징처리
+		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "fleaList.do");
+		map.put("start", page.getStartCount());
+		map.put("end", page.getEndCount());
 		List<FleaVO> list = null;
-		list = fleaService.selectList(map);
+		if(count > 0) {
+			list = fleaService.selectList(map);
+		}
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("fleaList");
 		mav.addObject("list", list);
+		mav.addObject("count", count);
+		mav.addObject("pagingHtml", page.getPagingHtml());
 		mav.addObject("filter", filter);
 		
 		return mav;
@@ -114,13 +126,17 @@ public class FleaController {
 	
 	//글 상세
 	@RequestMapping(value="/flea/fleaDetail.do")
-	public ModelAndView detail(@RequestParam("fb_num") int fb_num) {
+	public ModelAndView detail(@RequestParam("fb_num") int fb_num, HttpSession session) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<fb_num>> : " + fb_num);
 		}
 		
 		FleaVO flea = fleaService.selectFlea(fb_num);
-		
+		if(session.getAttribute("m_num") == null) {
+			return new ModelAndView("redirect:/member/login.do");
+		}else if((Integer)session.getAttribute("m_auth") == 2) {
+			return new ModelAndView("redirect:/member/auth.do");
+		}
 		System.out.println(flea);
 		
 		return new ModelAndView("fleaDetail", "flea", flea);
