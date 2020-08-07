@@ -73,7 +73,7 @@ $(document).ready(function(){
 <div id="body">
 	<!-- 장바구니 -->
 	<c:if test="${!empty m_id}">
-		<div id="basket" class="basket">
+		<div id="basket" class="fixbasket">
 			<a href="${pageContext.request.contextPath }/basket/storeBasket.do">
 				<img src="${pageContext.request.contextPath}/resources/images/shoppingBag.png">
 			</a>
@@ -119,10 +119,11 @@ $(document).ready(function(){
 					</c:if>
 				</div>
 			</div>
-			<c:if test="${!empty m_id}">
 			<form:form action="${pageContext.request.contextPath}/basket/basket.do" id="basketBtn" commandName="storeVO">
 				<form:hidden path="s_num" value="${detail.s_num}"/>
+				<c:if test="${!empty m_id}">
 				<form:hidden path="m_num"/>
+				</c:if>
 				<form:select path="a_num">
 					<form:option checked="checked" value="1">1개</form:option>
 					<form:option value="2">2개</form:option>
@@ -131,11 +132,10 @@ $(document).ready(function(){
 					<form:option value="5">5개</form:option>
 				</form:select>
 				<div class="btn-group"> 
-					<input type="button" class="buy" value="구매하기"><br>
-					<input type="submit" value="장바구니">
+					<input type="submit" class="buy" value="구매하기"><br>
+					<input type="button" class="basket" value="장바구니">
 				</div>
 			</form:form>
-			</c:if>
 		</div>
 	</div>
 	<div class="productcontent">
@@ -215,13 +215,18 @@ $(document).ready(function(){
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#basketBtn").submit(function(){
-				location.href="${pageContext.request.contextPath}/basket/basket.do?s_num=${detail.s_num}";
-				var check = confirm("장바구니에 담겼습니다! \n장바구니로 이동하시겠습니까?")
-				if(check == true){
-					location.href='${pageContext.request.contextPath}/basket/storeBasket.do';
-				}else if(check == false){
-					return false;
+			$(".basket").click(function(){
+				var numcheck = ${m_num}
+				if(numcheck != ''){
+					location.href="${pageContext.request.contextPath}/basket/basket.do?s_num=${detail.s_num}";
+					var check = confirm("장바구니에 담겼습니다! \n장바구니로 이동하시겠습니까?")
+					if(check == true){
+						location.href='${pageContext.request.contextPath}/basket/storeBasket.do';
+					}else if(check == false){
+						return false;
+					}
+				}else{
+					confirm("로그인이 필요합니다.");
 				}
 			}); 
 		});

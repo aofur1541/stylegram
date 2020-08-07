@@ -44,9 +44,11 @@ public class StoreBasketController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<basketVO>>" + storeVO);
 		}
-        
-		storeVO.setM_num((Integer)session.getAttribute("m_num"));
-		
+        if(session.getAttribute("m_num") != null) {
+        	storeVO.setM_num((Integer)session.getAttribute("m_num"));
+        }else {
+        	return "redirect:/member/login.do";
+        }
 		basketService.insert(storeVO);
 		
 		return "redirect:/store/productDetail.do?s_num="+storeVO.getS_num();
@@ -56,7 +58,7 @@ public class StoreBasketController {
 	@RequestMapping("/basket/storeBasket.do")
 	public ModelAndView openBasket(HttpSession session) {
 		
-		int m_num;
+		int m_num = 0;
 		
 		if(session.getAttribute("m_num") == null) {
 			return new ModelAndView("redirect:/member/login.do");
