@@ -33,6 +33,7 @@ public class StoreVO {
 	private int s_ship;				//배송비 유무 여부
 	private int s_shipcost;			//배송비
 	private Date shipdate;			//배송예정일
+	private int p_num;
 	
 	public void setUpload(MultipartFile upload)throws IOException {
 		this.upload = upload;
@@ -181,6 +182,12 @@ public class StoreVO {
 	}
 	public void setS_shipcost(int s_shipcost) {
 		this.s_shipcost = s_shipcost;
+	}
+	public int getP_num() {
+		return p_num;
+	}
+	public void setP_num(int p_num) {
+		this.p_num = p_num;
 	}
 	
 	@Override

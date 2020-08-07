@@ -24,9 +24,9 @@ public class StoreBasketServiceImpl implements StoreBasketService{
 	}
 
 	@Override
-	public void delete(StoreBasketVO basketVO) {
+	public void delete(int p_num) {
 		// TODO Auto-generated method stub
-		basketMapper.delete(basketVO);
+		basketMapper.delete(p_num);
 	}
 
 	@Override

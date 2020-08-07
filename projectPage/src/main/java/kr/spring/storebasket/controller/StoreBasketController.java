@@ -37,7 +37,7 @@ public class StoreBasketController {
 		return new StoreBasketVO();
 	}
 	
-	//장바구니 추가
+	//장바구니 상품 추가
 	@RequestMapping("/basket/basket.do")
 	public String insert(@RequestParam("s_num") int s_num, HttpSession session) {
 		
@@ -97,6 +97,19 @@ public class StoreBasketController {
 		mav.addObject("filename", store.getFilename());
 		
 		return mav;
+	}
+	
+	//장바구니 상품 삭제
+	@RequestMapping("/basket/deleteBasket.do")
+	public String deleteBasket(@RequestParam("p_num") int p_num) {
+		
+		if(log.isDebugEnabled()) {
+			log.debug("<<p_num>> : " + p_num);
+		}
+		
+		basketService.delete(p_num);
+		
+		return "redirect:/basket/storeBasket.do";
 	}
 	
 

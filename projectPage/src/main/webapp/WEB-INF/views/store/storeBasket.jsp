@@ -64,7 +64,11 @@
 		//배송비
 		var ship = 0;
 		
-		var inputs = document.getElementsByName('goods');
+		
+		
+		//var inputs = document.getElementsByName('goods');
+		var inputs = document.getElementsByName('products');
+		
 		for(var i=0;i<inputs.length;i++){
 			inputs[i].onclick=function(){
 				//상품을 선택하게 되면 해당 상품의 가격을 읽어들여 
@@ -72,23 +76,25 @@
 				//이벤트가 발생한 태그의 id -> this.id			
 				//선택한 상품의 가격 -> product[this.id]
 				if(this.checked){//체크박스 선택시
-					sum += product[this.id];//선택시 가격 누적
+					sum += Number(this.value);//선택시 가격 누적
 				}else{//체크박스 해제시
-					sum -= product[this.id];//선택을 해제하면 가격을 차감
+					sum -= Number(this.value);//선택을 해제하면 가격을 차감
 				}
 				
 				//sum이 0이면 배송비도 0이어야 하기 때문에 sum>0 조건 필요
-				if(sum>0 && sum< 300000){
-					ship = 50000;
+				if(sum>0 && sum< 50000){
+					ship = 3000;
 				}else{
 					ship = 0;
 				}
 				
-				var spans = document.getElementsByTagName('span');
+				var p_price = document.getElementById('p_price');
+				var p_ship = document.getElementById('ship');
+				var p_total = document.getElementById('total');
 				//지불금액 미리보고
-				spans[0].innerHTML = sum;
-				spans[1].innerHTML = ship;
-				spans[2].innerHTML = sum+ship;
+				p_price.innerHTML = sum;
+				p_ship.innerHTML = ship;
+				p_total.innerHTML = sum+ship;
 			};
 		}
 		
@@ -102,9 +108,10 @@
 		<table border="1">
 			<caption>장바구니</caption>
 			<tr>
-				<td>상품정보</td>
-				<td>상품금액</td>
-				<td>배송비</td>
+				<th>상품정보</th>
+				<th>상품금액</th>
+				<th>배송비</th>
+				<th></th>
 			</tr>
 			<c:forEach var="basket" items="${basket }">
 				<tr>
@@ -115,6 +122,8 @@
 					</td>
 					<td>${basket.s_price}원 </td>
 					<td>3000원</td>
+					<td><input type="button" onclick="location.href='${pageContext.request.contextPath}/basket/deleteBasket.do?p_num=${basket.p_num}'" value="삭제"></td>
+					<td><input type="checkbox" name="products" value="${basket.s_price}"></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -122,46 +131,15 @@
 		
 		<!----------------------------------- 예전 --------------------------------------- -->
 		<table>
-			<tr>
-				<td><img src="../images/bag.jpg"></td>
-				<td><img src="../images/coat.jpg"></td>
-				<td><img src="../images/jeans.jpg"></td>
-				<td><img src="../images/giftCard.jpg"></td>
-				<td><img src="../images/shoes.jpg"></td>
-			</tr>
-			<tr>
-				<td>
-					<input id="c0" class="select" type="checkbox" name="goods" value="bag"> bag
-				</td>
-				<td>
-					<input id="c1" class="select" type="checkbox" name="goods" value="coat"> coate
-				</td>
-				<td>
-					<input id="c2" class="select" type="checkbox" name="goods" value="jeans"> jeans
-				</td>
-				<td>
-					<input id="c3" class="select" type="checkbox" name="goods" value="giftCard"> giftCard
-				</td>								
-				<td>
-					<input id="c4" class="select" type="checkbox" name="goods" value="shoes"> shoes
-				</td>							
-			</tr>
-			<tr id="price">
-				<td>(20만원)</td>
-				<td>(10만원)</td>
-				<td>( 5만원)</td>
-				<td>(15만원)</td>
-				<td>(10만원)</td>
-			</tr>
 			<tr height="100">
 				<td colspan="5">
-					*<b>30만원 미만 결제</b>시 5,000원의 배송비가 추가됩니다.
+					*<b>5만원 미만 결제</b>시 3,000원의 배송비가 추가됩니다.
 				</td>
 			</tr>
 			<tr>
 				<td id="preview" colspan="5">
-					총 상품가격 <span>0</span> 원 +
-					총 배송비 <span>0</span> 원 =
+					총 상품가격 <span id="p_price">0</span> 원 +
+					총 배송비 <span id="ship">0</span> 원 =
 					총 주문금액 <span id="total">0</span> 원
 				</td>
 			</tr>
