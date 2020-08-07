@@ -53,13 +53,15 @@
 			}
 		});
 	});
+	/* 그림 미리보기 기능 */
 	function setThumbnail(event){
 		var reader = new FileReader();
-		
 		reader.onload = function(event){
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);
+			img.setAttribute("width", "300px");
 			
+			$("div#image_container").empty();
 			document.querySelector("div#image_container").appendChild(img);
 			$("#addPicture").hide();
 			$("#changeFilebtn").show();

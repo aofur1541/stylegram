@@ -42,6 +42,7 @@
 			$("#image_container").empty();
 			$("#changeFilebtn").hide();	
 			$("#addPicture").show();
+			$("#upload").click();
 		});
 		
 	});
@@ -51,6 +52,7 @@
 		reader.onload = function(event){
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);
+			img.setAttribute("width", "300px");
 			
 			document.querySelector("div#image_container").appendChild(img);
 			$("#addPicture").hide();
