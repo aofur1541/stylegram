@@ -16,6 +16,14 @@ $(document).ready(function() {
 });
 </script>
 <div id="body" class="store">
+	<!-- 장바구니 -->
+	<c:if test="${!empty m_id}">
+		<div id="basket" class="basket">
+			<a href="${pageContext.request.contextPath }/basket/storeBasket.do">
+				<img src="${pageContext.request.contextPath}/resources/images/shoppingBag.png">
+			</a>
+		</div>
+	</c:if>
 	<c:if test="${count == 0}">
 		<div>등록된 게시물이 없습니다</div>
 	</c:if>

@@ -634,7 +634,7 @@ div#main_body div#body div#flea_content_wrapper div#content div#category div#ca1
 	margin-top:5px;
 	margin-left:30px;
 }
-/* .all_wrap{
+.all_wrap{
 	margin: 0 auto;
 }        
 .all_wrap div{
@@ -642,13 +642,8 @@ div#main_body div#body div#flea_content_wrapper div#content div#category div#ca1
 }
 .all_wrap img{
 	width: 100%;
-<<<<<<< HEAD
-	border-radius: 10px;
-} */
-=======
 	border-radius: 10px 10px 0px 0px;
 }
->>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 .wrap-item {
 	width: 293px;
 }

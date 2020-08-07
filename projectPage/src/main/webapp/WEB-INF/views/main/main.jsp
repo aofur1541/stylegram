@@ -173,7 +173,9 @@ $(document).ready(function() {
 					<div class="card-content">
 						${mainList.mb_content}			
 					</div>
+					<c:if test="${!empty mainList.mb_content}">
 					<hr size="1" width="100%">
+					</c:if>
 					<div class="card-category">
 					<c:if test="${!empty mainList.mb_topinfo}">	
 						<img src="${pageContext.request.contextPath}/resources/images/tshirts.png">

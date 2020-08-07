@@ -56,7 +56,7 @@ $(document).ready(function(){
 		</ul>
 		<div>
 			<input type="submit" value="수정">
-			<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath}/qna/list.do'">
+			<input type="button" value="목록" id="homebtn" onclick="location.href='${pageContext.request.contextPath}/qna/list.do'">
 		</div>
 	</form:form>
 	</div>
