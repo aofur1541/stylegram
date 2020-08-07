@@ -71,6 +71,14 @@ $(document).ready(function(){
 	
 </script>
 <div id="body">
+	<!-- 장바구니 -->
+	<c:if test="${!empty m_id}">
+		<div id="basket" class="basket">
+			<a href="${pageContext.request.contextPath }/basket/storeBasket.do">
+				<img src="${pageContext.request.contextPath}/resources/images/shoppingBag.png">장바구니
+			</a>
+		</div>
+	</c:if>
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
 	<div id="text-box"><h2>${detail.s_title}</h2></div>
 	<div class="productdetail">
@@ -160,7 +168,7 @@ $(document).ready(function(){
 		
 	</div>	
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
-	<div class="card-board"> 
+	<div class="starpoint"> 
 		<div class="card-img">
 			<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	 
 			<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	 
@@ -169,37 +177,28 @@ $(document).ready(function(){
 			<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></div></c:if>	 
 		</div>
 	</div>
-	<div class="card-board">
-		<div class="card-content">
-			<form:form action="insertReview.do" name="reviewform" commandName="storeReviewVO">
-				<form:hidden path="sr_star"/>
-				<form:hidden path="s_num" value="${detail.s_num}"/>
-				<c:if test="${m_id==null}">
-					<textarea name="content" cols="65" rows="3" readonly="readonly">로그인 후 이용 가능한 서비스입니다.</textarea>
-				</c:if>
-				<c:if test="${m_id!=null}">
-					<div id="rating" align="center">
-						<span>
-							<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
-							<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
-							<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
-							<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
-							<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						</span>
-						<span id="startext">별점주기</span>
-					</div>
-					<form:textarea path="sr_content" cols="65" rows="3"/>
-					<input type="submit" value="등록하기">
-				</c:if>
-			</form:form>
-		</div>
-	</div>
-
-	<!-- 장바구니 -->
-	<div id="basket" class="basket">
-		<a href="${pageContext.request.contextPath }/basket/storeBasket.do">
-			<img src="${pageContext.request.contextPath}/resources/images/shoppingBag.png" width="30px">장바구니
-		</a>
+	<div class="storeReview">
+		<form:form action="insertReview.do" name="reviewform" commandName="storeReviewVO">
+			<form:hidden path="sr_star"/>
+			<form:hidden path="s_num" value="${detail.s_num}"/>
+			<c:if test="${m_id==null}">
+				<textarea name="content" cols="65" rows="3" readonly="readonly">로그인 후 이용 가능한 서비스입니다.</textarea>
+			</c:if>
+			<c:if test="${m_id!=null}">
+				<div id="rating" align="center">
+					<span>
+						<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
+						<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
+						<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
+						<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
+						<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
+					</span>
+					<span id="startext">별점주기</span>
+				</div>
+				<form:textarea path="sr_content" cols="65" rows="3"/>
+				<input type="submit" class="srsubmit" value="등록하기">
+			</c:if>
+		</form:form>
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){

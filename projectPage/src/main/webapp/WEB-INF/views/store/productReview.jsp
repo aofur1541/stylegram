@@ -18,8 +18,10 @@
 	}
 </script>
 
-<body> 
-	<button id="review-open">리뷰 보기</button>
+<body>
+	<div class="reviewbutton">
+		<button id="review-open">리뷰 보기</button>
+	</div>
  	<div id="review-body">
 		<div class="card-content">
 			<c:if test="${count == 0}">
