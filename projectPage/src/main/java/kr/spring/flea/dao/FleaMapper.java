@@ -23,6 +23,8 @@ public interface FleaMapper {
 	public void update(FleaVO flea);
 	@Delete("DELETE FROM profleaboard WHERE fb_num=#{fb_num}")
 	public void delete(int fb_num);
+	@Delete("DELETE FROM profleareply WHERE fb_num=#{fb_num}")
+	public void deletereply(int fb_num);
 	@Delete("DELETE FROM profleainfo WHERE fb_num=#{fb_num}")
 	public void deleteinfo(int fb_num);
 }
