@@ -74,9 +74,9 @@ $(document).ready(function() {
     var pageNums = Math.ceil(count/10);
     var nextPenSlugs = [];
     	
-    /* alert(pageNums); */	
-     for(var i=2;i<pageNums;i++){
-  	   nextPenSlugs.push('listQna.do?filter=${filter}&keyfield=&keyword=&pageNum='+i);
+    /* alert(pageNums);	 */
+     for(var i=2;i<=pageNums;i++){
+  	   nextPenSlugs.push('listQna.do?filter=${filter}&keyfield=${ketfiled}&keyword=${keyword}&pageNum='+i);
      }	
 
     function getPenPath() {
@@ -114,11 +114,12 @@ $(document).ready(function() {
 					<option value="shoes" <c:if test="${filter eq 'shoes'}">selected</c:if>>신발</option>
 				</select>
 				<select name="keyfield" class="keyfield">
-					<option value="qb_title">제목</option>
-					<option value="qb_content">내용</option>
-					<option value="m_id">아이디</option>
+					<option value="qb_title" <c:if test="${keyfiled eq 'qb_title'}">selected</c:if>>제목</option>
+					<option value="qb_content" <c:if test="${keyfiled eq 'qb_content'}">selected</c:if>>내용</option>
+					<option value="m_id"<c:if test="${keyfiled eq 'm_id'}">selected</c:if>>아이디</option>
+					<option value="m_nickname"<c:if test="${keyfiled eq 'm_nickname'}">selected</c:if>>닉네임</option>
 				</select>		
-				<input type="search" size="16" name="keyword" id="keyword">
+				<input type="search" size="16" name="keyword" id="keyword" value="${keyword}">
 			</div>
 		</form>
 	</div>

@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import kr.spring.qna.domain.QnaVO;
+
 import kr.spring.qna.service.QnaService;
 import kr.spring.util.PagingUtil;
 
@@ -107,8 +107,12 @@ public class QnaController {
 		}
 		
 		Integer user_num = (Integer)session.getAttribute("m_num");
-		qnaVO.setQb_usernum(user_num); 
+		qnaVO.setQb_usernum(user_num);
 		
+		if(result.hasErrors()) {
+			return "writeQna";
+		}
+			
 		qnaService.writeQna(qnaVO);
 		//구현 후 수정
 		return "redirect:listQna.do";
@@ -176,6 +180,10 @@ public class QnaController {
 			//로그 표시
 			if(log.isDebugEnabled()) {
 				log.debug("<<QnaVO>> : " + qnaVO);
+			}
+			
+			if(result.hasErrors()) {
+				return "writeQna";
 			}
 			
 			return "redirect:/qna/listQna.do";

@@ -18,7 +18,24 @@ $(document).ready(function(){
 		$('#qb_shoesinfo').prop("checked", true);
 	}
 });
-	
+
+/* 그림 미리보기 기능 */
+function setThumbnail(event){
+	var reader = new FileReader();
+	reader.onload = function(event){
+		var img = document.createElement("img");
+		img.setAttribute("src", event.target.result);
+		img.setAttribute("width", "300px");
+		
+		$("div#image_container").empty();
+		document.querySelector("div#image_container").appendChild(img);
+		$("#addPicture").hide();
+		$("#changeFilebtn").show();
+		$("#origin_picture").hide();
+	};
+	reader.readAsDataURL(event.target.files[0]);
+};
+
 </script>
 
 <div id="body">
@@ -28,18 +45,20 @@ $(document).ready(function(){
 	<form:hidden path="qb_num"/>
 	
 	<c:if test="${!empty qnaVO.qb_filename}">
-		<div>
-			<img src="imageView.do?qb_num=${qnaVO.qb_num}">
+		<div class="align-center" id="origin_picture">
+			<img src="imageView.do?qb_num=${qnaVO.qb_num}" style="max-width:500px">
 		</div>
+		<div id="image_container"></div>
 	</c:if>
-	<ul>
+		<ul>
 			<li>
-				<label for="photo">사진 추가</label>
-				<input type="file" name="upload" id="upload">
+				<label for="photo">사진 변경</label>
+				<input type="file" name="upload" id="upload" onchange="setThumbnail(event)">
 			</li>
 			<li>
-				<label for="title">제목</label>
-				<form:input path="qb_title"/>
+				<label for="title" >제목</label>
+				<form:input path="qb_title" required="required"/>
+				<form:errors path="qb_title" cssClass="error-color"/>
 			</li>
 			
 			<li>
