@@ -3,6 +3,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if($('#fb_topcheck').val() != 1){
+			$('#fb_topcheck').prop("checked", true);
+		}
+		if($('#fb_bottomcheck').val() != 1){
+			$('#fb_bottomcheck').prop("checked", true);
+		}
+		if($('#fb_hatcheck').val() != 1){
+			$('#fb_hatcheck').prop("checked", true);
+		}
+		if($('#fb_shoescheck').val() != 1){
+			$('#fb_shoescheck').prop("checked", true);
+		}
+	});
+</script>
 <div id="body">
 	<h2>물품수정</h2>
 	<form:form action="fleaUpdate.do" enctype="multipart/form-data" commandName="fleaVO">
@@ -31,10 +47,17 @@
 				<form:textarea path="fb_content"/>
 				<form:errors path="fb_content" cssClass="error-color"/>
 			</li>
+			<li class="category">
+				<label>태그선택</label><br>
+				<form:checkbox path="fb_topcheck" value="1"/><b>상의</b>
+				<form:checkbox path="fb_bottomcheck" value="1"/><b>하의</b>
+				<form:checkbox path="fb_hatcheck" value="1"/><b>모자</b>
+				<form:checkbox path="fb_shoescheck" value="1"/><b>신발</b>
+			</li>
 		</ul>
 		<div class="align-center">
 			<input type="submit" value="전송">
-			<input type="button" value="목록" onclick="location.href='fleaList.do'">
+			<input type="button" value="목록" id="homebtn" onclick="location.href='fleaList.do'">
 		</div>
 	</form:form>
 </div>

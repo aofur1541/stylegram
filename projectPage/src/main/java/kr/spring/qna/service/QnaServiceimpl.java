@@ -47,6 +47,7 @@ public class QnaServiceimpl implements QnaService{
 	@Override
 	public void deleteQna(Integer qb_num) {
 		mapperQna.deleteQnaInfo(qb_num);
+		mapperQna.deleteQnaReply(qb_num);
 		mapperQna.deleteQna(qb_num);
 	}
 

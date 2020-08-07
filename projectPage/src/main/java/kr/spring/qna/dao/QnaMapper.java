@@ -24,6 +24,7 @@ public interface QnaMapper {
 	public int selectRowCount(Map<String,Object> map);
 	@Delete("DELETE FROM proqnainfo WHERE qb_num = #{qb_num}")
 	public void deleteQnaInfo(Integer qb_num);
+	@Delete("DELETE FROM proqnareple WHERE qb_num = #{qb_num}")
+	public void deleteQnaReply(Integer qb_num);
 	public void deleteQna(Integer qb_num);
-	
 }
