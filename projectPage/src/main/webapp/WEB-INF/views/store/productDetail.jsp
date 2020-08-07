@@ -43,7 +43,7 @@
 			el.src = "${pageContext.request.contextPath}/resources/images/star00.png";
 		}
 	}
-	
+	  
 	function lock(star){
 		show(star);
 		locked = 1;
