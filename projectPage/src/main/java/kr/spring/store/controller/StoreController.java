@@ -154,6 +154,9 @@ public class StoreController {
 		StoreVO detail = storeService.selectProduct(s_num);
 		StoreReviewVO review = new StoreReviewVO();
 		
+		int m_num = (Integer)session.getAttribute("m_num");
+		detail.setM_num(m_num);
+		
 		if(log.isDebugEnabled()) {
 			log.debug(detail);
 		}

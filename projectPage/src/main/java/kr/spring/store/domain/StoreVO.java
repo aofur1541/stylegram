@@ -33,8 +33,11 @@ public class StoreVO {
 	private int s_ship;				//배송비 유무 여부
 	private int s_shipcost;			//배송비
 	private Date shipdate;			//배송예정일
-	private int p_num;
+	private int p_num;				//장바구니 번호
+	private int a_num;				//구매 수량
+	private int m_num;				//회원 번호
 	
+
 	public void setUpload(MultipartFile upload)throws IOException {
 		this.upload = upload;
 		//byte[]로 변환
@@ -189,6 +192,18 @@ public class StoreVO {
 	public void setP_num(int p_num) {
 		this.p_num = p_num;
 	}
+	public int getA_num() {
+		return a_num;
+	}
+	public void setA_num(int a_num) {
+		this.a_num = a_num;
+	}
+	public int getM_num() {
+		return m_num;
+	}
+	public void setM_num(int m_num) {
+		this.m_num = m_num;
+	}
 	
 	@Override
 	public String toString() {
@@ -197,8 +212,6 @@ public class StoreVO {
 				+ filename + ", dfilename=" + dfilename + ", dfilename2=" + dfilename2 + ", dfilename3=" + dfilename3
 				+ ", s_price=" + s_price + ", s_discount=" + s_discount + ", s_content=" + s_content + ", s_regdate="
 				+ s_regdate + ", mdpick=" + mdpick + ", staravg=" + staravg + ", s_ship=" + s_ship + ", s_shipcost="
-				+ s_shipcost + ", shipdate=" + shipdate + "]";
+				+ s_shipcost + ", shipdate=" + shipdate + ", p_num=" + p_num + ", a_num=" + a_num + "]";
 	}
-
-
 }

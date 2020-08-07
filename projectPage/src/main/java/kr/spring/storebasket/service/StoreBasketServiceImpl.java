@@ -18,9 +18,9 @@ public class StoreBasketServiceImpl implements StoreBasketService{
 	private StoreBasketMapper basketMapper;
 	
 	@Override
-	public void insert(StoreBasketVO basketVO) {
+	public void insert(StoreVO storeVO) {
 		// TODO Auto-generated method stub
-		basketMapper.insert(basketVO);
+		basketMapper.insert(storeVO);
 	}
 
 	@Override

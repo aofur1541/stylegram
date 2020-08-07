@@ -44,7 +44,7 @@ public class StoreReviewController {
 	}
 	
 	@RequestMapping("/store/insertReview.do")
-	public String submit(@Valid StoreReviewVO storeReviewVO,StoreVO storeVO,BindingResult result,HttpSession session)throws Exception {
+	public String submit(@RequestParam("s_num") int s_num, @Valid StoreReviewVO storeReviewVO,StoreVO storeVO,BindingResult result,HttpSession session)throws Exception {
 		
 		if(result.hasErrors()) {
 			return "productDetail";
@@ -55,7 +55,7 @@ public class StoreReviewController {
 		storeReviewService.insert(storeReviewVO);
 		storeService.updateStarAvg(storeVO);
 		
-		return "redirect:/store/storeDetail.do";
+		return "redirect:/store/productDetail.do?s_num="+s_num;
 	}
 	
 	@RequestMapping("/store/listReview.do")
