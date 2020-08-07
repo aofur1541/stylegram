@@ -80,7 +80,7 @@
 	<div class="align-right">
 		<%-- 글 수정 및 삭제를 하려면 로그인한 후 로그인 아이디와 작성자 아이디가 일치해야 함 --%>	
 		<c:if test="${m_num == flea.fb_usernum || m_auth == 4}">
-			<input type="button" value="수정" onclick="location.href='updateReply.do?fb_num=${flea.fb_num}'">
+			<input type="button" value="수정" onclick="location.href='fleaUpdate.do?fb_num=${flea.fb_num}'">
 			<input id="delete" type="button" value="삭제">
 		</c:if>
 		<input type="button" value="목록" onclick="location.href='fleaList.do'">
