@@ -103,7 +103,7 @@ $(document).ready(function() {
 
 
 <div id="body">
-	<div class="searchForm">
+	<div class="searchForm"> 
 		<form action="listQna.do" method="get">
 			<div id="filter" class="filter">
 				<select name="filter" class="filter" onchange="this.form.submit()">
@@ -114,9 +114,9 @@ $(document).ready(function() {
 					<option value="shoes" <c:if test="${filter eq 'shoes'}">selected</c:if>>신발</option>
 				</select>
 				<select name="keyfield" class="keyfield">
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-					<option value="id">아이디</option>
+					<option value="qb_title">제목</option>
+					<option value="qb_content">내용</option>
+					<option value="m_id">아이디</option>
 				</select>		
 				<input type="search" size="16" name="keyword" id="keyword">
 			</div>

@@ -50,6 +50,7 @@ public class FleaServiceImpl implements FleaService {
 
 	@Override
 	public void delete(int fb_num) {
+		fleaMapper.deletereply(fb_num);
 		fleaMapper.delete(fb_num);
 	}
 	

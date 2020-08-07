@@ -16,6 +16,9 @@
 			<if test="keyword != '' and keyfield == 'content'">
 				b.mb_content LIKE '%' || #{keyword} || '%'
 			</if>
+			<if test="keyword != '' and keyfield == 'nickname'">
+				m.m_nickname LIKE '%' || #{keyword} || '%'
+			</if>
 			<if test="filter != '' and keyword != ''">
 				and
 			</if>

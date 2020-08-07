@@ -3,9 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#mainwriteForm').submit(function(){
-			
-		});
+
 		$('#topinfo').change(function(){
 			if($('#topinfo').is(":checked")){
 				$('#mb_topinfo').prop('type', 'text');
@@ -34,7 +32,37 @@
 				$('#mb_shoesinfo').prop('type', 'hidden');
 			}
 		});
+		
+		/* 사진 미리보기 기능 */
+		$("#changeFilebtn").hide();
+		$("#addPicture").click(function(){
+			$("#upload").click();
+		});
+		$("#changeFilebtn").click(function(){
+			$("#image_container").empty();
+			$("#changeFilebtn").hide();	
+			$("#addPicture").show();
+			$("#upload").click();
+		});
+		
 	});
+	function setThumbnail(event){
+		var reader = new FileReader();
+		
+		reader.onload = function(event){
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			img.setAttribute("width", "300px");
+			
+			document.querySelector("div#image_container").appendChild(img);
+			$("#addPicture").hide();
+			$("#changeFilebtn").show();
+		};
+		reader.readAsDataURL(event.target.files[0]);
+	};
+
+	
+	
 </script>
 <div id="body">
 	<div id="main-form">
@@ -44,11 +72,19 @@
 			<ul>  
 				<li>
 					<label for="photo">사진추가</label>
-					<input type="file" name="upload" id="upload"/>
+					<a id="addPicture" href="#">
+						<img src="${pageContext.request.contextPath }/resources/images/addpicture.png" >
+					</a>
+					<input type="file" name="upload" id="upload" onchange="setThumbnail(event)" hidden/>
+					<!-- 사진 미리보기창 -->
+					<div id="image_container">
+						
+					</div>
+					<a id="changeFilebtn" href="#">다른사진으로 변경</a>
 				</li>
 				<li>
 					<label for="title">제목</label>
-					<form:input path="mb_title"/><form:errors path="mb_title" cssClass="error-color"/>
+					<form:input path="mb_title" required="required"/><form:errors path="mb_title" cssClass="error-color"/>
 				</li>
 				<li>
 					<label for="content">내용</label>

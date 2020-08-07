@@ -60,6 +60,7 @@ public class QnaController {
 		map.put("filter",filter);
 		
 		int count = qnaService.selectRowCount(map);
+		
 		if(log.isDebugEnabled()) {
 			log.debug("<<count>> : "+ count + keyfield + keyword);
 		}
@@ -83,6 +84,9 @@ public class QnaController {
 		mav.addObject("listQna",listQna);
 		mav.addObject("pagingHtml",page.getPagingHtml());
 		mav.addObject("filter",filter);
+		mav.addObject("keyfield", keyfield);
+		mav.addObject("keyword", keyword);
+		
 		
 		return mav; 
 	}

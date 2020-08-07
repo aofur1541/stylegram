@@ -168,9 +168,16 @@ $(document).ready(function() {
 						${flea.fb_title}
 					</div>
 					<hr size="1" width="100%">
+					<c:if test="${flea.fb_price != 0}">
 					<div class="card-content">
 						${flea.fb_price} 원
 					</div>
+					</c:if>
+					<c:if test="${flea.fb_price == 0}">
+					<div class="card-content">
+						가격 미정
+					</div>
+					</c:if>
 					<hr size="1" width="100%">
 					<div class="card-category">
 					<c:if test="${flea.fb_topcheck eq 1}">	

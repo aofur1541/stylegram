@@ -2,6 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	if($('#qb_topinfo').val() != 0){
+		$('#qb_topinfo').prop("checked", true);
+	}
+	if($('#qb_pantsinfo').val() != 0){
+		$('#qb_pantsinfo').prop("checked", true);
+	}
+	if($('#qb_capinfo').val() != 0){
+		$('#qb_capinfo').prop("checked", true);
+	}
+	if($('#qb_shoesinfo').val() != 0){
+		$('#qb_shoesinfo').prop("checked", true);
+	}
+});
+	
+</script>
+
 <div id="body">
 	<h2>게시글 수정</h2><!-- 구현 후 삭제 -->
 	
@@ -25,13 +44,19 @@
 			
 			<li>
 				<label>내용 설명</label>
-				<form:textarea path="qb_content" value="${qna.qb_num}"/>
+				<form:textarea path="qb_content"/>
 			</li>
-			<!-- 태그 넣어야 됨 -->
+			<li class="category">
+				<label for="tag">태그선택</label><br>
+				<form:checkbox path="qb_topinfo" value="1"/><b>상의</b>
+				<form:checkbox path="qb_pantsinfo" value="1"/><b>하의</b>
+				<form:checkbox path="qb_capinfo" value="1"/><b>모자</b>
+				<form:checkbox path="qb_shoesinfo" value="1"/><b>신발</b>
+			</li>
 		</ul>
 		<div>
 			<input type="submit" value="수정">
-			<input type="button" value="취소" onclick="location.href='${pageContext.request.contextPath}/qna/list.do'">
+			<input type="button" value="목록" id="homebtn" onclick="location.href='${pageContext.request.contextPath}/qna/list.do'">
 		</div>
 	</form:form>
 	</div>
