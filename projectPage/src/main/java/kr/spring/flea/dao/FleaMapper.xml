@@ -33,7 +33,7 @@
 	</select>
 	<select id="selectList" parameterType="map" resultType="fleaVO">
 		SELECT *
-			FROM (SELECT rownum, a.* 
+			FROM (SELECT rownum, a.*, rownum rnum 
 				FROM (SELECT * 
 					FROM profleaboard b JOIN profleainfo i ON b.fb_num=i.fb_num JOIN promember m ON b.fb_usernum=m.m_num JOIN promember_detail d ON m.m_num = d.m_num  
 					<where>
@@ -63,6 +63,7 @@
 						</if>
 					</where>
 				 ORDER BY b.fb_num DESC)a)
+				 <![CDATA[ WHERE rnum >= #{start} AND rnum <= #{end} ]]>
 	</select>
 	<update id="update" parameterType="fleaVO">
 		UPDATE profleaboard SET 

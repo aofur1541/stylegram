@@ -69,9 +69,9 @@ $(document).ready(function() {
     var pageNums = Math.ceil(count/10);
     var nextPenSlugs = [];
     	
-    /* alert(pageNums); */	
+    /* alert(pageNums); */
      for(var i=2;i<=pageNums;i++){
-  	   nextPenSlugs.push('fleaList.do?filter=${filter}keyfield=${keyfield}&keyword=${keyword}&pageNum='+i);
+  	   nextPenSlugs.push('fleaList.do?filter=${filter}&keyfield=${keyfield}&keyword=${keyword}&pageNum='+i);
      }	
 
     function getPenPath() {
@@ -95,7 +95,7 @@ $(document).ready(function() {
 <div id="body">
 	<div class="searchForm">
 		<form action="fleaList.do" method="get">
-			<div id="filter">
+			<div id="filter" class="filter">
 				<select name="filter" class="filter" onchange="this.form.submit()">
 					<option value="">전체</option>
 					<option value="top" <c:if test="${filter eq 'top'}">selected</c:if>>상의</option>

@@ -22,10 +22,9 @@ import kr.spring.flea.domain.FleaVO;
 import kr.spring.flea.service.FleaService;
 import kr.spring.util.PagingUtil;
 
-
 @Controller
 public class FleaController {
-
+	
 	int rowCount = 10;//한화면에 보여줄 게시물 수
 	int pageCount = 10;//한화면에 보여줄 페이지 수
 	
@@ -59,9 +58,11 @@ public class FleaController {
 		}
 		
 		//페이징처리
-		PagingUtil page = new PagingUtil(keyfield, keyword, currentPage, count, rowCount, pageCount, "fleaList.do");
+		PagingUtil page = new PagingUtil(keyfield,keyword,currentPage,count,rowCount,pageCount,"fleaList.do");
+		
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
+		
 		List<FleaVO> list = null;
 		if(count > 0) {
 			list = fleaService.selectList(map);
