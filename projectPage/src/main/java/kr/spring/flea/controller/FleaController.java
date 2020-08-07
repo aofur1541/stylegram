@@ -73,6 +73,8 @@ public class FleaController {
 		mav.addObject("count", count);
 		mav.addObject("pagingHtml", page.getPagingHtml());
 		mav.addObject("filter", filter);
+		mav.addObject("keyfield", keyfield);
+		mav.addObject("keyword", keyword);
 		
 		return mav;
 	}

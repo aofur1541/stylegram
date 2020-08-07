@@ -14,11 +14,11 @@
 
     .grid__item,
     .grid__col-sizer {
-     width: 11%;
+     width: 15px;
      
     }
 
-    .grid__gutter-sizer { width: 2%; }
+    .grid__gutter-sizer { width: 1%; }
 
     /* hide by default */
     .grid.are-images-unloaded .image-grid__item {

@@ -91,7 +91,7 @@
 		<img src="imageView.do?fb_num=${flea.fb_num}">
 	</c:if> 
 	</div>
-	<p>
+	<p class="fb_content">
 		${flea.fb_content}
 	</p>
 	<hr size="1" width="100%">

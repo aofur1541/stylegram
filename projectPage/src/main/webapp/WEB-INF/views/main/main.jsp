@@ -71,7 +71,7 @@ $(document).ready(function() {
     	
     /* alert(pageNums); */	
      for(var i=2;i<=pageNums;i++){
-  	   nextPenSlugs.push('main.do?keyfield=&keyword=&pageNum='+i);
+  	   nextPenSlugs.push('main.do?filter=${filter}keyfield=${keyfield}&keyword=${keyword}&pageNum='+i);
      }	
 
     function getPenPath() {
