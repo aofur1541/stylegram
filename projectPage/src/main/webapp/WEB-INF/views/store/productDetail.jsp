@@ -218,7 +218,7 @@ $(document).ready(function(){
 			$(".basket").click(function(){
 				var numcheck = 0;
 				<c:if test="${!empty m_id}"> numcheck = ${m_num}; </c:if>
-				if(numcheck != ''){
+				if(numcheck != 0){
 					location.href="${pageContext.request.contextPath}/basket/basket.do?s_num=${detail.s_num}";
 					var check = confirm("장바구니에 담겼습니다! \n장바구니로 이동하시겠습니까?")
 					if(check == true){
