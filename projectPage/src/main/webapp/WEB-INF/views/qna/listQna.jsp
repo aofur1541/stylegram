@@ -4,7 +4,9 @@
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
+
 <style type="text/css">
+   
     /* reveal grid after images loaded */
     .grid.are-images-unloaded {
       opacity: 0;
@@ -12,11 +14,11 @@
 
     .grid__item,
     .grid__col-sizer {
-     width: 15px;
+     width: 11%;
      
     }
 
-    .grid__gutter-sizer { width: 1%; }
+    .grid__gutter-sizer { width: 2%; }
 
     /* hide by default */
     .grid.are-images-unloaded .image-grid__item {
@@ -34,6 +36,9 @@
       width: 100%;
 	  border-radius: 15px;
     }
+
+
+
 </style>
 <script>
 $(document).ready(function() {
@@ -70,8 +75,8 @@ $(document).ready(function() {
     var nextPenSlugs = [];
     	
     /* alert(pageNums); */	
-     for(var i=2;i<=pageNums;i++){
-  	   nextPenSlugs.push('listQna.do?keyfield=&keyword=&pageNum='+i);
+     for(var i=2;i<pageNums;i++){
+  	   nextPenSlugs.push('listQna.do?filter=${filter}&keyfield=&keyword=&pageNum='+i);
      }	
 
     function getPenPath() {
@@ -91,8 +96,32 @@ $(document).ready(function() {
       status: '.page-load-status',
     });   
 });
+
 </script>
+
+
+
+
 <div id="body">
+	<div class="searchForm">
+		<form action="listQna.do" method="get">
+			<div id="filter" class="filter">
+				<select name="filter" class="filter" onchange="this.form.submit()">
+					<option value="">전체</option>
+					<option value="top" <c:if test="${filter eq 'top'}">selected</c:if>>상의</option>
+					<option value="bottom" <c:if test="${filter eq 'bottom'}">selected</c:if>>하의</option>
+					<option value="hat" <c:if test="${filter eq 'hat'}">selected</c:if>>모자</option>
+					<option value="shoes" <c:if test="${filter eq 'shoes'}">selected</c:if>>신발</option>
+				</select>
+				<select name="keyfield" class="keyfield">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="id">아이디</option>
+				</select>		
+				<input type="search" size="16" name="keyword" id="keyword">
+			</div>
+		</form>
+	</div>
 	<!-- 로그인 되었을 시 글쓰기 버튼 화면따라다님 -->
 	<c:if test="${!empty m_id}">
 		<div id="write_btn">
@@ -106,14 +135,14 @@ $(document).ready(function() {
 	
 	
 	<div class="grid">
-	<div class="all_wrap" data-masonry='{ "itemSelector": ".wrap-item", "columnWidth": 200 }'>
 	
 	
 	<div class="grid__col-sizer"></div>
   
-  
+  	
 	<c:forEach var="qna" items="${listQna}">
 	<div class="grid__item">
+	
 		<!-- <div class="wrap-item"> -->
 		<div class="entry-content">
 		<div class="card-sheet">
@@ -175,6 +204,7 @@ $(document).ready(function() {
 					<c:if test="${qna.qb_topinfo eq 0 && qna.qb_pantsinfo eq 0 && qna.qb_capinfo eq 0 && qna.qb_shoesinfo eq 0}">
 						분   류   없   음
 					</c:if>
+					
 					</div>
 				</div>
 			</div>
@@ -182,11 +212,11 @@ $(document).ready(function() {
 			
 		</div>
 		</div>
-	<!-- 	</div> -->
+	
 	<div class="grid__gutter-sizer"></div>
 	</c:forEach>
 	</div>	
-	</div>
 	</c:if>
 	</div>
 </div>
+

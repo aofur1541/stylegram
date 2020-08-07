@@ -48,12 +48,16 @@ public class QnaController {
 		@RequestParam(value="keyfield",defaultValue="") 
 		String keyfield,
 		@RequestParam(value="keyword",defaultValue="") 
-		String keyword) {
-		
+		String keyword,
+		@RequestParam(value="filter",defaultValue="") 
+		String filter) 
+		{
+	
 		Map<String,Object> map = new HashMap<String, Object>();
 		
 		map.put("keyfield",keyfield);
 		map.put("keyword",keyword);
+		map.put("filter",filter);
 		
 		int count = qnaService.selectRowCount(map);
 		if(log.isDebugEnabled()) {
@@ -78,6 +82,7 @@ public class QnaController {
 		mav.addObject("count",count);
 		mav.addObject("listQna",listQna);
 		mav.addObject("pagingHtml",page.getPagingHtml());
+		mav.addObject("filter",filter);
 		
 		return mav; 
 	}

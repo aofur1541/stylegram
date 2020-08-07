@@ -49,6 +49,5 @@ public class QnaServiceimpl implements QnaService{
 		mapperQna.deleteQnaInfo(qb_num);
 		mapperQna.deleteQna(qb_num);
 	}
-}
-	
 
+}

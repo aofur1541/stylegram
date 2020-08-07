@@ -14,4 +14,5 @@ public interface QnaService {
 	public void modifyQna(QnaVO qna);
 	public void deleteQna(Integer qb_num);
 	
+	
 }
