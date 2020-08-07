@@ -77,6 +77,8 @@ public class MainController {
 		mav.addObject("mainList", mainList);
 		mav.addObject("pagingHtml",page.getPagingHtml());
 		mav.addObject("filter",filter);
+		mav.addObject("keyfield", keyfield);
+		mav.addObject("keyword", keyword);
 		
 		return mav; 
 	}

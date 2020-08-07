@@ -230,7 +230,7 @@ div#body div.card-sheet div#card-body div#card-content div.card-category img{
 	height: 40px;
 	padding-left: 15px;
 }
-div#body p.mb_content{
+div#body p.mb_content, p.fb_content{
 	word-break:break-all;
 }
 /*====메뉴====*/
@@ -452,7 +452,8 @@ div#body form li#categoryli b{
 	font-style:normal;
 }
 div#body form li.category{
-	width: 80%;
+	width: 100%;
+	float: left;
 }
 div#body form li.category input[type=checkbox]{
 	zoom:2;
@@ -976,10 +977,13 @@ div#body div.storeReview form#storeReviewVO input.srsubmit{
 }
 div#body div#basket{
 	position: fixed;
-	margin-top: 50%;
-	margin-left: -10%;
+	margin-top: 750px;
+	margin-left: -80px;
 }
 div#body div#basket img{
 	width: 30px;
 	height: 30px;
+}
+div#body div#basket img:hover{
+	opacity: 0.4;
 }

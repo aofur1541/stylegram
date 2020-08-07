@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <script type="text/javascript">
 	var locked = 0;
 	function show(star){
@@ -75,7 +75,7 @@ $(document).ready(function(){
 	<c:if test="${!empty m_id}">
 		<div id="basket" class="basket">
 			<a href="${pageContext.request.contextPath }/basket/storeBasket.do">
-				<img src="${pageContext.request.contextPath}/resources/images/shoppingBag.png">장바구니
+				<img src="${pageContext.request.contextPath}/resources/images/shoppingBag.png">
 			</a>
 		</div>
 	</c:if>
@@ -119,10 +119,12 @@ $(document).ready(function(){
 					</c:if>
 				</div>
 			</div>
+			<c:if test="${!empty m_id}">
 			<div class="btn-group"> 
 				<input type="button" class="buy" value="구매하기"><br>
 				<input type="button" class="basket"  value="장바구니" id="basketBtn">
 			</div>
+			</c:if>
 		</div>
 	</div>
 	<div class="productcontent">

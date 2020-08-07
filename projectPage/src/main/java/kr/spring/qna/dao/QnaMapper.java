@@ -25,4 +25,5 @@ public interface QnaMapper {
 	@Delete("DELETE FROM proqnainfo WHERE qb_num = #{qb_num}")
 	public void deleteQnaInfo(Integer qb_num);
 	public void deleteQna(Integer qb_num);
+	
 }

@@ -72,36 +72,38 @@ window.onload=function(){
 </script>
 
 <div id="body">
+	<h2>${qna.qb_title}</h2>
+	<ul class="writeinfo">
+		<c:if test="${empty qna.m_nickname}">
+		<li>작성자 : ${qna.m_id} </li>
+		</c:if>
+		<c:if test="${!empty qna.m_nickname}">
+		<li>작성자 : ${qna.m_nickname} </li>
+		</c:if>
+		<li>작성일 : ${qna.qb_regdate}</li>
+		<li>수정일 : ${qna.qb_modifydate}</li>
+	</ul>
 	<div class="align-right">
-		<c:if test="${!empty m_num && m_num == qna.qb_usernum}">
+		<c:if test="${m_num == qna.qb_usernum || m_auth == 4}">
 		<input type="button" value="수정" onclick="location.href='modifyQna.do?qb_num=${qna.qb_num}'">
 		<input type="button" value="삭제" id="deleteQna" onclick="location.href='deleteQna.do?qb_num=${qna.qb_num}'">
 		</c:if>
 		<input type="button" value="목록" id="homebtn" onclick="location.href='${pageContext.request.contextPath}/qna/listQna.do'">
 	</div>
 	<hr size="1" width="100%">
-	<h2>${qna.qb_title}</h2> <!-- 구현 후 위치 수정 -->
-	<ul>
-		<c:if test="${!empty qna.qb_photo}">
-		<div>
-			<img src="imageView.do?qb_num=${qna.qb_num}">
-		</div>
-		</c:if>
-		<li>사진 : ${qna.qb_filename}</li><!-- 구현 후 텍스트 삭제 -->
-		<li>글번호 : ${qna.qb_num}</li><!-- 구현 후 텍스트 삭제 -->
-		<li>작성자 : ${qna.m_id}</li><!-- 구현 후 텍스트 삭제 --> 
-		<li>작성일 : ${qna.qb_regdate}</li>
-		<li>수정일 : ${qna.qb_modifydate}</li>
-		
-
-	</ul>
+	<div id="viewPhoto" class="align-center">
+	<c:if test="${!empty qna.qb_photo}">
+		<img src="imageView.do?qb_num=${qna.qb_num}">
+	</c:if>
+	</div>
 	<p class="qb_content">
 		${qna.qb_content}
 	</p>
-	
 	<hr size="1" width="100%">
 	<!-- 댓글 -->
-	<p>댓글리스트</p>
+	<div class="comment">
+		댓글
+	</div>
 	<table id="listComment" border="1">
 	
 	</table>
@@ -110,29 +112,20 @@ window.onload=function(){
 	<form id="writeCommentForm">
 	<input type="hidden" name="qb_num" value="${qna.qb_num}">
 	<input type="hidden" name="m_num" value="${m_num}">
-		<table border="1">
-			<tr>
-				<!-- 댓글작성 -->
-				<td width="150px">
-					<c:if test="${empty m_nickname}">
-						<div>${m_id}</div>
-					</c:if>
-					<c:if test="${!empty m_nickname}">
-						<div>${m_nickname}</div>
-					</c:if>
-				</td>
-				<td width="550px">
-					<div>
-						<input type="text" name="qr_content" id="qr_content">					
-					</div>
-				</td>
-				<td width="100px">
-					<div>
-						<button type="submit" name="btnComment" id="btnComment">댓글등록</button>
-					</div>
-				</td>
-			</tr>
-		</table>
+		<div class="commentname">
+			<c:if test="${empty m_nickname}">
+				<div>${m_id}</div>
+			</c:if>
+			<c:if test="${!empty m_nickname}">
+				<div>${m_nickname}</div>
+			</c:if>
+		</div>
+		<div class="commentcontent">
+			<input type="text" name="qr_content" id="qr_content">					
+		</div>
+		<div class="commentsubmit">
+			<button type="submit" name="btnComment" id="btnComment">댓글등록</button>
+		</div>
 	</form>		
 	</c:if>
 </div>

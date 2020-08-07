@@ -4,13 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <body>
-	<c:if test="${commentCount == 0}">
-	<table>
-		<tr>
-			<td>댓글 없음</td>
-		</tr>
-	</table>
-	</c:if>
 	<c:if test="${commentCount != 0}">
 	<!-- 댓글 목록 -->
 	<table style="width:100%">
