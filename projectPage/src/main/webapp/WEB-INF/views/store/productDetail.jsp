@@ -119,7 +119,7 @@ $(document).ready(function(){
 					</c:if>
 				</div>
 			</div>
-			<form:form action="${pageContext.request.contextPath}/basket/basket.do" id="basketBtn" commandName="storeVO">
+			<form:form action="productBuy.do" id="basketBtn" commandName="storeVO">
 				<form:hidden path="s_num" value="${detail.s_num}"/>
 				<c:if test="${!empty m_id}">
 				<form:hidden path="m_num"/>
@@ -216,7 +216,8 @@ $(document).ready(function(){
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".basket").click(function(){
-				var numcheck = ${m_num}
+				var numcheck = 0;
+				<c:if test="${!empty m_id}"> numcheck = ${m_num}; </c:if>
 				if(numcheck != ''){
 					location.href="${pageContext.request.contextPath}/basket/basket.do?s_num=${detail.s_num}";
 					var check = confirm("장바구니에 담겼습니다! \n장바구니로 이동하시겠습니까?")
@@ -226,7 +227,12 @@ $(document).ready(function(){
 						return false;
 					}
 				}else{
-					confirm("로그인이 필요합니다.");
+					var check = confirm("로그인이 필요합니다. \n로그인 하시겠습니까?");
+					if(check){
+						location.href='${pageContext.request.contextPath}/member/login.do';
+					}else{
+						return false;
+					}
 				}
 			}); 
 		});
