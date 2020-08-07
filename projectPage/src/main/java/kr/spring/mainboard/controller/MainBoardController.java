@@ -49,6 +49,9 @@ public class MainBoardController {
 		if(log.isDebugEnabled()) {
 			log.debug("메인보드 <<MainBoardVO>>" + mainBoardVO);
 		}
+		if(result.hasErrors()) {
+			return "mainBoardWrite";
+		}
 		
 		mainBoardService.insert(mainBoardVO);
 		
@@ -117,6 +120,7 @@ public class MainBoardController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<수정 전 BoardVO>>" + mainBoardVO);
 		}
+
 		model.addAttribute("mainBoardVO",mainBoardVO);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("imageView");
@@ -133,7 +137,9 @@ public class MainBoardController {
 		if(log.isDebugEnabled()) {
 			log.debug("<<수정 후 BoardVO>>" + mainBoardVO);
 		}
-		
+		if(result.hasErrors()) {
+			return "mainBoardModify";
+		}
 		mainBoardService.update(mainBoardVO);
 		int mb_num = mainBoardVO.getMb_num();
 		return "redirect:/mainBoard/detail.do?mb_num="+mb_num;

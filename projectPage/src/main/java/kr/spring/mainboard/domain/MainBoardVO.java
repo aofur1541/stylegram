@@ -3,10 +3,12 @@ package kr.spring.mainboard.domain;
 import java.io.IOException;
 import java.sql.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 public class MainBoardVO {
 	private int mb_num;
+	@NotEmpty
 	private String mb_title;
 	private int m_num;
 	private MultipartFile upload;

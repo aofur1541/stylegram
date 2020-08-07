@@ -53,25 +53,40 @@
 			}
 		});
 	});
+	function setThumbnail(event){
+		var reader = new FileReader();
+		
+		reader.onload = function(event){
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			
+			document.querySelector("div#image_container").appendChild(img);
+			$("#addPicture").hide();
+			$("#changeFilebtn").show();
+			$("#origin_picture").hide();
+		};
+		reader.readAsDataURL(event.target.files[0]);
+	};
 </script>
 <div id="body">
 	<h2>글수정</h2>
 	
 	<form:form action="update.do" enctype="multipart/form-data" commandName="mainBoardVO">
 		<form:hidden path="mb_num"/>
-		
-		<div class="align-center">
-			<img src="imageView.do?mb_num=${mainBoardVO.mb_num}" style="max-width:500px">
-		</div>
-		
+			<div class="align-center" id="origin_picture">
+				<img src="imageView.do?mb_num=${mainBoardVO.mb_num}" style="max-width:500px">
+			</div>
+			<div id="image_container">
+				
+			</div>
 		<ul>
 			<li>
-				<label for="photo">사진추가</label>
-				<input type="file" name="upload" id="upload"/>
+				<label for="photo">사진변경</label>
+				<input type="file" name="upload" id="upload" onchange="setThumbnail(event)"/>
 			</li>
 			<li>
 				<label for="title">제목</label>
-				<form:input path="mb_title"/><form:errors path="mb_title" cssClass="error-color"/>
+				<form:input path="mb_title" required="required"/><form:errors path="mb_title" cssClass="error-color"/>
 			</li>
 			<li>
 				<label for="content">내용</label>

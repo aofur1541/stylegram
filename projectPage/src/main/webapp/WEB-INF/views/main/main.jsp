@@ -105,11 +105,12 @@ $(document).ready(function() {
 					<option value="shoes" <c:if test="${filter eq 'shoes'}">selected</c:if>>신발</option>
 				</select>
 				<select name="keyfield" class="keyfield">
-					<option value="title">제목</option>
-					<option value="content">내용</option>
-					<option value="id">아이디</option>
+					<option value="title" <c:if test="${keyfield eq 'title'}">selected</c:if>>제목</option>
+					<option value="content" <c:if test="${keyfield eq 'content'}">selected</c:if>>내용</option>
+					<option value="id" <c:if test="${keyfield eq 'id'}">selected</c:if>>아이디</option>
+					<option value="nickname" <c:if test="${keyfield eq 'nickname'}">selected</c:if>>닉네임</option>
 				</select>		
-				<input type="search" size="16" name="keyword" id="keyword">
+				<input type="search" size="16" name="keyword" id="keyword" value="${keyword }">
 			</div>
 		</form>	
 	</div>
