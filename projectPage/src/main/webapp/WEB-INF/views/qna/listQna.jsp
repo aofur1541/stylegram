@@ -103,7 +103,7 @@ $(document).ready(function() {
 
 
 <div id="body">
-	<div class="searchForm">
+	<div class="searchForm"> 
 		<form action="listQna.do" method="get">
 			<div id="filter" class="filter">
 				<select name="filter" class="filter" onchange="this.form.submit()">
