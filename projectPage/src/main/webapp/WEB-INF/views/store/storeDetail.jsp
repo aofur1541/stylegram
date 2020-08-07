@@ -24,7 +24,7 @@ $(document).ready(function() {
 			<c:if test="${store.staravg == 5}">
 			<div class="card-board1">
 				<div class="card-sheet-top">
-					<div class="toptext"><b>실시간 인기 TOP | </b>가장 HOT한 상품!!</div>
+					<div class="toptext"><b> 인기 TOP | </b>가장 HOT한 상품!!</div>
 					<div class="card-img">
 						<c:if
 							test="${fn:endsWith(store.filename,'.jpg') || 
@@ -39,12 +39,13 @@ $(document).ready(function() {
 								</a>
 							</div>
 						</c:if>	
+					
+						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	
+						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	
+						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></div></c:if>	
+						<c:if test="${store.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" class="starimg"></div></c:if>	
+						<c:if test="${store.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></div></c:if>
 					</div>
-						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:300px;"></div></c:if>	
-						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:300px;"></div></c:if>	
-						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:300px;"></div></c:if>	
-						<c:if test="${store.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:300px;"></div></c:if>	
-						<c:if test="${store.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:300px;"></div></c:if>
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}</a></div>
 						<div id="text-box">
@@ -79,11 +80,11 @@ $(document).ready(function() {
 								</a>
 							</div>
 						</c:if>
-						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" style="width:300px;"></div></c:if>	
-						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" style="width:300px;"></div></c:if>	
-						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" style="width:300px;"></div></c:if>	
-						<c:if test="${store.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" style="width:300px;"></div></c:if>	
-						<c:if test="${store.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" style="width:300px;"></div></c:if>
+						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	
+						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	
+						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></div></c:if>	
+						<c:if test="${store.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" class="starimg"></div></c:if>	
+						<c:if test="${store.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></div></c:if>
 					</div>
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}.</a></div>

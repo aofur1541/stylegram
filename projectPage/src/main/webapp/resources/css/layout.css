@@ -330,6 +330,7 @@ div#body div#detail_list{
 }
 div#body div#detail_list ul li{
 	font-size:20px;
+	display:block;
 }
 div#body div.viewmenu{
 	width: 100%;
@@ -797,9 +798,9 @@ div#body p.noticecontent{
 	word-break:break-all;
 }
 div#body div.card-sheet-top img.productimage{
-	width: 300px;
+	width: 100%;
 	height: 300px;
-}
+}	
 div#body div.toptext{
 	text-align: left;
 	color: rgb(130, 130, 130);
@@ -820,7 +821,11 @@ div#body div.card-board div.card-img img{
 	height: 400px;
 }
 div#body div.card-board div.card-img img.starimg{
-	width: 70px;
+	width: 100px;
+	height: 20px;
+}
+div#body div.card-board1 div.card-img img.starimg{
+	width: 100px;
 	height: 20px;
 }
 div#body.store div.card-sheet{
@@ -828,4 +833,153 @@ div#body.store div.card-sheet{
 }
 div#body.store div.all_wrap{
 	margin-top: 420px;
+}
+div#body input.buy {
+    width:75%;
+    background-color:82d9d0;
+    border-width:2px;
+	border-color:82d9d0;
+    color:#fff;
+    padding: 8px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+   	border-radius:10px;
+}
+div#body input.basket {
+    width:75%;
+    background-color:white;
+    color:82d9d0;
+    border-width:2px;
+	border-color:82d9d0;
+    padding: 8px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+   	border-radius:10px;
+}
+div#body input.buy:hover {
+   	background-color:white;
+	color:82d9d0;
+	border-width:2px;
+	border-color:82d9d0;
+}
+div#body input.basket:hover {
+   	background-color:82d9d0;
+	color:white;
+	border-width:2px;
+	border-color:white;
+}
+div#body div.productdetail{
+	width: 70%;
+	float: left;
+}
+div#body div.productdetail div.mainimage img{
+	width: 75%;
+	height: 500px;
+	border-radius: 10px;
+}
+div#body div.buyform{
+	width: 28%;
+	float: right;
+}
+div#body div.buyform div.buyformback{
+	background-color: white;
+	border-radius: 10px;
+	border: 1px solid #82d9d0;
+	height: 330px;
+}
+div#body div.buyform div.buyformback div#text-box{
+	font-size: 18px;
+	margin-top: 30px;
+}
+div#body div.productcontent{
+	width: 100%;
+}
+div#body div.productcontent div.contentimg{
+	width: 100%;
+	height: 700px;
+	margin-top: 5px;
+	margin-bottom: 30px;
+	float:left;
+}
+div#body div.productcontent div.contentimg img{
+	margin-top: 25px;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+}
+div#body div.productcontent div.contenttext{
+	width: 50%;
+}
+div#body div.productcontent div.contenttext div#text-box{
+	font-size: 25px;
+}
+div#body div.buyform img.starimg{
+	width: 100px;
+}
+div#body div#listReview{
+	width: 100%;
+} 
+div#body button#review-open{
+	width: 30%;
+	height: 50px;
+	border:1px solid #82d9d0;
+	background-color: white;
+	color: #82d9d0;
+	border-radius: 10px;
+	cursor:pointer;
+}
+div#body button#review-open:hover{
+	background-color:#82d9d0;
+	color:white;
+}
+div#body div.starpoint{
+	margin-top: 15px;
+}
+div#body div#review-body{
+	width: 100%;
+}
+div#body div#review-body table{
+	width:100%;
+}
+div#body div#review-body img.starimg{
+	float: right;
+	width: 100px;
+}
+div#body div#review-body td.writeinfo{
+	color:gray;
+}
+div#body div#review-body td.writeinfo b{
+	font-size: 22px;
+	color:black;
+}
+div#body form#storeReviewVO{
+	background-color:rgb(247, 248, 249);
+}
+div#body div.storeReview{
+	width:100%;
+}
+div#body div.storeReview form#storeReviewVO textarea{
+	width: 80%;
+	height: 150px;
+}
+div#body div.storeReview form#storeReviewVO input.srsubmit{
+	width: 15%;
+	margin-top: 10%;
+}
+div#body div#basket{
+	position: fixed;
+	margin-top: 50%;
+	margin-left: -10%;
+}
+div#body div#basket img{
+	width: 30px;
+	height: 30px;
 }

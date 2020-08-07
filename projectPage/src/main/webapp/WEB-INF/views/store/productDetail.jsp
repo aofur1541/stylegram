@@ -71,50 +71,6 @@ $(document).ready(function(){
 });
 	
 </script>
-<style type="text/css">
-	.button {
-	    width:200px;
-	    background-color:82d9d0;
-	    border-width:2px;
-		border-color:82d9d0;
-	    color:#fff;
-	    padding: 8px 0;
-	    text-align: center;
-	    text-decoration: none;
-	    display: inline-block;
-	    font-size: 15px;
-	    margin: 4px;
-	    cursor: pointer;
-	   	border-radius:10px;
-	}
-	.button2 {
-	    width:200px;
-	    background-color:white;
-	    color:82d9d0;
-	    border-width:2px;
-		border-color:82d9d0;
-	    padding: 8px 0;
-	    text-align: center;
-	    text-decoration: none;
-	    display: inline-block;
-	    font-size: 15px;
-	    margin: 4px;
-	    cursor: pointer;
-	   	border-radius:10px;
-	}
-	.button:hover {
-    	background-color:white;
-		color:82d9d0;
-		border-width:2px;
-		border-color:82d9d0;
-	}
-	.button2:hover {
-    	background-color:82d9d0;
-		color:white;
-		border-width:2px;
-		border-color:white;
-	}
-</style>
 <div id="body">
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
 	<div class="card-board">
@@ -156,11 +112,19 @@ $(document).ready(function(){
 							[${detail.s_discount}%]<fmt:formatNumber value="${detail.s_price-(detail.s_price*(detail.s_discount/100))}" type="currency" currencySymbol="\\"/>
 						</h4>
 					</c:if>
+					<!-- 수량 조절 -->
+					<select name="a_num">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+					<div class="btn-group">
+						<input type="button" class="button" value="구매하기"><br>
+						<input type="button" class="button" id="basket-icon" value="장바구니">
+					</div>
 				</div>
-			</div>
-			<div class="btn-group"> 
-				<input type="button" class="button" value="구매하기"><br>
-				<input type="button" class="button2"  value="장바구니">
 			</div>
 		</div>
 	</div>
@@ -244,16 +208,8 @@ $(document).ready(function(){
 			</form:form>
 		</div>
 	</div>
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/aofur1541/stylegram.git
 	<!-- 장바구니 -->
-	<div id="basket" class="basket">
-		<a id="basket-icon">
-			<img src="${pageContext.request.contextPath}/resources/images/shoppingBag.png" width="30px">장바구니
-		</a>
-	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#basket-icon").click(function(){
