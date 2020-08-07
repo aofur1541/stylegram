@@ -223,7 +223,7 @@ $(document).ready(function(){
 				}else if(check == false){
 					return false;
 				}
-			});
+			}); 
 		});
 	</script>
 
