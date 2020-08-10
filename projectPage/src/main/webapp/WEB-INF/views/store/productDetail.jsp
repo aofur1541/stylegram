@@ -119,7 +119,7 @@ $(document).ready(function(){
 					</c:if>
 				</div>
 			</div>
-			<form:form action="productBuy.do" id="basketBtn" commandName="storeVO">
+			<form:form commandName="storeVO">
 				<form:hidden path="s_num" value="${detail.s_num}"/>
 				<c:if test="${!empty m_id}">
 				<form:hidden path="m_num"/>
@@ -131,9 +131,10 @@ $(document).ready(function(){
 					<form:option value="4">4개</form:option>
 					<form:option value="5">5개</form:option>
 				</form:select>
+				<form:hidden path="goCheck" id="goCheck"/>
 				<div class="btn-group"> 
-					<input type="submit" class="buy" value="구매하기"><br>
-					<input type="button" class="basket" value="장바구니">
+					<input type="submit" class="buy" value="구매하기" formaction="productBuy.do"><br>
+					<input type="submit" class="basket" value="장바구니" formaction="basket.do">
 				</div>
 			</form:form>
 		</div>
@@ -219,12 +220,11 @@ $(document).ready(function(){
 				var numcheck = 0;
 				<c:if test="${m_id != null}"> numcheck = ${m_num}; </c:if>
 				if(numcheck != 0){
-					location.href="${pageContext.request.contextPath}/basket/basket.do?s_num=${detail.s_num}";
 					var check = confirm("장바구니에 담겼습니다! \n장바구니로 이동하시겠습니까?")
 					if(check == true){
-						location.href='${pageContext.request.contextPath}/basket/storeBasket.do';
+						$("#goCheck").val("true");
 					}else if(check == false){
-						return false;
+						$("#goCheck").val("false");
 					}
 				}else{
 					var check = confirm("로그인이 필요합니다. \n로그인 하시겠습니까?");

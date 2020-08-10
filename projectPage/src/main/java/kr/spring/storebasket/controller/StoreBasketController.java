@@ -38,7 +38,7 @@ public class StoreBasketController {
 	}
 	
 	//장바구니 상품 추가
-	@RequestMapping("/basket/basket.do")
+	@RequestMapping("/store/basket.do")
 	public String insert(StoreVO storeVO, HttpSession session) {
 		
 		if(log.isDebugEnabled()) {
@@ -51,7 +51,14 @@ public class StoreBasketController {
         }
 		basketService.insert(storeVO);
 		
-		return "redirect:/store/productDetail.do?s_num="+storeVO.getS_num();
+		String goCheck = storeVO.getGoCheck();
+		System.out.println("goCheck = " + goCheck);
+		
+		if(goCheck.equals("true")) {
+			return "redirect:/basket/storeBasket.do";
+		}else {
+			return "redirect:/store/productDetail.do?s_num=" + storeVO.getS_num();
+		}
 	}
 	
 	//장바구니 이동

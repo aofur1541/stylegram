@@ -36,6 +36,7 @@ public class StoreVO {
 	private int p_num;				//장바구니 번호
 	private int a_num;				//구매 수량
 	private int m_num;				//회원 번호
+	private String goCheck;			//장바구니 이동 유무
 	
 
 	public void setUpload(MultipartFile upload)throws IOException {
@@ -203,6 +204,12 @@ public class StoreVO {
 	}
 	public void setM_num(int m_num) {
 		this.m_num = m_num;
+	}
+	public String getGoCheck() {
+		return goCheck;
+	}
+	public void setGoCheck(String goCheck) {
+		this.goCheck = goCheck;
 	}
 	
 	@Override

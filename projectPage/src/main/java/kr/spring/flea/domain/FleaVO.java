@@ -3,12 +3,14 @@ package kr.spring.flea.domain;
 import java.io.IOException;
 import java.sql.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.istack.internal.Nullable;
 
 public class FleaVO {
 	private int fb_num;
+	@NotEmpty
 	private String fb_title;
 	private int fb_usernum;
 	private MultipartFile upload;
