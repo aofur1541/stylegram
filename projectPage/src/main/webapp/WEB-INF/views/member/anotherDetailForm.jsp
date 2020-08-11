@@ -84,6 +84,7 @@
 		<c:if test="${empty member.m_nickname}">
 		<h3>${member.m_id}님 팔로워 목록</h3>
 		</c:if>
+		<input type="button" value="${followerCount}" class="countBtn" readonly>
 		<table>
 			<c:forEach var="followerList" items="${followerList}">
 			<tr>
@@ -118,6 +119,7 @@
 		<c:if test="${empty member.m_nickname}">
 		<h3>${member.m_id}님 팔로잉 목록</h3>
 		</c:if>
+		<input type="button" value="${followingCount}" class="countBtn" readonly>
 		<table>
 			<c:forEach var="followingList" items="${followingList}">
 			<tr>

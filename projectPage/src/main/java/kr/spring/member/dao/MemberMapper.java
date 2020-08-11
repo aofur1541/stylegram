@@ -25,7 +25,7 @@ public interface MemberMapper {
 	public MemberVO selectMember(Integer m_num);
 	@Update("UPDATE promember SET m_auth=3 WHERE m_num=#{m_num}")
 	public void updateAuth(MemberVO member);
-	@Update("UPDATE promember_detail SET m_phone=#{m_phone}, m_address=#{m_address} WHERE m_num=#{m_num}")
+	@Update("UPDATE promember_detail SET m_phone=#{m_phone}, m_postcode=#{m_postcode}, m_address=#{m_address}, m_detailaddress=#{m_detailaddress} WHERE m_num=#{m_num}")
 	public void updateAuthDetail(MemberVO member);
 	@Update("UPDATE promember_detail SET m_image=NULL WHERE m_num=#{m_num}")
 	public void deleteProfile(Integer m_num);

@@ -23,7 +23,11 @@ public class MemberVO {
 	@Size(min=6, max=15)
 	private String m_passwd;
 	@NotEmpty
+	private String m_postcode;
+	@NotEmpty
 	private String m_address;
+	@NotEmpty
+	private String m_detailaddress;
 	@NotEmpty
 	private String m_phone;
 	private byte[] m_image;
@@ -133,5 +137,17 @@ public class MemberVO {
 	}
 	public void setOld_passwd(String old_passwd) {
 		this.old_passwd = old_passwd;
+	}
+	public String getM_postcode() {
+		return m_postcode;
+	}
+	public void setM_postcode(String m_postcode) {
+		this.m_postcode = m_postcode;
+	}
+	public String getM_detailaddress() {
+		return m_detailaddress;
+	}
+	public void setM_detailaddress(String m_detailaddress) {
+		this.m_detailaddress = m_detailaddress;
 	}
 }

@@ -155,8 +155,7 @@ div#main_body div#body{
 }
 div#body div#write_btn{
 	position: fixed;
-	margin-top: 650px;
-	margin-left: -80px;
+	margin-left: -100px;
 }
 div#body div#write_btn img{
 	width: 50px;
@@ -397,6 +396,20 @@ div#body form input#checkNumber{
 div#body form input#checkNumber:hover{
 	background-color: rgba(130, 130, 130, 0.8);
 }
+div#body form input#findpostcode{
+	margin-top: 13px;
+	width:18%;
+	float:right;
+	background-color:black;
+	color:white;
+	padding: 14px 20px;
+	border: none;
+	border-radius:4px;
+	cursor: pointer;
+}
+div#body form input#findpostcode:hover{
+	background-color: rgba(130, 130, 130, 0.8);
+}
 div#body form input#homebtn, input[type=file]{
 	width: 30%;
 	background-color: white;
@@ -438,6 +451,7 @@ div#body form input[type=checkbox]{
 }
 div#body form li.public{
 	width: 80%;
+	float: left;
 }
 div#body form input[type=radio]{
 	margin-left:20px;
@@ -489,6 +503,9 @@ div#body div.detailpage{
 	height:100%;
 	margin-right: 5%;
 	float: left;
+}
+div#body div.detailpage table{
+	border-top: 2px solid;
 }
 div#body hr.lastline{
 	margin-bottom: 50px;
@@ -830,8 +847,12 @@ div#body.store div.card-sheet{
 div#body.store div.all_wrap{
 	margin-top: 420px;
 }
-div#body input.buy {
-    width:75%;
+div#body div.buyform select#a_num{
+	border-radius: 4px;
+	font-size: 15px;
+}
+div#body div.buyform input.buy {
+    width: 160px;
     background-color:82d9d0;
     border-width:2px;
 	border-color:82d9d0;
@@ -845,11 +866,11 @@ div#body input.buy {
     cursor: pointer;
    	border-radius:10px;
 }
-div#body input.basket {
-    width:75%;
+div#body div.buyform input.basket {
+    width:160px;
     background-color:white;
     color:82d9d0;
-    border-width:2px;
+    border:1px solid;
 	border-color:82d9d0;
     padding: 8px 0;
     text-align: center;
@@ -860,16 +881,15 @@ div#body input.basket {
     cursor: pointer;
    	border-radius:10px;
 }
-div#body input.buy:hover {
+div#body div.buyform input.buy:hover {
    	background-color:white;
 	color:82d9d0;
-	border-width:2px;
+	border: 1px solid;
 	border-color:82d9d0;
 }
-div#body input.basket:hover {
+div#body div.buyform input.basket:hover {
    	background-color:82d9d0;
 	color:white;
-	border-width:2px;
 	border-color:white;
 }
 div#body div.productdetail{
@@ -889,7 +909,7 @@ div#body div.buyform div.buyformback{
 	background-color: white;
 	border-radius: 10px;
 	border: 1px solid #82d9d0;
-	height: 330px;
+	height: 100%;
 }
 div#body div.buyform div.buyformback div#text-box{
 	font-size: 18px;
@@ -972,8 +992,8 @@ div#body div.storeReview form#storeReviewVO input.srsubmit{
 }
 div#body div#basket{
 	position: fixed;
-	margin-top: 650px;
-	margin-left: -80px;
+	margin-top: 50px;
+	margin-left: -100px;
 }
 div#body div#basket img{
 	width: 50px;
@@ -981,4 +1001,17 @@ div#body div#basket img{
 }
 div#body div#basket img:hover{
 	opacity: 0.4;
+}
+div#body input#buybtn{
+	width: 30%;
+	background-color: black;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+div#body input#buybtn:hover{
+	background-color: rgba(130, 130, 130, 0.8);
 }

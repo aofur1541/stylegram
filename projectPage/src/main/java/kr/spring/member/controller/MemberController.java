@@ -96,6 +96,7 @@ public class MemberController {
 				session.setAttribute("m_nickname", member.getM_nickname());
 				session.setAttribute("m_auth", member.getM_auth());
 				session.setAttribute("m_image", member.getM_image());
+				session.setAttribute("m_name", member.getM_name());
 				session.setAttribute("m_address", member.getM_address());
 				session.setAttribute("m_phone", member.getM_phone());
 				session.setAttribute("m_public", member.getM_public());
@@ -148,7 +149,7 @@ public class MemberController {
 	@RequestMapping(value="/member/auth.do", method=RequestMethod.POST)
 	public String authSubmit(@Valid MemberVO memberVO, BindingResult result, HttpSession session) {
 		
-		if(result.hasFieldErrors("m_phone") || result.hasFieldErrors("m_address")) {
+		if(result.hasFieldErrors("m_phone") || result.hasFieldErrors("m_address") || result.hasFieldErrors("m_postcode") || result.hasFieldErrors("m_detailaddress")) {
 			return "authForm";
 		}
 		
@@ -231,6 +232,9 @@ public class MemberController {
 		List<MemberVO> followerList = memberService.selectFollower(map);
 		List<MemberVO> followingList = memberService.selectFollowing(map);
 		
+		int followerCount = memberService.followerCount(m_num);
+		int followingCount = memberService.followingCount(m_num);
+		
 		ModelAndView mav = new ModelAndView();
 		
 		if((Integer)member.getM_num() == (Integer)session.getAttribute("m_num")) {
@@ -243,6 +247,8 @@ public class MemberController {
 		mav.addObject("writeList", writeList);
 		mav.addObject("followerList", followerList);
 		mav.addObject("followingList", followingList);
+		mav.addObject("followingCount", followingCount);
+		mav.addObject("followerCount", followerCount);
 		
 		return mav;
 	}
@@ -306,7 +312,7 @@ public class MemberController {
 	@RequestMapping(value="/member/update.do", method=RequestMethod.POST)
 	public String updateSubmit(@Valid MemberVO member, BindingResult result, HttpSession session, Model model) {
 		
-		if(result.hasFieldErrors("m_address") || result.hasFieldErrors("m_nickname")) {
+		if(result.hasFieldErrors("m_address") || result.hasFieldErrors("m_postcode") || result.hasFieldErrors("m_detailaddress")) {
 			return "updateForm";
 		}
 		

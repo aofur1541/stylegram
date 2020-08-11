@@ -6,6 +6,7 @@
 <div id="body">
 	<h2>회원정보수정</h2>
 	<form:form action="update.do" enctype="multipart/form-data" commandName="memberVO">
+		<span id="notempty">* 이 붙어있는 항목은 필수항목 입니다.</span>
 		<form:hidden path="m_num"/>
 		<ul>
 			<li>
@@ -18,12 +19,25 @@
 				<form:errors path="m_nickname" cssClass="error-color"/>     
 			</li>
 			<li>
-				<label for="m_address">주소</label>
+				<label for="m_postcode">우편번호 *</label>
+				<form:input path="m_postcode"/>
+				<form:errors path="m_postcode" cssClass="error-color"/>     
+			</li>
+			<li>
+				<input type="button" id="findpostcode" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+			</li>
+			<li>
+				<label for="m_address">주소 *</label>
 				<form:input path="m_address"/>
 				<form:errors path="m_address" cssClass="error-color"/>     
 			</li>
+			<li>
+				<label for="m_detailaddress">상세주소 *</label>
+				<form:input path="m_detailaddress"/>
+				<form:errors path="m_detailaddress" cssClass="error-color"/>     
+			</li>
 			<li class="public">
-				<label for="m_public">개인정보 공개여부</label>
+				<label for="m_public">개인정보 공개여부 *</label>
 				<form:radiobutton path="m_public" value="0"/><b>비공개</b>
 				<form:radiobutton path="m_public" value="1"/><b>공개</b>
 			</li>

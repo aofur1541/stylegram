@@ -8,7 +8,7 @@
 		<if test="m_filename != ''">
 			m_image=#{m_image}, m_filename=#{m_filename},
 		</if>
-		m_address=#{m_address}, m_public=#{m_public} WHERE m_num=#{m_num}
+		m_postcode=#{m_postcode}, m_address=#{m_address}, m_detailaddress=#{m_detailaddress}, m_public=#{m_public} WHERE m_num=#{m_num}
 	</update>
 	
 	<select id="selectList" parameterType="map" resultType="memberVO">

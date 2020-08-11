@@ -160,8 +160,9 @@
 				<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100))+store.s_shipcost)*store.a_num}" type="currency"/></td>
 			</tr>
 		</table>
-		<input type="button" value="돌아가기">
-		<input type="submit" value="구매하기">
+		<input type="submit" id="buybtn" value="구매하기">
+		<input type="button" id="homebtn" value="돌아가기">
+		
 </div>
 
 
