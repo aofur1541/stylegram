@@ -20,6 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.spring.member.domain.MemberVO;
+import kr.spring.member.service.MemberService;
 import kr.spring.store.domain.StoreVO;
 import kr.spring.store.service.StoreService;
 import kr.spring.storereview.domain.StoreReviewVO;
@@ -36,6 +38,9 @@ public class StoreController {
 	
 	@Resource
 	private StoreReviewService storeReviewService;
+	
+	@Resource
+	private MemberService memberService;
 	
 	
 	@ModelAttribute
@@ -162,6 +167,25 @@ public class StoreController {
 		mav.setViewName("productDetail");
 		mav.addObject("detail", detail);
 		mav.addObject("review",review);
+		
+		return mav;
+	}
+
+	@RequestMapping("/store/productBuy.do")
+	public ModelAndView pdPurchase(@RequestParam("s_num") int s_num,
+								   @RequestParam("a_num") int a_num,
+								   HttpSession session,
+								   StoreVO storeVO,MemberVO memberVO) {
+		
+		storeVO = storeService.selectProduct(s_num);
+		storeVO.setA_num(a_num);
+		int m_num = (Integer)session.getAttribute("m_num");
+		memberVO = memberService.selectMember(m_num);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("purchaseMain");
+		mav.addObject("store", storeVO);
+		mav.addObject("member", memberVO);
 		
 		return mav;
 	}

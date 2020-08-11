@@ -8,6 +8,7 @@
 <script type="text/javascript">
 	var locked = 0;
 	function show(star){
+		if(locked) return;
 		var i;
 		var image;
 		var el;
@@ -32,6 +33,7 @@
 	}
 	
 	function noshow(star){
+		if(locked) return;
 		var i;
 		var image;
 		var el;
@@ -49,6 +51,7 @@
 	}
 	
 	function mark(star){
+		if(locked) return;
 		lock(star);
 		alert("별점 "+star+"점을 선택하셨습니다.");
 		document.reviewform.sr_star.value=star;
@@ -133,7 +136,7 @@ $(document).ready(function(){
 				</form:select>
 				<form:hidden path="goCheck" id="goCheck"/>
 				<div class="btn-group"> 
-					<input type="submit" class="buy" value="구매하기" formaction="productBuy.do"><br>
+					<input type="submit" class="buy" value="바로구매" formaction="productBuy.do"><br>
 					<input type="submit" class="basket" value="장바구니" formaction="basket.do">
 				</div>
 			</form:form>
