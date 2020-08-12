@@ -57,7 +57,7 @@
 	</c:if>
 	</div>
 	<hr size="1" width="100%">
-	<div class="detailpage">
+	<div class="detailpage miniboard">
 		<c:if test="${!empty member.m_nickname}">
 		<h3>${member.m_nickname}님 게시글</h3>
 		</c:if>

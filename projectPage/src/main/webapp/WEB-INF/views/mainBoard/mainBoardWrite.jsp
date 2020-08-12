@@ -46,34 +46,13 @@
 		});
 		
 		/* 사진 동시전송 */
-		var i = 0;
 		$("#add").click(function(){
-			i++;
-			$(".addImages").append("<input type='file' name='uploadPicture' class='uploadPicture"+ i +"' onchange='setThumbnail2(event)' hidden>");
-			$(".addImages").append("<input type='checkbox' name='picture'>");
-			$(".uploadPicture"+i).click();
+			$(".addImages").append("<input type='file' name='uploadPicture' class='uploadPicture' onchange='setThumbnail2(event)' hidden>");
+			$(".uploadPicture").click();
 		});
-		
-		var inputs = document.getElementsByName('picture');
-		
-		for(var i=0;i<inputs.length;i++){
-			inputs[i].onclick=function(){
-
-				if(this.checked){//체크박스 선택시
-					sum += Number(this.value);//선택시 가격 누적
-				}else{//체크박스 해제시
-					sum -= Number(this.value);//선택을 해제하면 가격을 차감
-				}
-
-			};
-		}
-		
-		var img = 
-		$('.addimg').click(function(){
-			$(this).remove();			
-		});
-		
 	});
+		
+
 	/* 메인사진 미리보기 */
 	function setThumbnail(event){
 		var reader = new FileReader();
@@ -90,16 +69,15 @@
 		reader.readAsDataURL(event.target.files[0]);
 	};
 	/* 추가사진 미리보기 */
-	var i = 0;
 	function setThumbnail2(event){
 		var reader = new FileReader();
 		
 		reader.onload = function(event){
-			i++;
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);
 			img.setAttribute("width", "300px");
 			img.setAttribute('class', 'addimg');
+			img.setAttribute('onclick', 'removeImg()');
 			
 			document.querySelector("div#addImage_container").appendChild(img);
 			
@@ -107,8 +85,11 @@
 		reader.readAsDataURL(event.target.files[0]);
 	};
 	
-	
-	
+	function removeImg(){
+		$(".addimg").click(function(){
+			$(this).remove();
+		});
+	}
 </script>
 <div id="body">
 	<div id="main-form">

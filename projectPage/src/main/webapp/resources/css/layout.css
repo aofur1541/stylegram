@@ -34,10 +34,11 @@ div#bar_logo{
 	margin-top:20px;
 }
 div#bar_menu{
-	width:25%;
-	float:left;
+	width:35%;
+	float:right;
 	margin-top:40px;
 	margin-bottom:30px;
+	margin-right: 30px;
 }
 div#bar_search{
 	width:40%;
@@ -51,11 +52,11 @@ div#bar_nav{
 	overflow:hidden;
 }
 div#bar_nav img#menubar{
+	display:block;
 	height:80px;
 	width:80px;
-	margin-top:20px;
-	margin-right:20px;
-	padding-right:20px;
+	margin-top: 15px;
+	margin-right: 4000px;
 }
 #bar_nav .toolbar_wrap #bar_button{
 	display:table;
@@ -504,8 +505,17 @@ div#body div.detailpage{
 	margin-right: 5%;
 	float: left;
 }
-div#body div.detailpage table{
-	border-top: 2px solid;
+div#body div.detailpage.miniboard table{
+	border-collapse: collapse;
+	border-top: 3px solid black;
+	border-bottom: 2px solid black;
+}
+div#body div.detailpage.miniboard table th{
+	text-align:center;
+	background: #f0f6f9;
+}
+div#body div.detailpage.miniboard table th, div.detailpage.miniboard table td{
+	border:1px solid #ddd;
 }
 div#body hr.lastline{
 	margin-bottom: 50px;
@@ -538,6 +548,9 @@ div#body table#memberList{
 	margin-top:5px;
 	border:1px solid;
 	border-collapse:collapse;
+}
+div#body table#memberList th{
+	background-color: #99FFCC;
 }
 div#body table#memberList td, table#memberList th{
 	padding: 15px;
@@ -666,7 +679,7 @@ div#main_body div#body div#flea_content_wrapper div#content div#category div#ca1
 }
 div#body div.searchForm{
 	height: 100px;
-	margin-top: -50px;
+	margin-top: -40px;
 }
 div#body div.searchForm form{
 	background-color: rgb(247, 248, 249);
@@ -793,6 +806,21 @@ div.noauth a{
 div#body table.noticeboard{
 	width: 100%;
 	margin: 0 auto;
+	border-collapse: collapse;
+	border-top: 3px solid;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 2px solid;
+}
+div#body table.noticeboard th{
+	background-color:#f0f6f9;
+	padding: 20px;
+}
+div#body table.noticeboard th, table.noticeboard td{
+	border: 1px solid #ddd;
+}
+div#body table.noticeboard td{
+	padding: 10px;
 }
 div#body table.noticeboard td{
 	text-align: center;
@@ -1014,4 +1042,43 @@ div#body input#buybtn{
 }
 div#body input#buybtn:hover{
 	background-color: rgba(130, 130, 130, 0.8);
+}
+div#main_header div#bar_menu div.font-size{
+	font-size: 22px;
+	float: left;
+	margin-left: 12%;
+}
+div#main_header div#bar_menu div.font-size div.title1, div.font-size div.title2, div.font-size div.title3{
+	float: left;
+}
+div#main_header div.menu_wrap div.font-size{
+	margin-top: -50px;
+	font-size: 22px;
+	float: right;
+}
+div#main_header div.font-size div.title2{
+	animation: color-change1 1s infinite;
+}
+@keyframes color-change {
+	0% { color: red; }
+	50% { color: blue; }
+	100% { color: red; }
+}
+div#main_header div.font-size div.title3{
+    animation: color-change 1s infinite;
+}
+@keyframes color-change {
+    0% { color: red; }
+    9% { color: orange; }
+    18% { color: yellow; }
+    27% { color: green; }
+    36% { color: blue; }
+    45% { color: #000080;}
+    54% { color: purple; }
+    63% { color: #000000; }
+    72% { color: blue; }
+    81% { color: green; }
+    90% { color: yellow; }
+    95% { color: orange; }
+    100% { color: red; }
 }

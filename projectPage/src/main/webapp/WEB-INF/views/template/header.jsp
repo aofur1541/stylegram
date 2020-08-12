@@ -7,7 +7,7 @@
 		<img src="${pageContext.request.contextPath}/resources/images/mainlogo.png">
 		</a>
 	</div>
-	<div class="align-center" id="bar_search">
+	<!-- <div class="align-center" id="bar_search">
 		<form class="search_form">
 			<ul class="search">
 				<li>
@@ -18,14 +18,19 @@
 				</li>
 			</ul>
 		</form>
-	</div>
+	</div> -->
 	<div class="align-right" id="bar_menu">
+		<div class="font-size">
+			<c:if test="${following >= 0 && following < 5}"><div class="title1">뉴비</div></c:if>
+			<c:if test="${following >= 5 && following < 10}"><div class="title2">인싸</div></c:if>
+			<c:if test="${following >= 10 && following < 50}"><div class="title3">핵인싸</div></c:if>
 	    <c:if test="${!empty m_id && empty m_nickname}">
 	    <span><b>[${m_id}]</b></span>
 	    </c:if>
 	    <c:if test="${!empty m_id && !empty m_nickname}">
 	    <span><b>[${m_nickname}]</b></span>
 	    </c:if>
+	    </div>
 	    <c:if test="${!empty m_id && m_auth == 4}">
 	    <a href="${pageContext.request.contextPath}/member/admin.do" id="nav_menu">관리자페이지</a>
 	    </c:if>
@@ -52,12 +57,18 @@
 		</div>
 		<div class="menu_background">
 			<div class="menu_wrap">
-				<c:if test="${!empty m_id && empty m_nickname}">
+				<div class="font-size">
+					<c:if test="${following >= 0 && following < 5}"><div class="title1">뉴비</div></c:if>
+					<c:if test="${following >= 5 && following < 10}"><div class="title2">인싸</div></c:if>
+					<c:if test="${following >= 10 && following < 50}"><div class="title3">핵인싸</div></c:if>
+				<br>
+			    <c:if test="${!empty m_id && empty m_nickname}">
 			    <span><b>[${m_id}]</b></span>
 			    </c:if>
 			    <c:if test="${!empty m_id && !empty m_nickname}">
 			    <span><b>[${m_nickname}]</b></span>
 			    </c:if>
+			    </div>
 			    <br><br>
 			    <c:if test="${!empty m_id && m_auth == 4}">
 			    <a href="${pageContext.request.contextPath}/member/admin.do" id="nav_menu">관리자페이지</a>
@@ -81,13 +92,13 @@
 				<a href="${pageContext.request.contextPath}/member/login.do" id="nav_menu">로그인</a>
 				</c:if>
 				<br><br><br><br>
-				<form class="search_form">
+				<!-- <form class="search_form">
 					<ul class="search">
 						<li>
 							<input type="search" id="keyword" placeholder="Search..." autocomplete="off" required>
 						</li>
 					</ul>
-				</form>
+				</form> -->
 				<a href="#" id="close_menu_button" onclick="hideMenu();">
 				<i class="fa fa-times" aria-hidden="true"></i>
 				</a>

@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="body">
 	<h2>회원 목록</h2>
+	<div class="align-right">
+		* 아이디 클릭시 변경가능
+	</div>
 	<c:if test="${count == 0}">
 	아무도 없오
 	</c:if>

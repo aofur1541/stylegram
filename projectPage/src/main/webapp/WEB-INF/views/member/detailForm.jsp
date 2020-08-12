@@ -36,7 +36,7 @@
 		<input type="button" value="회원탈퇴" id="deletebtn" onclick="location.href='${pageContext.request.contextPath}/member/delete.do'">  
 	</div>
 	<hr size="1" width="100%" class="lastline">
-	<div class="detailpage">
+	<div class="detailpage miniboard">
 		<h3>내 게시글</h3>
 		<table>
 			<tr>

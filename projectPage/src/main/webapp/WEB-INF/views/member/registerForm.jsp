@@ -5,8 +5,15 @@
 	$(document).ready(function(){
 		var checkId = 0;
 		$('#confirmId').click(function(){
-			if($('#m_id').val()==''){
+			if($('#m_id').val()=='' && checkId == 0){
 				$('#message_id').text('아이디를 입력해주세요.');
+				return;
+			}else if(checkId == 1){
+				$('#m_id').val('');
+				$('#m_id').prop("readonly", false);
+				$('#message_id').text('');
+				$('#confirmId').val('중복체크');
+				checkId = 0;
 				return;
 			}
 			
@@ -22,6 +29,8 @@
 				success:function(data){
 					if(data.result == 'idNotFound'){
 						$('#message_id').text('사용 가능한 ID');
+						$('#m_id').prop("readonly", true);
+						$('#confirmId').val('다른아이디사용');
 						checkId = 1;
 					}else if(data.result == 'idDuplicated'){
 						$('#message_id').text('중복된 ID');
@@ -38,10 +47,10 @@
 			})
 		});
 		
-		$('#registerForm #m_id').keydown(function(){
+		/* $('#registerForm #m_id').keydown(function(){
 			checkId=0;
 			$('#message_id').text('');
-		});
+		}); */
 		
 		$('#registerForm').submit(function(){
 			if($('#m_passwd').val() != $('#passwdConfirm').val()){

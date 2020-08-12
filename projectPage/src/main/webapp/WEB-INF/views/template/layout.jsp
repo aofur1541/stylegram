@@ -60,7 +60,7 @@
 <style>
 @font-face{
 	font-family: mainfont;
-	src:url("${pageContext.request.contextPath}/resources/css/mainfont.otf") format("truetype");
+	src:url("${pageContext.request.contextPath}/resources/css/Jalnan.ttf") format("truetype");
 }
 @media(max-width:1200px){
 	div#bar_search{
