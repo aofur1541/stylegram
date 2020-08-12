@@ -73,7 +73,7 @@ public class MainBoardController {
 			return "mainBoardWrite";
 		}
 		int mb_num = 0;
-		mb_num = mainBoardService.selectMbnum();
+		mb_num = mainBoardService.selectMbnum(); 
 		mainBoardVO.setMb_num(mb_num);
 		mainBoardService.insert(mainBoardVO);
 		
