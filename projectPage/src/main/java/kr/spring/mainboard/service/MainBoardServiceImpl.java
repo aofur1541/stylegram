@@ -16,10 +16,16 @@ public class MainBoardServiceImpl implements MainBoardService{
 	
 	@Resource
 	private MainBoardMapper mainBoardMapper;
-
+	
+	@Override
+	public Integer selectMbnum() {
+		// TODO Auto-generated method stub
+		return mainBoardMapper.selectMbnum();
+	}
+	
 	@Override
 	public void insert(MainBoardVO board) {
-		board.setMb_num(mainBoardMapper.selectMbnum());
+		
 		mainBoardMapper.insert(board);
 		mainBoardMapper.insertInfo(board);
 		
@@ -41,6 +47,7 @@ public class MainBoardServiceImpl implements MainBoardService{
 		mainBoardMapper.deleteInfo(mb_num);
 		mainBoardMapper.deleteReply(mb_num);
 		mainBoardMapper.deleteLike(mb_num);
+		mainBoardMapper.deletePictures(mb_num);
 		mainBoardMapper.delete(mb_num);
 	}
 
@@ -58,4 +65,6 @@ public class MainBoardServiceImpl implements MainBoardService{
 	public MainBoardVO selectMnum(Integer mb_num) {
 		return mainBoardMapper.selectMnum(mb_num);
 	}
+
+
 }

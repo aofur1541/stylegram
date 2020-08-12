@@ -192,4 +192,15 @@ CREATE TABLE PROCOMMENT
 -- MEMBER_BOARD는 게시판 테이블을, BOARD_NUM은 글번호를 나타낸다.
  
 -- 댓글 시퀀스 
-create sequence COMMENT_SEQ; 
+create sequence COMMENT_SEQ;
+
+-- 이미지
+create table promainimages(
+    i_num number primary key,
+    m_num not null,
+    mb_num not null,
+    i_photo BLOB,
+    i_filename varchar2(200),
+    constraint promainreple_fk1 foreign key (m_num) references promember (m_num),
+    constraint promainreple_fk2 foreign key (mb_num) references promainboard (mb_num)
+);

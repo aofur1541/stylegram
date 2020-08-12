@@ -2,6 +2,7 @@ package kr.spring.mainboard.domain;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Arrays;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +27,7 @@ public class MainBoardVO {
 	private String mb_pantsinfo;
 	private String mb_capinfo;
 	private String mb_shoesinfo;
-	
+
 	public int getMb_num() {
 		return mb_num;
 	}
@@ -148,7 +149,10 @@ public class MainBoardVO {
 	@Override
 	public String toString() {
 		return "MainBoardVO [mb_num=" + mb_num + ", mb_title=" + mb_title + ", m_num=" + m_num + ", upload=" + upload
-				+ ", mb_content=" + mb_content + ", mb_regdate=" + mb_regdate + ", mb_modifydate=" + mb_modifydate
-				+ "]";
+				+ ", mb_filename=" + mb_filename + ", mb_content=" + mb_content + ", mb_regdate=" + mb_regdate
+				+ ", mb_modifydate=" + mb_modifydate + ", m_id=" + m_id + ", m_nickname=" + m_nickname + ", mb_topinfo="
+				+ mb_topinfo + ", mb_pantsinfo=" + mb_pantsinfo + ", mb_capinfo=" + mb_capinfo + ", mb_shoesinfo="
+				+ mb_shoesinfo + "]";
 	}
+	
 }

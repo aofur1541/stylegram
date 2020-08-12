@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	listComment("1");
@@ -22,7 +23,7 @@ $(document).ready(function(){
             url: "insertComment.do", //데이터를 보낼 url
             data: data, //보낼 데이터
             success: function(){ //데이터를 보내는것이 성공했을시 출력되는 메시지
-                alert("댓글이 등록되었습니다.");
+                alert("댓글이 등록되었습니다."+data);
                 listComment(); //댓글 목록 출력
             }
         });
@@ -53,7 +54,22 @@ $(document).ready(function(){
     	strDate = year+"-"+month+"-"+day;
     	return strDate;
     }
-
+    $('.flexslider').flexslider({
+        animation: "slide",
+        controlNav: "thumbnails"
+      });
+    /* 
+    .flex-control-nav.flex-control-thumbs li img{
+        float:left;
+        display:inline;
+        width:10%;
+        height: 100px;
+     }
+     .flex-control-nav.flex-control-thumbs li{	
+        display:inline;
+        width:25%;
+     }
+    */
 });
 
 </script>
@@ -91,11 +107,27 @@ window.onload=function(){
 		<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath }/main/main.do'">
 	</div>
 	<hr size="1" width="100%">
-	<div id="viewPhoto" class="align-center">
-	<c:if test="${!empty mainBoard.mb_photo}">
-		<img src="imageView.do?mb_num=${mainBoard.mb_num}">
-	</c:if>
+	
+	<div class="align-center flexslider">
+	<ul class="slides">
+		<li>
+			<c:if test="${!empty mainBoard.mb_photo}">
+				<img src="imageView.do?mb_num=${mainBoard.mb_num}">
+			</c:if>
+		</li>
+		<!-- 추가 사진들 -->
+		
+		<c:if test="${!empty mainPictures}">
+		<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status">
+			<li data-thumb="imageView2.do?i_num=${mainPictures.i_num}">
+				<img src="imageView2.do?i_num=${mainPictures.i_num}">
+			</li>
+		</c:forEach>
+		</c:if>
+		
+	</ul>
 	</div>
+	
 	<p class="mb_content">
 		${mainBoard.mb_content}
 	</p>

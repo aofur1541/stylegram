@@ -31,4 +31,9 @@ public interface MainBoardMapper {
 	public void delete(Integer num);
 	public List<MainBoardVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
+	
+	@Delete("DELETE FROM promainimages WHERE mb_num=#{mb_num}")
+	public void deletePictures(Integer mb_num);
+	
+	
 }

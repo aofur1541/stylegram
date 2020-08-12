@@ -86,6 +86,19 @@
 				<label for="photo">사진변경</label>
 				<input type="file" name="upload" id="upload" onchange="setThumbnail(event)"/>
 			</li>
+			<!-- 추가사진 수정 -->
+			<c:if test="${!empty mainPictures }">
+			
+			<li class="addImages">
+			<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status">
+					<label for="picture">추가사진${mainPictures.i_filename }</label>
+					<input type="hidden" name="mainPictureSubVO[${status.index }].i_num" value="${mainPictures.i_num }">
+					<input type="file" name="mainPictureSubVO[${status.index }].uploadPicture" class="uploadPicture">
+					<input type="button" value="삭제" onclick="location.href='deletePicture.do?i_num=${mainPictures.i_num }'">
+			</c:forEach>
+			</li>
+			
+			</c:if>
 			<li>
 				<label for="title">제목</label>
 				<form:input path="mb_title" required="required"/><form:errors path="mb_title" cssClass="error-color"/>
