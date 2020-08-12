@@ -11,7 +11,7 @@ import kr.spring.mainboard.dao.MainBoardMapper;
 import kr.spring.mainboard.domain.MainBoardVO;
 
 
-@Service("mainBoardService")
+@Service("mainBoardService") 
 public class MainBoardServiceImpl implements MainBoardService{
 	
 	@Resource

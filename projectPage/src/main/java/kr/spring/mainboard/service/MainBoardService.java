@@ -15,3 +15,4 @@ public interface MainBoardService {
 	public List<MainBoardVO> selectList(Map<String,Object> map);
 	public int selectRowCount(Map<String,Object> map);
 }
+ 
