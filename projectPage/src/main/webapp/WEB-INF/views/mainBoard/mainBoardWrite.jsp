@@ -46,12 +46,15 @@
 		});
 		
 		/* 사진 동시전송 */
+		var i = 0;
 		$("#add").click(function(){
-			$(".addImages").append("<input type='file' name='uploadPicture' class='uploadPicture' onchange='setThumbnail2(event)' hidden>");
-			$(".uploadPicture").click();
+			$("#addImage_container").append("<input type='file' name='uploadPicture' class='uploadPicture"+i+"' onchange='setThumbnail2(event,"+i+")' hidden>"
+											+"<input type='button' value='삭제' class='deletePicture"+i+"' onclick='removeImg2("+i+")'>");
+			$(".uploadPicture"+i).click();
+			i++;
 		});
-	});
 		
+	});
 
 	/* 메인사진 미리보기 */
 	function setThumbnail(event){
@@ -69,15 +72,16 @@
 		reader.readAsDataURL(event.target.files[0]);
 	};
 	/* 추가사진 미리보기 */
-	function setThumbnail2(event){
+	function setThumbnail2(event,i){
 		var reader = new FileReader();
 		
 		reader.onload = function(event){
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);
 			img.setAttribute("width", "300px");
-			img.setAttribute('class', 'addimg');
+			img.setAttribute('class', 'addimg'+i);
 			img.setAttribute('onclick', 'removeImg()');
+			img.setAttribute('data-num', i);
 			
 			document.querySelector("div#addImage_container").appendChild(img);
 			
@@ -88,7 +92,16 @@
 	function removeImg(){
 		$(".addimg").click(function(){
 			$(this).remove();
+			
+			var classNum = '.uploadPicture'+$(this).attr('data-num');
+			$(classNum).remove();
 		});
+	}
+	/* 추가사진 삭제 */
+	function removeImg2(i){
+		$(".uploadPicture"+i).remove();
+		$(".deletePicture"+i).remove();
+		$(".addimg"+i).remove();
 	}
 </script>
 <div id="body">
@@ -109,17 +122,21 @@
 					</div>
 					<a id="changeFilebtn" href="#">메인사진 변경</a>
 				</li>
-				
+			</ul>
+			<ul>
 				<li class="addImages">
 					<label for="picture">추가사진</label>
 					<a href="#" id="add">
 						<img src="${pageContext.request.contextPath }/resources/images/addpicture.png" >
 					</a>
+					<!-- 추가사진 미리보기 -->
 					<div id="addImage_container">
 						
 					</div>
+					
 				</li>
-				
+			</ul>
+			<ul>
 				<li>
 					<label for="title">제목</label>
 					<form:input path="mb_title" required="required"/><form:errors path="mb_title" cssClass="error-color"/>
@@ -141,12 +158,10 @@
 					<form:hidden path="mb_capinfo" placeholder="모자정보 (ex: https://smartstore.naver.com/store/products/4101500072)" required="required"/>
 					<form:hidden path="mb_shoesinfo" placeholder="신발정보 (ex: https://smartstore.naver.com/store/products/4101500072)" required="required"/>
 				</li>
-				
-				
 			</ul>
 			<div class="align-center">
 				<input type="submit" id="submit" value="전송">
-				<input type="button" value="홈으로" id="homebtn" onclick="location.href='main.do'">
+				<input type="button" value="홈으로" id="homebtn" onclick="location.href='${pageContext.request.contextPath }/main/main.do'">
 			</div>
 		</form:form>
 	

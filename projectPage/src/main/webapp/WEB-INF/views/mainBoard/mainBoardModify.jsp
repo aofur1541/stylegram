@@ -69,36 +69,77 @@
 		};
 		reader.readAsDataURL(event.target.files[0]);
 	};
+	/* 추가사진 미리보기 */
+	function setThumbnail2(event,i){
+		var reader = new FileReader();
+		
+		reader.onload = function(event){
+			var img = document.createElement("img");
+			img.setAttribute("src", event.target.result);
+			img.setAttribute("width", "300px");
+			img.setAttribute('class', 'addimg'+i);
+			img.setAttribute('onclick', 'removeImg()');
+			img.setAttribute('data-num', i);
+			
+			$("div#addImage_container"+i).empty();
+			$("img#add_Pictures"+i).hide();
+			document.querySelector("div#addImage_container"+i).appendChild(img);
+			
+		};
+		reader.readAsDataURL(event.target.files[0]);
+	};
 </script>
 <div id="body">
 	<h2>글수정</h2>
 	
 	<form:form action="update.do" enctype="multipart/form-data" commandName="mainBoardVO">
 		<form:hidden path="mb_num"/>
-			<div class="align-center" id="origin_picture">
-				<img src="imageView.do?mb_num=${mainBoardVO.mb_num}" style="max-width:500px">
-			</div>
-			<div id="image_container">
-				
-			</div>
+
 		<ul>
 			<li>
 				<label for="photo">사진변경</label>
+				<!-- 기존 사진 -->
+				<div class="align-center" id="origin_picture">
+					<img src="imageView.do?mb_num=${mainBoardVO.mb_num}" style="max-width:300px">
+				</div>
+				<!-- 미리보기 사진 -->
+				<div id="image_container"></div>				
 				<input type="file" name="upload" id="upload" onchange="setThumbnail(event)"/>
 			</li>
+		</ul>
+		<ul>
 			<!-- 추가사진 수정 -->
 			<c:if test="${!empty mainPictures }">
-			
 			<li class="addImages">
-			<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status">
-					<label for="picture">추가사진${mainPictures.i_filename }</label>
+				<label for="addPictures">추가사진 변경</label>
+				<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status">
+					<label for="picture">사진 이름 : ${mainPictures.i_filename }</label>
+					<!-- 기존사진 -->
+					<img src="imageView2.do?i_num=${mainPictures.i_num}" style="max-width:300px" id="add_pictures${status.index }">
+					<!-- 미리보기 사진 -->
+					<div id="addImage_container${status.index }"></div>
+					
 					<input type="hidden" name="mainPictureSubVO[${status.index }].i_num" value="${mainPictures.i_num }">
-					<input type="file" name="mainPictureSubVO[${status.index }].uploadPicture" class="uploadPicture">
-					<input type="button" value="삭제" onclick="location.href='deletePicture.do?i_num=${mainPictures.i_num }'">
-			</c:forEach>
+					<input type="file" name="mainPictureSubVO[${status.index }].uploadPicture" class="uploadPicture${status.index }" onchange="setThumbnail2(event,${status.index })">
+					<input type="button" value="삭제" class="delete_check${status.index }" >
+					<!-- 삭제 확인 js -->
+					<script type="text/javascript">
+						$(".delete_check${status.index}").click(function(){
+							var check = confirm("추가 사진을 삭제하시겠습니까?");
+							if(check){
+								location.href='deletePicture.do?i_num=${mainPictures.i_num }';
+							}else{
+								
+							}
+						});
+					</script>
+					
+				</c:forEach>
 			</li>
-			
 			</c:if>
+		</ul>
+		<ul>
+			
 			<li>
 				<label for="title">제목</label>
 				<form:input path="mb_title" required="required"/><form:errors path="mb_title" cssClass="error-color"/>

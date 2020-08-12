@@ -78,10 +78,11 @@ public class MainBoardController {
 		mainBoardService.insert(mainBoardVO);
 		
 		//이미지
+		if(mainPictures.getUploadPicture()!=null) {
 		mainPictures.setMb_num(mb_num);
 		mainPictures.setM_num((Integer) session.getAttribute("m_num"));
 		mainPictureService.insert(mainPictures);
-		
+		}
 		
 		return "redirect:/main/main.do";
 	}
