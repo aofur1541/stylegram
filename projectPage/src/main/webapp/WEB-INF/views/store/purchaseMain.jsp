@@ -21,7 +21,7 @@
 				$('.takephone').val('');
 			}
 		});
-	});
+	}); 
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
