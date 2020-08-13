@@ -5,6 +5,23 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	$(document).ready(function(){
+		$('.buyerinfo').change(function(){
+			if($('#b').is(":checked")){
+				$('.takename').val('${member.m_name}');
+				$('#sample6_postcode').val('${member.m_postcode}');
+				$('#sample6_address').val('${member.m_address}');
+				$('#sample6_detailAddress').val('${member.m_detailaddress}');
+				$('.takephone').val('${member.m_phone}');
+			}else if($('#a').is(":checked")){
+				$('.takename').val('');
+				$('#sample6_postcode').val('');
+				$('#sample6_address').val('');
+				$('#sample6_detailAddress').val('');
+				$('.takephone').val('');
+			}
+		});
+	});
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -101,11 +118,14 @@
 		</table>
 		<table>
 			<tr>
-				<th colspan="2">받는사람 정보</th>
+				<th colspan="2">받는사람 정보
+				<input type="radio" name="buyerinfo" id="a" class="buyerinfo" checked>직접입력
+				<input type="radio" name="buyerinfo" id="b" class="buyerinfo">구매자와 동일
+				</th>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text"></td>
+				<td><input type="text" class="takename"></td>
 			</tr>
 			<tr>
 				<td>배송주소</td>
@@ -119,7 +139,7 @@
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td><input type="text"></td>
+				<td><input type="text" class="takephone"></td>
 			</tr>
 		</table>
 		<table>
