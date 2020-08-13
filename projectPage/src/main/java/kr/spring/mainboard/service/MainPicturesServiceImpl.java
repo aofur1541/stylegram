@@ -24,9 +24,11 @@ public class MainPicturesServiceImpl implements MainPicturesService{
 		
 		for (MultipartFile multipartFile : mainPictures.getUploadPicture()) {
 			
-			mainPictures.setI_filename(multipartFile.getOriginalFilename());
-			mainPictures.setI_photo(multipartFile.getBytes());
-			mainPicturesMapper.insertPictures(mainPictures);
+			if(!multipartFile.isEmpty()) {
+				mainPictures.setI_filename(multipartFile.getOriginalFilename());
+				mainPictures.setI_photo(multipartFile.getBytes());
+				mainPicturesMapper.insertPictures(mainPictures);
+			}
 		}
 					
 		

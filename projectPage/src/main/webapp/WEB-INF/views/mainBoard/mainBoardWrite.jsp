@@ -49,7 +49,7 @@
 		var i = 0;
 		$("#add").click(function(){
 			$("#addImage_container").append("<input type='file' name='uploadPicture' class='uploadPicture"+i+"' onchange='setThumbnail2(event,"+i+")' hidden>"
-											+"<input type='button' value='삭제' class='deletePicture"+i+"' onclick='removeImg2("+i+")'>");
+											/* +"<input type='button' value='삭제' class='deletePicture"+i+"' onclick='removeImg2("+i+")'>" */);
 			$(".uploadPicture"+i).click();
 			i++;
 		});
@@ -83,7 +83,15 @@
 			img.setAttribute('onclick', 'removeImg()');
 			img.setAttribute('data-num', i);
 			
+			var delbtn = document.createElement("input");
+			delbtn.setAttribute("type", "button");
+			delbtn.setAttribute("value", "삭제");
+			delbtn.setAttribute("class", "deletePicture"+i);
+			delbtn.setAttribute("onclick", 'removeImg2('+i+')');
+			
 			document.querySelector("div#addImage_container").appendChild(img);
+			document.querySelector("div#addImage_container").appendChild(delbtn);
+			
 			
 		};
 		reader.readAsDataURL(event.target.files[0]);
@@ -113,7 +121,7 @@
 				<li>
 					<label for="photo">메인사진</label>
 					<a id="addPicture" href="#">
-						<img src="${pageContext.request.contextPath }/resources/images/addpicture.png" >
+						<img src="${pageContext.request.contextPath }/resources/images/addpicture.png" class="addimg">
 					</a>
 					<input type="file" name="upload" id="upload" onchange="setThumbnail(event)" hidden/>
 					<!-- 사진 미리보기창 -->
@@ -127,7 +135,7 @@
 				<li class="addImages">
 					<label for="picture">추가사진</label>
 					<a href="#" id="add">
-						<img src="${pageContext.request.contextPath }/resources/images/addpicture.png" >
+						<img src="${pageContext.request.contextPath }/resources/images/addpicture.png" class="addimg">
 					</a>
 					<!-- 추가사진 미리보기 -->
 					<div id="addImage_container">
