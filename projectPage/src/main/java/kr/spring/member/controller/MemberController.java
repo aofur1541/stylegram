@@ -100,6 +100,12 @@ public class MemberController {
 				session.setAttribute("m_address", member.getM_address());
 				session.setAttribute("m_phone", member.getM_phone());
 				session.setAttribute("m_public", member.getM_public());
+				
+				int followingCount = memberService.followingCount(member.getM_num());
+				if((Integer)session.getAttribute("m_auth") == 4) {
+					followingCount = -1;
+				}
+				session.setAttribute("following", followingCount);
 			
 				return "redirect:/main/main.do";
 				
@@ -225,7 +231,7 @@ public class MemberController {
 		//글정보
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("m_num", m_num);
-		map.put("f_activeuser", m_num);
+		map.put("f_activeuser", m_num); 
 		map.put("f_passiveuser", m_num);
 		
 		List<MainBoardVO> writeList = memberService.selectBoardList(map);
