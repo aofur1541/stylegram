@@ -18,4 +18,8 @@ public interface StoreMapper {
 	@Select("SELECT * FROM prostore WHERE s_num=#{s_num}")
 	public StoreVO selectProduct(Integer num);
 	public StoreVO selectProductDetail(Integer num);
+	@Select("SELECT * FROM prostore s JOIN prostorepurchase p ON s.s_num=p.s_num WHERE p.p_num=#{p_num}")
+	public StoreVO selectPurchaseProduct(Integer num);
+	@Select("SELECT * FROM prostore s JOIN prostorepurchase p ON s.s_num=p.s_num")
+	public List<StoreVO> selectPurchaseList();
 }

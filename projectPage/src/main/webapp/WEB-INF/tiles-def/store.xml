@@ -24,7 +24,13 @@
     <definition name="productReview" extends="reply_main">
        <put-attribute name="reply" value="/WEB-INF/views/store/productReview.jsp"/>
     </definition>
-        <definition name="purchaseMain" extends="main">
+    <definition name="purchaseMain" extends="main">
        <put-attribute name="body" value="/WEB-INF/views/store/purchaseMain.jsp"/>
+    </definition>
+    <definition name="purchaseSuccess" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/store/purchaseSuccess.jsp"/>
+    </definition>
+    <definition name="purchaseList" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/store/purchaseList.jsp"/>
     </definition>
 </tiles-definitions>

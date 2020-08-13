@@ -2,27 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="double-submit" uri="http://www.egovframe.go.kr/tags/double-submit/jsp" %>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	$(document).ready(function(){
-		$('.buyerinfo').change(function(){
-			if($('#b').is(":checked")){
-				$('.takename').val('${member.m_name}');
-				$('#sample6_postcode').val('${member.m_postcode}');
-				$('#sample6_address').val('${member.m_address}');
-				$('#sample6_detailAddress').val('${member.m_detailaddress}');
-				$('.takephone').val('${member.m_phone}');
-			}else if($('#a').is(":checked")){
-				$('.takename').val('');
-				$('#sample6_postcode').val('');
-				$('#sample6_address').val('');
-				$('#sample6_detailAddress').val('');
-				$('.takephone').val('');
-			}
-		});
-	}); 
-    function sample6_execDaumPostcode() {
+    function postSearch() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -50,22 +34,13 @@
                     if(data.buildingName !== '' && data.apartment === 'Y'){
                         extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                     }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
+                document.getElementById('p_post').value = data.zonecode;
+                document.getElementById("p_address").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                document.getElementById("p_detailaddress").focus();
             }
         }).open();
     }
@@ -98,6 +73,11 @@
     table caption{caption-side: bottom; display: none;}
   </style>
 <div id="body">
+	<form:form action="insertPurchase.do" commandName="storePurchaseVO">
+		<double-submit:preventer/>
+		<input type="hidden" id="s_num" name="s_num" value="${store.s_num}">
+		<input type="hidden" id="m_num" name="m_num" value="${member.m_num}">
+		<input type="hidden" id="a_num" name="a_num" value="${store.a_num}">
 		<h2>결제정보</h2>
 		<table>
 			<tr>
@@ -118,28 +98,33 @@
 		</table>
 		<table>
 			<tr>
-				<th colspan="2">받는사람 정보
-				<input type="radio" name="buyerinfo" id="a" class="buyerinfo" checked>직접입력
-				<input type="radio" name="buyerinfo" id="b" class="buyerinfo">구매자와 동일
-				</th>
+				<th colspan="2">받는사람 정보</th>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" class="takename"></td>
+				<td>
+					<form:input path="p_name"/>
+					<form:errors path="p_name"/>
+				</td>
 			</tr>
 			<tr>
 				<td>배송주소</td>
 				<td>
-					<input type="text" id="sample6_postcode" placeholder="우편번호">
-					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample6_address" placeholder="주소"><br>
-					<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+					<form:input path="p_post" placeholder="우편번호"/>
+					<form:errors path="p_post"/>
+					<input type="button" onclick="postSearch()" value="우편번호 찾기"><br>
+					<form:input path="p_address" placeholder="주소"/>
+					<form:errors path="p_address"/>
+					<form:input path="p_detailaddress" placeholder="상세주소"/>
+					<form:errors path="p_detailaddress"/>
 				</td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td><input type="text" class="takephone"></td>
+				<td>
+					<form:input path="p_phone"/>
+					<form:errors path="p_phone"/>
+				</td>
 			</tr>
 		</table>
 		<table>
@@ -166,23 +151,28 @@
 			</tr>
 			<tr>
 				<td>할인</td>
-				<td><fmt:formatNumber value="${store.s_discount}" type="currency"/>%</td>
+				<td><fmt:formatNumber value="${store.s_discount}" type="number"/>%</td>
 			</tr>
 			<tr>
 				<td>배송비</td>
 				<td>
 					<c:if test="${store.s_shipcost==0}">무료</c:if>
-					<c:if test="${store.s_shipcost>0}"><fmt:formatNumber value="${store.s_shipcost}" type="currency"/></c:if>
+					<c:if test="${store.s_shipcost>0}"><fmt:formatNumber value="${store.s_shipcost}" type="number"/></c:if>
 				</td>
 			</tr>
 			<tr>
 				<td>총결제금액</td>
-				<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100))+store.s_shipcost)*store.a_num}" type="currency"/></td>
+				<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num < 50000}">
+					<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num+store.s_shipcost}" type="number"/>원</td>
+				</c:if>
+				<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num > 50000}">
+					<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num}" type="number"/>원</td>
+				</c:if>
 			</tr>
 		</table>
-		<input type="submit" id="buybtn" value="구매하기">
-		<input type="button" id="homebtn" value="돌아가기">
-		
+		<input type="button" value="돌아가기" onclick="location.href='productDetail.do?s_num=${store.s_num}'">
+		<input type="submit" value="구매하기">
+	</form:form>
 </div>
 
 

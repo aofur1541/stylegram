@@ -24,6 +24,8 @@ import kr.spring.member.domain.MemberVO;
 import kr.spring.member.service.MemberService;
 import kr.spring.store.domain.StoreVO;
 import kr.spring.store.service.StoreService;
+import kr.spring.storepurchase.domain.StorePurchaseVO;
+import kr.spring.storepurchase.service.StorePurchaseService;
 import kr.spring.storereview.domain.StoreReviewVO;
 import kr.spring.storereview.service.StoreReviewService;
 import kr.spring.util.PagingUtil;
@@ -42,10 +44,14 @@ public class StoreController {
 	@Resource
 	private MemberService memberService;
 	
-	
 	@ModelAttribute
 	private StoreVO initCommand() {
 		return new StoreVO();
+	}
+	
+	@ModelAttribute
+	private StorePurchaseVO initCommand2() {
+		return new StorePurchaseVO();
 	}
 	
 	@RequestMapping(value="/store/insertProduct.do",method=RequestMethod.GET)
@@ -170,16 +176,20 @@ public class StoreController {
 		
 		return mav;
 	}
-
+	
 	@RequestMapping("/store/productBuy.do")
-	public ModelAndView pdPurchase(@RequestParam("s_num") int s_num,
-								   @RequestParam("a_num") int a_num,
-								   HttpSession session,
-								   StoreVO storeVO,MemberVO memberVO) {
+	public ModelAndView pdPurchase(@RequestParam("s_num") int s_num,@RequestParam("a_num") int a_num,
+								   HttpSession session,StoreVO storeVO,MemberVO memberVO) {
 		
 		storeVO = storeService.selectProduct(s_num);
 		storeVO.setA_num(a_num);
-		int m_num = (Integer)session.getAttribute("m_num");
+		
+		int m_num = 0;
+		if(session.getAttribute("m_num") == null) {
+			return new ModelAndView("redirect:/member/login.do");
+		}else {
+			m_num = (Integer)session.getAttribute("m_num");
+		}
 		memberVO = memberService.selectMember(m_num);
 		
 		ModelAndView mav = new ModelAndView();
@@ -189,7 +199,7 @@ public class StoreController {
 		
 		return mav;
 	}
-	
+
 }
 
 
