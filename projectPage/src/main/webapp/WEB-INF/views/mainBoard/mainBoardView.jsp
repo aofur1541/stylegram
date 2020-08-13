@@ -56,8 +56,12 @@ $(document).ready(function(){
     }
     $('.flexslider').flexslider({
         animation: "slide",
-        controlNav: "thumbnails"
+        controlNav: "thumbnails",
+        keyboard: true,
+        pauseOnAction: true,
+        pausePlay: true
       });
+    /* flexslider Options: https://gist.github.com/warrendholmes/9481310 */
     /* 
     .flex-control-nav.flex-control-thumbs li img{
         float:left;
@@ -88,8 +92,22 @@ window.onload=function(){
 </script>
 
 <div id="body">
+	<!-- 본문 상단 -->
 	<h2>${mainBoard.mb_title}</h2>
 	<ul class="writeinfo">
+		<!-- 프로필 -->
+		<li> 
+		<c:if test="${empty mainBoard.m_image}">
+			<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${mainBoard.m_num}">
+			<img src="${pageContext.request.contextPath}/resources/images/basicprofile.png" width="50px">
+			</a>
+		</c:if>
+		<c:if test="${!empty mainBoard.m_image}">
+			<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${mainBoard.m_num}">
+			<img src="${pageContext.request.contextPath}/member/imageViewProfile.do?m_num=${mainBoard.m_num}" width="50px">
+			</a>
+		</c:if>		
+		</li>
 		<c:if test="${empty mainBoard.m_nickname}">
 		<li>작성자 : ${mainBoard.m_id} </li>
 		</c:if>
@@ -108,15 +126,16 @@ window.onload=function(){
 	</div>
 	<hr size="1" width="100%">
 	
+	<!-- 사진 뷰어 flexslider -->
 	<div class="align-center flexslider">
 	<ul class="slides">
-		<li>
-			<c:if test="${!empty mainBoard.mb_photo}">
+		<!-- 메인 사진 -->
+		<c:if test="${!empty mainBoard.mb_photo}">
+			<li data-thumb="imageView.do?mb_num=${mainBoard.mb_num}">
 				<img src="imageView.do?mb_num=${mainBoard.mb_num}">
-			</c:if>
-		</li>
+			</li>
+		</c:if>
 		<!-- 추가 사진들 -->
-		
 		<c:if test="${!empty mainPictures}">
 		<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status">
 			<li data-thumb="imageView2.do?i_num=${mainPictures.i_num}">
@@ -124,10 +143,10 @@ window.onload=function(){
 			</li>
 		</c:forEach>
 		</c:if>
-		
 	</ul>
 	</div>
 	
+	<!-- 본문 내용 -->
 	<p class="mb_content">
 		${mainBoard.mb_content}
 	</p>
@@ -148,32 +167,45 @@ window.onload=function(){
 	</div>
 	<p id="categoryinfo">
 		<c:if test="${!empty mainBoard.mb_topinfo}">
-		<a href="${mainBoard.mb_topinfo}" target="_blank"><b>상의사러가기</b></a>
+		<a href="${mainBoard.mb_topinfo}" target="_blank">
+			<img src="${pageContext.request.contextPath}/resources/images/tshirts.png" width="40px">
+			<b>상의사러가기</b>
+		</a>
 		</c:if>
 		<c:if test="${!empty mainBoard.mb_pantsinfo}">
-		<a href="${mainBoard.mb_pantsinfo}" target="_blank"><b>하의사러가기</b></a>
+		<a href="${mainBoard.mb_pantsinfo}" target="_blank">
+			<img src="${pageContext.request.contextPath}/resources/images/pants2.png" width="40px">
+			<b>하의사러가기</b>
+		</a>
 		</c:if>
 		<c:if test="${!empty mainBoard.mb_capinfo}">
-		<a href="${mainBoard.mb_capinfo}" target="_blank"><b>모자사러가기</b></a>
+		<a href="${mainBoard.mb_capinfo}" target="_blank">
+			<img src="${pageContext.request.contextPath}/resources/images/cap.png" width="40px">
+			<b>모자사러가기</b>
+		</a>
 		</c:if>
 		<c:if test="${!empty mainBoard.mb_shoesinfo}">
-		<a href="${mainBoard.mb_shoesinfo}" target="_blank"><b>신발사러가기</b></a>
+		<a href="${mainBoard.mb_shoesinfo}" target="_blank">
+			<img src="${pageContext.request.contextPath}/resources/images/shoes.png" width="40px">
+			<b>신발사러가기</b>
+		</a>
 		</c:if>
 	</p>
 	<hr size="1" width="100%">
+	<!-- 댓글 -->
 	<div class="comment">
 		댓글
 	</div>
-	<!-- 댓글 -->
+		<!-- 댓글 리스트 -->
 	<table id="listComment" border="1">
 	
 	</table>
-	<!-- 댓글 쓰기 폼 -->
+		<!-- 댓글 쓰기 폼 -->
 	<c:if test="${!empty m_id}">
 	<form id="writeCommentForm">
 	<input type="hidden" name="mb_num" value="${mainBoard.mb_num}">
 	<input type="hidden" name="m_num" value="${m_num}">
-	<!-- 댓글작성 -->
+		<!-- 댓글작성 -->
 		<div class="commentname">
 			<c:if test="${empty m_nickname}">
 				<div>${m_id}</div>

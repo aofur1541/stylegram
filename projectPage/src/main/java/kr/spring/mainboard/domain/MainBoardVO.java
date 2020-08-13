@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 public class MainBoardVO {
+	//mainBoardContent
 	private int mb_num;
 	@NotEmpty
 	private String mb_title;
@@ -15,14 +16,16 @@ public class MainBoardVO {
 	private MultipartFile upload;
 	private byte[] mb_photo;
 	private String mb_filename;
-	
 	private String mb_content;
 	private Date mb_regdate;
 	private Date mb_modifydate;
 	
+	//member
 	public String m_id;
 	private String m_nickname;
+	private byte[] m_image;
 	
+	//mainBoardInfo
 	private String mb_topinfo;
 	private String mb_pantsinfo;
 	private String mb_capinfo;
@@ -145,7 +148,13 @@ public class MainBoardVO {
 	public void setM_nickname(String m_nickname) {
 		this.m_nickname = m_nickname;
 	}
+	public byte[] getM_image() {
+		return m_image;
+	}
 
+	public void setM_image(byte[] m_image) {
+		this.m_image = m_image;
+	}
 	@Override
 	public String toString() {
 		return "MainBoardVO [mb_num=" + mb_num + ", mb_title=" + mb_title + ", m_num=" + m_num + ", upload=" + upload
