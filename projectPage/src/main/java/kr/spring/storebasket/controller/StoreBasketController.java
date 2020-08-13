@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.spring.member.domain.MemberVO;
+import kr.spring.member.service.MemberService;
 import kr.spring.store.domain.StoreVO;
 import kr.spring.store.service.StoreService;
 import kr.spring.storebasket.domain.StoreBasketVO;
@@ -30,6 +31,9 @@ public class StoreBasketController {
 	
 	@Resource
 	private StoreService storeService;
+	
+	@Resource
+	private MemberService memberService;
 	
 	//자바빈 초기화
 	@ModelAttribute
@@ -63,7 +67,7 @@ public class StoreBasketController {
 	
 	//장바구니 이동
 	@RequestMapping("/basket/storeBasket.do")
-	public ModelAndView openBasket(HttpSession session) {
+	public ModelAndView openBasket(StoreVO storeVO, HttpSession session) {
 		
 		int m_num = 0;
 		
@@ -112,6 +116,44 @@ public class StoreBasketController {
 		basketService.delete(p_num);
 		
 		return "redirect:/basket/storeBasket.do";
+	}
+	
+	//장바구니 물품 구매
+	@RequestMapping("/basket/basketBuy.do")
+	public ModelAndView basketPurchase(HttpSession session,
+									   StoreVO storeVO,
+									   MemberVO memberVO,
+									   @RequestParam("pa_price") int pa_price,
+									   @RequestParam("pa_ship") int pa_ship,
+									   @RequestParam("total_price") int total_price) {
+		
+		int m_num = 0;
+		
+		if(session.getAttribute("m_num") == null) {
+			return new ModelAndView("redirect:/member/login.do");
+		}else {
+			m_num = (Integer)session.getAttribute("m_num");
+		}
+		memberVO = memberService.selectMember(m_num);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<StoreVO> basketPurchaseList = null;
+		
+		String[] p_num = storeVO.getP_nums().split(",");
+		map.put("p_num", p_num);
+		
+		basketPurchaseList = basketService.selectBasketPurchaseList(map);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("basketPurchaseMain");
+		mav.addObject("purchaseList", basketPurchaseList);
+		mav.addObject("pa_price", pa_price);
+		mav.addObject("pa_ship", pa_ship);
+		mav.addObject("total_price", total_price);
+		mav.addObject("member", memberVO);
+		
+		return mav;
+		
 	}
 	
 }

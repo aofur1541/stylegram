@@ -10,5 +10,6 @@ public interface StoreBasketService {
 	public void insert(StoreVO storeVO);
 	public void delete(int p_num);
 	public List<StoreVO> selectBasketList(Map<String, Object> map);
+	public List<StoreVO> selectBasketPurchaseList(Map<String, Object> map);
 
 }

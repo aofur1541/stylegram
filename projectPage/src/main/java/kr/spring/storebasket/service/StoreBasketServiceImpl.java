@@ -35,4 +35,10 @@ public class StoreBasketServiceImpl implements StoreBasketService{
 		return basketMapper.selectBasketList(map);
 	}
 
+	@Override
+	public List<StoreVO> selectBasketPurchaseList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return basketMapper.selectBasketPurchaseList(map);
+	}
+
 }

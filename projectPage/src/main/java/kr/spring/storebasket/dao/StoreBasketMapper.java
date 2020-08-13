@@ -18,5 +18,6 @@ public interface StoreBasketMapper {
 	public void delete(int p_num);
 	@Select("SELECT * FROM (SELECT * FROM prostorebasket b JOIN prostore s on b.s_num = s.s_num) WHERE m_num=#{m_num}")
 	public List<StoreVO> selectBasketList(Map<String, Object> map);
+	public List<StoreVO> selectBasketPurchaseList(Map<String, Object> map);
 
 }
