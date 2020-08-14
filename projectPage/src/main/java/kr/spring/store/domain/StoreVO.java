@@ -32,7 +32,6 @@ public class StoreVO {
 	private int staravg;			//별점 평균값
 	private int s_ship;				//배송비 유무 여부
 	private int s_shipcost;			//배송비
-	private Date shipdate;			//배송예정일
 	private int p_num;				//장바구니 번호
 	private int a_num;				//구매 수량
 	private int m_num;				//회원 번호
@@ -170,12 +169,6 @@ public class StoreVO {
 	public void setStaravg(int staravg) {
 		this.staravg = staravg;
 	}
-	public Date getShipdate() {
-		return shipdate;
-	}
-	public void setShipdate(Date shipdate) {
-		this.shipdate = shipdate;
-	}	
 	public int getS_ship() {
 		return s_ship;
 	}
@@ -226,6 +219,8 @@ public class StoreVO {
 				+ filename + ", dfilename=" + dfilename + ", dfilename2=" + dfilename2 + ", dfilename3=" + dfilename3
 				+ ", s_price=" + s_price + ", s_discount=" + s_discount + ", s_content=" + s_content + ", s_regdate="
 				+ s_regdate + ", mdpick=" + mdpick + ", staravg=" + staravg + ", s_ship=" + s_ship + ", s_shipcost="
-				+ s_shipcost + ", shipdate=" + shipdate + ", p_num=" + p_num + ", a_num=" + a_num + "]";
+				+ s_shipcost + ", p_num=" + p_num + ", a_num=" + a_num + ", m_num=" + m_num + ", goCheck=" + goCheck
+				+ ", p_nums=" + p_nums + "]";
 	}
+	
 }

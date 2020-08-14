@@ -20,6 +20,7 @@ public class StorePurchaseVO {
 	private String p_address;		//받는사람 주소
 	private String p_detailaddress; //받는사람 상세주소
 	private String p_phone;			//받는사람 연락처
+	private Date p_shipdate;		//상품배송예정일
 	
 	public int getP_num() {
 		return p_num;
@@ -81,13 +82,18 @@ public class StorePurchaseVO {
 	public void setP_phone(String p_phone) {
 		this.p_phone = p_phone;
 	}
+	public Date getP_shipdate() {
+		return p_shipdate;
+	}
+	public void setP_shipdate(Date p_shipdate) {
+		this.p_shipdate = p_shipdate;
+	}
 	
 	@Override
 	public String toString() {
 		return "StorePurchaseVO [p_num=" + p_num + ", s_num=" + s_num + ", p_regdate=" + p_regdate + ", a_num=" + a_num
 				+ ", m_num=" + m_num + ", p_name=" + p_name + ", p_post=" + p_post + ", p_address=" + p_address
-				+ ", p_detailaddress=" + p_detailaddress + ", p_phone=" + p_phone + "]";
+				+ ", p_detailaddress=" + p_detailaddress + ", p_phone=" + p_phone + ", p_shipdate=" + p_shipdate + "]";
 	}
 	
-
 }

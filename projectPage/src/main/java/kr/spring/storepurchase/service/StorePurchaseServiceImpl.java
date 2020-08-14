@@ -1,5 +1,6 @@
 package kr.spring.storepurchase.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -21,11 +22,6 @@ public class StorePurchaseServiceImpl implements StorePurchaseService{
 	}
 
 	@Override
-	public int selectPurchaseCount() { 
-		return storePurchaseMapper.selectPurchaseCount();
-	}
-	
-	@Override
 	public List<StorePurchaseVO> selectPurchaseList(Integer num) {
 		return storePurchaseMapper.selectPurchaseList(num);
 	}
@@ -33,6 +29,16 @@ public class StorePurchaseServiceImpl implements StorePurchaseService{
 	@Override
 	public StorePurchaseVO selectPurchase(Integer num) {
 		return storePurchaseMapper.selectPurchase(num);
+	}
+
+	@Override
+	public int selectPurchaseCount(Integer num) {
+		return storePurchaseMapper.selectPurchaseCount(num);
+	}
+
+	@Override
+	public Date selectToday() {
+		return storePurchaseMapper.selectToday();
 	}
 
 

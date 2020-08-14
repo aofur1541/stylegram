@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -33,7 +32,9 @@
 <jsp:useBean id="toDay" class="java.util.Date" />
 <div id="body">
 	<c:if test="${count == 0}">
-		<h2>구매한 물품이 없습니다.</h2>
+		<h2 style="text-align:center;">구매한 물품이 없습니다.</h2>
+		<input type="button" value="쇼핑하기" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
+		<input type="button" value="메인으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</c:if>
 	<c:if test="${count > 0}">
 		<h2>구매 내역 확인</h2>
@@ -41,14 +42,14 @@
 		<table>
 			<tr>
 				<th colspan="3">
-					<h4>주문일 ${plist.p_regdate}</h4>
+					<h4>주문일 : <fmt:formatDate value='${plist.p_regdate}' pattern="yyyy년MM월dd일 E요일"/></h4>
 				</th>
 			</tr>
-			<tr>
+			<tr>	
 				<td><img src="imageView.do?s_num=${slist[status.index].s_num}" style="width:200px;"></td>
 				<td>
-					<b>구매한 상품</b> : ${slist[status.index].s_title} ${plist.a_num}개<br>
-					<b>상품 가격</b> :
+					<b>구매한 상품</b> : ${slist[status.index].s_title} [${plist.a_num}개]<br>
+					<b>결제 금액</b> :
 					<c:if test="${(slist[status.index].s_price-(slist[status.index].s_price*(slist[status.index].s_discount/100)))*slist[status.index].a_num < 50000}">
 						<fmt:formatNumber value="${(slist[status.index].s_price-(slist[status.index].s_price*(slist[status.index].s_discount/100)))*slist[status.index].a_num+slist[status.index].s_shipcost}" type="number"/>원
 					</c:if>
@@ -57,18 +58,19 @@
 					</c:if>
 				</td>
 				<td>
-					<c:if test="${slist[status.index].shipdate==sysdate}">
-						배송완료
-					</c:if>
-					<c:if test="${slist[status.index].shipdate!=sysdate}">
-						배송중
+					<c:if test="${plist.p_shipdate <= today}">
+						<h3>배송완료</h3> <fmt:formatDate value='${plist.p_shipdate}' type="Date" pattern="yyyy년MM월dd일 E요일"/> 배송 완료
+					</c:if> 
+					<c:if test="${plist.p_shipdate > today}">
+						<h3>배송중</h3> <fmt:formatDate value='${plist.p_shipdate}' type="Date" pattern="yyyy년MM월dd일 E요일"/> 도착 예정
 					</c:if>
 				</td>
 			</tr>
 		</table>
 		</c:forEach>
+		<input type="button" value="쇼핑하기" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
+		<input type="button" value="메인으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</c:if>
-	<fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" />
 </div>
 
 

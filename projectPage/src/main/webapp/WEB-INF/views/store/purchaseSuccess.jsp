@@ -35,7 +35,7 @@
 	<h3 style="text-align:center;">정상적으로 구매되었습니다.</h3>
 		<table>
 			<tr>
-				<th colspan="3">주문일 : ${sv.p_regdate}</th>
+				<th colspan="3">주문일 : <fmt:formatDate value='${sv.p_regdate}' type="Date" pattern="yyyy년MM월dd일 E요일"/></th>
 			</tr>
 			<tr>
 				<td><img src="imageView.do?s_num=${sv.s_num}" style="width:200px;"></td>
@@ -50,7 +50,7 @@
 						<fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num}" type="number"/>원
 					</c:if>
 				</td>
-				<td><h3>배송예정일</h3><br>${store.shipdate}도착 예정</td>
+				<td><h3>배송예정일</h3><br><fmt:formatDate value='${sv.p_shipdate}' type="Date" pattern="yyyy년MM월dd일 E요일"/> 도착 예정</td>
 			</tr>
 		</table>
 	<input type="button" value="계속 쇼핑하기" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">

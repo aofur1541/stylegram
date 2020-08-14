@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false" contentType = "text/html; charset=UTF-8" %>
@@ -104,7 +105,8 @@ $(document).ready(function(){
 					<c:if test="${detail.s_ship==1}">배송비 : <fmt:formatNumber value="${detail.s_shipcost}" type="currency" currencySymbol="\\"/></c:if>
 				</div>
 				<div id="text-box">
-					<div>배송예정일 : ${detail.shipdate}</div>
+					<c:set var="shipdate" value="<%= new Date(new Date().getTime() + (60*60*24*1000)*2) %>"/>
+					<div>배송예정일 : <fmt:formatDate value='${shipdate}' type="Date" pattern="yyyy년MM월dd일 E요일"/></div>
 				</div>
 				<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	 
 				<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	 

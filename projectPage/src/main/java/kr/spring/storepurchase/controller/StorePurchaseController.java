@@ -1,5 +1,6 @@
 package kr.spring.storepurchase.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -87,8 +88,6 @@ public class StorePurchaseController {
 	@RequestMapping("/store/purchaseList.do")
 	public ModelAndView process(StoreReviewVO storeReviewVO,HttpSession session) {
 
-		int count = storePurchaseService.selectPurchaseCount();
-
 		List<StorePurchaseVO> plist = null;
 		List<StoreVO> slist = null;
 		
@@ -99,6 +98,8 @@ public class StorePurchaseController {
 			m_num = (Integer)session.getAttribute("m_num");
 		}
 		
+		Date today = storePurchaseService.selectToday();
+		int count = storePurchaseService.selectPurchaseCount(m_num);
 		plist = storePurchaseService.selectPurchaseList(m_num);
 		slist = storeService.selectPurchaseList(m_num);
 		
@@ -114,6 +115,7 @@ public class StorePurchaseController {
 		mav.addObject("count", count);
 		mav.addObject("plist", plist);
 		mav.addObject("slist", slist);
+		mav.addObject("today", today);
 
 		return mav;
 	}

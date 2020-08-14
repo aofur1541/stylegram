@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -125,7 +126,8 @@
 				<th>상품정보</th>
 			</tr>
 			<tr>
-				<td>배송예정일 : ${store.shipdate}</td>
+				<c:set var="shipdate" value="<%= new Date(new Date().getTime() + (60*60*24*1000)*2) %>"/>
+				<td><div>배송예정일 : <fmt:formatDate value='${shipdate}' type="Date" pattern="yyyy년MM월dd일 E요일"/></div></td>
 			</tr>
 			<tr>
 				<td>상품명 : ${store.s_title}</td>
