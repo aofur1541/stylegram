@@ -28,7 +28,17 @@
 					});
 				</script>
 				<tr>
-					<td> 
+					<td>
+						<c:if test="${empty row.m_image}">
+							<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${row.m_num}">
+							<img src="${pageContext.request.contextPath}/resources/images/basicprofile.png" width="35px">
+							</a>
+						</c:if>
+						<c:if test="${!empty row.m_image}">
+							<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${row.m_num}">
+							<img src="${pageContext.request.contextPath}/member/imageViewProfile.do?m_num=${row.m_num}" width="35px">
+							</a>
+						</c:if>						 
 						<c:if test="${empty m_nickname}">
 							${row.m_id}
 						</c:if>
