@@ -5,6 +5,35 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	$(document).ready(function(){
+		$('.buyerinfo').change(function(){
+			if($('#b').is(":checked")){
+				$('#p_name').val('${member.m_name}');
+				$('#p_post').val('${member.m_postcode}');
+				$('#p_address').val('${member.m_address}');
+				$('#p_detailaddress').val('${member.m_detailaddress}');
+				$('#p_phone').val('${member.m_phone}');
+			}else if($('#a').is(":checked")){
+				$('#p_name').val('');
+				$('#p_post').val('');
+				$('#p_address').val('');
+				$('#p_detailaddress').val('');
+				$('#p_phone').val('');
+			}
+		});
+		
+		$('.basketBuyForm').submit(function(event){
+			 var output = '';
+			  $('.p_num').each(function(index,item){
+			    if(index!=0){
+			       output += ',';
+			    }
+			    output += $(this).val();
+			 });
+			 $('#p_nums').val(output);
+		});
+		
+	}); 
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -53,37 +82,11 @@
         }).open();
     }
 </script>
-<style>
-    table {
-      border-collapse: collapse;
-      border-top: 3px solid #168;
-      margin:0 0 30 0;
-      width:1200px;
-    }  
-    table th {
-      color: #168;
-      background: #f0f6f9;
-      text-align: center;
-    }
-    table th, table td {
-      padding: 10px;
-      border: 1px solid #ddd;
-    }
-    table th:first-child, table td:first-child {
-      border-left: 0;width:200px;text-align:left;
-    }
-    table th:last-child, table td:last-child {
-      border-right: 0;
-    }
-    table tr td:first-child{
-      text-align: center;
-    }
-    table caption{caption-side: bottom; display: none;}
-  </style>
 <div id="body">
 	<h2>결제정보</h2>
-	<form action="main.do">
-		<table>
+	<form:form action="insertBasketPurchase.do" commandName="storePurchaseVO" class="basketBuyForm">
+		<input type="hidden" name="p_nums" id="p_nums">
+		<table class="purchasetable">
 			<tr>
 				<th colspan="2">구매자 정보</th>
 			</tr>
@@ -100,32 +103,43 @@
 				<td>${member.m_phone}</td>
 			</tr>
 		</table>
-		<table>
+		<table class="purchasetable">
 			<tr>
-				<th colspan="2">받는사람 정보</th>
+				<th colspan="2">받는사람 정보
+					<input type="radio" name="buyerinfo" id="a" class="buyerinfo" checked>직접입력
+					<input type="radio" name="buyerinfo" id="b" class="buyerinfo">구매자와 동일
+				</th>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text"></td>
+				<td>
+					<form:input path="p_name"/>
+					<form:errors path="p_name"/>
+				</td>
 			</tr>
 			<tr>
 				<td>배송주소</td>
 				<td>
-					<input type="text" id="sample6_postcode" placeholder="우편번호">
-					<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample6_address" placeholder="주소"><br>
-					<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+					<form:input path="p_post" placeholder="우편번호"/>
+					<form:errors path="p_post"/>
+					<input type="button" onclick="postSearch()" value="우편번호 찾기"><br>
+					<form:input path="p_address" placeholder="주소"/>
+					<form:errors path="p_address"/>
+					<form:input path="p_detailaddress" placeholder="상세주소"/>
+					<form:errors path="p_detailaddress"/>
 				</td>
 			</tr>
 			<tr>
 				<td>연락처</td>
-				<td><input type="text"></td>
+				<td>
+					<form:input path="p_phone"/>
+					<form:errors path="p_phone"/>
+				</td>
 			</tr>
 		</table>
 		<c:forEach var="purchase" items="${purchaseList}">
-			<input type="hidden" value="${purchase.p_num}">
-			<table>
+			<input type="hidden" id="p_num" name="p_num" class="p_num" value="${purchase.p_num}">
+			<table class="purchasetable">
 				<tr>
 					<th>상품정보</th>
 				</tr>
@@ -140,7 +154,7 @@
 				</tr>
 			</table>
 		</c:forEach>
-		<table>
+		<table class="purchasetable">
 			<tr>
 				<th colspan="2">결제정보</th>
 			</tr>
@@ -165,8 +179,8 @@
 			</tr>
 		</table>
 		<input type="submit" id="buybtn" value="구매하기">
-		<input type="button" id="homebtn" value="돌아가기" onclick="location.href='storeBasket.do'">
-	</form>
+		<input type="button" id="homebtn" class="homebtn" value="돌아가기" onclick="location.href='storeBasket.do'">
+	</form:form>
 </div>
 
 

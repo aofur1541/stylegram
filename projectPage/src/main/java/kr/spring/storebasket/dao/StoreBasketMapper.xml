@@ -11,4 +11,9 @@
 				p_num = #{p_num}
 			</foreach>
 	</select>
+	<insert id="insertPurchase" parameterType="storePurchaseVO">
+		INSERT INTO
+			prostorepurchase (p_num,s_num,m_num,a_num,p_name,p_post,p_address,p_detailaddress,p_phone)
+				VALUES (prostorepurchase_seq.nextval,#{s_num},#{m_num},#{a_num},#{p_name},#{p_post},#{p_address},#{p_detailaddress},#{p_phone})
+	</insert>
 </mapper>

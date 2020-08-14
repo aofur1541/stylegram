@@ -33,4 +33,10 @@
     <definition name="purchaseList" extends="main">
        <put-attribute name="body" value="/WEB-INF/views/store/purchaseList.jsp"/>
     </definition>
+     <definition name="basketPurchaseMain" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/store/basketPurchaseMain.jsp"/>
+    </definition>
+     <definition name="basketPurchaseSuccess" extends="main">
+       <put-attribute name="body" value="/WEB-INF/views/store/basketPurchaseSuccess.jsp"/>
+    </definition>
 </tiles-definitions>

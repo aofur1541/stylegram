@@ -6,9 +6,11 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +22,7 @@ import kr.spring.store.domain.StoreVO;
 import kr.spring.store.service.StoreService;
 import kr.spring.storebasket.domain.StoreBasketVO;
 import kr.spring.storebasket.service.StoreBasketService;
+import kr.spring.storepurchase.domain.StorePurchaseVO;
 
 @Controller
 public class StoreBasketController {
@@ -37,8 +40,13 @@ public class StoreBasketController {
 	
 	//자바빈 초기화
 	@ModelAttribute
-	public StoreBasketVO storeBasketVO() {
+	public StoreBasketVO initCommand() {
 		return new StoreBasketVO();
+	}
+	
+	@ModelAttribute
+	public StorePurchaseVO initCommand2() {
+		return new StorePurchaseVO();
 	}
 	
 	//장바구니 상품 추가
@@ -82,9 +90,12 @@ public class StoreBasketController {
 		
 		List<StoreVO> basketList = basketService.selectBasketList(map);
 		
+		int count = basketService.seleceBasketCount(m_num);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("storeBasket");
 		mav.addObject("basket",basketList);
+		
+		mav.addObject("count", count);
 		
 		return mav;
 	}
@@ -153,7 +164,36 @@ public class StoreBasketController {
 		mav.addObject("member", memberVO);
 		
 		return mav;
-		
+	}
+	
+	//장바구니 물품 결제
+	@RequestMapping("/basket/insertBasketPurchase.do")
+	public String basketPurchaseSubmit(@RequestParam("p_nums") String p_nums, @Valid StorePurchaseVO storePurchaseVO, BindingResult result, HttpSession session) {
+		if(log.isDebugEnabled()) {
+			log.debug("<<storePurchaseVO>>" + storePurchaseVO);
+		}
+        if(session.getAttribute("m_num") != null) {
+        	storePurchaseVO.setM_num((Integer)session.getAttribute("m_num"));
+        }else {
+        	return "redirect:/member/login.do";
+        }
+        
+        if(result.hasErrors()) {
+			return "redirect:/basket/storeBasket.do";
+		}
+        System.out.println(p_nums);
+        String[] p_num = p_nums.split(",");
+        System.out.println(p_num.length);
+        StoreVO store = new StoreVO();
+        for(int i=0;i<p_num.length;i++) {
+        	store = basketService.select(Integer.parseInt(p_num[i]));
+        	storePurchaseVO.setA_num(store.getA_num());
+        	storePurchaseVO.setS_num(store.getS_num());
+        	basketService.insertPurchase(storePurchaseVO);
+        	basketService.delete(Integer.parseInt(p_num[i]));
+        }
+        
+        return "basketPurchaseSuccess";
 	}
 	
 }

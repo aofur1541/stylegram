@@ -119,6 +119,14 @@
 </head>
 <div id="body">
 	<h2>장바구니</h2>
+	<c:if test="${count == 0}">
+		<br><br>
+		<h3>장바구니가 비어있습니다.</h3>
+		<div>
+			<input type="button" value="계속 쇼핑하기" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
+		</div>
+	</c:if>
+	<c:if test="${count > 0}">
 	<form:form action="basketBuy.do" commandName="storeVO" class="basketBuyForm">
 	    <input type="hidden" name="p_nums" id="p_nums">
 	    <input type="hidden" name="pa_price" id="pa_price">
@@ -127,42 +135,41 @@
 		<c:if test="${!empty m_id}">
 			<form:hidden path="m_num"/>
 		</c:if>
-		<table border="1">
-			<tr>
-				<th><input type="checkbox" id="allCheck"></th>
-				<th>상품정보</th>
-				<th>상품금액</th>
-				<th>구매수량</th>
-				<th>삭제</th>
-			</tr>
-			<c:forEach var="basket" items="${basket}">
-				<form:hidden path="s_num" value="${basket.s_num}"/>
-				<form:hidden path="p_num" value="${basket.p_num}"/>
+			<table border="1">
 				<tr>
-					<td>
-						<input type="checkbox" class="chk" name="products" value="${basket.p_num}">
-					</td>
-					<td>
-						<div id="productImg"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${basket.s_num}"><img src="imageView.do?s_num=${basket.s_num}"></a></div>	
-						<div id="productTitle">${basket.s_title}</div>
-					</td>
-					<td class="${basket.p_num}"><input type="button" value="${basket.s_price-(basket.s_price*(basket.s_discount/100))}" class="price" readonly></td>
-					<td class="${basket.p_num}">
-						<input type="button" value="${basket.a_num}" class="stock">
-						<%-- <select name="selected_a_num" class="${basket.s_num}">
-							<option value="1" <c:if test="${basket.a_num == '1'}">selected</c:if>>1개
-							<option value="2" <c:if test="${basket.a_num == '2'}">selected</c:if>>2개
-							<option value="3" <c:if test="${basket.a_num == '3'}">selected</c:if>>3개
-							<option value="4" <c:if test="${basket.a_num == '4'}">selected</c:if>>4개
-							<option value="5" <c:if test="${basket.a_num == '5'}">selected</c:if>>5개
-						</select> --%>
-						<form:hidden path="a_num" value="${basket.a_num}"/>
-					</td>
-					<td><input type="button" onclick="location.href='${pageContext.request.contextPath}/basket/deleteBasket.do?p_num=${basket.p_num}'" value="삭제"></td>
+					<th></th>
+					<th>상품정보</th>
+					<th>상품금액</th>
+					<th>구매수량</th>
+					<th>삭제</th>
 				</tr>
-			</c:forEach>
-		</table>
-		
+				<c:forEach var="basket" items="${basket}">
+					<form:hidden path="s_num" value="${basket.s_num}"/>
+					<form:hidden path="p_num" value="${basket.p_num}"/>
+					<tr>
+						<td>
+							<input type="checkbox" class="chk" name="products" value="${basket.p_num}">
+						</td>
+						<td>
+							<div id="productImg"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${basket.s_num}"><img src="imageView.do?s_num=${basket.s_num}"></a></div>	
+							<div id="productTitle">${basket.s_title}</div>
+						</td>
+						<td class="${basket.p_num}"><input type="button" value="${basket.s_price-(basket.s_price*(basket.s_discount/100))}" class="price" readonly></td>
+						<td class="${basket.p_num}">
+							<input type="button" value="${basket.a_num}" class="stock">
+							<%-- <select name="selected_a_num" class="${basket.s_num}">
+								<option value="1" <c:if test="${basket.a_num == '1'}">selected</c:if>>1개
+								<option value="2" <c:if test="${basket.a_num == '2'}">selected</c:if>>2개
+								<option value="3" <c:if test="${basket.a_num == '3'}">selected</c:if>>3개
+								<option value="4" <c:if test="${basket.a_num == '4'}">selected</c:if>>4개
+								<option value="5" <c:if test="${basket.a_num == '5'}">selected</c:if>>5개
+							</select> --%>
+							<form:hidden path="a_num" value="${basket.a_num}"/>
+						</td>
+						<td><input type="button" onclick="location.href='${pageContext.request.contextPath}/basket/deleteBasket.do?p_num=${basket.p_num}'" value="삭제"></td>
+					</tr>
+				</c:forEach>
+			</table>
 		<div>
 			<h3><b>5만원 미만 결제</b>시 3000원의 배송비가 추가됩니다.</h3>
 			<div>
@@ -176,5 +183,6 @@
 			</div>
 		</div>
 	</form:form>
+	</c:if>
 </div>
 

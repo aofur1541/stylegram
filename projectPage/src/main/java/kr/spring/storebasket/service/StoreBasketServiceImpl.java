@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.spring.store.domain.StoreVO;
 import kr.spring.storebasket.dao.StoreBasketMapper;
 import kr.spring.storebasket.domain.StoreBasketVO;
+import kr.spring.storepurchase.domain.StorePurchaseVO;
 
 @Service("storeBasketService")
 public class StoreBasketServiceImpl implements StoreBasketService{
@@ -40,5 +41,24 @@ public class StoreBasketServiceImpl implements StoreBasketService{
 		// TODO Auto-generated method stub
 		return basketMapper.selectBasketPurchaseList(map);
 	}
+
+	@Override
+	public void insertPurchase(StorePurchaseVO storePurchaseVO) {
+		// TODO Auto-generated method stub
+		basketMapper.insertPurchase(storePurchaseVO);
+	}
+
+	@Override
+	public StoreVO select(int p_num) {
+		// TODO Auto-generated method stub
+		return basketMapper.select(p_num);
+	}
+
+	@Override
+	public int seleceBasketCount(int m_num) {
+		// TODO Auto-generated method stub
+		return basketMapper.seleceBasketCount(m_num);
+	}
+	
 
 }
