@@ -145,6 +145,17 @@ create table profleareple(
     constraint profleareple_fk2 foreign key (fb_num) references profleaboard (fb_num)
 );
 
+create table profleaimages(
+    i_num number primary key,
+    m_num not null,
+    fb_num not null,
+    i_photo BLOB,
+    i_filename varchar2(200),
+    constraint profleaimages_fk1 foreign key (m_num) references promember (m_num)
+);
+
+create sequence profleaimages_seq;
+
 ---------- STORE ----------
 
 create table prostore (
