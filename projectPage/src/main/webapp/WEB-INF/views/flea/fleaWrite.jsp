@@ -35,12 +35,13 @@
 	
 </script>
 <div id="body">
+	<h2>글쓰기</h2>
 	<form:form action="fleaWrite.do" enctype="multipart/form-data" commandName="fleaVO">
 		<ul>
 			<li>
 				<label for="upload">사진</label>
 				<a id="addPicture" href="#">
-					<img src="${pageContext.request.contextPath }/resources/images/addpicture.png" >
+					<img src="${pageContext.request.contextPath }/resources/images/addpicture.png" class="addimg">
 				</a>
 				<input type="file" name="upload" id="upload" onchange="setThumbnail(event)" hidden/>
 				<!-- 사진 미리보기창 -->

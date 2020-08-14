@@ -1043,6 +1043,21 @@ div#body input#buybtn{
 div#body input#buybtn:hover{
 	background-color: rgba(130, 130, 130, 0.8);
 }
+div#body input#homebtn.homebtn{
+	width: 30%;
+	background-color: white;
+	color: black;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: 1px solid black;
+	border-radius: 4px;
+	cursor: pointer;
+}
+div#body input#homebtn.homebtn:hover{
+	background-color: rgba(130, 130, 130, 0.8);
+	border: none;
+	color: white;
+}
 div#main_header div#bar_menu div.font-size{
 	font-size: 22px;
 	float: left;
@@ -1055,6 +1070,41 @@ div#main_header div.menu_wrap div.font-size{
 	margin-top: -50px;
 	font-size: 22px;
 	float: right;
+}
+div#body img.addimg{
+	width: 100px;
+	height: 100px;
+}
+div#body table.purchasetable {
+    border-collapse: collapse;
+    border-top: 3px solid #168;
+    margin:0 0 30 0;
+    width:100%;
+}  
+table.purchasetable th {
+	color: #168;
+	background: #f0f6f9;
+	text-align: center;
+}
+table.purchasetable th, table.purchasetable td {
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+table.purchasetable th:first-child, table.purchasetable td:first-child {
+	border-left: 0;width:200px;text-align:left;
+}
+table.purchasetable th:last-child, table.purchasetable td:last-child {
+	border-right: 0;
+}
+table.purchasetable tr td:first-child{
+	text-align: center;
+}
+table.purchasetable caption{
+	caption-side: bottom;
+	display: none;
+}
+table.purchasetable th.a input[type=radio]{
+	margin-left: 60px;
 }
 div#main_header div.font-size div.title2{
 	animation: color-change1 1s infinite;
