@@ -1,6 +1,7 @@
 package kr.spring.storepurchase.service;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -41,5 +42,9 @@ public class StorePurchaseServiceImpl implements StorePurchaseService{
 		return storePurchaseMapper.selectToday();
 	}
 
+	@Override
+	public int selectPurchaseMCount(HashMap<String, Integer> purchaseMCount) {
+		return storePurchaseMapper.selectPurchaseMCount(purchaseMCount);
+	}
 
 }

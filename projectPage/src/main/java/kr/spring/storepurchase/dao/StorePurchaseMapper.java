@@ -1,6 +1,7 @@
 package kr.spring.storepurchase.dao;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
@@ -21,5 +22,7 @@ public interface StorePurchaseMapper {
 	public StorePurchaseVO selectPurchase(Integer num);
 	@Select("SELECT sysdate From dual")
 	public Date selectToday();
+	@Select("SELECT COUNT(*) FROM prostorepurchase WHERE s_num=#{s_num} AND m_num=#{m_num}")
+	public int selectPurchaseMCount(HashMap<String,Integer> purchaseMCount);
 }
  

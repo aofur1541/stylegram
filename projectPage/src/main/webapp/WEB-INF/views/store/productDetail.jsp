@@ -204,18 +204,24 @@ $(document).ready(function(){
 				<textarea name="content" cols="65" rows="3" readonly="readonly">로그인 후 이용 가능한 서비스입니다.</textarea>
 			</c:if>
 			<c:if test="${m_id!=null}">
-				<div id="rating" align="center">
-					<span>
-						<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
-						<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
-					</span>
-					<span id="startext">별점주기</span>
-				</div>
-				<form:textarea path="sr_content" cols="65" rows="3"/>
-				<input type="submit" class="srsubmit" value="등록하기">
+				<c:if test="${count==0}">
+					<textarea name="content" cols="65" rows="3" readonly="readonly">상품을 구입한 후에 리뷰 작성이 가능합니다.</textarea>
+				</c:if>
+				<c:if test="${count > 0}">
+				
+					<div id="rating" align="center">
+						<span>
+							<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
+						</span>
+						<span id="startext">별점주기</span>
+					</div>
+					<form:textarea path="sr_content" cols="65" rows="3"/>
+					<input type="submit" class="srsubmit" value="등록하기">
+				</c:if>
 			</c:if>
 		</form:form>
 	</div>

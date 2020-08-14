@@ -44,6 +44,9 @@ public class StoreController {
 	@Resource
 	private MemberService memberService;
 	
+	@Resource
+	private StorePurchaseService storePurchaseService;
+	
 	@ModelAttribute
 	private StoreVO initCommand() {
 		return new StoreVO();
@@ -165,6 +168,14 @@ public class StoreController {
 		StoreVO detail = storeService.selectProduct(s_num);
 		StoreReviewVO review = new StoreReviewVO();
 		
+		int m_num = (Integer)session.getAttribute("m_num");
+		
+		HashMap<String,Integer> purchaseMCount = new HashMap<String,Integer>();
+		purchaseMCount.put("s_num", s_num);
+		purchaseMCount.put("m_num", m_num);		
+		
+		int count = storePurchaseService.selectPurchaseMCount(purchaseMCount);
+		
 		if(log.isDebugEnabled()) {
 			log.debug(detail);
 		}
@@ -173,6 +184,7 @@ public class StoreController {
 		mav.setViewName("productDetail");
 		mav.addObject("detail", detail);
 		mav.addObject("review",review);
+		mav.addObject("count",count);
 		
 		return mav;
 	}
