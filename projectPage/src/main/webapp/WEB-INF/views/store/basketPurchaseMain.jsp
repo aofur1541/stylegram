@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -122,7 +123,7 @@
 				<td>
 					<form:input path="p_post" placeholder="우편번호"/>
 					<form:errors path="p_post"/>
-					<input type="button" onclick="postSearch()" value="우편번호 찾기"><br>
+					<input type="button" onclick="postSearch()" class="findpost" value="우편번호 찾기"><br>
 					<form:input path="p_address" placeholder="주소"/>
 					<form:errors path="p_address"/>
 					<form:input path="p_detailaddress" placeholder="상세주소"/>
@@ -144,7 +145,8 @@
 					<th>상품정보</th>
 				</tr>
 				<tr>
-					<td>배송예정일 : ${purchase.shipdate}</td>
+					<c:set var="shipdate" value="<%= new Date(new Date().getTime() + (60*60*24*1000)*2) %>"/>
+					<td><div>배송예정일 : <fmt:formatDate value='${shipdate}' type="Date" pattern="yyyy년MM월dd일 E요일"/></div></td>
 				</tr>
 				<tr>
 					<td>상품명 : ${purchase.s_title}</td>

@@ -168,11 +168,16 @@ public class StoreController {
 		StoreVO detail = storeService.selectProduct(s_num);
 		StoreReviewVO review = new StoreReviewVO();
 		
-		int m_num = (Integer)session.getAttribute("m_num");
+		int m_num;
+		if(session.getAttribute("m_num") == null) {
+			m_num = 0;
+		}else {
+			m_num = (Integer)session.getAttribute("m_num");
+		}
 		
 		HashMap<String,Integer> purchaseMCount = new HashMap<String,Integer>();
 		purchaseMCount.put("s_num", s_num);
-		purchaseMCount.put("m_num", m_num);		
+		purchaseMCount.put("m_num", m_num);
 		
 		int count = storePurchaseService.selectPurchaseMCount(purchaseMCount);
 		

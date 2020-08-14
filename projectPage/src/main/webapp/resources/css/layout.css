@@ -341,7 +341,7 @@ div#body div.align-right input[type=button]{
 	background-color: white;
 	color: black;
 	padding: 5px 1px 5px 1px;
-	margin: 8px 2px 2px 2px;
+	margin: 2px;
 	float:right;
 	border: 1px solid black;
 	border-radius: 4px;
@@ -730,6 +730,7 @@ div#body form#writeCommentForm div.commentcontent input:focus, form#writeReplyFo
 }
 div#body form#writeCommentForm div.commentsubmit button, form#writeReplyForm div.commentsubmit button{
 	border-radius:4px;
+	border: 1px solid;
 	background-color: white;
 	cursor: pointer;
 }
@@ -1058,6 +1059,19 @@ div#body input#homebtn.homebtn:hover{
 	border: none;
 	color: white;
 }
+div#body input#blackbtn.blackbtn{
+	width: 30%;
+	background-color: black;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+div#body input#blackbtn.blackbtn:hover{
+	background-color: rgba(130, 130, 130, 0.8);
+}
 div#main_header div#bar_menu div.font-size{
 	font-size: 22px;
 	float: left;
@@ -1080,7 +1094,7 @@ div#body table.purchasetable {
     border-top: 3px solid #168;
     margin:0 0 30 0;
     width:100%;
-}  
+}
 table.purchasetable th {
 	color: #168;
 	background: #f0f6f9;
@@ -1091,7 +1105,9 @@ table.purchasetable th, table.purchasetable td {
 	border: 1px solid #ddd;
 }
 table.purchasetable th:first-child, table.purchasetable td:first-child {
-	border-left: 0;width:200px;text-align:left;
+	border-left: 0;
+	width:200px;
+	text-align:left;
 }
 table.purchasetable th:last-child, table.purchasetable td:last-child {
 	border-right: 0;
@@ -1099,9 +1115,81 @@ table.purchasetable th:last-child, table.purchasetable td:last-child {
 table.purchasetable tr td:first-child{
 	text-align: center;
 }
+table input.findpost{
+	margin-left: 10px;
+	margin-top: 1%;
+	width: 100px;
+	height: 30px;
+	border-radius: 12px;
+	border:1px solid;
+	background-color: white;
+	cursor: pointer;
+}
+table input.findpost:hover{
+	width: 100px;
+	height: 30px;
+	border-radius: 12px;
+	background-color: rgba(130, 130, 130, 0.8);
+	border: none;
+	color: white;
+}
 table.purchasetable caption{
 	caption-side: bottom;
 	display: none;
+}
+div#body form.basketBuyForm{
+	background-color: rgb(247, 248, 249);
+}
+table.baskettable{
+	border-collapse: collapse;
+	border-top: 3px solid;
+	margin: 30px;
+	width: 100%;
+}
+table.baskettable th{
+	padding: 10px;
+	border: 1px solid;
+	background-color:#cff;
+}
+table.baskettable td{
+	border: 1px solid;
+	text-align:center;
+	background-color:white;
+}
+table.baskettable td input[type=checkbox]{
+	margin-right: 15px;
+}
+table.baskettable td div#productImg{
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+table.baskettable td div#productImg img{
+	width: 100%;
+	height: 100%;
+}
+table.baskettable td div#productTitle{
+	width:0 auto;
+}
+table.baskettable td input[type=button]{
+	background-color:white;
+	color: black;
+	margin-right: 30px;
+	width: 100%;
+	cursor:auto;
+}
+table.baskettable td input.basketdelbtn{
+	background-color:black;
+	color: white;
+	cursor:pointer;
+	width: 50%;
+	margin-left: 8px;
+	padding: 10px 10px;
+	border-radius: 8px;
+	border: none;
+}
+table.baskettable td input.basketdelbtn:hover{
+	background-color: rgba(130, 130, 130, 0.8);
 }
 table.purchasetable th.a input[type=radio]{
 	margin-left: 60px;

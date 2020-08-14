@@ -3,54 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<style type="text/css">
-	*{
-		margin:0;
-		padding:0;
-	}
-	
-	h2{
-		margin-top:40px;
-		text-align:center;
-	}
-	table{
-		margin:40px auto;
-		width:600px;
-	}
-	td{
-		padding-left:10px;
-		vertical-align:middle;
-	}
-	.buy{
-		padding:10px 10px;
-	}
-	img{
-		width:100px;
-		height:100px;
-	}
-	#productImg{
-		float:left;
-		width:100px;
-		height:100px;
-	}
-	#productTitle{
-		float:left;
-		width:200px;
-		height:100px;
-	}
-	input[type=button]{
-	width: 30%;
-	background-color: black;
-	color: white;
-	padding: 14px 10px;
-	margin: 8px 0;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}	
-</style>
 <script type="text/javascript">
-
 	$(document).ready(function(){
 		//상품 합계
 		var sum =0;
@@ -123,7 +76,7 @@
 		<br><br>
 		<h3>장바구니가 비어있습니다.</h3>
 		<div>
-			<input type="button" value="계속 쇼핑하기" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
+			<input type="button" value="쇼핑하러가기" id="homebtn" class="homebtn" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
 		</div>
 	</c:if>
 	<c:if test="${count > 0}">
@@ -135,7 +88,7 @@
 		<c:if test="${!empty m_id}">
 			<form:hidden path="m_num"/>
 		</c:if>
-			<table border="1">
+			<table class="baskettable">
 				<tr>
 					<th></th>
 					<th>상품정보</th>
@@ -150,23 +103,20 @@
 						<td>
 							<input type="checkbox" class="chk" name="products" value="${basket.p_num}">
 						</td>
-						<td>
+						<td class="productTd">
 							<div id="productImg"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${basket.s_num}"><img src="imageView.do?s_num=${basket.s_num}"></a></div>	
 							<div id="productTitle">${basket.s_title}</div>
 						</td>
-						<td class="${basket.p_num}"><input type="button" value="${basket.s_price-(basket.s_price*(basket.s_discount/100))}" class="price" readonly></td>
 						<td class="${basket.p_num}">
-							<input type="button" value="${basket.a_num}" class="stock">
-							<%-- <select name="selected_a_num" class="${basket.s_num}">
-								<option value="1" <c:if test="${basket.a_num == '1'}">selected</c:if>>1개
-								<option value="2" <c:if test="${basket.a_num == '2'}">selected</c:if>>2개
-								<option value="3" <c:if test="${basket.a_num == '3'}">selected</c:if>>3개
-								<option value="4" <c:if test="${basket.a_num == '4'}">selected</c:if>>4개
-								<option value="5" <c:if test="${basket.a_num == '5'}">selected</c:if>>5개
-							</select> --%>
+							<input type="hidden" value="${basket.s_price-(basket.s_price*(basket.s_discount/100))}" class="price">
+							<fmt:formatNumber value="${basket.s_price-(basket.s_price*(basket.s_discount/100))}" type="number"/>원
+						</td>
+						<td class="${basket.p_num}">
+							<input type="hidden" value="${basket.a_num}" class="stock">
+							${basket.a_num} 개
 							<form:hidden path="a_num" value="${basket.a_num}"/>
 						</td>
-						<td><input type="button" onclick="location.href='${pageContext.request.contextPath}/basket/deleteBasket.do?p_num=${basket.p_num}'" value="삭제"></td>
+						<td><input type="button" class="basketdelbtn" onclick="location.href='${pageContext.request.contextPath}/basket/deleteBasket.do?p_num=${basket.p_num}'" value="삭제"></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -178,7 +128,7 @@
 					총 배송비<span id="ship">+ 0</span><br>
 					총 결제 예상 금액<span id="total">0</span>
 				</div>
-				<input type="button" value="계속 쇼핑하기" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
+				<input type="button" value="계속 쇼핑하기" id="homebtn" class="homebtn" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
 				<input type="submit" value="구매하기">
 			</div>
 		</div>

@@ -1,7 +1,9 @@
 @CHARSET "UTF-8"; 
 /*====*/
 
-
+.flex-viewport img{
+	height: 640px;
+}
 .flex-active-slide{
     margin-left:-50px;
 }
@@ -17,7 +19,7 @@
 }
 .flex-nav-prev{
     position: absolute;
-    transform: translate(-300px, 0px);
+    transform: translate(-300px, 0px	);
 }
 .flex-nav-next{
     position:absolute;
@@ -67,14 +69,11 @@
 	width: 30%;
 }
 .replies{
-    background-color:white;
     padding: 5px;
 }
 .mb_content{
-
     margin:50 auto;
     padding: 30px;
-
 }
 
 /* div#main_body div#body {

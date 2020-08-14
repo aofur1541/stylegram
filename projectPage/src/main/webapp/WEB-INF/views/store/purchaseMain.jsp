@@ -106,7 +106,7 @@
 				<td>
 					<form:input path="p_post" placeholder="우편번호"/>
 					<form:errors path="p_post"/>
-					<input type="button" onclick="postSearch()" value="우편번호 찾기"><br>
+					<input type="button" onclick="postSearch()" class="findpost" value="우편번호 찾기"><br>
 					<form:input path="p_address" placeholder="주소"/>
 					<form:errors path="p_address"/>
 					<form:input path="p_detailaddress" placeholder="상세주소"/>

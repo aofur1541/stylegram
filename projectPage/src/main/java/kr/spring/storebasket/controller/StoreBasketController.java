@@ -181,9 +181,7 @@ public class StoreBasketController {
         if(result.hasErrors()) {
 			return "redirect:/basket/storeBasket.do";
 		}
-        System.out.println(p_nums);
         String[] p_num = p_nums.split(",");
-        System.out.println(p_num.length);
         StoreVO store = new StoreVO();
         for(int i=0;i<p_num.length;i++) {
         	store = basketService.select(Integer.parseInt(p_num[i]));
