@@ -11,7 +11,14 @@ public class QnaCommentVO {
 	
 	private String m_id;
 	private String m_nickname;
+	private byte[] m_image;
 	
+	public byte[] getM_image() {
+		return m_image;
+	}
+	public void setM_image(byte[] m_image) {
+		this.m_image = m_image;
+	}
 	public int getQr_num() {
 		return qr_num;
 	}

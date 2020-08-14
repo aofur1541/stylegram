@@ -28,6 +28,16 @@
 		</script>
 		<tr>
 			<td>
+				<c:if test="${empty row.m_image}">
+					<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${row.m_num}">
+						<img alt="" src="${pageContext.request.contextPath}/resources/images/basicprofile.png" width="35px">
+					</a>
+				</c:if>
+				<c:if test="${!empty row.m_image}">
+					<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${row.m_num}">
+					<img src="${pageContext.request.contextPath}/member/imageViewProfile.do?m_num=${row.m_num}" width="35px">
+					</a>
+				</c:if>
 				<c:if test="${empty row.m_nickname}">
 					${row.m_id}
 				</c:if>
@@ -50,7 +60,7 @@
 				<form action="updateComment.do" name="updateComForm" id="updateComForm">
 					<input type="hidden" name="qr_num" value="${row.qr_num }">
 					<input type="text" name="updateText" id="updateText" value="${row.qr_content }">
-					<input type="submit" value="전송">
+					<input type="submit" value="수정">
 				</form>
 			</td>
 		</tr>
