@@ -11,6 +11,7 @@ public class FleaReplyVO {
 	
 	private String m_id;
 	private String m_nickname;
+	private byte[] m_image;
 	
 	public int getFr_num() {
 		return fr_num;
@@ -54,4 +55,11 @@ public class FleaReplyVO {
 	public void setM_nickname(String m_nickname) {
 		this.m_nickname = m_nickname;
 	}
+	public byte[] getM_image() {
+		return m_image;
+	}
+	public void setM_image(byte[] m_image) {
+		this.m_image = m_image;
+	}
+	
 }

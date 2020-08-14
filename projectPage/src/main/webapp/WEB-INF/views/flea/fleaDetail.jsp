@@ -68,6 +68,18 @@
 <div id="body">
 	<h2>${flea.fb_title}</h2>
 	<ul class="writeinfo">
+		<li>
+		<c:if test="${empty flea.m_image}">
+			<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${flea.fb_usernum}">
+			<img src="${pageContext.request.contextPath}/resources/images/basicprofile.png" width="50px">
+			</a>
+		</c:if>
+		<c:if test="${!empty flea.m_image}">
+			<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${flea.fb_usernum}">
+			<img src="${pageContext.request.contextPath}/member/imageViewProfile.do?m_num=${flea.fb_usernum}" width="50px">
+			</a> 
+		</c:if>			
+		</li>
 		<c:if test="${empty flea.m_nickname}">
 		<li>작성자 : ${flea.m_id} </li>
 		</c:if>
