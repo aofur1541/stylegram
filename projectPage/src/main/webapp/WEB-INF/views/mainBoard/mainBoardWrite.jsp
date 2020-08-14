@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainBoardView.css">
 <script type="text/javascript">
 	$(document).ready(function(){
 
@@ -78,19 +79,19 @@
 		reader.onload = function(event){
 			var img = document.createElement("img");
 			img.setAttribute("src", event.target.result);
-			img.setAttribute("width", "300px");
 			img.setAttribute('class', 'addimg'+i);
-			img.setAttribute('onclick', 'removeImg()');
+			img.setAttribute('id', 'addimg');
 			img.setAttribute('data-num', i);
 			
-			var delbtn = document.createElement("input");
-			delbtn.setAttribute("type", "button");
-			delbtn.setAttribute("value", "삭제");
+			var delbtn = document.createElement("img");
+			delbtn.setAttribute("src", "${pageContext.request.contextPath }/resources/images/X2.png");
 			delbtn.setAttribute("class", "deletePicture"+i);
+			delbtn.setAttribute("id", "deletePicture");
 			delbtn.setAttribute("onclick", 'removeImg2('+i+')');
 			
-			document.querySelector("div#addImage_container").appendChild(img);
 			document.querySelector("div#addImage_container").appendChild(delbtn);
+			document.querySelector("div#addImage_container").appendChild(img);
+			
 			
 			
 		};

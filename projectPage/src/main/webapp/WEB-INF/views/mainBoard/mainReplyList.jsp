@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainBoardView.css">
 
 <body>
 	<c:if test="${commentCount != 0}">
@@ -28,7 +28,17 @@
 		});
 		</script>
 		<tr>
-			<td>
+			<td class="replies" id="replies">
+				<c:if test="${empty row.m_image}">
+					<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${row.m_num}">
+					<img src="${pageContext.request.contextPath}/resources/images/basicprofile.png" width="35px">
+					</a>
+				</c:if>
+				<c:if test="${!empty row.m_image}">
+					<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${row.m_num}">
+					<img src="${pageContext.request.contextPath}/member/imageViewProfile.do?m_num=${row.m_num}" width="35px">
+					</a>
+				</c:if>					
 				<c:if test="${empty row.m_nickname}">
 					${row.m_id}
 				</c:if>

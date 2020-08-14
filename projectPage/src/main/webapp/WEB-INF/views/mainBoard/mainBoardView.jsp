@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainBoardView.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.0.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
@@ -93,7 +94,7 @@ window.onload=function(){
 
 <div id="body">
 	<!-- 본문 상단 -->
-	<h2>${mainBoard.mb_title}</h2>
+	<h2 class="title">${mainBoard.mb_title}</h2>
 	<ul class="writeinfo">
 		<!-- 프로필 -->
 		<li> 
@@ -105,7 +106,7 @@ window.onload=function(){
 		<c:if test="${!empty mainBoard.m_image}">
 			<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${mainBoard.m_num}">
 			<img src="${pageContext.request.contextPath}/member/imageViewProfile.do?m_num=${mainBoard.m_num}" width="50px">
-			</a>
+			</a> 
 		</c:if>		
 		</li>
 		<c:if test="${empty mainBoard.m_nickname}">
@@ -118,7 +119,7 @@ window.onload=function(){
 		<li>수정일 : ${mainBoard.mb_modifydate}</li>
 	</ul>
 	<div class="align-right">
-		<c:if test="${mnumVO.m_num == m_num || m_auth == 4}">
+		<c:if test="${mainBoard.m_num == m_num || m_auth == 4}">
 		<input type="button" value="수정" id="update_btn" onclick="location.href='update.do?mb_num=${mainBoard.mb_num}'">
 		<input type="button" value="삭제" id="delete_btn" onclick="location.href='delete.do?mb_num=${mainBoard.mb_num}'">
 		</c:if>
@@ -137,7 +138,7 @@ window.onload=function(){
 		</c:if>
 		<!-- 추가 사진들 -->
 		<c:if test="${!empty mainPictures}">
-		<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status">
+		<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status"> 
 			<li data-thumb="imageView2.do?i_num=${mainPictures.i_num}">
 				<img src="imageView2.do?i_num=${mainPictures.i_num}">
 			</li>
@@ -168,26 +169,26 @@ window.onload=function(){
 	<p id="categoryinfo">
 		<c:if test="${!empty mainBoard.mb_topinfo}">
 		<a href="${mainBoard.mb_topinfo}" target="_blank">
-			<img src="${pageContext.request.contextPath}/resources/images/tshirts.png" width="40px">
-			<b>상의사러가기</b>
+			<img src="${pageContext.request.contextPath}/resources/images/tshirts.png" width="40px" class="top">
+			<b>상의</b>
 		</a>
 		</c:if>
 		<c:if test="${!empty mainBoard.mb_pantsinfo}">
 		<a href="${mainBoard.mb_pantsinfo}" target="_blank">
-			<img src="${pageContext.request.contextPath}/resources/images/pants2.png" width="40px">
-			<b>하의사러가기</b>
+			<img src="${pageContext.request.contextPath}/resources/images/pants2.png" width="45px" class="pants">
+			<b>하의</b>
 		</a>
 		</c:if>
 		<c:if test="${!empty mainBoard.mb_capinfo}">
 		<a href="${mainBoard.mb_capinfo}" target="_blank">
-			<img src="${pageContext.request.contextPath}/resources/images/cap.png" width="40px">
-			<b>모자사러가기</b>
+			<img src="${pageContext.request.contextPath}/resources/images/cap.png" width="45px" class="cap">
+			<b>모자</b>
 		</a>
 		</c:if>
 		<c:if test="${!empty mainBoard.mb_shoesinfo}">
 		<a href="${mainBoard.mb_shoesinfo}" target="_blank">
-			<img src="${pageContext.request.contextPath}/resources/images/shoes.png" width="40px">
-			<b>신발사러가기</b>
+			<img src="${pageContext.request.contextPath}/resources/images/shoes.png" width="45px" class="shoes">
+			<b>신발</b>
 		</a>
 		</c:if>
 	</p>

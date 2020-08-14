@@ -10,7 +10,7 @@
 	
 	<select id="commentList" resultType="mainCommentVO">
 		SELECT * FROM
-		(select a.*, rownum rnum FROM (SELECT * FROM promainreply c Join PROMEMBER m on c.m_num=m.m_num and mb_num=#{mb_num} ORDER BY c.mr_num) a)
+		(select a.*, rownum rnum FROM (SELECT * FROM promainreply c Join PROMEMBER m on c.m_num=m.m_num JOIN promember_detail d ON c.m_num=d.m_num and mb_num=#{mb_num} ORDER BY c.mr_num) a)
 		<![CDATA[ WHERE rnum >= #{start} AND rnum <= #{end} ]]>
 	</select>
 	

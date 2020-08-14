@@ -3,5 +3,12 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="kr.spring.storebasket.dao.StoreBasketMapper">
-	
+	<select id="selectBasketPurchaseList" parameterType="hashmap" resultType="storeVO">
+		SELECT * 
+			FROM (SELECT * FROM prostorebasket b JOIN prostore s on b.s_num = s.s_num)
+				WHERE 
+			<foreach collection="p_num" item="p_num" index="index" separator="OR">
+				p_num = #{p_num}
+			</foreach>
+	</select>
 </mapper>

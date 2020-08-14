@@ -11,7 +11,9 @@ public class MainCommentVO {
 	
 	private String m_id;
 	private String m_nickname;
+	private byte[] m_image;
 	
+
 	public String getM_id() {
 		return m_id;
 	}
@@ -53,6 +55,12 @@ public class MainCommentVO {
 	}
 	public void setMr_regdate(Date mr_regdate) {
 		this.mr_regdate = mr_regdate;
+	}
+	public byte[] getM_image() {
+		return m_image;
+	}
+	public void setM_image(byte[] m_image) {
+		this.m_image = m_image;
 	}
 	@Override
 	public String toString() {

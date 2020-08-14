@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainBoardView.css">
 <script type="text/javascript">
 	$(document).ready(function(){
 		if($('#mb_topinfo').val() != ''){
@@ -78,11 +79,11 @@
 			img.setAttribute("src", event.target.result);
 			img.setAttribute("width", "300px");
 			img.setAttribute('class', 'addimg'+i);
-			img.setAttribute('onclick', 'removeImg()');
+			img.setAttribute('id', 'addimg');
 			img.setAttribute('data-num', i);
 			
 			$("div#addImage_container"+i).empty();
-			$("img#add_Pictures"+i).hide();
+			$("img.add_Pictures"+i).hide();
 			document.querySelector("div#addImage_container"+i).appendChild(img);
 			
 		};
@@ -115,12 +116,12 @@
 				<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status">
 					<label for="picture">사진 이름 : ${mainPictures.i_filename }</label>
 					<!-- 기존사진 -->
-					<img src="imageView2.do?i_num=${mainPictures.i_num}" style="max-width:300px" id="add_pictures${status.index }">
+					<img src="imageView2.do?i_num=${mainPictures.i_num}" style="max-width:300px" class="add_pictures${status.index }" id="add_pictures">
 					<!-- 미리보기 사진 -->
 					<div id="addImage_container${status.index }"></div>
 					
 					<input type="hidden" name="mainPictureSubVO[${status.index }].i_num" value="${mainPictures.i_num }">
-					<input type="file" name="mainPictureSubVO[${status.index }].uploadPicture" class="uploadPicture${status.index }" onchange="setThumbnail2(event,${status.index })">
+					<input type="file" name="mainPictureSubVO[${status.index }].uploadPicture" class="uploadPicture${status.index }" id="uploadPictures" onchange="setThumbnail2(event,${status.index })">
 					<input type="button" value="삭제" class="delete_check${status.index }" >
 					<!-- 삭제 확인 js -->
 					<script type="text/javascript">
