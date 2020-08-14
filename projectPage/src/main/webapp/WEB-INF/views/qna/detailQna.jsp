@@ -74,6 +74,20 @@ window.onload=function(){
 <div id="body">
 	<h2>${qna.qb_title}</h2>
 	<ul class="writeinfo">
+	
+	<!-- 페이지 상단 프로필  -->
+	<li> 
+		<c:if test="${empty qna.m_image}">
+			<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${qna.m_num}">
+			<img src="${pageContext.request.contextPath}/resources/images/basicprofile.png" width="50px">
+			</a>
+		</c:if>
+		<c:if test="${!empty qna.m_image}">
+			<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${qna.m_num}">
+			<img src="${pageContext.request.contextPath}/member/imageViewProfile.do?m_num=${qna.m_num}" width="50px">
+			</a> 
+		</c:if>		
+		</li>
 		<c:if test="${empty qna.m_nickname}">
 		<li>작성자 : ${qna.m_id} </li>
 		</c:if>
