@@ -79,7 +79,8 @@
 		                 kr.spring.storereview.domain,
 		                 kr.spring.storebasket.domain,
 		                 kr.spring.mainboardlikes.domain,
-		                 kr.spring.mainboard.domain"/>
+		                 kr.spring.mainboard.domain,
+		                 kr.spring.storepurchase.domain"/>
 	</bean> 
 	<bean 
 	class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -94,6 +95,7 @@
 					                  kr.spring.storereview.dao,
 					                  kr.spring.storebasket.dao,
 					                  kr.spring.mainboardlikes.dao,
-		                              kr.spring.mainboard.dao"/>
+		                              kr.spring.mainboard.dao,
+		                              kr.spring.storepurchase.dao"/>
 	</bean>
 </beans>
