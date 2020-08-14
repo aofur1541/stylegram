@@ -13,7 +13,7 @@ $(document).ready(function(){
         var param={ "qr_content": qr_content, "qb_num": qb_num};
         
         
-        
+         
         var data = $(this).serialize();
         //var param="replytext="+replytext+"&bno="+bno;
         $.ajax({
