@@ -6,6 +6,23 @@
 <%@ taglib prefix="double-submit" uri="http://www.egovframe.go.kr/tags/double-submit/jsp" %>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	$(document).ready(function(){
+		$('.buyerinfo').change(function(){
+			if($('#b').is(":checked")){
+				$('#p_name').val('${member.m_name}');
+				$('#p_post').val('${member.m_postcode}');
+				$('#p_address').val('${member.m_address}');
+				$('#p_detailaddress').val('${member.m_detailaddress}');
+				$('#p_phone').val('${member.m_phone}');
+			}else if($('#a').is(":checked")){
+				$('#p_name').val('');
+				$('#p_post').val('');
+				$('#p_address').val('');
+				$('#p_detailaddress').val('');
+				$('#p_phone').val('');
+			}
+		});
+	}); 
     function postSearch() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -45,33 +62,6 @@
         }).open();
     }
 </script>
-<style>
-    table {
-      border-collapse: collapse;
-      border-top: 3px solid #168;
-      margin:0 0 30 0;
-      width:1200px;
-    }  
-    table th {
-      color: #168;
-      background: #f0f6f9;
-      text-align: center;
-    }
-    table th, table td {
-      padding: 10px;
-      border: 1px solid #ddd;
-    }
-    table th:first-child, table td:first-child {
-      border-left: 0;width:200px;text-align:left;
-    }
-    table th:last-child, table td:last-child {
-      border-right: 0;
-    }
-    table tr td:first-child{
-      text-align: center;
-    }
-    table caption{caption-side: bottom; display: none;}
-  </style>
 <div id="body">
 	<form:form action="insertPurchase.do" commandName="storePurchaseVO">
 		<double-submit:preventer/>
@@ -79,7 +69,7 @@
 		<input type="hidden" id="m_num" name="m_num" value="${member.m_num}">
 		<input type="hidden" id="a_num" name="a_num" value="${store.a_num}">
 		<h2>결제정보</h2>
-		<table>
+		<table class="purchasetable">
 			<tr>
 				<th colspan="2">구매자 정보</th>
 			</tr>
@@ -96,9 +86,12 @@
 				<td>${member.m_phone}</td>
 			</tr>
 		</table>
-		<table>
+		<table class="purchasetable">
 			<tr>
-				<th colspan="2">받는사람 정보</th>
+				<th colspan="2">받는사람 정보
+					<input type="radio" name="buyerinfo" id="a" class="buyerinfo" checked>직접입력
+					<input type="radio" name="buyerinfo" id="b" class="buyerinfo">구매자와 동일
+				</th>
 			</tr>
 			<tr>
 				<td>이름</td>
@@ -127,7 +120,7 @@
 				</td>
 			</tr>
 		</table>
-		<table>
+		<table class="purchasetable">
 			<tr>
 				<th>상품정보</th>
 			</tr>
@@ -141,7 +134,7 @@
 				<td>구매수량 : ${store.a_num}개</td>
 			</tr>
 		</table>
-		<table>
+		<table class="purchasetable">
 			<tr>
 				<th colspan="2">결제정보</th>
 			</tr>
@@ -170,9 +163,7 @@
 				</c:if>
 			</tr>
 		</table>
-		<input type="button" value="돌아가기" onclick="location.href='productDetail.do?s_num=${store.s_num}'">
 		<input type="submit" value="구매하기">
+		<input type="button" value="돌아가기" id="homebtn" class="homebtn" onclick="location.href='productDetail.do?s_num=${store.s_num}'">
 	</form:form>
 </div>
-
-
