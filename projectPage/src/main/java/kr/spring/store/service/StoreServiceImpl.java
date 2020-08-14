@@ -52,7 +52,7 @@ public class StoreServiceImpl implements StoreService{
 	}
 
 	@Override
-	public List<StoreVO> selectPurchaseList() {
-		return storeMapper.selectPurchaseList();
+	public List<StoreVO> selectPurchaseList(Integer num) {
+		return storeMapper.selectPurchaseList(num);
 	}
 }

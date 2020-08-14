@@ -41,7 +41,7 @@
 				<td><img src="imageView.do?s_num=${sv.s_num}" style="width:200px;"></td>
 				<td>
 					<h3>결제 정보</h3><br>
-					결제 상품 : <b>${store.s_title}</b> ${sv.a_num}개<br>
+					결제 상품 : <b>${store.s_title}</b> [${sv.a_num}개]<br>
 					결제 가격 : 
 					<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num < 50000}">
 						<fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num+store.s_shipcost}" type="number"/>원
@@ -50,7 +50,7 @@
 						<fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num}" type="number"/>원
 					</c:if>
 				</td>
-				<td></td>
+				<td><h3>배송예정일</h3><br>${store.shipdate}도착 예정</td>
 			</tr>
 		</table>
 	<input type="button" value="계속 쇼핑하기" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">

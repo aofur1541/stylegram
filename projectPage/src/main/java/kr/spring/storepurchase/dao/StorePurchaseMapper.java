@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 
-import kr.spring.store.domain.StoreVO;
 import kr.spring.storepurchase.domain.StorePurchaseVO;
 
 public interface StorePurchaseMapper {
@@ -15,8 +14,8 @@ public interface StorePurchaseMapper {
 	public void insert (StorePurchaseVO store);
 	@Select("SELECT COUNT(*) FROM prostorepurchase")
 	public int selectPurchaseCount();
-	@Select("SELECT * FROM prostorepurchase p JOIN prostore s ON p.s_num=s.s_num")
-	public List<StorePurchaseVO> selectPurchaseList();
+	@Select("SELECT * FROM prostorepurchase p JOIN prostore s ON p.s_num=s.s_num WHERE m_num=#{m_num}")
+	public List<StorePurchaseVO> selectPurchaseList(Integer num);
 	@Select("SELECT * FROM prostorepurchase p JOIN prostore s ON p.s_num = s.s_num WHERE p_num=#{p_num}")
 	public StorePurchaseVO selectPurchase(Integer num);
 }
