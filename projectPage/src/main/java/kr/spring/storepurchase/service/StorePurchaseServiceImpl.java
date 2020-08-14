@@ -21,7 +21,7 @@ public class StorePurchaseServiceImpl implements StorePurchaseService{
 	}
 
 	@Override
-	public int selectPurchaseCount() {
+	public int selectPurchaseCount() { 
 		return storePurchaseMapper.selectPurchaseCount();
 	}
 	

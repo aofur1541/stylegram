@@ -25,7 +25,7 @@ public class StoreServiceImpl implements StoreService{
 	public int selectProductCount() {
 		return storeMapper.selectProductCount();
 	}
-
+ 
 	@Override
 	public List<StoreVO> selectProductList() {
 		return storeMapper.selectProductList();

@@ -19,3 +19,4 @@ public interface StorePurchaseMapper {
 	@Select("SELECT * FROM prostorepurchase p JOIN prostore s ON p.s_num = s.s_num WHERE p_num=#{p_num}")
 	public StorePurchaseVO selectPurchase(Integer num);
 }
+ 

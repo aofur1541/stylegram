@@ -10,3 +10,4 @@ public interface StorePurchaseService {
 	public List<StorePurchaseVO> selectPurchaseList(Integer num);
 	public StorePurchaseVO selectPurchase(Integer num);
 }
+ 

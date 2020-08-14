@@ -16,7 +16,7 @@
       text-align: center;
     }
     table th, table td {
-      padding: 10px;
+      padding: 10px; 
       border: 1px solid #ddd;
     }
     table th:first-child, table td:first-child {

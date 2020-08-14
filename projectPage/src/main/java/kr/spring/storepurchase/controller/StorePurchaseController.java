@@ -37,7 +37,7 @@ public class StorePurchaseController {
 	@ModelAttribute
 	public StorePurchaseVO initCommand() {
 		return new StorePurchaseVO();
-	}
+	} 
 
 	@RequestMapping("/store/insertPurchase.do")
 	public String submit(@RequestParam("s_num") int s_num,@Valid StorePurchaseVO storePurchaseVO,BindingResult result,HttpServletRequest request,RedirectAttributes redirect)throws Exception {
