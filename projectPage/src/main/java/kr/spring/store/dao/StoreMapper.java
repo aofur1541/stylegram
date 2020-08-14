@@ -20,6 +20,6 @@ public interface StoreMapper {
 	public StoreVO selectProductDetail(Integer num);
 	@Select("SELECT * FROM prostore s JOIN prostorepurchase p ON s.s_num=p.s_num WHERE p.p_num=#{p_num}")
 	public StoreVO selectPurchaseProduct(Integer num);
-	@Select("SELECT * FROM prostore s JOIN prostorepurchase p ON s.s_num=p.s_num")
-	public List<StoreVO> selectPurchaseList();
+	@Select("SELECT * FROM prostore s JOIN prostorepurchase p ON s.s_num=p.s_num WHERE m_num=#{m_num}")
+	public List<StoreVO> selectPurchaseList(Integer num); 
 }

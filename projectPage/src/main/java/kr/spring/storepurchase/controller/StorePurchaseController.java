@@ -37,7 +37,7 @@ public class StorePurchaseController {
 	@ModelAttribute
 	public StorePurchaseVO initCommand() {
 		return new StorePurchaseVO();
-	}
+	} 
 
 	@RequestMapping("/store/insertPurchase.do")
 	public String submit(@RequestParam("s_num") int s_num,@Valid StorePurchaseVO storePurchaseVO,BindingResult result,HttpServletRequest request,RedirectAttributes redirect)throws Exception {
@@ -85,15 +85,22 @@ public class StorePurchaseController {
 	}
 
 	@RequestMapping("/store/purchaseList.do")
-	public ModelAndView process(StoreReviewVO storeReviewVO) {
+	public ModelAndView process(StoreReviewVO storeReviewVO,HttpSession session) {
 
 		int count = storePurchaseService.selectPurchaseCount();
 
 		List<StorePurchaseVO> plist = null;
 		List<StoreVO> slist = null;
 		
-		plist = storePurchaseService.selectPurchaseList();
-		slist = storeService.selectPurchaseList();
+		int m_num = 0;
+		if(session.getAttribute("m_num") == null) {
+			return new ModelAndView("redirect:/member/login.do");
+		}else {
+			m_num = (Integer)session.getAttribute("m_num");
+		}
+		
+		plist = storePurchaseService.selectPurchaseList(m_num);
+		slist = storeService.selectPurchaseList(m_num);
 		
 		if(log.isDebugEnabled()) {
 			log.debug("구매내역 : " + plist);
