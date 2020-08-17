@@ -126,7 +126,7 @@ public class QnaController {
 		}
 			
 		qnaService.writeQna(qnaVO);
-		//구현 후 수정
+		//구현 후 수정 
 		return "redirect:listQna.do";
 	}
 	

@@ -57,7 +57,7 @@
 			</li>
 			<li>
 				<label>내용 설명</label>
-				<form:textarea path="qb_content"/>
+				<form:textarea path="qb_content"/> 
 			</li>
 			<li class="category">
 				<label for="tag">태그선택</label><br>

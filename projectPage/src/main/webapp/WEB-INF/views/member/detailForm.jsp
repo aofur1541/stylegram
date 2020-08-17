@@ -53,7 +53,7 @@
 			</tr>
 			</c:forEach>
 		</table>
-	</div>
+	</div> 
 	<div class="detailpage">
 		<h3 class="detailh3">내 팔로워 목록</h3>
 		<input type="button" value="${followerCount}" class="countBtn" readonly>

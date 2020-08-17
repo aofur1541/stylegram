@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sun.istack.internal.Nullable;
 
 public class QnaVO {
-
+ 
 	//PROQNABOARD
 	private int qb_num;
 	@NotEmpty
