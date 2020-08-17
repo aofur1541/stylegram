@@ -205,7 +205,7 @@ public class MainBoardController {
 		mainBoardService.update(mainBoardVO);
 		int mb_num = mainBoardVO.getMb_num();
 		
-		if(mainPictures.getUploadPicture() != null) {
+		if(mainPictures.getUploadPicture() != null) { 
 			mainPictureService.updatePictures(mainPictures);
 		}
 		
