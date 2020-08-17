@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainBoardView.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
 	window.onload=function(){
 		var del = document.getElementById('delete');
@@ -63,11 +65,21 @@
 	    	return strDate;
 	    }
 		
+		$('.flexslider').flexslider({
+	        animation: "slide",
+	        controlNav: "thumbnails",
+	        keyboard: true,
+	        pauseOnAction: true,
+	        pausePlay: true
+		});
+		
 	});
 </script> 
 <div id="body">
+	<!-- 본문 상단 -->
 	<h2>${flea.fb_title}</h2>
 	<ul class="writeinfo">
+		<!-- 프로필 -->
 		<li>
 		<c:if test="${empty flea.m_image}">
 			<a href="${pageContext.request.contextPath}/member/anotherPage.do?m_num=${flea.fb_usernum}">
@@ -98,11 +110,28 @@
 		<input type="button" value="목록" onclick="location.href='fleaList.do'">
 	</div>
 	<hr size="1" width="100%">
-	<div id="viewPhoto" class="align-center">
-	<c:if test="${!empty flea.fb_photo}">
-		<img src="imageView.do?fb_num=${flea.fb_num}">
-	</c:if> 
+	
+	<!-- 사진 뷰어 flexslider -->
+	<div class="align-center flexslider">
+		<ul class="slides">
+			<!-- 메인 사진 -->
+			<c:if test="${!empty flea.fb_photo}">
+				<li data-thumb="imageView.do?fb_num=${flea.fb_num}">
+					<img src="imageView.do?fb_num=${flea.fb_num}">
+				</li>
+			</c:if>
+			<!-- 추가 사진들 -->
+			<c:if test="${!empty fleaPictures}">
+				<c:forEach var="fleaPictures" items="${fleaPictures}" varStatus="status">
+					<li data-thumb="imageView2.do?i_num=${fleaPictures.i_num}">
+						<img src="imageView2.do?i_num=${fleaPictures.i_num}">
+					</li>
+				</c:forEach>
+			</c:if>
+		</ul>
 	</div>
+	
+	<!-- 본문 내용 -->
 	<p class="fb_content">
 		${flea.fb_content}
 	</p>

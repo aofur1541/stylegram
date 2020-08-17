@@ -33,7 +33,6 @@ public class FleaServiceImpl implements FleaService {
 
 	@Override
 	public void insert(FleaVO flea) {
-		flea.setFb_num(fleaMapper.selectFb_num());
 		fleaMapper.insert(flea);
 		fleaMapper.insertinfo(flea);
 	}
