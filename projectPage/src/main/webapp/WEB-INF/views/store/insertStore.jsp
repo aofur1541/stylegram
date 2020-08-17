@@ -153,12 +153,7 @@
 				<form:input path="s_shipcost"/>
 				<form:errors path="s_shipcost"/>
 			</li>
-			<li>
-				<label for="shipdate">배송 예정일</label>
-				<input type="date" name="shipdate" id="shipdate">
-				<form:errors path="shipdate"/>
-			</li>
-			<li>
+			<li>                 
 				<label for="s_content">상품 상세</label>
 				<form:textarea path="s_content"/>
 				<form:errors path="s_content"/>
