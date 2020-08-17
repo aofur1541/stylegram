@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -215,6 +216,15 @@ public class StoreController {
 		mav.addObject("member", memberVO);
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="/store/modifyproduct.do", method=RequestMethod.GET)
+	public String submitForm(@RequestParam("s_num") int s_num, Model model) {
+		
+		StoreVO storeVO = storeService.selectProduct(s_num);
+		model.addAttribute("storeVO", storeVO);
+		
+		return "productModify";
 	}
 
 	@RequestMapping(value="/store/modifyproduct.do", method=RequestMethod.POST)
