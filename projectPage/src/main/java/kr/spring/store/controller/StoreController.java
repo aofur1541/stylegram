@@ -217,6 +217,21 @@ public class StoreController {
 		return mav;
 	}
 
+	@RequestMapping(value="/store/modifyproduct.do", method=RequestMethod.POST)
+	public String submitUpdate(@Valid StoreVO storeVO, BindingResult result, HttpServletRequest request) {
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<StoreVO>> : " + storeVO);
+		}
+
+		if(result.hasErrors()) {
+			return "productModify";
+		}
+
+		storeService.update(storeVO);
+
+		return "redirect:/store/productDetail.do?s_num="+storeVO.getS_num();
+	}
 }
 
 

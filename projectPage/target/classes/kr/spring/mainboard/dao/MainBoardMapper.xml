@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="selectBoard" resultType="mainBoardVO">
-		SELECT * FROM (SELECT * FROM promainboard b JOIN promember m ON b.m_num = m.m_num where mb_num = #{mb_num}) a JOIN promaininfo i ON a.mb_num = i.mb_num
+		SELECT * FROM (SELECT * FROM promainboard b JOIN promember m ON b.m_num = m.m_num JOIN promember_detail d ON b.m_num = d.m_num where mb_num = #{mb_num}) a JOIN promaininfo i ON a.mb_num = i.mb_num
 	</select>
 	
 	<update id="update" parameterType="mainBoardVO">

@@ -12,7 +12,7 @@
 	<!-- 글상세 -->
 	<select id="selectQna" resultType="qnaVO">
 		SELECT * FROM proqnaboard b 
-		JOIN promember m ON b.qb_usernum = m.m_num JOIN proqnainfo i ON b.qb_num = i.qb_num
+		JOIN promember m ON b.qb_usernum = m.m_num JOIN promember_detail d ON b.qb_usernum=d.m_num JOIN proqnainfo i ON b.qb_num = i.qb_num
 		WHERE b.qb_num = #{qb_num}
 	</select>
 	<!-- 글수정 -->
