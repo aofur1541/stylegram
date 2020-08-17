@@ -10,4 +10,4 @@
 	<select id="selectProductDetail" resultType="StoreVO" parameterType="integer">
 		SELECT * FROM prostore s LEFT OUTER JOIN prostorereview r ON s.s_num=r.s_num WHERE s.s_num=#{s_num}
 	</select>
-</mapper>
+</mapper> 

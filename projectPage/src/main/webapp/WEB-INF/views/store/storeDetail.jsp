@@ -29,7 +29,7 @@ $(document).ready(function() {
 	</c:if>
 	<c:if test="${count > 0}">
 		<c:forEach var="store" items="${list}">
-			<c:if test="${store.staravg == 5}">
+			<c:if test="${store.staravg == 5}"> 
 			<div class="card-board1">
 				<div class="card-sheet-top">
 					<div class="toptext"><b> 인기 TOP | </b>가장 HOT한 상품!!</div>
