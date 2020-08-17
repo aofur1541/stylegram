@@ -205,7 +205,9 @@ public class MainBoardController {
 		mainBoardService.update(mainBoardVO);
 		int mb_num = mainBoardVO.getMb_num();
 		
-		mainPictureService.updatePictures(mainPictures);
+		if(mainPictures.getUploadPicture() != null) {
+			mainPictureService.updatePictures(mainPictures);
+		}
 		
 		
 		return "redirect:/mainBoard/detail.do?mb_num="+mb_num;
