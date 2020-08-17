@@ -39,5 +39,5 @@
 				
 		WHERE s_num=#{s_num}		
 	</update>
-	 
+
 </mapper> 

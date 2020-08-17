@@ -59,5 +59,5 @@ public class StoreServiceImpl implements StoreService{
 	@Override
 	public void update(StoreVO store) {
 		storeMapper.update(store);	
-	} 
+	}
 }

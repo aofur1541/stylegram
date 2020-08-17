@@ -22,7 +22,7 @@
 		$("#dupload").on("change",handleImgsFilesSelect);   
 		$("#dupload2").on("change",handleImgsFilesSelectSec);   
 		$("#dupload3").on("change",handleImgsFilesSelectThd);   		
-	});
+	}); 
 	
 	//단일 이미지 표시용 함수
 	function handleImgFileSelect(e){
