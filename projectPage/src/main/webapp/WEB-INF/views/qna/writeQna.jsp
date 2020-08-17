@@ -37,7 +37,6 @@
 <div id="body">
 	<h2>글쓰기</h2>
 	<form:form action="writeQna.do" enctype="multipart/form-data" commandName="qnaVO">
-	<form:hidden path="qb_usernum" value="${m_num}"/>
 		<ul>
 			<li>
 				<label for="upload">사진 추가</label>
@@ -74,5 +73,3 @@
 		</div>
 	</form:form>
 </div>
-</body>
-</html>

@@ -6,6 +6,8 @@ import java.sql.Date;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sun.istack.internal.Nullable;
+
 public class QnaVO {
 
 	//PROQNABOARD
@@ -21,10 +23,14 @@ public class QnaVO {
 	private Date qb_modifydate;
 	//PROQNAINFO
 	private int qn_num;
-	private int qb_topinfo;
-	private	int qb_pantsinfo;
-	private	int qb_capinfo;
-	private	int qb_shoesinfo;
+	@Nullable
+	private String qb_topinfo;
+	@Nullable
+	private	String qb_pantsinfo;
+	@Nullable
+	private	String qb_capinfo;
+	@Nullable
+	private	String qb_shoesinfo;
 	//PROQNAREPLE
 	private int qr_num;
 	private	int m_num;
@@ -100,28 +106,28 @@ public class QnaVO {
 	public void setQn_num(int qn_num) {
 		this.qn_num = qn_num;
 	}
-	public int getQb_topinfo() {
+	public String getQb_topinfo() {
 		return qb_topinfo;
 	}
-	public void setQb_topinfo(int qb_topinfo) {
+	public void setQb_topinfo(String qb_topinfo) {
 		this.qb_topinfo = qb_topinfo;
 	}
-	public int getQb_pantsinfo() {
+	public String getQb_pantsinfo() {
 		return qb_pantsinfo;
 	}
-	public void setQb_pantsinfo(int qb_pantsinfo) {
+	public void setQb_pantsinfo(String qb_pantsinfo) {
 		this.qb_pantsinfo = qb_pantsinfo;
 	}
-	public int getQb_capinfo() {
+	public String getQb_capinfo() {
 		return qb_capinfo;
 	}
-	public void setQb_capinfo(int qb_capinfo) {
+	public void setQb_capinfo(String qb_capinfo) {
 		this.qb_capinfo = qb_capinfo;
 	}
-	public int getQb_shoesinfo() {
+	public String getQb_shoesinfo() {
 		return qb_shoesinfo;
 	}
-	public void setQb_shoesinfo(int qb_shoesinfo) {
+	public void setQb_shoesinfo(String qb_shoesinfo) {
 		this.qb_shoesinfo = qb_shoesinfo;
 	}
 	public int getQr_num() {
@@ -172,14 +178,13 @@ public class QnaVO {
 	public void setM_image(byte[] m_image) {
 		this.m_image = m_image;
 	}
-/*	@Override
+	@Override
 	public String toString() {
 		return "QnaVO [qb_num=" + qb_num + ", qb_title=" + qb_title + ", qb_usernum=" + qb_usernum + ", upload="
 				+ upload + ", qb_filename=" + qb_filename + ", qb_content=" + qb_content + ", qb_regdate=" + qb_regdate
 				+ ", qb_modifydate=" + qb_modifydate + ", qn_num=" + qn_num + ", qb_topinfo=" + qb_topinfo
-				+ ", qb_bottominfo=" + qb_bottominfo + ", qb_hatinfo=" + qb_hatinfo + ", qb_shoseinfo=" + qb_shoseinfo
 				+ ", qr_num=" + qr_num + ", m_num=" + m_num + ", qr_id=" + qr_id + ", qr_content=" + qr_content
 				+ ", qr_regdate=" + qr_regdate + "]";
-	}*/
+	}
 }	
 	

@@ -31,7 +31,9 @@
 		</ul>
 	</div>
 	<div class="align-right">
+	<c:if test="${m_auth >= 3}">
 		<input type="button" value="회원정보수정" id="updatebtn" onclick="location.href='${pageContext.request.contextPath}/member/update.do'">
+	</c:if>
 		<input type="button" value="비밀번호변경" id="changepwd" onclick="location.href='${pageContext.request.contextPath}/member/changepwd.do'">
 		<input type="button" value="회원탈퇴" id="deletebtn" onclick="location.href='${pageContext.request.contextPath}/member/delete.do'">  
 		<input type="button" value="내 구매내역" id="purchaselist" onclick="location.href='${pageContext.request.contextPath}/store/purchaseList.do'">  

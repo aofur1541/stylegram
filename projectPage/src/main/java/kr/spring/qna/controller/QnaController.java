@@ -103,11 +103,23 @@ public class QnaController {
 		
 		if(log.isDebugEnabled()) {
 			log.debug("QNA <<QnaVO>> : " + qnaVO);
-		
 		}
 		
 		Integer user_num = (Integer)session.getAttribute("m_num");
 		qnaVO.setQb_usernum(user_num);
+		
+		if(qnaVO.getQb_topinfo() == null) {
+			qnaVO.setQb_topinfo("0");
+		}
+		if(qnaVO.getQb_pantsinfo() == null) {
+			qnaVO.setQb_pantsinfo("0");
+		}
+		if(qnaVO.getQb_capinfo() == null) {
+			qnaVO.setQb_capinfo("0");
+		}
+		if(qnaVO.getQb_shoesinfo() == null) {
+			qnaVO.setQb_shoesinfo("0");
+		}
 		
 		if(result.hasErrors()) {
 			return "writeQna";
