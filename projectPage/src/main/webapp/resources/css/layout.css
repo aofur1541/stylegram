@@ -10,6 +10,14 @@ a{
 	text-decoration: none;
 	color:black;
 }
+p.noticecontent{
+	white-space:pre-line;
+	font-size: 18px;
+}
+p.fb_content, p.mb_content, p.qb_content{
+	white-space:pre-line;
+	font-size: 15px;
+}
 /*====메뉴 옵션====*/
 a#nav_menu:link {
 	color:black;
@@ -973,7 +981,7 @@ div#body div#listReview{
 	width: 100%;
 } 
 div#body button#review-open{
-	width: 30%;
+	width: 50%;
 	height: 50px;
 	border:1px solid #82d9d0;
 	background-color: white;
@@ -1193,6 +1201,16 @@ table.baskettable td input.basketdelbtn:hover{
 }
 table.purchasetable th.a input[type=radio]{
 	margin-left: 60px;
+}
+li.mdpick{
+    width: 100%;
+	float:left;
+	margin-bottom: 20px;
+}
+input#upload{
+	width: 30%;
+	margin-right: 40%;
+	margin-left: 30%;
 }
 div#body form#storePurchaseVO{
 	background-color:rgb(247,248,249);

@@ -7,6 +7,7 @@
 	$(document).ready(function(){
 		if($('#mb_topinfo').val() != ''){
 			$('#topinfo').prop("checked", true);
+			$('#mb_topinfo').prop('type', 'text');
 		}else{
 			$('#mb_topinfo').prop('type', 'hidden');
 		}
@@ -19,6 +20,7 @@
 		});
 		if($('#mb_pantsinfo').val() != ''){
 			$('#pantsinfo').prop("checked", true);
+			$('#mb_pantsinfo').prop('type', 'text');
 		}else{
 			$('#mb_pantsinfo').prop('type', 'hidden');
 		}
@@ -31,6 +33,7 @@
 		});
 		if($('#mb_capinfo').val() != ''){
 			$('#capinfo').prop("checked", true);
+			$('#mb_capinfo').prop('type', 'text');
 		}else{
 			$('#mb_capinfo').prop('type', 'hidden');
 		}
@@ -43,6 +46,7 @@
 		});
 		if($('#mb_shoesinfo').val() != ''){
 			$('#shoesinfo').prop("checked", true);
+			$('#mb_shoesinfo').prop('type', 'text');
 		}else{
 			$('#mb_shoesinfo').prop('type', 'hidden');
 		}

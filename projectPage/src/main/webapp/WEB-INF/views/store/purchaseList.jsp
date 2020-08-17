@@ -68,8 +68,8 @@
 			</tr>
 		</table>
 		</c:forEach>
-		<input type="button" value="쇼핑하기" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
-		<input type="button" value="메인으로" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<input type="button" value="쇼핑하기" id="blackbtn" class="blackbtn" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
+		<input type="button" value="메인으로" id="homebtn" class="homebtn" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
 	</c:if>
 </div>
 
