@@ -139,7 +139,8 @@ $(document).ready(function(){
 				<form:hidden path="goCheck" id="goCheck"/>
 				<div class="btn-group"> 
 					<input type="submit" class="buy" value="바로구매" formaction="productBuy.do"><br>
-					<input type="submit" class="basket" value="장바구니" formaction="basket.do">
+					<input type="submit" class="basket" value="장바구니" formaction="basket.do"><br><br><br><br>
+				<input type="button" class="buy"  value="상품 수정" onclick="location.href='modifyproduct.do?s_num=${detail.s_num}'">
 				</div>
 			</form:form>
 		</div>
