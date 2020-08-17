@@ -176,11 +176,6 @@ $(document).ready(function(){
 				<img src="imageView4.do?s_num=${detail.s_num}">
 			</c:if>	 
 		</div>
-		<div class="contenttext">
-			<div id="text-box">
-				[${detail.s_content}]
-			</div>
-		</div>
 	</div>	
 <!-- ============================ 상품 결제 및 상품 상세 소개 부분 ================================================== -->
 	<!-- 리뷰 불러오기 -->

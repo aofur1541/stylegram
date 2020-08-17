@@ -16,13 +16,21 @@ public class StoreVO {
 	private MultipartFile dupload;	//업로드를 위한 MultipartFile 변수(상품상세이미지)
 	private MultipartFile dupload2;	//업로드를 위한 MultipartFile 변수(상품상세이미지)
 	private MultipartFile dupload3;	//업로드를 위한 MultipartFile 변수(상품상세이미지)
+	@NotEmpty
 	private byte[] s_photo;         //사진파일
+	@NotEmpty
 	private byte[] ds_photo;        //사진파일(상품상세이미지)
+	@NotEmpty
 	private byte[] ds_photo2;       //사진파일(상품상세이미지)
+	@NotEmpty
 	private byte[] ds_photo3;       //사진파일(상품상세이미지)
+	@NotEmpty
 	private String filename;		//파일명
+	@NotEmpty
 	private String dfilename;		//파일명(상품상세이미지)
+	@NotEmpty
 	private String dfilename2;		//파일명(상품상세이미지)
+	@NotEmpty
 	private String dfilename3;		//파일명(상품상세이미지)
 	private int s_price;			//상품가격
 	private int s_discount;			//할인율
