@@ -101,8 +101,8 @@ $(document).ready(function(){
 		<div class="buyformback">
 			<div>
 				<div id="text-box">
-					<c:if test="${detail.s_ship==0}">무료배송</c:if>
-					<c:if test="${detail.s_ship==1}">배송비 : <fmt:formatNumber value="${detail.s_shipcost}" type="currency" currencySymbol="\\"/></c:if>
+					배송비 : 3,000원<br>
+					(50,000원 이상 결제시 무료배송)
 				</div>
 				<div id="text-box">
 					<c:set var="shipdate" value="<%= new Date(new Date().getTime() + (60*60*24*1000)*2) %>"/>
@@ -115,12 +115,12 @@ $(document).ready(function(){
 				<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></div></c:if>
 				<div id="text-box">
 					<c:if test="${detail.s_discount == ''}">
-						<h4 style="color:green;"><fmt:formatNumber value="${detail.s_price}" type="currency" currencySymbol="\\"/></h4>
+						<h4 style="color:green;"><fmt:formatNumber value="${detail.s_price}" type="number"/>원</h4>
 					</c:if>
 					<c:if test="${detail.s_discount > 0}">
-						<h4 style="color:red;">
-							[${detail.s_discount}%]<fmt:formatNumber value="${detail.s_price-(detail.s_price*(detail.s_discount/100))}" type="currency" currencySymbol="\\"/>
-						</h4>
+						<strong style="color:red;">
+							[${detail.s_discount}%]<fmt:formatNumber value="${detail.s_price-(detail.s_price*(detail.s_discount/100))}" type="number"/>원 
+						</strong><del style="color:gray;"><fmt:formatNumber value="${detail.s_price}" type="number"/>원</del>
 					</c:if>
 				</div>
 			</div>

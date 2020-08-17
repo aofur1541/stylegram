@@ -51,7 +51,7 @@
 					<b>구매한 상품</b> : ${slist[status.index].s_title} [${plist.a_num}개]<br>
 					<b>결제 금액</b> :
 					<c:if test="${(slist[status.index].s_price-(slist[status.index].s_price*(slist[status.index].s_discount/100)))*slist[status.index].a_num < 50000}">
-						<fmt:formatNumber value="${(slist[status.index].s_price-(slist[status.index].s_price*(slist[status.index].s_discount/100)))*slist[status.index].a_num+slist[status.index].s_shipcost}" type="number"/>원
+						<fmt:formatNumber value="${(slist[status.index].s_price-(slist[status.index].s_price*(slist[status.index].s_discount/100)))*slist[status.index].a_num+plist.p_shipcost}" type="number"/>원
 					</c:if>
 					<c:if test="${(slist[status.index].s_price-(slist[status.index].s_price*(slist[status.index].s_discount/100)))*slist[status.index].a_num > 50000}">
 						<fmt:formatNumber value="${(slist[status.index].s_price-(slist[status.index].s_price*(slist[status.index].s_discount/100)))*slist[status.index].a_num}" type="number"/>원
@@ -69,7 +69,7 @@
 		</table>
 		</c:forEach>
 		<input type="button" value="쇼핑하기" id="blackbtn" class="blackbtn" onclick="location.href='${pageContext.request.contextPath}/store/storeDetail.do'">
-		<input type="button" value="메인으로" id="homebtn" class="homebtn" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">
+		<input type="button" value="메인으로" id="homebtn" class="homebtn" onclick="location.href='${pageContext.request.contextPath}/main/main.do'">\
 	</c:if>
 </div>
 

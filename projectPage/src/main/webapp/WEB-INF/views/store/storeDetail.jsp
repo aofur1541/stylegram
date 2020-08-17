@@ -61,9 +61,9 @@ $(document).ready(function() {
 								<h4 style="color:green;"><fmt:formatNumber value="${store.s_price}" type="currency" currencySymbol="\\"/></h4>
 							</c:if>
 							<c:if test="${store.s_discount > 0}">
-								<h4 style="color:red;">
-									[${store.s_discount}%]<fmt:formatNumber value="${store.s_price-(store.s_price*(store.s_discount/100))}" type="currency" currencySymbol="\\"/>
-								</h4>
+								<strong style="color:red;">
+									[${store.s_discount}%]<fmt:formatNumber value="${store.s_price-(store.s_price*(store.s_discount/100))}" type="number"/>원 
+								</strong><del style="color:gray;"><fmt:formatNumber value="${store.s_price}" type="number"/>원</del>
 							</c:if>
 						</div>
 					</div>
@@ -102,9 +102,9 @@ $(document).ready(function() {
 								<h4 style="color:green;"><fmt:formatNumber value="${store.s_price}" type="currency" currencySymbol="\\"/></h4>
 							</c:if>
 							<c:if test="${store.s_discount > 0}">
-								<h4 style="color:red;">
-									[${store.s_discount}%]<fmt:formatNumber value="${store.s_price-(store.s_price*(store.s_discount/100))}" type="currency" currencySymbol="\\"/>
-								</h4>
+								<strong style="color:red;">
+									[${store.s_discount}%]<fmt:formatNumber value="${store.s_price-(store.s_price*(store.s_discount/100))}" type="number"/>원 
+								</strong><del style="color:gray;"><fmt:formatNumber value="${store.s_price}" type="number"/>원</del>
 							</c:if>
 						</div>
 					</div>
@@ -143,12 +143,12 @@ $(document).ready(function() {
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${normal.s_num}"><b>${normal.s_title}</b></a></div>
 						<div id="text-box">
 							<c:if test="${normal.s_discount == ''}">
-								<h4 style="color:green;"><fmt:formatNumber value="${normal.s_price}" type="currency" currencySymbol="\\"/></h4>
+								<strong style="color:green;"><fmt:formatNumber value="${normal.s_price}" type="currency" currencySymbol="\\"/></strong>
 							</c:if>
 							<c:if test="${normal.s_discount > 0}">
-								<h4 style="color:red;">
-									[${normal.s_discount}%]<fmt:formatNumber value="${normal.s_price-(normal.s_price*(normal.s_discount/100))}" type="currency" currencySymbol="\\"/>
-								</h4>
+								<strong style="color:red;">
+									[${normal.s_discount}%]<fmt:formatNumber value="${normal.s_price-(normal.s_price*(normal.s_discount/100))}" type="number"/>원 
+								</strong><del style="color:gray;"><fmt:formatNumber value="${normal.s_price}" type="number"/>원</del>
 							</c:if>
 						</div>
 					</div>
