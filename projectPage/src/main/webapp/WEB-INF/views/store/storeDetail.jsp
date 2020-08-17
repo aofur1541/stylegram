@@ -46,8 +46,8 @@ $(document).ready(function() {
 									<img src="imageView.do?s_num=${store.s_num}" class="productimage">
 								</a>
 							</div>
-						</c:if>	
-					
+						</c:if>
+						<c:if test="${store.staravg==0}"><div>별점이 등록되지 않았습니다.</div></c:if>
 						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	
 						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	
 						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></div></c:if>	
@@ -57,7 +57,7 @@ $(document).ready(function() {
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}</a></div>
 						<div id="text-box">
-							<c:if test="${normal.s_discount == ''}">
+							<c:if test="${store.s_discount == ''}">
 								<h4 style="color:green;"><fmt:formatNumber value="${store.s_price}" type="currency" currencySymbol="\\"/></h4>
 							</c:if>
 							<c:if test="${store.s_discount > 0}">
@@ -88,6 +88,7 @@ $(document).ready(function() {
 								</a>
 							</div>
 						</c:if>
+						<c:if test="${store.staravg==0}"><div>별점이 등록되지 않았습니다.</div></c:if>
 						<c:if test="${store.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	
 						<c:if test="${store.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	
 						<c:if test="${store.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></div></c:if>	
@@ -97,7 +98,7 @@ $(document).ready(function() {
 					<div class="card-content">
 						<div id="text-box"><a href="${pageContext.request.contextPath}/store/productDetail.do?s_num=${store.s_num}">${store.s_title}.</a></div>
 						<div id="text-box">
-							<c:if test="${normal.s_discount == ''}">
+							<c:if test="${store.s_discount == ''}">
 								<h4 style="color:green;"><fmt:formatNumber value="${store.s_price}" type="currency" currencySymbol="\\"/></h4>
 							</c:if>
 							<c:if test="${store.s_discount > 0}">
