@@ -64,7 +64,7 @@ div#bar_nav img#menubar{
 	height:80px;
 	width:80px;
 	margin-top: 15px;
-	margin-right: 4000px;
+	margin-right: 100px;
 }
 #bar_nav .toolbar_wrap #bar_button{
 	display:table;
@@ -164,7 +164,7 @@ div#main_body div#body{
 }
 div#body div#write_btn{
 	position: fixed;
-	margin-left: -100px;
+	margin-left: -50px;
 }
 div#body div#write_btn img{
 	width: 50px;
@@ -1030,7 +1030,7 @@ div#body div.storeReview form#storeReviewVO input.srsubmit{
 div#body div#basket{
 	position: fixed;
 	margin-top: 50px;
-	margin-left: -100px;
+	margin-left: -50px;
 }
 div#body div#basket img{
 	width: 50px;

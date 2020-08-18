@@ -108,7 +108,7 @@
 				<a href="${pageContext.request.contextPath}/flea/fleaList.do" id="nav_menu">FLEA</a><br><br>
 				<a href="${pageContext.request.contextPath}/store/storeDetail.do" id="nav_menu">STORE</a><br><br>
 				<a href="${pageContext.request.contextPath}/qna/listQna.do" id="nav_menu">QNA</a><br><br>
-				<a href="${pageContext.request.contextPath}/noticeboard/list.do" id="nav_menu">NOTICE</a><br><br>
+				<a href="${pageContext.request.contextPath}/noticeboard/list.do" id="nav_menu">NOTICE</a><br><br><br><br><br>
 			</div>
 		</div>
 		<a href="javascript:void(0)" id="cover_close_button" onclick="hideMenu();"></a>
