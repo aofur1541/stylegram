@@ -3,7 +3,7 @@
 
 .flex-viewport img{
 	width: inherit;
-    max-width: max-content;
+    max-width: 500px;
 }
 .flex-active-slide{
     margin-left:-50px;
