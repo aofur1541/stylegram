@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.SelectKey;
 import kr.spring.storepurchase.domain.StorePurchaseVO;
 
 public interface StorePurchaseMapper {
-	@Insert("INSERT INTO prostorepurchase (p_num,s_num,m_num,a_num,p_name,p_post,p_address,p_detailaddress,p_phone,p_shipdate,p_shipcost) VALUES (prostorepurchase_seq.nextval,#{s_num},#{m_num},#{a_num},#{p_name},#{p_post},#{p_address},#{p_detailaddress},#{p_phone},sysdate+2,#{p_shipcost})")
+	@Insert("INSERT INTO prostorepurchase (p_num,s_num,m_num,a_num,p_name,p_post,p_address,p_detailaddress,p_phone,p_shipdate,p_shipcost,g_num) VALUES (prostorepurchase_seq.nextval,#{s_num},#{m_num},#{a_num},#{p_name},#{p_post},#{p_address},#{p_detailaddress},#{p_phone},sysdate+2,#{p_shipcost},0)")
 	@SelectKey(statement="select prostorepurchase_seq.nextval from dual", keyProperty="p_num", before=true, resultType=int.class)
 	public void insert (StorePurchaseVO store);
 	@Select("SELECT COUNT(*) FROM prostorepurchase WHERE m_num=#{m_num}")

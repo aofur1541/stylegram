@@ -90,7 +90,7 @@ public class StoreBasketController {
 		
 		List<StoreVO> basketList = basketService.selectBasketList(map);
 		
-		int count = basketService.seleceBasketCount(m_num);
+		int count = basketService.selectBasketCount(m_num);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("storeBasket");
 		mav.addObject("basket",basketList);
@@ -168,7 +168,7 @@ public class StoreBasketController {
 	
 	//장바구니 물품 결제
 	@RequestMapping("/basket/insertBasketPurchase.do")
-	public String basketPurchaseSubmit(@RequestParam("p_nums") String p_nums, @Valid StorePurchaseVO storePurchaseVO, BindingResult result, HttpSession session) {
+	public String basketPurchaseSubmit(@RequestParam("p_nums") String p_nums,@RequestParam("shipcost") int shipcost, @Valid StorePurchaseVO storePurchaseVO, BindingResult result, HttpSession session) {
 		if(log.isDebugEnabled()) {
 			log.debug("<<storePurchaseVO>>" + storePurchaseVO);
 		}
@@ -183,14 +183,25 @@ public class StoreBasketController {
 		}
         String[] p_num = p_nums.split(",");
         StoreVO store = new StoreVO();
+        int g_num = basketService.selectG_num();
         for(int i=0;i<p_num.length;i++) {
         	store = basketService.select(Integer.parseInt(p_num[i]));
         	storePurchaseVO.setA_num(store.getA_num());
         	storePurchaseVO.setS_num(store.getS_num());
+        	storePurchaseVO.setG_num(g_num);
+        	if(p_num.length == 1 && shipcost == 0){
+        		storePurchaseVO.setP_shipcost(0);
+        		storePurchaseVO.setG_num(0);
+        	}else if(i==p_num.length-1) {
+        		storePurchaseVO.setP_shipcost(shipcost);
+        		storePurchaseVO.setTopg_num(1);
+        	}else {
+        		storePurchaseVO.setP_shipcost(0);
+        	}
         	basketService.insertPurchase(storePurchaseVO);
         	basketService.delete(Integer.parseInt(p_num[i]));
         }
-        
+        System.out.println(shipcost);
         return "basketPurchaseSuccess";
 	}
 	

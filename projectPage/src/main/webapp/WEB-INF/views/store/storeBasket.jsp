@@ -4,51 +4,56 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script type="text/javascript">
-	$(document).ready(function(){
-		//상품 합계
-		var sum =0;
-		//배송비
-		var ship = 0;
+	$(window).bind("pageshow", function(event){
 		
-		var inputs = $("input[name='products']");
-		
-		for(var i=0;i<inputs.length;i++){
-			$(inputs[i]).click(function(){
-				var value = this.value;
-				var price = $('td.'+value+' input.price').val();
-				var stock = $('td.'+value+' input.stock').val();
-				if(this.checked){//체크박스 선택시
-					sum += Number(price)*Number(stock);//선택시 가격 누적
-				}else{//체크박스 해제시
-					sum -= Number(price)*Number(stock);//선택을 해제하면 가격을 차감
-				}
-				
-				if(sum>0 && sum< 50000){
-					ship = 3000;
-				}else{
-					ship = 0;
-				}
-				
-				//지불금액 미리보고
-				$('#p_price').text(sum);
-				$('#ship').text('+ ' + ship);
-				$('#total').text(sum+ship);
-				$('#pa_price').val(sum);
-				$('#pa_ship').val(ship);
-				$('#total_price').val(sum+ship);
+			if(event.originalEvent && event.originalEvent.persisted){
+				document.location.reload();
+			}else{
+			
+			//상품 합계
+			var sum =0;
+			//배송비
+			var ship = 0;
+			
+			var inputs = $("input[name='products']");
+			
+			for(var i=0;i<inputs.length;i++){
+				$(inputs[i]).click(function(){
+					var value = this.value;
+					var price = $('td.'+value+' input.price').val();
+					var stock = $('td.'+value+' input.stock').val();
+					if(this.checked){//체크박스 선택시
+						sum += Number(price)*Number(stock);//선택시 가격 누적
+					}else{//체크박스 해제시
+						sum -= Number(price)*Number(stock);//선택을 해제하면 가격을 차감
+					}
+					
+					if(sum>0 && sum< 50000){
+						ship = 3000;
+					}else{
+						ship = 0;
+					}
+					
+					//지불금액 미리보고
+					$('#p_price').text(sum);
+					$('#ship').text('+ ' + ship);
+					$('#total').text(sum+ship);
+					$('#pa_price').val(sum);
+					$('#pa_ship').val(ship);
+					$('#total_price').val(sum+ship);
+				});
+			}
+			$('.basketBuyForm').submit(function(event){
+				 var output = '';
+				  $('input[type=checkbox]:checked').each(function(index,item){
+				    if(index!=0){
+				       output += ',';
+				    }
+				    output += $(this).val();
+				 });
+				 $('#p_nums').val(output);
 			});
-		}
-		$('.basketBuyForm').submit(function(event){
-			 var output = '';
-			  $('input[type=checkbox]:checked').each(function(index,item){
-			    if(index!=0){
-			       output += ',';
-			    }
-			    output += $(this).val();
-			 });
-			 $('#p_nums').val(output);
-		});
-		
+			}
 		/* //전체선택 체크박스 클릭
 		$("#allCheck").click(function(){
 			if($("#allCheck").is(":checked")) { 

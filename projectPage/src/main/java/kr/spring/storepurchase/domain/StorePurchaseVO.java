@@ -22,6 +22,8 @@ public class StorePurchaseVO {
 	private String p_phone;			//받는사람 연락처
 	private Date p_shipdate;		//상품배송예정일
 	private int p_shipcost;			//배송비
+	private int g_num;				//장바구니 묶음 결제 그룹
+	private int topg_num;			//장바구니 묶음 결제 그룹 탑넘버
 	
 	public int getP_num() {
 		return p_num;
@@ -95,13 +97,25 @@ public class StorePurchaseVO {
 	public void setP_shipcost(int p_shipcost) {
 		this.p_shipcost = p_shipcost;
 	}
+	public int getG_num() {
+		return g_num;
+	}
+	public void setG_num(int g_num) {
+		this.g_num = g_num;
+	}
+	public int getTopg_num() {
+		return topg_num;
+	}
+	public void setTopg_num(int topg_num) {
+		this.topg_num = topg_num;
+	}
 	
 	@Override
 	public String toString() {
 		return "StorePurchaseVO [p_num=" + p_num + ", s_num=" + s_num + ", p_regdate=" + p_regdate + ", a_num=" + a_num
 				+ ", m_num=" + m_num + ", p_name=" + p_name + ", p_post=" + p_post + ", p_address=" + p_address
 				+ ", p_detailaddress=" + p_detailaddress + ", p_phone=" + p_phone + ", p_shipdate=" + p_shipdate
-				+ ", p_shipcost=" + p_shipcost + "]";
+				+ ", p_shipcost=" + p_shipcost + ", g_num=" + g_num + ", topg_num=" + topg_num + "]";
 	}
 	
 }
