@@ -1,5 +1,6 @@
 package kr.spring.store.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,7 +63,9 @@ public class StoreServiceImpl implements StoreService{
 	}
 
 	@Override
-	public void updateSalesRate(Integer num) {
-		storeMapper.updateSalesRate(num);
+	public void updateSalesRate(HashMap<String, Integer> salesRate) {
+		storeMapper.updateSalesRate(salesRate);
 	}
+
+
 }

@@ -1,6 +1,8 @@
 package kr.spring.store.dao;
 
+import java.util.HashMap;
 import java.util.List;
+
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -13,8 +15,8 @@ public interface StoreMapper {
 	public void insert (StoreVO store);
 	@Update("UPDATE prostore s SET staravg = (SELECT TRUNC((SUM(sr_star)/COUNT(*))) avg FROM prostorereview r WHERE s.s_num=r.s_num) WHERE s.s_num=#{s_num}")
 	public void updateStarAvg (StoreVO store);
-	@Update("UPDATE prostore s SET salesrate = salesrate+1 where s_num=#{s_num}")
-	public void updateSalesRate(Integer num);
+	@Update("UPDATE prostore s SET salesrate = salesrate+#{a_num} where s_num=#{s_num}")
+	public void updateSalesRate(HashMap<String,Integer> salesRate);
 	public int selectProductCount();
 	public List<StoreVO> selectProductList();
 	@Select("SELECT * FROM prostore WHERE s_num=#{s_num}")

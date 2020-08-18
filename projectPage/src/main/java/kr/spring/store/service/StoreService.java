@@ -1,5 +1,6 @@
 package kr.spring.store.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,5 +16,5 @@ public interface StoreService {
 	public StoreVO selectPurchaseProduct(Integer num);
 	public List<StoreVO> selectPurchaseList(Integer num); 
 	public void update(StoreVO storeVO);
-	public void updateSalesRate(Integer num); 
+	public void updateSalesRate(HashMap<String,Integer> salesRate);
 }
