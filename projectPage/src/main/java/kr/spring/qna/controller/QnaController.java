@@ -188,6 +188,19 @@ public class QnaController {
 		@RequestMapping(value="/qna/modifyQna.do", method=RequestMethod.POST)
 		public String updateForm(@Valid QnaVO qnaVO,BindingResult result, HttpServletRequest request) {
 			
+			if(qnaVO.getQb_topinfo() == null) {
+				qnaVO.setQb_topinfo("0");
+			}
+			if(qnaVO.getQb_pantsinfo() == null) {
+				qnaVO.setQb_pantsinfo("0");
+			}
+			if(qnaVO.getQb_capinfo() == null) {
+				qnaVO.setQb_capinfo("0");
+			}
+			if(qnaVO.getQb_shoesinfo() == null) {
+				qnaVO.setQb_shoesinfo("0");
+			}
+			
 			qnaService.modifyQna(qnaVO);
 			
 			//로그 표시
@@ -199,7 +212,9 @@ public class QnaController {
 				return "writeQna";
 			}
 			
-			return "redirect:/qna/listQna.do";
+			int qb_num = qnaVO.getQb_num();
+			
+			return "redirect:/qna/detailQna.do?qb_num="+ qb_num;
 		}
 		
 		//글 삭제
