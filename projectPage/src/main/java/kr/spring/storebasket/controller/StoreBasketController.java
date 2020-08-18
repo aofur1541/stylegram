@@ -183,7 +183,11 @@ public class StoreBasketController {
 		}
         String[] p_num = p_nums.split(",");
         StoreVO store = new StoreVO();
+        
         int g_num = basketService.selectG_num();
+        
+        HashMap<String,Integer> salesRate = new HashMap<String,Integer>();
+        
         for(int i=0;i<p_num.length;i++) {
         	store = basketService.select(Integer.parseInt(p_num[i]));
         	storePurchaseVO.setA_num(store.getA_num());
@@ -198,8 +202,10 @@ public class StoreBasketController {
         	}else {
         		storePurchaseVO.setP_shipcost(0);
         	}
+        	salesRate.put("s_num", storePurchaseVO.getS_num());
+        	salesRate.put("a_num", storePurchaseVO.getA_num());
         	basketService.insertPurchase(storePurchaseVO);
-        	storeService.updateSalesRate(storePurchaseVO.getS_num());
+        	storeService.updateSalesRate(salesRate);
         	basketService.delete(Integer.parseInt(p_num[i]));
         }
         System.out.println(shipcost);
