@@ -199,6 +199,7 @@ public class StoreBasketController {
         		storePurchaseVO.setP_shipcost(0);
         	}
         	basketService.insertPurchase(storePurchaseVO);
+        	storeService.updateSalesRate(storePurchaseVO.getS_num());
         	basketService.delete(Integer.parseInt(p_num[i]));
         }
         System.out.println(shipcost);
