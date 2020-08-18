@@ -1218,6 +1218,10 @@ div#body form#storePurchaseVO{
 div#main_header div.font-size div.title2{
 	animation: color-change1 1s infinite;
 }
+form#storeVO div.imgs{
+	width: 100%;
+	float:left;
+}
 @keyframes color-change {
 	0% { color: red; }
 	50% { color: blue; }

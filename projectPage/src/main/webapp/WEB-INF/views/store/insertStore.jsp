@@ -62,7 +62,7 @@
 			var reader = new FileReader();
 			reader.onload = function(e){
 				//이미지 주소를 저장할 변수 지정
-				var imgs_html = "<img src=\"" + e.target.result +"\"/>";
+				var imgs_html = "<img src=\"" + e.target.result +"\" class='img1'/>";
 				//이미지를 선택할 때마다 .append 속성을 통해 div태그에 주소를 붙여줌
 				$(".imgs").append(imgs_html);
 				//붙여넣은 이미지 파일의 크기를 조절하기 위한 코드(자유롭게 조절 가능)
