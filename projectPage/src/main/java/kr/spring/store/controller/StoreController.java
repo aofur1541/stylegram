@@ -154,11 +154,14 @@ public class StoreController {
 		if(log.isDebugEnabled()) {
 			log.debug("스토어메인 넘어가는 데이터 : " + list);
 		}
+
+		int amount = storePurchaseService.selectPurchaseAmount();
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("storeDetail");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
+		mav.addObject("amount", amount);
 
 		return mav;
 	}

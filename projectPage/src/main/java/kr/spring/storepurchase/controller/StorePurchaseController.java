@@ -58,7 +58,9 @@ public class StorePurchaseController {
 			
 			p_num = storePurchaseVO.getP_num();
 	    }
-			
+		
+		storeService.updateSalesRate(s_num);
+		
 		return "redirect:/store/purchaseDetail.do?p_num="+(p_num+1);
 	}
 

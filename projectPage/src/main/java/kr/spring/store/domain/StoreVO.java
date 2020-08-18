@@ -43,6 +43,7 @@ public class StoreVO {
 	private int m_num;				//회원 번호
 	private String goCheck;			//장바구니 이동 유무
 	private String p_nums;
+	private int salesrate;			//상품 판매량
 	
 
 	public void setUpload(MultipartFile upload)throws IOException {
@@ -205,6 +206,12 @@ public class StoreVO {
 	public void setP_nums(String p_nums) {
 		this.p_nums = p_nums;
 	}
+	public int getSalesrate() {
+		return salesrate;
+	}
+	public void setSalesrate(int salesrate) {
+		this.salesrate = salesrate;
+	}
 	
 	@Override
 	public String toString() {
@@ -213,7 +220,7 @@ public class StoreVO {
 				+ filename + ", dfilename=" + dfilename + ", dfilename2=" + dfilename2 + ", dfilename3=" + dfilename3
 				+ ", s_price=" + s_price + ", s_discount=" + s_discount + ", s_content=" + s_content + ", s_regdate="
 				+ s_regdate + ", mdpick=" + mdpick + ", staravg=" + staravg + ", p_num=" + p_num + ", a_num=" + a_num
-				+ ", m_num=" + m_num + ", goCheck=" + goCheck + ", p_nums=" + p_nums + "]";
+				+ ", m_num=" + m_num + ", goCheck=" + goCheck + ", p_nums=" + p_nums + ", salesrate=" + salesrate + "]";
 	}
-	
+
 }

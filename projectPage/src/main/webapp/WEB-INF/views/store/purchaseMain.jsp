@@ -142,11 +142,7 @@
 			</tr>
 			<tr>
 				<td>상품가격</td>
-				<td><fmt:formatNumber value="${store.s_price}" type="number"/>원</td>
-			</tr>
-			<tr>
-				<td>할인</td>
-				<td><fmt:formatNumber value="${store.s_discount}" type="number"/>%</td>
+				<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num}" type="number"/>원</td>
 			</tr>
 			<tr>
 				<td>배송비</td>

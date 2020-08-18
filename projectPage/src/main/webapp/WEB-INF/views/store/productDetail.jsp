@@ -9,7 +9,6 @@
 <script type="text/javascript">
 	var locked = 0;
 	function show(star){
-		if(locked) return;
 		var i;
 		var image;
 		var el;
@@ -19,22 +18,21 @@
 		for(i=1;i<=star;i++){
 			image = 'image'+i;
 			el = document.getElementById(image);
-			el.src = "${pageContext.request.contextPath}/resources/images/star01.png";
+			el.src = "${pageContext.request.contextPath}/resources/images/star-001.png";
 		}
 		
 		switch(star){
-		case 1:stateMsg="끔찍한 상품이에요";break;
-		case 2:stateMsg="별로인 상품이에요";break;
-		case 3:stateMsg="평범한 상품이에요";break;
-		case 4:stateMsg="만족스러운 상품이에요!";break;
-		case 5:stateMsg="최고의 상품이에요!";break;
+		case 1:stateMsg="별점 1점을 선택하셨습니다.";break;
+		case 2:stateMsg="별점 2점을 선택하셨습니다.";break;
+		case 3:stateMsg="별점 3점을 선택하셨습니다.";break;
+		case 4:stateMsg="별점 4점을 선택하셨습니다.";break;
+		case 5:stateMsg="별점 5점을 선택하셨습니다.";break;
 		default:stateMsg="";
 		}
 		e.innerHTML = stateMsg;
 	}
 	
 	function noshow(star){
-		if(locked) return;
 		var i;
 		var image;
 		var el;
@@ -42,7 +40,7 @@
 		for(i=1;i<=star;i++){
 			image = 'image'+i;
 			el = document.getElementById(image);
-			el.src = "${pageContext.request.contextPath}/resources/images/star00.png";
+			el.src = "${pageContext.request.contextPath}/resources/images/star-000.png";
 		}
 	}
 	
@@ -52,7 +50,6 @@
 	}
 	
 	function mark(star){
-		if(locked) return;
 		lock(star);
 		alert("별점 "+star+"점을 선택하셨습니다.");
 		document.reviewform.sr_star.value=star;
@@ -108,11 +105,11 @@ $(document).ready(function(){
 					<c:set var="shipdate" value="<%= new Date(new Date().getTime() + (60*60*24*1000)*2) %>"/>
 					<div>배송예정일 : <fmt:formatDate value='${shipdate}' type="Date" pattern="yyyy년MM월dd일 E요일"/></div>
 				</div>
-				<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	 
-				<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	 
-				<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></div></c:if>	 
-				<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" class="starimg"></div></c:if>	 
-				<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></div></c:if>
+				<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star-1.png" class="starimg"></div></c:if>	 
+				<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star-2.png" class="starimg"></div></c:if>	 
+				<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star-3.png" class="starimg"></div></c:if>	 
+				<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star-4.png" class="starimg"></div></c:if>	 
+				<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star-5.png" class="starimg"></div></c:if>
 				<div id="text-box">
 					<c:if test="${detail.s_discount == ''}">
 						<h4 style="color:green;"><fmt:formatNumber value="${detail.s_price}" type="number"/>원</h4>
@@ -188,11 +185,12 @@ $(document).ready(function(){
 <!-- ============================ 리뷰 등록 및 별점 기능 구현 부분 ================================================== -->
 	<div class="starpoint"> 
 		<div class="card-img">
-			<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></div></c:if>	 
-			<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></div></c:if>	 
-			<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></div></c:if>	 
-			<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/star4.png" class="starimg"></div></c:if>	 
-			<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></div></c:if>	 
+			<h2 style="text-align:center;">이 상품의 별점</h2>
+			<c:if test="${detail.staravg==1}"><div><img src="${pageContext.request.contextPath}/resources/images/starf01.png" class="starimg"></div></c:if>	 
+			<c:if test="${detail.staravg==2}"><div><img src="${pageContext.request.contextPath}/resources/images/starf02.png" class="starimg"></div></c:if>	 
+			<c:if test="${detail.staravg==3}"><div><img src="${pageContext.request.contextPath}/resources/images/starf03.png" class="starimg"></div></c:if>	 
+			<c:if test="${detail.staravg==4}"><div><img src="${pageContext.request.contextPath}/resources/images/starf04.png" class="starimg"></div></c:if>	 
+			<c:if test="${detail.staravg==5}"><div><img src="${pageContext.request.contextPath}/resources/images/starf05.png" class="starimg"></div></c:if>	 
 		</div>
 	</div>
 	<div class="storeReview">
@@ -210,11 +208,11 @@ $(document).ready(function(){
 				
 					<div id="rating" align="center">
 						<span>
-							<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star00.png">
-							<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star00.png">
-							<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star00.png">
-							<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star00.png">
-							<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star00.png">
+							<img id="image1" onmouseover=show(1) onclick=mark(1) onmouseout=noshow(1) src="${pageContext.request.contextPath}/resources/images/star-000.png">
+							<img id="image2" onmouseover=show(2) onclick=mark(2) onmouseout=noshow(2) src="${pageContext.request.contextPath}/resources/images/star-000.png">
+							<img id="image3" onmouseover=show(3) onclick=mark(3) onmouseout=noshow(3) src="${pageContext.request.contextPath}/resources/images/star-000.png">
+							<img id="image4" onmouseover=show(4) onclick=mark(4) onmouseout=noshow(4) src="${pageContext.request.contextPath}/resources/images/star-000.png">
+							<img id="image5" onmouseover=show(5) onclick=mark(5) onmouseout=noshow(5) src="${pageContext.request.contextPath}/resources/images/star-000.png">
 						</span>
 						<span id="startext">별점주기</span>
 					</div>

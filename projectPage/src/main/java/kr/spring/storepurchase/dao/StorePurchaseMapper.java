@@ -24,5 +24,7 @@ public interface StorePurchaseMapper {
 	public Date selectToday();
 	@Select("SELECT COUNT(*) FROM prostorepurchase WHERE s_num=#{s_num} AND m_num=#{m_num}")
 	public int selectPurchaseMCount(HashMap<String,Integer> purchaseMCount);
+	@Select("SELECT MAX(c) FROM (SELECT s_num s, COUNT(s_num) c FROM prostorepurchase GROUP BY s_num)")
+	public int selectPurchaseAmount();
 }
  

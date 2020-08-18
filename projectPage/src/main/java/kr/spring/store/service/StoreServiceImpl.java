@@ -58,6 +58,11 @@ public class StoreServiceImpl implements StoreService{
 
 	@Override
 	public void update(StoreVO store) {
-		storeMapper.update(store);	
+		storeMapper.update(store);
+	}
+
+	@Override
+	public void updateSalesRate(Integer num) {
+		storeMapper.updateSalesRate(num);
 	}
 }

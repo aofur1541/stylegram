@@ -15,4 +15,5 @@ public interface StoreService {
 	public StoreVO selectPurchaseProduct(Integer num);
 	public List<StoreVO> selectPurchaseList(Integer num); 
 	public void update(StoreVO storeVO);
+	public void updateSalesRate(Integer num);
 }

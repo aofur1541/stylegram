@@ -47,4 +47,9 @@ public class StorePurchaseServiceImpl implements StorePurchaseService{
 		return storePurchaseMapper.selectPurchaseMCount(purchaseMCount);
 	}
 
+	@Override
+	public int selectPurchaseAmount() {
+		return storePurchaseMapper.selectPurchaseAmount();
+	}
+
 }
