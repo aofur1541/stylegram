@@ -24,7 +24,6 @@ import kr.spring.qna.domain.QnaVO;
 import kr.spring.qna.service.QnaService;
 import kr.spring.util.PagingUtil;
 
-
 @Controller
 public class QnaController {
 	private Logger log = Logger.getLogger(this.getClass());
