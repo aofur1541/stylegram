@@ -4,75 +4,62 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script type="text/javascript">
-	$(window).bind("pageshow", function(event){
+	window.onpageshow = function(event){
 		
-			if(event.originalEvent && event.originalEvent.persisted){
-				document.location.reload();
-			}else{
-			
-			//상품 합계
-			var sum =0;
-			//배송비
-			var ship = 0;
-			
-			var inputs = $("input[name='products']");
-			
-			for(var i=0;i<inputs.length;i++){
-				$(inputs[i]).click(function(){
-					var value = this.value;
-					var price = $('td.'+value+' input.price').val();
-					var stock = $('td.'+value+' input.stock').val();
-					if(this.checked){//체크박스 선택시
-						sum += Number(price)*Number(stock);//선택시 가격 누적
-					}else{//체크박스 해제시
-						sum -= Number(price)*Number(stock);//선택을 해제하면 가격을 차감
-					}
-					
-					if(sum>0 && sum< 50000){
-						ship = 3000;
-					}else{
-						ship = 0;
-					}
-					
-					//지불금액 미리보고
-					$('#p_price').text(sum);
-					$('#ship').text('+ ' + ship);
-					$('#total').text(sum+ship);
-					$('#pa_price').val(sum);
-					$('#pa_ship').val(ship);
-					$('#total_price').val(sum+ship);
-				});
-			}
-			$('.basketBuyForm').submit(function(event){
-				 var output = '';
-				  $('input[type=checkbox]:checked').each(function(index,item){
-				    if(index!=0){
-				       output += ',';
-				    }
-				    output += $(this).val();
-				 });
-				 $('#p_nums').val(output);
-			});
-			}
-		/* //전체선택 체크박스 클릭
-		$("#allCheck").click(function(){
-			if($("#allCheck").is(":checked")) { 
-				$(".chk").prop("checked",true);
-			}else {
-				$(".chk").prop("checked",false);
-			}
-		})
+		if(event.persisted || (window.performance && window.performance.navigation.type==2)){
+			location.reload();
+		}
 		
-		$(".chk").click(function(){
-			if($("input[name='chk']:checked").length == $(".chk").length){
-				$("#allCheck").prop("checked",true);
-			}else{
-				$("#allCheck").prop("checked",false);
+		//상품 합계
+		var sum =0;
+		//배송비
+		var ship = 0;
+		
+		var inputs = $("input[name='products']");
+		
+		for(var i=0;i<inputs.length;i++){
+			$(inputs[i]).click(function(){
+				var value = this.value;
+				var price = $('td.'+value+' input.price').val();
+				var stock = $('td.'+value+' input.stock').val();
+				if(this.checked){//체크박스 선택시
+					sum += Number(price)*Number(stock);//선택시 가격 누적
+				}else{//체크박스 해제시
+					sum -= Number(price)*Number(stock);//선택을 해제하면 가격을 차감
+				}
 				
-			}
-		}); */
+				if(sum>0 && sum< 50000){
+					ship = 3000;
+				}else{
+					ship = 0;
+				}
+				
+				//지불금액 미리보고
+				$('#p_price').text(sum);
+				$('#ship').text('+ ' + ship);
+				$('#total').text(sum+ship);
+				$('#pa_price').val(sum);
+				$('#pa_ship').val(ship);
+				$('#total_price').val(sum+ship);
+			});
+		}
 		
-	});
+		$('.basketBuyForm').submit(function(event){
+			 var output = '';
+			  $('input[type=checkbox]:checked').each(function(index,item){
+			    if(index!=0){
+			       output += ',';
+			    }
+			    output += $(this).val();
+			 });
+			 $('#p_nums').val(output);
+			 if($('#p_nums').val() == ''){
+				 alert("구매하실 상품을 선택하세요");
+				 return false;
+			 }
+		});
+		
+	}
 </script>
 </head>
 <div id="body">
