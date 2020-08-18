@@ -50,6 +50,6 @@ public class StorePurchaseServiceImpl implements StorePurchaseService{
 	@Override
 	public int selectPurchaseAmount() {
 		return storePurchaseMapper.selectPurchaseAmount();
-	}
+	} 
 
 }

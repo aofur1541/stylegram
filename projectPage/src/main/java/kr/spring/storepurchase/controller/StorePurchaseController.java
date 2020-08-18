@@ -60,7 +60,7 @@ public class StorePurchaseController {
 	    }
 		
 		storeService.updateSalesRate(s_num);
-		
+		 
 		return "redirect:/store/purchaseDetail.do?p_num="+(p_num+1);
 	}
 

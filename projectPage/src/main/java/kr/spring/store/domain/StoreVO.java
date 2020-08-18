@@ -210,7 +210,7 @@ public class StoreVO {
 		return salesrate;
 	}
 	public void setSalesrate(int salesrate) {
-		this.salesrate = salesrate;
+		this.salesrate = salesrate; 
 	}
 	
 	@Override

@@ -114,7 +114,7 @@ $(document).ready(function(){
 					<c:if test="${detail.s_discount == ''}">
 						<h4 style="color:green;"><fmt:formatNumber value="${detail.s_price}" type="number"/>원</h4>
 					</c:if>
-					<c:if test="${detail.s_discount > 0}">
+					<c:if test="${detail.s_discount > 0}"> 
 						<strong style="color:red;">
 							[${detail.s_discount}%]<fmt:formatNumber value="${detail.s_price-(detail.s_price*(detail.s_discount/100))}" type="number"/>원 
 						</strong><del style="color:gray;"><fmt:formatNumber value="${detail.s_price}" type="number"/>원</del>

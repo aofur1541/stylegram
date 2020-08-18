@@ -157,7 +157,7 @@ public class StoreController {
 
 		int amount = storePurchaseService.selectPurchaseAmount();
 		
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView(); 
 		mav.setViewName("storeDetail");
 		mav.addObject("count", count);
 		mav.addObject("list", list);

@@ -79,7 +79,7 @@
 				</tr>
 				<tr>
 					<td>
-						${row.sr_content }
+						${row.sr_content } 
 					</td>
 				</tr>
 				<!-- 리뷰 수정 -->

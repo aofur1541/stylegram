@@ -47,7 +47,7 @@ public class StoreServiceImpl implements StoreService{
 	}
 
 	@Override
-	public StoreVO selectPurchaseProduct(Integer num) {
+	public StoreVO selectPurchaseProduct(Integer num) { 
 		return storeMapper.selectPurchaseProduct(num);
 	}
 
