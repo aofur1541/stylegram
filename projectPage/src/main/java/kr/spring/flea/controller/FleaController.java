@@ -235,7 +235,9 @@ public class FleaController {
 		
 		fleaService.update(fleaVO);
 		
-		fleaPicturesService.updatePictures(fleaPictures);
+		if(fleaPictures.getUploadPicture() != null) {
+			fleaPicturesService.updatePictures(fleaPictures);
+		}
 		
 		int fb_num = fleaVO.getFb_num();
 		
