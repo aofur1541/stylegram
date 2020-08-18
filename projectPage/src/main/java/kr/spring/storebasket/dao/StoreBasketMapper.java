@@ -24,6 +24,8 @@ public interface StoreBasketMapper {
 	@Select("SELECT * FROM (SELECT * FROM prostorebasket b JOIN prostore s on b.s_num = s.s_num) WHERE p_num=#{p_num}")
 	public StoreVO select(int p_num);
 	@Select("SELECT COUNT(*) FROM prostorebasket WHERE m_num=#{m_num}")
-	public int seleceBasketCount(int m_num);
-
+	public int selectBasketCount(int m_num);
+	@Select("SELECT prostorepurchasegnum_seq.nextval FROM dual")
+	public int selectG_num();
+	
 }

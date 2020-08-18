@@ -139,7 +139,7 @@
 			</ul>
 			<div class="align-center">
 				<input type="submit" value="전송">
-				<input type="button" value="목록" onclick="location.href='fleaList.do'">
+				<input type="button" value="목록" id="homebtn" onclick="location.href='fleaList.do'">
 			</div>
 		</form:form>
 	</div>

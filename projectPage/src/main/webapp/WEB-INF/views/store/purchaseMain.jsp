@@ -142,26 +142,24 @@
 			</tr>
 			<tr>
 				<td>상품가격</td>
-				<td><fmt:formatNumber value="${store.s_price}" type="number"/>원</td>
-			</tr>
-			<tr>
-				<td>할인</td>
-				<td><fmt:formatNumber value="${store.s_discount}" type="number"/>%</td>
+				<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num}" type="number"/>원</td>
 			</tr>
 			<tr>
 				<td>배송비</td>
 				<td>
-					<c:if test="${store.s_shipcost==0}">무료</c:if>
-					<c:if test="${store.s_shipcost>0}"><fmt:formatNumber value="${store.s_shipcost}" type="number"/></c:if>
+					<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num > 50000}">무료</c:if>
+					<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num < 50000}"><fmt:formatNumber value="3000" type="number"/>원</c:if>
 				</td>
 			</tr>
 			<tr>
 				<td>총결제금액</td>
 				<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num < 50000}">
-					<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num+store.s_shipcost}" type="number"/>원</td>
+					<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num+3000}" type="number"/>원</td>
+					<input type="hidden" id="p_shipcost" name="p_shipcost" value="3000">
 				</c:if>
 				<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num > 50000}">
 					<td><fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num}" type="number"/>원</td>
+					<input type="hidden" id="p_shipcost" name="p_shipcost" value="0">
 				</c:if>
 			</tr>
 		</table>

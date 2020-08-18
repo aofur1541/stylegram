@@ -70,16 +70,16 @@
 						</c:if>
 					</td>
 					<td>
-						<c:if test="${row.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star1.png" class="starimg"></c:if>
-						<c:if test="${row.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star2.png" class="starimg"></c:if>
-						<c:if test="${row.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star3.png" class="starimg"></c:if>
-						<c:if test="${row.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star4.png" class="starimg"></c:if>
-						<c:if test="${row.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star5.png" class="starimg"></c:if>					
+						<c:if test="${row.sr_star == 1}"><img src="${pageContext.request.contextPath}/resources/images/star-1.png" class="starimg"></c:if>
+						<c:if test="${row.sr_star == 2}"><img src="${pageContext.request.contextPath}/resources/images/star-2.png" class="starimg"></c:if>
+						<c:if test="${row.sr_star == 3}"><img src="${pageContext.request.contextPath}/resources/images/star-3.png" class="starimg"></c:if>
+						<c:if test="${row.sr_star == 4}"><img src="${pageContext.request.contextPath}/resources/images/star-4.png" class="starimg"></c:if>
+						<c:if test="${row.sr_star == 5}"><img src="${pageContext.request.contextPath}/resources/images/star-5.png" class="starimg"></c:if>					
 					</td>
 				</tr>
 				<tr>
 					<td>
-						${row.sr_content }
+						${row.sr_content } 
 					</td>
 				</tr>
 				<!-- 리뷰 수정 -->

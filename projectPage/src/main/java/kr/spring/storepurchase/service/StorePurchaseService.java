@@ -13,5 +13,6 @@ public interface StorePurchaseService {
 	public StorePurchaseVO selectPurchase(Integer num);
 	public Date selectToday();
 	public int selectPurchaseMCount(HashMap<String,Integer> purchaseMCount);
+	public int selectPurchaseAmount(); 
 }
  

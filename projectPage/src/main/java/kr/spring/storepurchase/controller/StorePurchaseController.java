@@ -1,6 +1,7 @@
 package kr.spring.storepurchase.controller;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -41,7 +42,9 @@ public class StorePurchaseController {
 	} 
 
 	@RequestMapping("/store/insertPurchase.do")
-	public String submit(@RequestParam("s_num") int s_num,@Valid StorePurchaseVO storePurchaseVO,BindingResult result,HttpServletRequest request,RedirectAttributes redirect)throws Exception {
+	public String submit(@RequestParam("s_num") int s_num,
+						 @RequestParam("a_num") int a_num,
+						 @Valid StorePurchaseVO storePurchaseVO,BindingResult result,HttpServletRequest request,RedirectAttributes redirect)throws Exception {
 
 		if(log.isDebugEnabled()) {
 			log.debug("<<storePurchaseVO>>" + storePurchaseVO);
@@ -58,7 +61,13 @@ public class StorePurchaseController {
 			
 			p_num = storePurchaseVO.getP_num();
 	    }
-			
+		
+		HashMap<String,Integer> salesRate = new HashMap<String,Integer>();
+		salesRate.put("s_num",s_num);
+		salesRate.put("a_num",a_num);
+		
+		storeService.updateSalesRate(salesRate);
+		 
 		return "redirect:/store/purchaseDetail.do?p_num="+(p_num+1);
 	}
 

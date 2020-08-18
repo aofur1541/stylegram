@@ -4,7 +4,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script type="text/javascript">
-	$(document).ready(function(){
+	window.onpageshow = function(event){
+		
+		if(event.persisted || (window.performance && window.performance.navigation.type==2)){
+			location.reload();
+		}
+		
 		//상품 합계
 		var sum =0;
 		//배송비
@@ -38,6 +43,7 @@
 				$('#total_price').val(sum+ship);
 			});
 		}
+		
 		$('.basketBuyForm').submit(function(event){
 			 var output = '';
 			  $('input[type=checkbox]:checked').each(function(index,item){
@@ -47,27 +53,13 @@
 			    output += $(this).val();
 			 });
 			 $('#p_nums').val(output);
+			 if($('#p_nums').val() == ''){
+				 alert("구매하실 상품을 선택하세요");
+				 return false;
+			 }
 		});
 		
-		/* //전체선택 체크박스 클릭
-		$("#allCheck").click(function(){
-			if($("#allCheck").is(":checked")) { 
-				$(".chk").prop("checked",true);
-			}else {
-				$(".chk").prop("checked",false);
-			}
-		})
-		
-		$(".chk").click(function(){
-			if($("input[name='chk']:checked").length == $(".chk").length){
-				$("#allCheck").prop("checked",true);
-			}else{
-				$("#allCheck").prop("checked",false);
-				
-			}
-		}); */
-		
-	});
+	}
 </script>
 </head>
 <div id="body">

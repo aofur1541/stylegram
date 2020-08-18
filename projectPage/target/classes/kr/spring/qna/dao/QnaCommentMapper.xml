@@ -10,7 +10,7 @@
 	
 	<select id="commentList" resultType="qnaCommentVO">
 		SELECT * FROM
-		(select a.*, rownum rnum FROM (SELECT * FROM proqnareple c Join PROMEMBER m on c.m_num=m.m_num and qb_num=#{qb_num} ORDER BY c.qr_num) a)
+		(select a.*, rownum rnum FROM (SELECT * FROM proqnareple c JOIN promember m on c.m_num=m.m_num JOIN promember_detail d ON c.m_num=d.m_num and qb_num=#{qb_num} ORDER BY c.qr_num) a)
 		<![CDATA[ WHERE rnum >= #{start} AND rnum <= #{end} ]]>
 	</select>
 	

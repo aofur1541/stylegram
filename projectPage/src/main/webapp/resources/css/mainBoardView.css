@@ -2,7 +2,8 @@
 /*====*/
 
 .flex-viewport img{
-	height: 640px;
+	width: inherit;
+    max-width: 500px;
 }
 .flex-active-slide{
     margin-left:-50px;
@@ -18,15 +19,19 @@
     height:100px;
 }
 .flex-nav-prev{
-    position: absolute;
-    transform: translate(-300px, 0px	);
+    position: static;
+    margin-right: 20%;
+    /* margin-left: -45%; */
+    /* transform: translate(-300px, 0px	); */
 }
 .flex-nav-next{
-    position:absolute;
-    margin-left: 180;
+    position: static;
+    /* margin-right: 10%; */
 }
 .flex-direction-nav{
-    position:relative;
+    position: static;
+    margin-left: -50px;
+    margin-right: 60px;
 }
 .flex-pauseplay{
     padding-top:3px;

@@ -10,6 +10,14 @@ a{
 	text-decoration: none;
 	color:black;
 }
+p.noticecontent{
+	white-space:pre-line;
+	font-size: 18px;
+}
+p.fb_content, p.mb_content, p.qb_content{
+	white-space:pre-line;
+	font-size: 15px;
+}
 /*====메뉴 옵션====*/
 a#nav_menu:link {
 	color:black;
@@ -56,7 +64,7 @@ div#bar_nav img#menubar{
 	height:80px;
 	width:80px;
 	margin-top: 15px;
-	margin-right: 4000px;
+	margin-right: 100px;
 }
 #bar_nav .toolbar_wrap #bar_button{
 	display:table;
@@ -156,7 +164,7 @@ div#main_body div#body{
 }
 div#body div#write_btn{
 	position: fixed;
-	margin-left: -100px;
+	margin-left: -50px;
 }
 div#body div#write_btn img{
 	width: 50px;
@@ -973,7 +981,7 @@ div#body div#listReview{
 	width: 100%;
 } 
 div#body button#review-open{
-	width: 30%;
+	width: 50%;
 	height: 50px;
 	border:1px solid #82d9d0;
 	background-color: white;
@@ -1022,7 +1030,7 @@ div#body div.storeReview form#storeReviewVO input.srsubmit{
 div#body div#basket{
 	position: fixed;
 	margin-top: 50px;
-	margin-left: -100px;
+	margin-left: -50px;
 }
 div#body div#basket img{
 	width: 50px;
@@ -1194,11 +1202,25 @@ table.baskettable td input.basketdelbtn:hover{
 table.purchasetable th.a input[type=radio]{
 	margin-left: 60px;
 }
+li.mdpick{
+    width: 100%;
+	float:left;
+	margin-bottom: 20px;
+}
+input#upload{
+	width: 30%;
+	margin-right: 40%;
+	margin-left: 30%;
+}
 div#body form#storePurchaseVO{
 	background-color:rgb(247,248,249);
 }
 div#main_header div.font-size div.title2{
 	animation: color-change1 1s infinite;
+}
+form#storeVO div.imgs{
+	width: 100%;
+	float:left;
 }
 @keyframes color-change {
 	0% { color: red; }

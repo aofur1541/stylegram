@@ -10,4 +10,34 @@
 	<select id="selectProductDetail" resultType="StoreVO" parameterType="integer">
 		SELECT * FROM prostore s LEFT OUTER JOIN prostorereview r ON s.s_num=r.s_num WHERE s.s_num=#{s_num}
 	</select>
+	
+	<update id="update" parameterType="StoreVO">
+		UPDATE prostore SET
+			<if test="filename != ''">
+				s_photo=#{s_photo},
+				filename=#{filename},
+			</if>
+			<if test="dfilename != ''">
+				ds_photo=#{ds_photo},
+				dfilename=#{dfilename},
+			</if>
+			<if test="dfilename2 != ''">
+				ds_photo2=#{ds_photo2},
+				dfilename2=#{dfilename2},
+			</if>
+			<if test="dfilename3 != ''">
+				ds_photo3=#{ds_photo3},
+				dfilename3=#{dfilename3},
+			</if>
+				s_title=#{s_title},
+				s_discount=#{s_discount},
+				s_content=#{s_content},
+				s_price=#{s_price},
+				mdpick=#{mdpick},
+				s_ship=#{s_ship},
+				s_shipcost=#{s_shipcost}
+				
+		WHERE s_num=#{s_num}		
+	</update>
+
 </mapper> 

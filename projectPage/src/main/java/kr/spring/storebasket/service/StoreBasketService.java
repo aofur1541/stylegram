@@ -14,6 +14,7 @@ public interface StoreBasketService {
 	public List<StoreVO> selectBasketPurchaseList(Map<String, Object> map);
 	public void insertPurchase(StorePurchaseVO storePurchaseVO);
 	public StoreVO select(int p_num);
-	public int seleceBasketCount(int m_num);
+	public int selectBasketCount(int m_num);
+	public int selectG_num();
 
 }

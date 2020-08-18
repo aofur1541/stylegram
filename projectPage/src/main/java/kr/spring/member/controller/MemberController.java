@@ -243,8 +243,9 @@ public class MemberController {
 		
 		ModelAndView mav = new ModelAndView();
 		
-		if((Integer)member.getM_num() == (Integer)session.getAttribute("m_num")) {
-			mav.setViewName("redirect:/member/detail.do");
+		System.out.println(session.getAttribute("m_num"));
+		if(member.getM_num() == (Integer)session.getAttribute("m_num")) {
+			mav.setViewName("redirect:detail.do");
 			return mav;
 		}
 		mav.setViewName("anotherForm");

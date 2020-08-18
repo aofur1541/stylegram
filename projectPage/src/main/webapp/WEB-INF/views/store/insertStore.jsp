@@ -62,7 +62,7 @@
 			var reader = new FileReader();
 			reader.onload = function(e){
 				//이미지 주소를 저장할 변수 지정
-				var imgs_html = "<img src=\"" + e.target.result +"\"/>";
+				var imgs_html = "<img src=\"" + e.target.result +"\" class='img1'/>";
 				//이미지를 선택할 때마다 .append 속성을 통해 div태그에 주소를 붙여줌
 				$(".imgs").append(imgs_html);
 				//붙여넣은 이미지 파일의 크기를 조절하기 위한 코드(자유롭게 조절 가능)
@@ -142,17 +142,6 @@
 				<form:input path="s_discount"/>
 				<form:errors path="s_discount"/>
 			</li>
-			<li>
-				<label for="s_ship">배송비 여부</label>
-				<input type="radio" name="s_ship" id="s_ship" value="1"/>배송비 있음
-				<input type="radio" name="s_ship" id="s_ship" checked value="0"/>무료배송
-				<form:errors path="mdpick"/>
-			</li>
-			<li>
-				<label for="s_shipcost">배송비</label>
-				<form:input path="s_shipcost"/>
-				<form:errors path="s_shipcost"/>
-			</li>
 			<li>                 
 				<label for="s_content">상품 상세</label>
 				<form:textarea path="s_content"/>
@@ -179,7 +168,7 @@
 				<label for="dupload3">상품제원</label>
 				<input type="file" name="dupload3" id="dupload3">
 			</li>
-			<li>
+			<li class="mdpick">
 				<label for="radio">MD추천 여부</label>
 				<input type="radio" name="mdpick" id="radio" value="1"/>MD추천	
 				<input type="radio" name="mdpick" id="radio" checked value="0"/>일반상품
@@ -188,7 +177,7 @@
 		</ul>
 		<div class="align-center">
 			<input type="submit" id="submitBtn" value="등록하기">
-			<input type="button" value="목록으로" onclick="location.href='list.do'">
+			<input type="button" value="목록으로" id="homebtn" onclick="location.href='${pageContext.request.contextPath}/member/admin.do'">
 		</div>	
 	</form:form>
 </div>

@@ -55,9 +55,15 @@ public class StoreBasketServiceImpl implements StoreBasketService{
 	}
 
 	@Override
-	public int seleceBasketCount(int m_num) {
+	public int selectBasketCount(int m_num) {
 		// TODO Auto-generated method stub
-		return basketMapper.seleceBasketCount(m_num);
+		return basketMapper.selectBasketCount(m_num);
+	}
+
+	@Override
+	public int selectG_num() {
+		// TODO Auto-generated method stub
+		return basketMapper.selectG_num();
 	}
 	
 

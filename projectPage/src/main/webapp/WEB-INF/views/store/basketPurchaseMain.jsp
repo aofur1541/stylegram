@@ -168,9 +168,11 @@
 				<td>배송비</td>
 				<td>
 					<c:if test="${pa_ship != 0}">
+					<input type="hidden" id="shipcost" name="shipcost" value="${pa_ship}">
 					<fmt:formatNumber value="${pa_ship}" type="number"/>원
 					</c:if>
 					<c:if test="${pa_ship == 0}">
+					<input type="hidden" id="shipcost" name="shipcost" value="0">
 					무료
 					</c:if>
 				</td>

@@ -54,6 +54,7 @@ function execDaumPostcode() {
 		if($('#confirmNumber').val().length == 6){
 			$('#confirmNumber').val("success!!").css("font-size", "18px").css("color", "white");
 			$("#confirmNumber").attr("readonly", true).css("background-color", "rgba(130, 130, 130, 0.8)");
+			$("#checkNumber").prop("type", "hidden");
 			checkNumber = 1;
 		}
 	});

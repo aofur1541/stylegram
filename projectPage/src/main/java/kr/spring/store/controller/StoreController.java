@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -153,11 +154,14 @@ public class StoreController {
 		if(log.isDebugEnabled()) {
 			log.debug("스토어메인 넘어가는 데이터 : " + list);
 		}
+
+		int amount = storePurchaseService.selectPurchaseAmount();
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("storeDetail");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
+		mav.addObject("amount", amount);
 
 		return mav;
 	}
@@ -216,7 +220,31 @@ public class StoreController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/store/modifyproduct.do", method=RequestMethod.GET)
+	public String submitForm(@RequestParam("s_num") int s_num, Model model) {
+		
+		StoreVO storeVO = storeService.selectProduct(s_num);
+		model.addAttribute("storeVO", storeVO);
+		
+		return "productModify";
+	}
 
+	@RequestMapping(value="/store/modifyproduct.do", method=RequestMethod.POST)
+	public String submitUpdate(@Valid StoreVO storeVO, BindingResult result, HttpServletRequest request) {
+
+		if(log.isDebugEnabled()) {
+			log.debug("<<StoreVO>> : " + storeVO);
+		}
+
+		if(result.hasErrors()) {
+			return "productModify";
+		}
+
+		storeService.update(storeVO);
+
+		return "redirect:/store/productDetail.do?s_num="+storeVO.getS_num();
+	}
 }
 
 

@@ -17,9 +17,9 @@
 					결제 상품 : <b>${store.s_title}</b> [${sv.a_num}개]<br>
 					결제 가격 : 
 					<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num < 50000}">
-						<fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num+store.s_shipcost}" type="number"/>원
+						<fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num+sv.p_shipcost}" type="number"/>원
 					</c:if>
-					<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num > 50000}">
+					<c:if test="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num >= 50000}">
 						<fmt:formatNumber value="${(store.s_price-(store.s_price*(store.s_discount/100)))*store.a_num}" type="number"/>원
 					</c:if>
 				</td>

@@ -73,7 +73,7 @@
 			fb_title=#{fb_title},
 		<if test="fb_filename != ''">
 			fb_photo=#{fb_photo},
-			fb_filename=${fb_filename},
+			fb_filename=#{fb_filename},
 		</if>
 			fb_price=#{fb_price},
 			fb_content=#{fb_content},
