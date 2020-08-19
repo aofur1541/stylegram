@@ -89,7 +89,14 @@ $(document).ready(function() {
       append: '.grid__item',
       outlayer: msnry,
       status: '.page-load-status',
-    });   
+    });
+    
+    var pwdresult = '${pwdresult}';
+    
+    if(pwdresult != 0){
+    	alert('비밀번호 변경 완료.\n새로운 비밀번호로 다시 로그인해주세요.');
+    	pwdresult = 0;
+    }
 });
 </script>
 <div id="body">

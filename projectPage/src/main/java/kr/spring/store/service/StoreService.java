@@ -17,4 +17,5 @@ public interface StoreService {
 	public List<StoreVO> selectPurchaseList(Integer num); 
 	public void update(StoreVO storeVO);
 	public void updateSalesRate(HashMap<String,Integer> salesRate);
+	public int selectSalesRate();
 }

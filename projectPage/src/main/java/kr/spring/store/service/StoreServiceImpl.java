@@ -67,5 +67,9 @@ public class StoreServiceImpl implements StoreService{
 		storeMapper.updateSalesRate(salesRate);
 	}
 
+	@Override
+	public int selectSalesRate() {
+		return storeMapper.selectSalesRate();
+	}
 
 }

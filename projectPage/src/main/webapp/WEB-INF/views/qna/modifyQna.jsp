@@ -75,7 +75,7 @@ function setThumbnail(event){
 		</ul>
 		<div>
 			<input type="submit" value="수정">
-			<input type="button" value="목록" id="homebtn" onclick="location.href='${pageContext.request.contextPath}/qna/list.do'">
+			<input type="button" value="목록" id="homebtn" onclick="location.href='${pageContext.request.contextPath}/qna/listQna.do'">
 		</div>
 	</form:form>
 	</div>

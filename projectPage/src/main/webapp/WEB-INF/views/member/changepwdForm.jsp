@@ -34,8 +34,6 @@
 			$('#message_passwd').text('비밀번호 불일치');
 			return false;
 		}
-		
-		alert('비밀번호 변경 완료.\n새로운 비밀번호로 다시 로그인해주세요.');
 	});
 	
 	});
