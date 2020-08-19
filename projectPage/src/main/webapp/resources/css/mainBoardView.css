@@ -3,7 +3,7 @@
 
 .flex-viewport img{
 	width: inherit;
-    max-width: 500px;
+    max-width: 350px;
 }
 .flex-active-slide{
     margin-left:-50px;
@@ -80,7 +80,9 @@
     margin:50 auto;
     padding: 30px;
 }
-
+#pop {
+	position: fixed;
+}
 /* div#main_body div#body {
     position: absolute;
     margin-top: 150px;

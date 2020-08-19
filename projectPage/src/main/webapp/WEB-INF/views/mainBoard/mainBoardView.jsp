@@ -24,7 +24,6 @@ $(document).ready(function(){
             url: "insertComment.do", //데이터를 보낼 url
             data: data, //보낼 데이터
             success: function(){ //데이터를 보내는것이 성공했을시 출력되는 메시지
-                alert("댓글이 등록되었습니다."+data);
                 listComment(); //댓글 목록 출력
             }
         });
@@ -75,9 +74,39 @@ $(document).ready(function(){
         width:25%;
      }
     */
+
+    $('#pop').click(function(){
+    	$("#pop").css("visibility","invisible");
+    });
+
+
 });
 
+function goDetail(num) {
+	$("#pop").append("<hr size='1' width='100%''>");
+	$("#pop").append("<img src='imageView.do?mb_num="+num+"' onclick='remove()' style='max-width:490px;'>");
+	$("#pop").append("<br><hr size='1' width='100%''>");
+	$("#pop").css("visibility","visible");
+	$('#pop').css("top",(($(window).height() - $('#pop').outerHeight()) / 2.05) );
+    $('#pop').css("left",(($(window).width() - $('#pop').outerWidth()) / 2) ); 
+}
+function goDetail2(num) {
+	$("#pop").append("<hr size='1' width='100%''>");
+	$("#pop").append("<img src='imageView2.do?i_num="+num+"' onclick='remove()' style='max-width:490px;'>");
+	$("#pop").append("<br><hr size='1' width='100%''>");
+	$("#pop").css("visibility","visible");
+	$('#pop').css("top",(($(window).height() - $('#pop').outerHeight()) / 2.05) );
+    $('#pop').css("left",(($(window).width() - $('#pop').outerWidth()) / 2) ); 
+
+}
+function remove(){
+	$("#pop").empty();
+    $('body').css("background", "rgb(247, 248, 249)");
+}
 </script>
+<style>
+
+</style>
 <script type="text/javascript">
 window.onload=function(){
 	delete_btn.onclick=function(){
@@ -133,20 +162,24 @@ window.onload=function(){
 		<!-- 메인 사진 -->
 		<c:if test="${!empty mainBoard.mb_photo}">
 			<li data-thumb="imageView.do?mb_num=${mainBoard.mb_num}">
-				<img src="imageView.do?mb_num=${mainBoard.mb_num}">
+				<img src="imageView.do?mb_num=${mainBoard.mb_num}" onclick="goDetail(${mainBoard.mb_num})" class="mainImg">
 			</li>
+	
 		</c:if>
 		<!-- 추가 사진들 -->
 		<c:if test="${!empty mainPictures}">
 		<c:forEach var="mainPictures" items="${mainPictures }" varStatus="status"> 
 			<li data-thumb="imageView2.do?i_num=${mainPictures.i_num}">
-				<img src="imageView2.do?i_num=${mainPictures.i_num}">
+				<img src="imageView2.do?i_num=${mainPictures.i_num}" onclick="goDetail2(${mainPictures.i_num})">
 			</li>
 		</c:forEach>
 		</c:if>
 	</ul>
 	</div>
-	
+	<!-- 팝업 -->
+	<div id="pop" style="visibility:hidden;">
+	    
+	</div>	
 	<!-- 본문 내용 -->
 	<p class="mb_content">
 		${mainBoard.mb_content}
