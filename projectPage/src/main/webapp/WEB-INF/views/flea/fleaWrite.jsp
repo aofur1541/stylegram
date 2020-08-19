@@ -82,6 +82,17 @@
 		$(".addimg"+i).remove();
 	}
 	
+	function checkNum(e){
+		var keyVal = event.keyCode;
+		
+		if((keyVal >= 48) && (keyVal <= 57)){
+			return true;
+		}else{
+			alert("가격은 숫자로만 입력 가능합니다");
+			return false;
+		}
+	}
+	
 </script>
 <div id="body">
 	<div id="main-form">
@@ -128,7 +139,7 @@
 				</li>
 				<li>
 					<label for="fb_price">가격</label>
-					<form:input path="fb_price"/>
+					<form:input path="fb_price" onKeyPress="return checkNum(event)"/>
 					<form:errors path="fb_price" cssClass="error-color"/>
 				</li>
 				<li>
