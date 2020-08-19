@@ -27,4 +27,6 @@ public interface StoreMapper {
 	@Select("SELECT * FROM prostore s JOIN prostorepurchase p ON s.s_num=p.s_num WHERE m_num=#{m_num} ORDER BY p_num DESC")
 	public List<StoreVO> selectPurchaseList(Integer num);
 	public void update(StoreVO store); 
+	@Select("SELECT MAX(salesrate) FROM prostore")
+	public int selectSalesRate();
 }
