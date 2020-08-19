@@ -243,7 +243,7 @@ public class StoreController {
 
 		storeService.update(storeVO);
 
-		return "redirect:/store/productDetail.do?s_num="+storeVO.getS_num();
+		return "redirect:/store/storeDetail.do";
 	}
 }
 

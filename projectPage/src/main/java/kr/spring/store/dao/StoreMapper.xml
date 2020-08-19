@@ -33,9 +33,7 @@
 				s_discount=#{s_discount},
 				s_content=#{s_content},
 				s_price=#{s_price},
-				mdpick=#{mdpick},
-				s_ship=#{s_ship},
-				s_shipcost=#{s_shipcost}
+				mdpick=#{mdpick}
 				
 		WHERE s_num=#{s_num}		
 	</update>

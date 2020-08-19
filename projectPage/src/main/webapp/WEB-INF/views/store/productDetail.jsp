@@ -68,8 +68,7 @@ $(document).ready(function(){
 		});
 		
 	}
-});
-	
+});	
 </script>
 <div id="body">
 	<!-- 장바구니 -->

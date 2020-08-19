@@ -197,7 +197,7 @@
 			</li>
 		</ul>
 		<div class="align-center">
-			<input type="submit" id="submitBtn" value="등록하기">
+			<input type="submit" id="submitBtn" value="수정하기">
 			<input type="button" value="목록으로" id="homebtn" onclick="location.href='storeDetail.do'">
 		</div>	
 	</form:form>
