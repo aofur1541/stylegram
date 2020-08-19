@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.spring.mainboard.domain.MainBoardVO;
 import kr.spring.member.domain.FollowVO;
@@ -355,7 +356,7 @@ public class MemberController {
 	
 	//비밀번호 변경 처리
 	@RequestMapping(value="/member/changepwd.do", method=RequestMethod.POST)
-	public String changepwdSubmit(@Valid MemberVO member, BindingResult result, HttpSession session) {
+	public String changepwdSubmit(@Valid MemberVO member, BindingResult result, HttpSession session, Model model, RedirectAttributes redirect) {
 		
 		if(result.hasFieldErrors("m_passwd")) {
 			return "changepwdForm";
@@ -373,11 +374,13 @@ public class MemberController {
 		//비밀번호 변경 처리
 		memberService.updatePwd(member);
 		
+		redirect.addFlashAttribute("pwdresult", 1);
+		
 		//로그아웃
 		session.invalidate();
 		
 		return "redirect:/main/main.do";
-	}
+	}	
 	
 	//회원탈퇴 폼 호출
 	@RequestMapping(value="/member/delete.do", method=RequestMethod.GET)
@@ -440,16 +443,16 @@ public class MemberController {
 	
 	//관리자 페이지 - 회원관리 페이지 호출
 	@RequestMapping("/member/managePage.do")
-	public ModelAndView manageForm() {
+	public ModelAndView manageForm(@RequestParam(value="pageNum",defaultValue="1") int currentPage) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		int count = memberService.selectMemberCount(map);
 		
-		int rowCount = 20; //화면에 표시될 회원수
+		int rowCount = 12; //화면에 표시될 회원수
 		int pageCount = 10; //화면에 표시될 페이지 수
 		
-		PagingUtil page = new PagingUtil(null, null, 1, count, rowCount, pageCount, "/member/managePage.do");
+		PagingUtil page = new PagingUtil(currentPage, count, rowCount, pageCount, "managePage.do");
 		map.put("start", page.getStartCount());
 		map.put("end", page.getEndCount());
 		
