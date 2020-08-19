@@ -41,7 +41,7 @@
 		</ul>
 		<div class="align-center">
 			<input type="submit" value="전송">
-			<input type="button" value="목록" onclick="location.href='list.do'">
+			<input type="button" value="목록" id="homebtn" onclick="location.href='list.do'">
 		</div>	   
 	</form:form>
 </div>               
